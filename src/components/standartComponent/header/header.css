@@ -1,0 +1,199 @@
+#sectionHeaderApp{
+    width: 100%;
+    height: auto;
+}
+.headerAppWrap{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #F7CB25;
+}
+.language{
+    display: flex;
+    align-items: center;
+    width: 58px;
+    font-family: "Ubuntu"
+}
+.textLanguage{
+    width: 34px;
+height: 60px;
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 117.5%;
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+font-family: 'Ubuntu';
+color: #3E3092;
+}
+.iconLanguage{
+    display: flex;
+    flex-direction: column;
+    width: 24px;
+    height: 18px;
+    border: 2px solid white;
+}
+.blue{
+    width: 100%;
+    height: 50%;
+    background: #0057B8;
+}
+.yellow{
+    width: 100%;
+    height: 50%;
+    background:#FFD700;
+}
+.wrapSocial{
+    width: 222.45px;
+height: 33.56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.socialBlock{
+    width: 32.6px;
+height: 32.01px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+background: white;
+cursor: pointer;
+}
+.socialIcon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.instaIcon{
+    width: 19.88px;
+        height: 19.29px;
+        color: #3E3092;
+}
+.sunWrap{
+    width: 543px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Ubuntu';
+font-style: normal;
+font-size: 13px;
+font-weight: 700;
+/* or 19px */
+
+display: flex;
+  background-color: #3FAC8C;
+  -webkit-clip-path: polygon(5% 0, 95% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%);
+  clip-path: polygon(5% 0, 95% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%);
+    
+}
+.spanFast{
+    color: #3E3092;
+    font-size: 15px;
+}
+.pFast{
+    font-size: 13px;
+    font-weight: bold; 
+    color: white;
+}
+.numberWrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 172px;
+    height: 42px;
+    background: white;
+    border-radius: 21px;
+}
+.phoneNumber{
+    
+font-family: "Ubuntu";
+font-weight: 700;
+font-size: 14px;
+margin: 0;
+margin-left: 4px;
+color: #3E3092;
+}
+.phoneHref{
+    font-size: 14px;
+    color: #3E3092;
+    text-decoration: none;
+    font-family: "Ubuntu";
+font-weight: 700;
+
+}
+.wrapSearch{
+    width: 228.33px;
+    height: 28.33px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+}
+.searchBlock{
+    width: 30px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+   
+    cursor: pointer;
+}
+
+
+/* Блок нижній */
+.headeDownWrap{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.wrapLogo{
+    
+    display: flex;
+    align-items: center;
+}
+.logoH1{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 300;
+font-size: 24px;
+line-height: 120%;
+color: #3E3092;
+}
+.logoH1 span{
+    font-weight: 700;
+}
+.navigationWrap{
+    display: flex;
+    width: 70%;
+}
+.navigationUl{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 2px solid #F7CB25;
+    margin: 0;
+    height: 58px;
+}
+.navigationLi{
+    list-style: none;
+    font-family: 'Ubuntu';
+font-size: 20px;
+font-weight: bold;
+
+color: #3E3092;
+}
+.navigationLi a{
+    text-decoration: none;
+    font-size: 20px;
+color: #3E3092;
+}

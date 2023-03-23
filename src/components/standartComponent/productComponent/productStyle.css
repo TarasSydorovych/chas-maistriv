@@ -1,0 +1,179 @@
+.smallProductWrap{
+    width: 25%;
+    
+    padding-left: 12px;
+    display: flex;
+    flex-direction: column;
+}
+.prodPricLikeCartNovun{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 55%;
+    margin-top: 20px;
+    height: auto;
+}
+.productPicSmall{
+    width: 94%;
+    box-shadow: 5px 2px 5px #c3c3c3;
+}
+.likeCardWrapSmall{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 48%;
+}
+
+.prdeProdPricingCart{
+    cursor: pointer;
+       width: 69.09px;
+    height: 69.09px;
+    color: white;
+    background:#FF3416;
+    transform: rotate(45deg);
+    font-family: 'Ubuntu';
+    display: flex;
+    margin-left: 20px;
+    margin-top: 5px;
+    align-items: center;
+    justify-content: center;
+}
+.prdeProdPricingCartSale{
+    cursor: pointer;
+    width: 69.09px;
+ height: 69.09px;
+ color: white;
+ background: #3FAC8C;
+ transform: rotate(45deg);
+ font-family: 'Ubuntu';
+ display: flex;
+ margin-left: 20px;
+ margin-top: 5px;
+ align-items: center;
+ justify-content: center;
+}
+.prdeProdPricingCartTop{
+    cursor: pointer;
+    width: 69.09px;
+ height: 69.09px;
+ color: white;
+ background: #3E51C1;
+ transform: rotate(45deg);
+ font-family: 'Ubuntu';
+ display: flex;
+ margin-left: 20px;
+ margin-top: 5px;
+ align-items: center;
+ justify-content: center;
+}
+.prdeProdPricingRotateCart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    transform: rotate(-45deg);
+}
+.fullPriceCart{
+    font-family: 'Ubuntu';
+    font-size: 18px;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0;
+   
+}
+.salePriceCart{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 111%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0;
+}
+.salePriceCartSale{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 111%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0;
+    margin-top: 15px;
+}
+.likeProductSmall{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 53px;
+    height: 53px;
+    background: #3E3092;
+}
+.likeProductSmallSale{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 53px;
+    height: 53px;
+    background: #F7CB25;
+}
+.smallProdName{
+    cursor: pointer;
+    width: 272px;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 111%;
+color: #3E51C1;
+margin-top: 35px;
+}
+
+
+
+.autorInformCart{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+}
+.autorInformSectionCart{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.autorInformSectionCart p{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 152.5%;
+color: #000000;
+margin: 0;
+}
+.autorInformSectionCart h4{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 152.5%;
+    margin: 0;
+    width: 100%;
+}
+.descriptionBooksCart{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 122%;
+    color: #000000;
+}

@@ -1,0 +1,860 @@
+.bannerWrapperAll{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 585px;
+    background: #D6CFFF;
+}
+.bannerWrapper{
+    width: 100%;
+    height: auto;
+   
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.bannerText{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 96px;
+    width: 30%;
+    height: 100%;
+
+}
+.bannerIcon{
+    
+    overflow: hidden;
+}
+.banerH1{
+    font-family: 'Ubuntu';
+ margin-bottom: 0;
+    font-weight: 700;
+    font-size: 34px;
+    color: #3E3092;
+}
+.bannerP{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 600;
+margin-bottom: 40px;
+font-size: 20px;
+line-height: 28px;
+color: #3E3092;
+}
+.bannerButton{
+    cursor: pointer;
+    display: flex;
+border: none;
+justify-content: center;
+align-items: center;
+padding: 0px;
+gap: 10px;
+    background: #3E3092;
+    width: 298px;
+height: 58px;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+color: #FFFFFF;
+
+}
+.arrovIconBanner{
+    cursor: pointer;
+}
+.opWrap{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.obSmallWrap{
+    width: 86%;
+    height: 517.75px;
+    margin: 30px;
+   
+    display: flex;
+    flex-direction: column;
+
+}
+.obcladH1{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 111%;
+margin: 0;
+color: #3FAC8C;
+}
+.wrapTwoPic{
+    display: flex;
+    justify-content: space-around;
+    align-self: center;
+    justify-self: end;
+    width: 75%;
+    height: 433.75px;
+    margin-top: 40px;
+}
+.wrapPicAndIcon{
+    display: flex;
+}
+.picOb{
+    width: 306px;
+    height: 405px;
+    object-fit: cover;
+    margin-top: 30px;
+}
+.likeBook{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 67px;
+    height: 67px;
+    background: #D9D9D9;
+    transform: rotate(45deg);
+    cursor: pointer;
+    align-self: flex-end;
+    margin-left: 10px;
+}
+.likeBookIcon{
+    transform: rotate(-45deg);
+}
+.predProdazWrap{
+    display: flex;
+    border: 20px solid #3FAC8C;
+    width: calc(100% - 40px);
+    height: calc(669px - 40px);
+}
+.imgPredProdag{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 40%;
+    height: 100%;
+}
+.imgRelDiv{
+    position: relative;
+    width: 434px;
+    height: 578px;
+}
+.imgRelDivImg{
+    object-fit: cover;
+    box-shadow: 5px 2px 5px #c3c3c3;
+}
+.imgRelDivImg{
+    position: absolute;
+}
+.prdeProdPricing{
+    position: absolute;
+    left: 372px;
+    top: 320px;
+    z-index: 1;
+    width: 120.92px;
+    height: 120.92px;
+    color: white;
+    background: #3FAC8C;
+    transform: rotate(45deg);
+    font-family: 'Ubuntu';
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+}
+.prdeProdPricingRotate{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-45deg);
+}
+.fullPrice{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 152.5%;
+/* or 27px */
+
+text-align: center;
+    margin: 0;
+}
+.salePrice{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 44px;
+line-height: 111%;
+color: #FFFFFF;
+    margin: 0;
+}
+.infoPredProdag{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 60%;
+    height: 100%;
+    padding-left: 100px;
+}
+.infoPredProdagNewBooks{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 95%;
+    height: 100%;
+    padding-bottom: 27px;
+    
+}
+.timerWrap{
+    display: flex;
+    width: 530px;
+}
+.redBlock{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+width: 249px;
+height: 67px;
+background: #FF3416;
+  
+}
+.redBlock h1{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 111%;
+    color: #FFFFFF;
+}
+.timerBlue{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+width: 249px;
+height: 67px;
+background: #3E51C1;;
+}
+.timerBlue h2{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 111%;
+text-align: center;
+margin: 0;
+color: #FFFFFF;
+}
+.timer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+.timer h1{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+margin: 0;
+line-height: 111%;
+text-align: center;
+color: #FFFFFF;
+}
+.nameBooks{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 111%;
+color: #3E3092;
+}
+.nameBooksNewBooks{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 111%;
+margin: 0;
+color: #3E3092;
+}
+.nameBooksNew{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 111%;
+color: #000000;
+}
+.autorInform{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    height: auto;
+    flex-wrap: wrap;
+}
+.autorInformNew{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    height: auto;
+    flex-wrap: wrap;
+}
+.autorInformSection{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.autorInformSection p{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 152.5%;
+color: #000000;
+margin: 0;
+}
+.autorInformSection h4{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 152.5%;
+    margin: 0;
+}
+.descriptionBooks{
+    width: 90%;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 130%;
+color: #000000;
+}
+.descriptionBooksNew{
+    width: 90%;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 130%;
+color: #000000;
+}
+.blockOrderBooksWrap{
+    width: 90%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.kOrderBooksPredButton{
+    cursor: pointer;
+    width: 227px;
+    height: 60px;
+    border: none;
+    background: #3E51C1;
+    color: white;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+}
+
+
+
+/* boooks Age*/
+
+.bookAgeWrap{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+.bookAgeWrapSmall{
+    width: 86%;
+    height: auto;
+    height: 310.38px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    margin: 57px;
+    margin-right: 10px;
+}
+.chousBooks{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 70%;
+}
+.chousBooksH1{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 111%;
+color: #3FAC8C;
+}
+.blockButtonSelectWrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.chousBooksSelect{
+position: relative;
+}
+.customSelect{
+    cursor: pointer;
+    border: 16px solid #3FAC8C;
+    width: 415px;
+    height: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 600;
+font-size: 22px;
+padding-left: 25px;
+appearance: none;
+}
+.customArrowSelect{
+  position: absolute;
+  top: 36.5px;
+  right: 30px;
+  pointer-events: none;
+}
+
+.customOpin:checked{
+    background:#3FAC8C;
+ }
+.buttonSelect{
+    border: none;
+    width: 297px;
+    height: 84px;
+    background:#F7CB25;
+    font-family: 'Ubuntu';
+cursor: pointer;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+color: #3E3092;
+margin-left: 46px;
+}
+/*saleblock*/
+.saleBlockWrap{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.saleBlockWrapSmall{
+    width: 88%;
+    height: auto;
+    margin: 76px;
+    margin-left: 95 px;
+    
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+.saleBlockText{
+    display: flex;
+    align-items: center;
+    margin-left: 12px;
+}
+.saleActions{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 111%;
+margin: 0;
+color: #FF3416;
+
+}
+.saleActionsTop{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 111%;
+margin: 0;
+color: #3E51C1;
+
+}
+.saleActionsLink{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 34px;
+line-height: 111%;
+color: #3E3092;
+margin-left: 20px;
+}
+.saleActionsLinkTop{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 34px;
+line-height: 111%;
+color: #FF3416;
+margin-left: 20px;
+}
+.smalProductList{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+
+.saleActionsPrice{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 111%;
+margin: 0;
+color: #3FAC8C;
+
+}
+.saleActionsLinkPrice{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 34px;
+line-height: 111%;
+color: #3E51C1;
+margin-left: 20px;
+}
+.newBooksWrapBlock{
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+.yellowBorderWrap{
+    width: calc(50% - 20px);
+    border: 20px solid #F7CB25;
+    padding-left: 49px;
+    padding-top: 31.25px;
+    padding-bottom: 27px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.blueBorderWrap{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: calc(50% - 20px);
+    border: 20px solid #3E51C1;
+    border-left: none; 
+    padding-left: 49px;
+    padding-top: 31.25px;
+}
+.arrowLeft{
+    cursor: pointer;
+}
+.prodPricLikeCart{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 94%;
+    margin-top: 20px;
+    height: auto;
+}
+.likeProductSmallSaleNovu{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 53px;
+    height: 53px;
+    background: #3E51C1;;
+}
+.likeProductSmallSaleNovuGr{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 53px;
+    height: 53px;
+    background: #3FAC8C;
+}
+.imgPictureBox{
+    position: relative;
+    width: 72%;
+    
+
+}
+.opicunPicture{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+.markerNew{
+    position: absolute;
+    top: 400px;
+    left: -22px;
+    width: 111px;
+    height: 49px;
+    background: #FF3416;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 111%;
+}
+.BorderWrapBlurOp{
+    position: relative;
+    width: calc(50% - 69px);
+    border: 20px solid #3E3092;
+    padding-right: 49px;
+    padding-top: 31.25px;
+    padding-bottom: 27px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.markerSun{
+    position: absolute;
+    top: 200px;
+    left: 350px;
+    width: 111px;
+    height: 49px;
+    background: #FF3416;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 111%;
+}
+.opRadaButton{
+    width: 320px;
+    height: 60px;
+    background: #3FAC8C;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+display: flex;
+align-items: center;
+cursor: pointer;
+justify-content: center;
+border: none;
+color: #FFFFFF;
+align-self: flex-start;
+}
+
+
+
+.OpradaRelPrice{
+    position: absolute;
+    left: -9%;
+    top: 8%;
+    z-index: 1;
+    width: 109.58px;
+    height: 109.58px;
+    color: white;
+    background: #FF3416;
+    transform: rotate(45deg);
+    font-family: 'Ubuntu';
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+}
+.OpradaRelPriceRotate{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-45deg);
+}
+.fullPriceOpRada{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 152.5%;
+text-align: center;
+    margin: 0;
+}
+.salePriceOpRada{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 111%;
+    /* or 49px */
+    
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    color: #FFFFFF;
+}
+.GreenBlockMal{
+    background: #3FAC8C;
+    width: calc(50% - 49px);
+    padding-left: 49px;
+    padding-top: 51.25px;
+    padding-bottom: 47px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.HelpCreateBooks{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 111%;
+width: 70%;
+margin: 0;
+color: #3E3092;
+}
+.giveDiscount{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 1.25em;
+width: 70%;
+line-height: 137%;
+/* or 27px */
+
+
+color: #FFFFFF;
+}
+.nameBooksNewBooksMal{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 111%;
+/* identical to box height, or 38px */
+
+
+color: #FFFFFF;
+}
+.descriptionOpikunBook{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 135.5%;
+color: #FFFFFF;
+}
+.whoyIsOpRada{
+    width: 320px;
+height: 60px;
+background: #3E3092;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+display: flex;
+align-items: center;
+justify-content: center;
+border: none;
+color: #FFFFFF;
+align-self: flex-end;
+padding: 0;
+}
+.questionWrap{
+    width: calc(100% - 136px);
+    height: auto;
+    padding-left: 68px;
+    padding-right: 68px;
+    padding-top: 47px;
+    padding-bottom: 47px;
+
+}
+.questionWrapSmall{
+    border: 20px solid #3E51C1;
+    width: calc(100% - 40px);
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+
+}
+.pictureAnswerWrap{
+    width: 26%;
+    margin-top: 86px;
+    margin-left: 27px;
+}
+.pictureAnswer{
+    width: 100%;
+    height: 100%;
+}
+.questionsWrap{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 60%;
+   
+}
+.questionSinc{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 111%;
+color: #3E51C1;
+
+}
+.descriptionQuestion{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+
+color: #000000;
+}
+.questionLi{
+    margin: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+list-style-type: none;
+font-family: 'Ubuntu';
+font-style: normal;
+
+font-size: 20px;
+
+color: #000000;
+}
+.checkQuestion{
+    width: 35px;
+    height: 35px;
+    border: 5px solid  #3E51C1;
+}
