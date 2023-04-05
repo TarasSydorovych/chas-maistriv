@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
 }
+
 .prodPricLikeCartNovun{
     display: flex;
     align-items: center;
@@ -52,6 +53,20 @@
  align-items: center;
  justify-content: center;
 }
+.prdeProdPricingCatalogSale{
+    cursor: pointer;
+    width: 69.09px;
+ height: 69.09px;
+ color: white;
+ background: #3E51C1;
+ transform: rotate(45deg);
+ font-family: 'Ubuntu';
+ display: flex;
+ margin-left: 20px;
+ margin-top: 5px;
+ align-items: center;
+ justify-content: center;
+}
 .prdeProdPricingCartTop{
     cursor: pointer;
     width: 69.09px;
@@ -79,7 +94,7 @@
     text-align: center;
     color: #FFFFFF;
     margin: 0;
-   
+    text-decoration: line-through;
 }
 .salePriceCart{
     font-family: 'Ubuntu';
@@ -123,6 +138,15 @@
     width: 53px;
     height: 53px;
     background: #F7CB25;
+}
+.likeProductSmallCatalog{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 53px;
+    height: 53px;
+    background: #3FAC8C;
 }
 .smallProdName{
     cursor: pointer;
@@ -176,4 +200,156 @@ margin: 0;
     font-size: 18px;
     line-height: 122%;
     color: #000000;
+}
+.productBigInCatWrap{
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding-top: 59px;
+    padding-bottom: 50px;
+}
+.productBigPicture{
+    
+    width: 45%;
+    height: 685px;
+}
+.productBigPictureImgWrap{
+    position: relative;
+    margin-left: 113px;
+    width: 80%;
+    height: auto;
+}
+.productBigPictureImg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.topBooksMonthLabel{
+    position: absolute;
+width: 154px;
+height: 60px;
+background: #3FAC8C;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+display: flex;
+align-items: center;
+justify-content: center;
+color: #FFFFFF;
+top:70%;
+left: -7%;
+}
+.topBooksYersLabel{
+    position: absolute;
+    width: 154px;
+height: 60px;
+background: #F7CB25;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+display: flex;
+align-items: center;
+justify-content: center;
+color: #3E3092;
+top:80%;
+left: -7%;
+}
+.newBooksLabel{
+    position: absolute;
+width: 154px;
+height: 60px;
+background: #FF3416;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+display: flex;
+align-items: center;
+justify-content: center;
+color: #FFFFFF;
+top:90%;
+left: -7%;
+}
+.productBigDescription{
+      
+    width: calc(55% - 120px - 50px);
+    height: 685px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-left: 120px;
+    padding-right: 50px;
+    
+}
+.autorAndHud{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.autorAndHudP{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 152.5%;
+color: #000000;
+margin-right: 30px;
+}
+.autorAndHudPSpan{
+    font-weight: 600;
+}
+.bookTitleBigProd{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+width: 80%;
+line-height: 111%;
+margin: 0;
+color: #3E51C1;
+}
+.power{
+    font-family: 'Ubuntu';
+font-style: italic;
+font-weight: 500;
+font-size: 20px;
+line-height: 130%;
+color: #FF3416;
+margin-bottom: 0;
+}
+.powerDescripProdBig{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 130%;
+color: #000000;
+margin: 0px;
+}
+.ageLanguagePBigProd{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+width: 60%;
+line-height: 152.5%;
+color: rgba(0, 0, 0, 0.4);
+margin: 0;
+}
+.porodForCatP{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 152.5%;
+    color: #000000;
+}
+.porodForCatPSpan{
+    font-weight: 500; 
 }

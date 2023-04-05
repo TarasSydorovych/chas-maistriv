@@ -1,6 +1,6 @@
 .footerUpWrap{
     width: calc(100% - 78px - 280px);
-    height: 377px;
+    height: calc(377px - 80px - 38px);
     background: #3E3092;
     display: flex;
     align-items: flex-start;
@@ -24,7 +24,7 @@ font-weight: 300;
 font-size: 36px;
 line-height: 120%;
 color: #FFFFFF;
-margin-bottom: 0px;
+margin: 0px;
 }
 .footerUpH1Span{
     font-weight: 600; 
@@ -113,4 +113,117 @@ justify-content: space-evenly;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+}
+.footerWrapperCenter{
+    width: 100%;
+    height: 243px;
+    display: flex;
+    border-bottom:1px solid #F7CB25;
+}
+.wrapCenterFirst{
+    width: 41%;
+    height: 245px;
+    background: #F7CB25;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.wrapCenterSecond{
+    width: 59%;
+    height: 100%;
+    background: #3FAC8C;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.centerFirstUlF{
+    list-style-type: none;
+    height: 210px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.centerFirstLi{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 120%;
+color: #000000;
+}
+.centerFirstUlS{
+    list-style-type: none;
+    height: 210px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.centerSecondUlS{
+    list-style-type: none;
+    height: 210px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.centerSecondUlSF{
+    list-style-type: none;
+    height: 160px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    align-self: start;
+}
+.centerSecondLi{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 120%;
+color: #3E3092;
+}
+.footerBottomWrap{
+    width: 100%;
+    height: 303px;
+    background: #F7CB25;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.listAutorDev{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    margin-bottom: 50px;
+}
+.copyWraitP{
+    display: flex;
+    align-self: flex-end;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 120%;
+color: #3E3092;
+margin-bottom: 50px;
+}
+.listAutorDevLi{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 120%;
+color: #3E3092;
+margin: 0px;
+}
+.listAutorDevLiSpan{
+    text-decoration: none;
+    font-weight: 600;
+    color: #3E3092;
 }
