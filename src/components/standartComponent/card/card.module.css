@@ -1,0 +1,232 @@
+.cardWrap{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top:0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+     padding-bottom: 100%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popUpWrap{
+    display: flex;
+    width: calc(85% - 40px);
+    height: auto;
+    border: 20px solid #3E51C1;
+    padding-left: 70px;
+    background: white;
+    margin-top: 172px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+}
+.nameCountWrap{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.countSvg{
+    margin-right: 15px;
+    cursor: pointer;
+}
+.countH2{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 36px;
+line-height: 111%;
+color: #3E51C1;
+}
+.productInCardWrap{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+}
+.prodInCardWrap{
+    width: 50%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.prodInfoWrap{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 60%;
+    margin-left: 65px;
+    height: auto;
+}
+.booksNameCard{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 111%;
+color: #3E51C1;
+}
+.chousLangSelect{
+    position: relative;
+    }
+.customSelectInCard{
+    cursor: pointer;
+    border: 3px solid #3FAC8C;
+    width: 255px;
+    height: 41px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+padding-left: 14px;
+appearance: none;
+line-height: 111%;
+color: #3FAC8C;
+margin-bottom: 21px;
+}
+.arrowDown{
+    position: absolute;
+    top:16px;
+    cursor: pointer;
+    left: 225px;
+    width: 19px;
+height: 9px;
+}
+.counterWrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 255px;   
+}
+.countPlusMinusValue{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.minus{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+height: 34px;
+background: #FFFFFF;
+border: 1px solid #FF3416;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+color: #3E3092;
+margin-right: 14px;
+}
+.countValue{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+color: #FF3416;
+margin-right: 14px;
+}
+.plus{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+height: 34px;
+background: #FFFFFF;
+border: 1px solid #FF3416;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+color: #3E3092;
+}
+.delete{
+    position: absolute;
+    right: 13%;
+    cursor: pointer;
+    top: 10%;
+}
+.price{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 111%;
+color: #3E51C1;
+margin: 0;
+}
+.priceSpan{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 152.5%;
+color: #3E51C1;
+margin-left: 3px;
+}
+.fullPriceBlockWrap{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.finalPrice{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 36px;
+line-height: 111%;
+color: #3E51C1;
+}
+.buttonPriceWrap{
+    display: flex;
+    align-items: center;
+}
+.nextJoin{
+    display: flex;
+justify-content: center;
+align-items: center;
+width: calc(266px - 6px);
+height: calc(56px - 6px);
+border: 3px solid #3FAC8C;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+color: #3FAC8C;
+margin-right: 16px;
+cursor: pointer;
+}
+.finalOrder{
+    display: flex;
+justify-content: center;
+align-items: center;
+width: 266px;
+height: 56px;
+background: #3FAC8C;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+color: #FFFFFF;
+margin-right: 25px;
+cursor: pointer;
+}

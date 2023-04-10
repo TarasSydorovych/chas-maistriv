@@ -417,7 +417,7 @@ position: relative;
 }
 .customSelect{
     cursor: pointer;
-    border: 16px solid #3FAC8C;
+    border: 3px solid #3FAC8C;
     width: 415px;
     height: 84px;
     display: flex;

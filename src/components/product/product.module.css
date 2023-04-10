@@ -307,3 +307,359 @@ font-size: 34px;
 line-height: 111%;
 color: #3E51C1;
 }
+.whyNeedBlock{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    
+}
+.blockWhy{
+    padding-top: 22px;
+    width: calc(32% - 57px);
+    height: calc(356px - 22px);
+    padding-left: 30px;
+    padding-right: 27px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    
+    background: #F7CB25;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 130%;
+color: #000000;
+}
+.wrapRecent{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 27px;
+}
+.startText{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.startTextFirst{
+    width: 33.5%;
+height: 60px;
+background: #3E51C1;
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+color: #FFFFFF;
+}
+.startTextSecond{
+    display: flex;
+justify-content: center;
+align-items: center;
+width: 33.5%;
+height: 60px;
+background: #3FAC8C;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+color: #FFFFFF;
+}
+.startTextThree{
+    display: flex;
+justify-content: center;
+align-items: center;
+width: 33.5%;
+height: 60px;
+background: #F7CB25;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+color: #FFFFFF;
+}
+.startTextSecondFirst{
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+width: 50%;
+height: 60px;
+background: #3E3092;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+color: #FFFFFF;
+}
+.startTextSecondSecond{
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+width: 50%;
+height: 60px;
+background: #FF3416;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+color: #FFFFFF;
+}
+.videoBlockWrap{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 49px;
+    padding-bottom: 49px;
+}
+.videoBlock{
+    width: 44%;
+height: 342px;
+background: #3FAC8C;
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+color: #FFFFFF;
+}
+.heroWrapp{
+    width: 100%;
+    height: 357px;
+    background: #D6CFFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.heroPicRo{
+    cursor: pointer;
+    width: 250px;
+    height:250px;
+    transform: rotate(45deg);
+    font-family: 'Ubuntu';
+    display: flex;
+   
+   margin-left: 60px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.heroPicRoteta{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -15px;
+    margin-top: -5px;
+    
+    transform: rotate(-45deg);
+}
+.wrapHeroText{
+    width: 49.6%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 36px;
+    padding-right: 218px;
+    padding-bottom: 30px;
+}
+.wrapHeroTextH1{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 121%;
+color: #3E51C1;
+}
+.wrapHeroTextP{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 126%;
+color: #000000;
+margin-top: 0px;
+}
+.heroPageWrap{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 59px;
+    padding-bottom: 59px;
+}
+.heroPageWrapSmall{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.heroDesc{
+    position: relative;
+    width: 100%;
+    height: 282.29px;
+    background: #F7CB25;
+    font-family: 'Ubuntu';
+font-style: italic;
+font-weight: 400;
+font-size: 18px;
+line-height: 121%;
+color: #000000;
+padding-top: 26px;
+padding-left: 39px;
+padding-right: 39px;
+}
+.hvistBig{
+    position: absolute;
+    bottom: 0;
+z-index: -1;
+left: calc(0% - 78.055px);
+width: 156.11px;
+height: 84.69px;
+    clip-path: polygon(50% 0%, 0 100%, 100% 100%);
+    background: #F7CB25;
+}
+.heroButton{
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+border: none;
+width: 276px;
+height: 56px;
+background: #3E51C1;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+color: #FFFFFF;
+margin-top: 38px;
+cursor: pointer;
+}
+.responsWrap{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.responsWrapSmall{
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.h1Response{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 121%;
+color: #3E51C1;
+}
+.respons{
+    width: 70%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 56px;
+}
+.responsAuthPic{
+    width: 88px;
+height: 88px;
+border-radius: 50%;
+
+}
+.responsAuthText{
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-right: 120px;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    background: rgba(63, 172, 140, 0.35);
+border-radius: 38px;
+margin-left: 9px;
+}
+.autorName{
+    font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+color: #000000;
+margin: 0;
+}
+.autorRespons{
+    font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 64px;
+color: #000000;
+margin: 0;
+margin-top: -10px;
+margin-bottom: -10px;
+}
+.autorRating{
+    display: flex;
+    align-items: center;
+}
+.starStyle{
+    margin-right: 5px;
+}
+.respTextAreaWrap{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.respTextAreaWrapSmall{
+    width: 90%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+}
+.textAreaStyle{
+    width: 90%;
+    height: 123px;
+    border:2px solid #3FAC8C;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 64px;
+    color: rgba(0, 0, 0, 0.25);
+    padding-left: 19px;
+}
+.sendMessage{
+    cursor: pointer;
+    width: 74px;
+height: 74px;
+background: #3FAC8C;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-left: 9px;
+}
