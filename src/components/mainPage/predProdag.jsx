@@ -2,11 +2,27 @@ import pic from '../../img/predProd.png'
 import arrow from '../../svg/arrow.svg';
 import './mainPage.css'
 import {HandySvg} from 'handy-svg';
+import React, { useState, useEffect } from "react";
 
 
-export default function PredProdag() {
-
-
+export default function PredProdag({ targetDate }) {
+    const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0 });
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+          const timeDiff = targetDate - new Date();
+          const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
+          const minutes = Math.floor((timeDiff / 1000 / 60) % 60);
+    
+          setCountdown({ days, hours, minutes });
+    
+          if (timeDiff <= 0) {
+            clearInterval(intervalId);
+          }
+        }, 1000);
+    
+        return () => clearInterval(intervalId);
+      }, [targetDate]);
 
 
     return(
@@ -36,16 +52,16 @@ export default function PredProdag() {
                     <h2>Заллишилось</h2>
                     <div className='timer'>
                         <div className='time'>
-                        <h1>1</h1>
+                        <h1>{countdown.days}</h1>
                         <h2>День</h2>
                         </div>
                         <div className='time'>
-                        <h1>12</h1>
+                        <h1>{countdown.hours}</h1>
                         <h2>Годин</h2>
                         </div>
                         <div className='time'>
-                        <h1>54</h1>
-                        <h2>Секунди</h2>
+                        <h1>{countdown.minutes}</h1>
+                        <h2>Хвилини</h2>
                         </div>
                     </div>
                 </div>

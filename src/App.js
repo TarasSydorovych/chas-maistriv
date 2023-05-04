@@ -20,6 +20,7 @@ function App() {
   const [products, setProducts] = useState([]);
   const [haveProduct, setHaveProduct] = useState(false)
   const [selectedFilters, setSelectedFilters] = useState([]);
+  const targetDate = new Date("2023-06-01T12:00:00");
   useEffect(() => {
     // отримати з localStorage список відвіданих товарів
     const storedProducts = JSON.parse(localStorage.getItem('visitedProducts'));
@@ -50,7 +51,7 @@ function App() {
     <MyContext.Provider value={{ selectedFilters, setSelectedFilters }}>
     {haveProduct && 
     <Routes>
-    <Route path='/' element={<MainPage/>}/>
+    <Route path='/' element={<MainPage targetDate={targetDate}/>}/>
     <Route path='/catalog' element={<Catalog visitedProducts={visitedProducts} productsAll={products} setVisitedProducts={setVisitedProducts}/>}/>
     <Route path='/product/' element={<Product/>}/>
     <Route path='/product/:id' element={<Product products={products}/>}/>

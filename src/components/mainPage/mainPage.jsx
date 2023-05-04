@@ -22,7 +22,7 @@ import Footer from "../standartComponent/footer/footer";
 
 
 
-export default function MainPage() {
+export default function MainPage({targetDate}) {
 
 
 
@@ -32,7 +32,7 @@ export default function MainPage() {
         <Header/>
         <Banner/>
         <Obcladunka/>
-        <PredProdag/>
+        <PredProdag targetDate={targetDate}/>
         <BookAge/>
         <SaleBooks/>
         <ActionPrice/>
