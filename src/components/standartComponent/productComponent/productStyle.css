@@ -217,7 +217,7 @@ margin: 0;
     position: relative;
     margin-left: 113px;
     width: 80%;
-    height: auto;
+    height: 685px;
 }
 .productBigPictureImg{
     width: 100%;
@@ -313,6 +313,7 @@ width: 80%;
 line-height: 111%;
 margin: 0;
 color: #3E51C1;
+text-decoration: none;
 }
 .power{
     font-family: 'Ubuntu';
@@ -352,4 +353,7 @@ margin: 0;
 }
 .porodForCatPSpan{
     font-weight: 500; 
+}
+.ageLanguageWrapBlock{
+    width: 60%;
 }

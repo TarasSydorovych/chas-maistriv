@@ -7,7 +7,7 @@ import css from './product.module.css'
 
 
 
-export default function Description() {
+export default function Description({oneProd}) {
 
 
     return(
@@ -15,11 +15,11 @@ export default function Description() {
             <div className={css.realDescWrapp}>
                 <div className={css.pidWrap}>
 <div className={css.defLine}></div>
-<p className={css.descP}>Вік: 8 - 13 років</p>
-<p className={css.descP}>Мова: українська, англійська</p>
-<p className={css.descP}>Жанр: оповідання</p>
-<p className={css.descP}>Призначення: святкова, створює традиції, створює образи, для еволюції душі</p>
-<p className={css.descP}>Фізичні характеристики: тверда, 232 стр, 205*240 мм, кольорова, 690 гр, українською, дизайн ЮА-студіо</p>
+<p className={css.descP}>Вік: {oneProd.yearGroup}</p>
+<p className={css.descP}>Мова: {oneProd.bookLanguage}</p>
+<p className={css.descP}>Жанр: {oneProd.ganr}</p>
+<p className={css.descP}>Призначення: {oneProd.forWho}</p>
+<p className={css.descP}>Фізичні характеристики: {oneProd.priceMas}, {oneProd.pageCount} стр,{oneProd.bookFormat} мм, {oneProd.ilystracii}, {oneProd.booksWei} гр, {oneProd.bookLanguage}, дизайн {oneProd.bDesign}</p>
             </div>
             </div>
 <div className={css.downloadIcon}>

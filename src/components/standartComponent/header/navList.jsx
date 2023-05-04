@@ -1,20 +1,25 @@
 
+import { useState } from 'react'
 import './header.css'
 
 
 
 
 
-export default function NavList() {
+export default function NavList({setAllBooks, allBooks}) {
+  
+const changState = (e) => {
 
-
+setAllBooks(!allBooks)
+console.log(allBooks);
+}
 
 
     return(
      <div className='navigationWrap'>
         <ul className='navigationUl'>
-            <li className='navigationLi'><a href="/">
-             Усі Книги</a>
+            <li className='navigationLi' onClick={changState}>
+             Усі Книги
             </li>
             <li className='navigationLi'><a href="/">
              Прайс-гурт</a>

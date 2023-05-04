@@ -3,22 +3,22 @@ import ProductPic  from '../../../img/smaPicCart.png'
 import {HandySvg} from 'handy-svg';
 import iconSrc from '../../../svg/howSay.svg';
 import iconSrcCard from '../../../svg/cardHowSay.svg';
+import {Link, NavLink } from 'react-router-dom'
 
 
-
-export default function ProductNewReview() {
+export default function ProductNewReview({el, setAddressChanged}) {
 
 
 
     return(
         <div className='smallProductWrap'>
-        <img src={ProductPic} className="productPicSmall"/>
+        <img src={el.bookFoto} className="productPicSmall"/>
         <div className='prodPricLikeCart'>
 
         <div className='prdeProdPricingCatalogSale'>
         <div className='prdeProdPricingRotateCart'>
         
-        <p className='salePriceCartSale'>203</p>
+        <p className='salePriceCartSale'>{el.price}</p>
         <p className='fullPriceCart'>грн</p>
         </div>
        </div>
@@ -40,17 +40,19 @@ export default function ProductNewReview() {
 </div>
         </div>
 <h2 className='smallProdNameSaleYouLike'>
-Дивні пригоди (не) дивної
+    <NavLink   className='smallProdNameSaleYouLike' to={`/product/${el.uid}`} onClick={() => setAddressChanged(true)}>
+{el.bookName}
+</NavLink>
 </h2>
 
 
 
 <div className='autorInformCart'>
             <div className='autorInformSectionCart'>
-                <p className='porodForCatP'> Автор:&nbsp;<span className='porodForCatPSpan'>Стів Річардсон, Клемент Кларк Мур</span></p>
+                <p className='porodForCatP'> Автор:&nbsp;<span className='porodForCatPSpan'>{el.autorIdea}</span></p>
             </div>
             <div className='autorInformSectionCart'>
-                <p className='porodForCatP'>Художник:&nbsp;<span className='porodForCatPSpan'>Кріс Данн</span></p>
+                <p className='porodForCatP'>Художник:&nbsp;<span className='porodForCatPSpan'>{el.bDesign}</span></p>
             </div>
         </div>
      

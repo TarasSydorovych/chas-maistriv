@@ -4,16 +4,37 @@ import pic from '../../../img/prodInCardPic.png'
 import {HandySvg} from 'handy-svg';
 import iconSrc from '../../../svg/deleteSrc.svg';
 import arrowImp from '../../../img/arrowDownPick.png'
+import { useState } from 'react';
 
-export default function ProdInCard() {
+export default function ProdInCard({el, handleQuantityChange, removeProduct}) {
+
+
+    const [countProd, setCountProd] = useState(el.quantity);
+    const changeStateDown = () => {
+      if(countProd > 1){
+        const newCount = countProd - 1;
+        setCountProd(newCount);
+        handleQuantityChange(el.uid, newCount);
+      }
+    }
+      
+      const changeStateUp = () => {
+        const newCount = countProd + 1;
+        setCountProd(newCount);
+        handleQuantityChange(el.uid, newCount);
+      }
+
+
+
 
 
     return(
         <div className={css.prodInCardWrap}>
-              <img src={pic}/>
+            
+              <img src={el.bookFoto} className={css.bookFoto}/>
 
 <div className={css.prodInfoWrap}>
-<h1 className={css.booksNameCard}>У вечір святковий</h1>
+<h1 className={css.booksNameCard}>{el.bookName}</h1>
 <div className={css.chousLangSelect}>
 <select className={css.customSelectInCard}>
                             <option className='customOpin'  value="0">Українською</option>
@@ -34,13 +55,13 @@ export default function ProdInCard() {
 
                             <div className={css.counterWrap}>
                                 <div className={css.countPlusMinusValue}>
-<div className={css.minus}>-</div>
-<div className={css.countValue}>2</div>
-<div className={css.plus}>+</div>
+<div className={css.minus} onClick={changeStateDown}>-</div>
+<div className={css.countValue}>{countProd}</div>
+<div className={css.plus} onClick={changeStateUp}>+</div>
 </div>
-<h4 className={css.price}>190<span className={css.priceSpan}>грн</span></h4>
+<h4 className={css.price}>{el.price}<span className={css.priceSpan}>грн</span></h4>
                             </div>
-<div className={css.delete}>
+<div className={css.delete} onClick={() => removeProduct(el.uid)}>
 <HandySvg 
                     src={iconSrc}
                     width="25"

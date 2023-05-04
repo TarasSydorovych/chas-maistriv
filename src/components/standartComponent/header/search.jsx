@@ -6,13 +6,29 @@ import shopIco from '../../../svg/shopIco.svg';
 
 import './header.css'
 import { GrInstagram } from "react-icons/gr";
+import React, { useState, useEffect } from 'react';
 
 
-
-export default function Search() {
-
-
-
+export default function Search({login, setLogin, setCart, countProductForCart}) {
+    const [cartItems, setCartItems] = useState([]);
+    const [countProduct, setCountProduct] = useState(null);
+    useEffect(() => {
+        const storedCart = localStorage.getItem('cart');
+        let count = 0;
+        if (storedCart) {
+          const cartItems = JSON.parse(storedCart);
+          for(let i = 0; i < cartItems.length; i++){
+            count += cartItems[i].quantity;
+          }
+        }
+        setCountProduct(count);
+      }, [cartItems]);
+const loginFun = () => {
+    setLogin(!login)
+}
+const openCart = () => {
+    setCart(true)
+}
 
     return(
         <div className='wrapSearch'>
@@ -39,29 +55,34 @@ export default function Search() {
                 </div>
             </div>
             </a>
-            <a href='/'>
-            <div className='searchBlock'>
+            
+            <div className='searchBlock' onClick={openCart}>
                 <div className='socialIcon'>
                 <HandySvg 
                     src={shopIco}
                     width="28.33"
         height="28"
                     />
-                   
+                    {countProductForCart &&
+                   <div className='counterProd'>
+                  {countProductForCart} 
+                   </div>
+                   }
                 </div>
             </div>
-            </a>
-            <a href='/'>
+            
+            
             <div className='searchBlock'>
                 <div className='socialIcon'>
                     <HandySvg 
                     src={iconSrcYou}
                     width="28"
         height="28"
+        onClick={loginFun}
                     />
                 </div>
             </div>
-            </a>
+           
         </div>
     )
 }

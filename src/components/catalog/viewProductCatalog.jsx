@@ -1,11 +1,23 @@
 import ProductNewReview from "../standartComponent/productComponent/productNewReview";
 
+import { useState, useEffect } from 'react';
 
 
 
+export default function ViewProductCatalog({products, setAddressChanged}) {
+    const [visitedProducts, setVisitedProducts] = useState([]);
 
-export default function ViewProductCatalog() {
-
+    useEffect(() => {
+      
+      // Отримуємо масив відвіданих продуктів з localStorage
+      const visitedProductsFromLocalStorage = JSON.parse(localStorage.getItem('visitedProducts'));
+      // Перевіряємо, чи масив існує та чи він не пустий
+      if (visitedProductsFromLocalStorage && visitedProductsFromLocalStorage.length > 0 && products) {
+        const selectedProducts = products.filter(product => visitedProductsFromLocalStorage.includes(product.uid));
+        console.log(selectedProducts);
+        setVisitedProducts(selectedProducts)
+      }
+    }, []);
 
 
 
@@ -16,9 +28,14 @@ export default function ViewProductCatalog() {
         Ви нещодавно переглядали
         </h2>
         <div className="youLikeProductWrap">
-            <ProductNewReview/>
-            <ProductNewReview/>
-            <ProductNewReview/>
+            {visitedProducts.map((el, index) => {
+                if(index < 3){
+return <ProductNewReview key={index} el={el} setAddressChanged={setAddressChanged}/>
+                }
+                
+            })}
+            
+          
             
             
         </div>

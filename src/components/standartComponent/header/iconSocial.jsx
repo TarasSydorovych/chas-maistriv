@@ -14,7 +14,7 @@ export default function IconSocial() {
 
     return(
         <div className='wrapSocial'>
-            <a href='/'>
+            <a href='https://www.facebook.com/chasmaistriv' target="_blanck">
             <div className='socialBlock'>
                 <div className='socialIcon'>
                     <HandySvg 
@@ -25,7 +25,7 @@ export default function IconSocial() {
                 </div>
             </div>
             </a>
-            <a href='/'>
+            <a href='https://www.instagram.com/chas_maistriv/' target="_blanck">
             <div className='socialBlock'>
                 <div className='socialIcon'>
                 <GrInstagram className='instaIcon'/>
@@ -33,7 +33,7 @@ export default function IconSocial() {
                 </div>
             </div>
             </a>
-            <a href='/'>
+            <a href='https://t.me/chasmaistriv_bot' target="_blanck">
             <div className='socialBlock'>
                 <div className='socialIcon'>
                     <HandySvg 
@@ -44,7 +44,7 @@ export default function IconSocial() {
                 </div>
             </div>
             </a>
-            <a href='/'>
+            <a href='https://www.youtube.com/channel/UCdb7uU00naXsUedOHXOBBYQ' target="_blanck">
             <div className='socialBlock'>
                 <div className='socialIcon'>
                     <HandySvg 

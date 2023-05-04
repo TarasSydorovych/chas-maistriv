@@ -4,10 +4,23 @@ import {HandySvg} from 'handy-svg';
 import iconSrc from '../../svg/likeBook.svg';
 
 import './mainPage.css'
+import { useState } from 'react';
 
 export default function Obcladunka() {
+    const [first, setFirst] = useState(false);
+    const [second, setSecond] = useState(false);
+const likepick = (lab) => {
+if(lab === 'first'){
+    setFirst(true)
+    setSecond(false)
+}else if(lab === 'second'){
+    setFirst(false)
+    setSecond(true)
+}
 
 
+
+}
 
 
     return(
@@ -19,7 +32,9 @@ export default function Obcladunka() {
             <div className="wrapTwoPic">
                 <div className="wrapPicAndIcon">
                     <img src={pic1}  className="picOb"/>
-                    <div className='likeBook'>
+                    <div onClick={() => likepick('first')} className={`likeBook ${
+                        first ? "selected" : ""
+                      }`}>
                     <HandySvg 
                     src={iconSrc}
                     className="likeBookIcon"
@@ -31,7 +46,9 @@ export default function Obcladunka() {
                 </div>
                 <div className="wrapPicAndIcon">
                     <img src={pic1}  className="picOb"/>
-                    <div className='likeBook'>
+                    <div onClick={() => likepick('second')} className={`likeBook ${
+                        second ? "selected" : ""
+                      }`}>
                     <HandySvg 
                     src={iconSrc}
                     className="likeBookIcon"

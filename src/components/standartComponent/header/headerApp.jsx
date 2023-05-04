@@ -5,7 +5,7 @@ import Number from './number';
 import Search from './search';
 import Sun from './sun';
 
-export default function HeaderApp() {
+export default function HeaderApp({login, setLogin, setCart ,countProductForCart}) {
 
 
 
@@ -26,7 +26,7 @@ export default function HeaderApp() {
     <IconSocial/>
 <Sun/>
 <Number/>
-<Search/>
+<Search countProductForCart={countProductForCart} setLogin={setLogin} login={login} setCart={setCart}/>
 </div>
         </section>
     )

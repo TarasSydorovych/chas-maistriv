@@ -1,0 +1,282 @@
+.cardWrap{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top:0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    padding-bottom: 100%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popUpWrap{
+    display: flex;
+    width: calc(85% - 40px);
+    height: auto;
+    border: 20px solid #3E51C1;
+    padding-left: 70px;
+    background: white;
+    margin-top: 172px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.nameCountWrap{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.countSvg{
+    margin-right: 15px;
+    margin-top: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-self: flex-end;
+}
+.logInWrapText{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.logInWrapTextH3{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 36px;
+    color: #3E51C1;
+    margin-bottom: 0;
+}
+.logInWrapTextP{
+
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 22px;
+color: #000000;
+}
+.logInWrapTextPA{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 22px;
+color: #000000;
+text-decoration: underline;
+}
+.userInfoWrap{
+    display: flex;
+    flex-direction: column;
+    
+}
+.userInfoWrapOne{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.userInfoP{
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 22px;
+/* identical to box height, or 122% */
+margin: 0;
+margin-bottom: 10px;
+margin-top: 10px;
+letter-spacing: -0.02em;
+font-feature-settings: 'calt' off;
+
+color: #000000;
+}
+.userInfoInput{
+    width: calc(436px - 20px);
+height: 48px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 22px;
+padding-left: 20px;
+color: #000000;
+/* White */
+
+background: #FFFFFF;
+border: 1px solid #2F3D4D;
+}
+.logWithAppFacWrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.logWithAppFacP{
+ margin-top: 48px;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 22px;
+text-align: center;
+letter-spacing: -0.02em;
+font-feature-settings: 'calt' off;
+
+color: #000000;
+}
+.logIconWrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 306.5px;
+}
+.icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70.35px;
+height: 69px;
+background: #3E51C1;
+border-radius: 10px;
+cursor: pointer;
+}
+.buttonRegister{
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+width: 266px;
+height: 56px;
+background: #3FAC8C;
+border: none;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+color: #FFFFFF;
+cursor: pointer;
+margin-top: 60px;
+}
+.contractWrap{
+    display: flex;
+    flex-direction: column;
+
+}
+.contractP{
+    margin-top: 42px;
+    margin-bottom: 42px;
+    width: 397px;
+    height: auto;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 22px;
+text-align: center;
+letter-spacing: -0.02em;
+color: #C4C4C4;
+}
+.contractPA{
+    width: 397px;
+    height: auto;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 22px;
+text-align: center;
+letter-spacing: -0.02em;
+color: #C4C4C4;
+text-decoration: none;
+}
+.userInfoPassword{
+    font-family: 'Montserrat';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 22px;
+color: #3E51C1;
+letter-spacing: -0.02em;
+text-decoration-line: underline;
+align-self: flex-end;
+}
+.userPhoneWrap{
+    display: flex;
+    align-items: center;
+    width: 436px;
+    height: 48px;
+}
+.customSelectInCard{
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 48px;
+    border: 2px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+
+appearance: none;
+line-height: 111%;
+padding: 0;
+
+}
+.praporWrap{
+    display: flex;
+    flex-direction: column;
+    height: 13px;
+    width: 19px;
+    margin-left: 5px;
+   
+}
+.blue{
+    width: 19px;
+    height: 7px;
+    background: #0A7ACC;
+}
+.yellow{
+    width: 19px;
+    height: 6px;
+    background: #FFD02B;
+}
+.arrowDownNum{
+    font-size: 11px;
+    color: black;
+}
+.userInfoInputPhone{
+
+    width: 384px;
+height: 48px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+padding-left: 20px;
+font-size: 18px;
+line-height: 22px;
+color: #000000;
+/* White */
+
+background: #FFFFFF;
+border: 1px solid #2F3D4D;
+}
+.eyeIcon{
+    font-size: 30px;
+    position: absolute;
+    left: 90%;
+    top: 55%;
+    cursor: pointer;
+}

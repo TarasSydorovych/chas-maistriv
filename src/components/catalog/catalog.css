@@ -247,6 +247,7 @@ font-weight: 700;
 font-size: 24px;
 line-height: 111%;
 color: #3E51C1;
+text-decoration: none;
 }
 .discountAndACWrapp{
     width: 100%;
@@ -339,5 +340,32 @@ font-style: normal;
 font-weight: 700;
 font-size: 34px;
 line-height: 111%;
+color: #3E51C1;
+}
+.wrapButtonCountList{
+
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.buttonWithCountPage{
+    width: 50px;
+    height: 50px;
+    background: #F7CB25;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 152.5%;
+margin-left: 20px;
+margin-top: 50px;
+margin-bottom: 50px;
 color: #3E51C1;
 }

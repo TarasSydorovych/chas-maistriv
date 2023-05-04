@@ -427,16 +427,11 @@ color: #FFFFFF;
 .videoBlock{
     width: 44%;
 height: 342px;
-background: #3FAC8C;
+
 display: flex;
 align-items: center;
 justify-content: center;
-font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 500;
-font-size: 20px;
-line-height: 117.5%;
-color: #FFFFFF;
+
 }
 .heroWrapp{
     width: 100%;
