@@ -1120,7 +1120,8 @@ color: #3E51C1;
     height: auto;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+
 }
 .allAutorsWrapSmall{
     width: calc(100% - 136px);
@@ -1128,6 +1129,9 @@ color: #3E51C1;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    margin-left: 4%;
+    
+  
 }
 .ourAutor{
     font-family: 'Ubuntu';
@@ -1150,6 +1154,7 @@ line-height: 121%;
 color: #3E51C1;
 overflow: visible;
 transform: rotate(-45deg);
+margin-bottom: 0;
 
 }
 .autorListSmal{
