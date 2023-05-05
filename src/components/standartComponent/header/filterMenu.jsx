@@ -4,6 +4,7 @@ import React, { useContext } from 'react';
 import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import {fetchProductsAll, fetchProducts} from '../../../function/productsSlice'
+import { addFilter, removeFilter } from '../../../function/filtersSlice';
 import {auth, db} from '../../../firebase'
 import {
     query,
@@ -282,7 +283,7 @@ const [products, setProducts] = useState([]);
     dispatch(fetchProducts(selectedFilters));
     
   }, [selectedFilters]);
-  const handleFilterClick = (filter) => {
+  const handleFilterClickst = (filter) => {
     setSelectedFilters(prevFilters => {
       const index = prevFilters.findIndex(
         (selectedFilter) =>
@@ -299,8 +300,18 @@ const [products, setProducts] = useState([]);
       }
     });
   };
-
-
+  const filters = useSelector(state => state.filters);
+  console.log('Фільтерс з редаксу',filters);
+  
+const handleFilterClick = (filter) => {
+    if (filters.some((selectedFilter) =>
+      selectedFilter.field === filter.field && selectedFilter.value === filter.value
+    )) {
+      dispatch(removeFilter(filter));
+    } else {
+      dispatch(addFilter(filter));
+    }
+  };
 
 
     return(
@@ -322,7 +333,10 @@ const [products, setProducts] = useState([]);
                 <ul className="ulSecondfilter">
                     {el.list.map((value, index) => {
                const filter = { field: el.transliter, value: value };
-                      return  <li  onClick={() => handleFilterClick(filter)} className="ulSecondfilterLi" key={index}><div
+                      return  <li  onClick={() => { handleFilterClick(filter)
+                        handleFilterClickst(filter)
+                      }
+                    } className="ulSecondfilterLi" key={index}><div
                       className={`blockCheckFilterJoin ${
                         selectedFilters.some(
                           (selectedFilter) =>

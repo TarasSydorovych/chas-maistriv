@@ -21,7 +21,7 @@ export default function Catalog({setVisitedProducts, visitedProducts, productsAl
     const [currentPage, setCurrentPage] = useState(0);
     const productsPerPage = 2;
     const products = useSelector((state) => state.products.items);
-
+    const filters = useSelector(state => state.filters);
 
 const maxDisplayedPages = 6; // максимальна кількість кнопок для відображення
 const firstDisplayedPages = 0; // кількість кнопок з початку
@@ -61,7 +61,7 @@ for (let i = numberOfPages - lastDisplayedPages; i < numberOfPages; i++) {
         <>
         <Header/>
         
-        <Filter/>
+        <Filter filters={filters}/>
         <FirstBlockCat/>
         {currentProducts.map((el, index) => {
                 return <CatalogProductComponent visitedProducts={visitedProducts} setVisitedProducts={setVisitedProducts} el={el} key={index}/>

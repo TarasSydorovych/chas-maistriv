@@ -5,23 +5,23 @@ import iconSrc from '../../svg/xFilter.svg';
 import { MyContext } from '../../App';
 import React, { useContext } from 'react';
 
-export default function Filter() {
-    const { selectedFilters, setSelectedFilters } = useContext(MyContext);
+export default function Filter({filters}) {
+    
 
-console.log('Список з контексту', selectedFilters.length);
+
 
     return(
         <div className="filterWrap">
             <h2 className='allBoksFilterH2'>
                 Всі книги
             </h2>
-            {selectedFilters.length !== 0 &&
+            {filters &&
             <>
 <div className='filterSetiningWrap'>
-    {selectedFilters.map((el, index) => {
+    {filters.map((el, index) => {
        return <div key={index} className='filterSetining'>
         <p className='setiningsFilterName'>
-        {el}
+        {el.value}
         </p>
         <HandySvg 
                     src={iconSrc}
