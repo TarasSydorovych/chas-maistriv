@@ -4,7 +4,7 @@ import {HandySvg} from 'handy-svg';
 import iconSrc from '../../../svg/smallProductLike.svg';
 import iconSrcCard from '../../../svg/smallProductCard.svg';
 import {Link} from 'react-router-dom'
-
+import addToCart from '../../../function/addToCard'
 
 export default function CatalogProductComponent({el, index, setVisitedProducts, visitedProducts}) {
     const handleProductClick = (product) => {
@@ -82,7 +82,7 @@ export default function CatalogProductComponent({el, index, setVisitedProducts, 
 height="31"
         />
 </div>
-<div className='likeProductBig'>
+<div className='likeProductBig' onClick={() => addToCart(el.uid)}>
 <HandySvg 
         src={iconSrcCard}
         width="28.33"

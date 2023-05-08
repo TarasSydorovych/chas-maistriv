@@ -5,6 +5,7 @@ import apple from '../../../svg/apple.svg'
 import face from '../../../svg/faceIconEnter.svg'
 import google from '../../../svg/googleEnter.svg'
 import { useState } from 'react';
+import { doc, setDoc } from "firebase/firestore"; 
 import { AiOutlineEye } from "react-icons/ai";
 import { SlArrowDown } from "react-icons/sl";
 import { OAuthProvider ,signInWithRedirect, FacebookAuthProvider } from "firebase/auth";
@@ -17,9 +18,52 @@ export default function EnterUser({setLogin, setEnterUser, enterUser}) {
     const [phone, setPhone] = useState("+380");
     const [emailVal, setEmailVal] = useState('')
 
+    const singInWithGoogle = async (e) => {
+        e.preventDefault();
+    signInWithPopup(auth, googleAuthProvider).then(async (result) => {
+        await setDoc(doc(db, "users", result.user.uid), {
+            uid: result.user.uid,
+            displayName: result.user.displayName,
+            email: result.user.email,
+        
+           })
+          
+     console.log(result)
+    }).catch((err) => {
+        console.log('Error')
+    })
+    }
 
-
-
+    const signWithFacebook = async (e) => {
+        e.preventDefault();
+        console.log(facebookProvider)
+        signInWithPopup(auth, facebookProvider).then(async (result) => {
+        
+          // The signed-in user info.
+          const user = result.user;
+      
+          // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+          const credential = FacebookAuthProvider.credentialFromResult(result);
+          const accessToken = credential.accessToken;
+      console.log(result)
+          // IdP data available using getAdditionalUserInfo(result)
+          // ...
+        })
+        .catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // The email of the user's account used.
+          const email = error.customData.email;
+          // The AuthCredential type that was used.
+          const credential = FacebookAuthProvider.credentialFromError(error);
+      
+          // ...
+        });
+    
+    
+    
+    }
 
     const handlePasswordChange = (event) => {
         setPassword(event.target.value);
@@ -48,7 +92,26 @@ export default function EnterUser({setLogin, setEnterUser, enterUser}) {
     const changeMail = (e) => {
         setEmailVal(e.target.value)
     }
-
+    const signUp = async (e) => {
+        e.preventDefault();
+    
+        try{
+            
+      const res = await createUserWithEmailAndPassword(auth, emailVal, password);
+    
+      await setDoc(doc(db, "users", res.user.uid), {
+        uid: res.user.uid,
+        displayName: emailVal,
+        email: emailVal,
+        phone:  phone
+    
+       })
+    }catch (error) {
+            alert('The user with this login is not registered', error)
+        }
+     
+    
+    }
 
 
 
@@ -119,7 +182,7 @@ export default function EnterUser({setLogin, setEnterUser, enterUser}) {
         height="26.67"
                     />
 </div>
-<div className={css.icon}>
+<div className={css.icon} onClick={signWithFacebook}>
 <HandySvg 
                     src={face}
                     width="15"
@@ -127,7 +190,7 @@ export default function EnterUser({setLogin, setEnterUser, enterUser}) {
         height="27"
                     />
 </div>
-<div className={css.icon}>
+<div className={css.icon} onClick={singInWithGoogle}>
 <HandySvg 
                     src={google}
                     width="26"
@@ -140,7 +203,7 @@ export default function EnterUser({setLogin, setEnterUser, enterUser}) {
 </div>
 
 
-<button className={css.buttonRegister}>
+<button  onClick={signUp} className={css.buttonRegister}>
 
 Вхід
 </button>
