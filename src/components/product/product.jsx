@@ -19,9 +19,9 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-export default function Product({products}) {
+export default function Product({products, setAddressChanged, addressChanged}) {
   const [reloadP, setReloadP] = useState(true);
-  const [addressChanged, setAddressChanged] = useState(false);
+  
 
 
        const [oneProd, setOneProd] = useState();

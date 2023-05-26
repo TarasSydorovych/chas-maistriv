@@ -9,6 +9,12 @@ import { doc, setDoc, addDoc, collection, serverTimestamp, getDocs } from "fireb
 import {useState, useEffect} from 'react'
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Order from "./components/order/order";
+import UserCabinet from "./components/userCabinet/userCabinet";
+import Like from "./components/like/like";
+import Hero from "./components/product/hero";
+import HeroPage from "./components/hero/hero";
+import PriceOpt from "./components/priceOpt/priceOpt";
 
 export const MyContext = React.createContext({
   value: "",
@@ -20,6 +26,7 @@ function App() {
   const [products, setProducts] = useState([]);
   const [haveProduct, setHaveProduct] = useState(false)
   const [selectedFilters, setSelectedFilters] = useState([]);
+  const [addressChanged, setAddressChanged] = useState(false);
   const targetDate = new Date("2023-06-01T12:00:00");
   useEffect(() => {
     // отримати з localStorage список відвіданих товарів
@@ -54,8 +61,12 @@ function App() {
     <Route path='/' element={<MainPage targetDate={targetDate}/>}/>
     <Route path='/catalog' element={<Catalog visitedProducts={visitedProducts} productsAll={products} setVisitedProducts={setVisitedProducts}/>}/>
     <Route path='/product/' element={<Product/>}/>
-    <Route path='/product/:id' element={<Product products={products}/>}/>
-    
+    <Route path='/product/:id' element={<Product products={products} addressChanged={addressChanged} setAddressChanged={setAddressChanged}/>}/>
+    <Route path='/order' element={<Order/>}/>
+    <Route path='/like' element={<Like/>}/>
+    <Route path='/hero' element={<HeroPage/>}/>
+    <Route path='/opt' element={<PriceOpt/>}/>
+    <Route path='/user' element={<UserCabinet products={products} addressChanged={addressChanged} setAddressChanged={setAddressChanged}/>}/>
     <Route path='/adm' element={<AddBooks/>}/>
     </Routes>
     }

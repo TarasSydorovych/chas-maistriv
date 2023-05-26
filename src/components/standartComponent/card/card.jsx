@@ -43,47 +43,7 @@ export default function Card({setCart, setCountProductForCart}) {
     const cartClose= () => {
         setCart(false)
     }
-  //   const handleQuantityChange = (uid, quantity) => {
-  //       const updatedCartProducts = cartProducts.map(product => {
-  //         if (product.uid === uid) {
-  //           return {
-  //             ...product,
-  //             quantity
-  //           }
-  //         } else {
-  //           return product;
-  //         }
-  //       });
-  //       const totalPrice = updatedCartProducts.reduce((acc, product) => {
-  //         return acc + (product.price * product.quantity);
-  //       }, 0);
-  //       setFinishPrice(totalPrice);
-  //       // Find the product with the corresponding uid in the updatedCartProducts array
-  //       const productToUpdate = updatedCartProducts.find(product => product.uid === uid);
 
-
-  //       let count = 0;
-  // for (let i = 0; i < updatedCartProducts.length; i++) {
-  //   count += updatedCartProducts[i].quantity;
-  // }
-      
-  //       // Update the quantity of the product with the corresponding uid in the localStorage
-  //       if (productToUpdate) {
-  //         const cart = JSON.parse(localStorage.getItem('cart'));
-  //         const updatedCart = cart.map(product => {
-  //           if (product.uid === uid) {
-  //             return {
-  //               ...product,
-  //               quantity
-  //             }
-  //           } else {
-  //             return product;
-  //           }
-  //         });
-  //         localStorage.setItem('cart', JSON.stringify(updatedCart));
-  //       }
-  //       setCountProductForCart(count)
-  //     };
 
   const [totalQuantity, setTotalQuantity] = useState(0);
   const handleQuantityChange = (uid, quantity) => {
@@ -129,25 +89,7 @@ export default function Card({setCart, setCountProductForCart}) {
 
 
 
-  //     const removeProduct = (uid) => {
-  //       const updatedCart = cartProducts.filter(product => product.uid !== uid);
-  //       let count = 0;
-  // for (let i = 0; i < updatedCart.length; i++) {
-  //   count += updatedCart[i].quantity;
-  // }
-  //       localStorage.setItem('cart', JSON.stringify(updatedCart));
-  //       setCartProducts(updatedCart);
-
-  //       setCountProductForCart(count)
-  //     };
-  //     useEffect(() => {
-  //       if (cartProducts && cartProducts.length) {
-  //         const totalPrice = cartProducts.reduce((acc, product) => {
-  //           return acc + (product.price * product.quantity);
-  //         }, 0);
-  //         setFinishPrice(totalPrice);
-  //       }
-  //     }, [cartProducts]);
+  
 
   const removeProduct = (uid) => {
     const updatedCart = cartProducts.filter(product => product.uid !== uid);

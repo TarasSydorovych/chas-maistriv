@@ -1,0 +1,510 @@
+.blueHeaderOrder{
+    width: 100%;
+    height: 116px;
+    background: #3E51C1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.blueHeaderOrderEnter{
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.titleH3OrderEnter{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 36px;
+line-height: 111%;
+color: #FFFFFF;
+}
+.wrapCenterOrder{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.wrapCenterOrderSmall{
+    width: 90%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.firstBlockWrap{
+    width: 60%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 26px;
+}
+.newUserOrNoWrap{
+    width: 80%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.newBayer{
+    width: 235px;
+height: 43px;
+display: flex;
+align-items: center;
+justify-content: center;
+background: #F7CB25;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 111%;
+text-align: center;
+
+color: #3E51C1;
+}
+.newAlwaysBayer{
+    width: 281px;
+height: calc(43px - 6px);
+border: 3px solid #F7CB25;
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 111%;
+text-align: center;
+
+color: #3E51C1;
+}
+.labelMi{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 28px;
+color: #3FAC8C;
+}
+.wrapUserData{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: auto;
+}
+.inputSmall{
+    width: calc(46% - 6px);
+height: calc(56px - 6px);
+padding-top: 0;
+padding-bottom: 0;
+background: #FFFFFF;
+border: 3px solid #3FAC8C;
+padding-left: 15px;
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 30px;
+color: #C4C4C4;
+}
+.inputSmallWrap{
+    width: calc(93%);
+    height: calc(56px - 6px);
+    padding-top: 0;
+    padding-bottom: 0;
+    background: #FFFFFF;
+    border: 3px solid #3FAC8C;
+    padding-left: 15px;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    color: #758391;
+}
+.inputBig{
+    margin-top: 25px;
+    width: calc(100% - 6px);
+    height: 56px;
+    background: #FFFFFF;
+border: 3px solid #3FAC8C;
+padding-left: 15px;
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 30px;
+color: #C4C4C4;
+}
+.deliveryChoisWrap{
+    display: flex;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: flex-start;
+}
+.choisWrap{
+    display: flex;
+    align-items: center;
+    width: auto;
+    height: auto;
+    margin-right: 22px;
+}
+.choisWi{
+    width: calc(30px - 6px);
+height: calc(30px - 6px);
+border: 3px solid #3FAC8C;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.wi{
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #FF3416;
+}
+.choisP{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 28px;
+color: #3FAC8C;
+margin-left: 11px;
+}
+
+
+
+.chousBooksSelect{
+    position: relative;
+    width: calc(46% + 17px);
+    height: auto;
+    }
+    .chousBooksSelectBig{
+        margin-top: 34px;
+        position: relative;
+    width: calc(100% + 17px);
+    height: auto;
+    }
+.customSelect{
+    cursor: pointer;
+    border: 3px solid #3FAC8C;
+    width: 100%;
+    height: 56px;
+    appearance: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-left: 15px;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    
+    color: #758391;
+
+    }
+.customOpin:checked{
+        background:#3FAC8C;
+        color: #C4C4C4;
+     }
+.customArrowSelect{
+        position: absolute;
+        top: 25px;
+        width: 19px;
+        height: 9px;
+        right: 30px;
+        pointer-events: none;
+      }
+      .customSelect option {
+        color: #C4C4C4;
+      }
+      .orderConfirmation{
+        width: 273px;
+height: 60px;
+background: #3FAC8C;
+border: none;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+color: #FFFFFF;
+align-self: center;
+margin-top: 38px;
+cursor: pointer;
+margin-bottom: 38px;
+      }
+      .ulWrapBigCity{
+        position: absolute;
+        top: 40px;
+        left: 0;
+        color: black;
+        width: 95%;
+        max-height: 600px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        overflow: auto;
+        list-style-type: none;
+        background-color: #C4C4C4;
+        z-index: 2;
+      }
+      .wrapProdForOrder{
+        margin-top: 53px;
+        width: 37%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        align-self: flex-start;
+       
+        
+      }
+.lineWrap{
+    width: 100%;
+    height: 3px;
+    background: #3FAC8C;
+}
+
+
+      .prodInCardWrap{
+        width: 100%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        justify-self: flex-end;
+        
+    }
+    .prodInfoWrap{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 55%;
+        
+        height: auto;
+    }
+    .booksNameCard{
+        font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 111%;
+    color: #3E51C1;
+    }
+    .chousLangSelect{
+        position: relative;
+        }
+    .customSelectInCard{
+        cursor: pointer;
+        border: 3px solid #3FAC8C;
+        width: 255px;
+        height: 41px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    padding-left: 14px;
+    appearance: none;
+    line-height: 111%;
+    color: #3FAC8C;
+    margin-bottom: 21px;
+    }
+    .arrowDown{
+        position: absolute;
+        top:16px;
+        cursor: pointer;
+        left: 225px;
+        width: 19px;
+    height: 9px;
+    }
+    .counterWrap{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 255px;   
+    }
+    .countPlusMinusValue{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .minus{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+    height: 34px;
+    background: #FFFFFF;
+    border: 1px solid #FF3416;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 117.5%;
+    color: #3E3092;
+    margin-right: 14px;
+    }
+    .countValue{
+        font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 117.5%;
+    color: #FF3416;
+    margin-right: 14px;
+    }
+    .plus{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+    height: 34px;
+    background: #FFFFFF;
+    border: 1px solid #FF3416;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 117.5%;
+    color: #3E3092;
+    }
+    .delete{
+        position: absolute;
+        right: 13%;
+        cursor: pointer;
+        top: 10%;
+    }
+    .bookFoto{
+        width: 172px;
+        height: 197px;
+    }
+    .price{
+        font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 111%;
+/* or 38px */
+
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #3E51C1;
+    }
+    .priceSpan{
+        font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 152.5%;
+/* or 21px */
+
+text-align: center;
+
+color: #3E51C1;
+    }
+    .descBookInOrder{
+        width: 100%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .blockProperty{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 126px;
+height: 41px;
+background: #F7CB25;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 111%;
+/* or 18px */
+
+text-align: center;
+
+color: #3E3092;
+
+    }
+    .sumOrder{
+        font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 111%;
+/* or 27px */
+
+
+color: #3E51C1;
+margin-bottom: 0;
+    }
+    .discountWrapOrder{
+        width: 100%;
+        margin-top: 57px;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .promoInput{
+        width: calc(67% - 6px - 30px);
+height: calc(56px - 8px);
+background: #FFFFFF;
+border: 3px solid #3FAC8C;
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 30px;
+padding-left: 30px;
+
+color: #C4C4C4;
+    }
+    .promoButton{
+        width: 30%;
+height: 56px;
+background: #3FAC8C;
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+/* identical to box height, or 24px */
+
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #FFFFFF;
+    }
+    .sum{
+        font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 36px;
+line-height: 111%;
+/* or 40px */
+
+
+color: #3E51C1;
+    }

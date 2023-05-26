@@ -1,0 +1,430 @@
+.bleuLabel{
+    width: 100%;
+    height: 116px;
+    background: #3E51C1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.blueLabelWnutr{
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.firstTextInBlock{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 149%;
+/* or 36px */
+margin: 0;
+
+color: #FFFFFF;
+}
+.userInformationWrap{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.userInformationWrapSmall{
+    width: 95%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.yourInformation{
+    width: 48%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+.ourInformation{
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: flex-start;
+    margin-top: 60px;
+}
+.userData{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+.imgAutorWrapSmall{
+    
+    position: relative;
+    
+    width: 126.57px;
+height: 126.57px;
+    rotate: 0deg;
+    
+    
+   
+}
+.imgAutorSmall{
+    position: absolute;
+    width: 126.57px;
+    height: 126.57px;
+   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+.nameAndPropWr{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 5px;
+}
+.userNameHello{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 36px;
+line-height: 111%;
+/* or 40px */
+margin: 0;
+margin-top: 30px;
+color: #3FAC8C;
+}
+.propP{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 141.5%;
+/* or 34px */
+margin: 0;
+margin-left: 7px;
+cursor: pointer;
+color: rgba(0, 0, 0, 0.4);
+}
+.propWrap{
+    display: flex;
+}
+.iconPicBird{
+
+}
+.yourRegistration{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 141.5%;
+/* or 34px */
+margin: 0;
+text-transform: uppercase;
+
+color: #3E51C1;
+}
+.yourDescription{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 141.5%;
+/* or 34px */
+margin: 0;
+margin-top: 5px;
+
+color: #000000;
+}
+.socialWrap{
+    width: 50%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+.standartsocial{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 62.85px;
+height: 62.85px;
+border-radius: 50%;
+background: #F7CB25;
+cursor: pointer;
+}
+.orderingProductWrap{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.orderingProductWrapSmall{
+
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.block{
+    width: auto;
+    padding: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: calc(54px - 6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #F7CB25;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 111%;
+/* identical to box height, or 38px */
+
+text-align: center;
+
+color: #3E51C1;
+}
+.selected{
+    width: auto;
+    padding: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: calc(54px - 6px);
+    background: #F7CB25;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.wrapLab{
+    width: 78%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.waitOrderInPostWrap{
+    width: 90%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  
+}
+.prodInWrap{
+    width: 21%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 50px;
+    margin-top: 44px;
+}
+.picProd{
+    width: 100%;
+    height: auto;
+}
+.bookName{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 111%;
+
+color: #3E3092;
+
+}
+.deliveryInform{
+    width: 100%;
+    height: 56px;
+    background: #3E51C1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #FFFFFF;
+}
+.yourDiscountWrap{
+    width: 100%;
+    height: 187px;
+    background: #3FAC8C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 82px;
+}
+.yourDiscountWrapSmall{
+    width: 70%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.dicsTextWr{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 33%;
+}
+.yourDicrFive{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 400;
+font-size: 34px;
+line-height: 111%;
+/* or 38px */
+margin-top: 0;
+margin-bottom: 0;
+color: #FFFFFF;
+}
+.yourDicrFiveSpan{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 600;
+    font-size:40px;
+    line-height: 111%;
+    /* or 38px */
+    
+    
+    color: #FFFFFF;
+}
+.yourDicrFiveSmall{
+    font-family: 'Ubuntu';
+font-style: italic;
+font-weight: 300;
+font-size: 18px;
+line-height: 111%;
+width: 100%;
+margin-top: 20px;
+
+color: #FFFFFF;
+}
+.buttonConfFRW{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+}
+.confirmP{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 100%;
+/* or 38px */
+width: 100%;
+text-align: center;
+margin-bottom: 10px;
+color: #FFFFFF;
+}
+.likeButton{
+    width: 227px;
+height: 60px;
+background: #F7CB25;
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 117.5%;
+/* or 21px */
+
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #3E3092;
+}
+.elefantWrap{
+    width: 100%;
+    height: 410px;
+    background: #D6CFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+.elefantWrapSmall{
+    width: 60%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.elef{
+    width: 50%;
+    height: auto;
+    position: relative;
+}
+.elefant{
+    width: 100%;
+    height: auto;
+}
+.howMathElefant{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 400;
+font-size: 34px;
+line-height: 111%;
+/* or 38px */
+
+
+color: #FFFFFF;
+position: absolute;
+top: 7%;
+left: 3%;
+
+}
+.howMathElefantSpan{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 111%;
+    /* or 38px */
+    
+    
+    color: #FFFFFF;
+    
+}
+.elefantDescription{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 34px;
+line-height: 111%;
+/* or 38px */
+width: 42%;
+
+color: #3E51C1;
+align-self: flex-start;
+}
+.elefantDescriptionSpan{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 34px;
+    line-height: 111%;
+    /* or 38px */
+    
+    
+    color: #3E3092;
+}

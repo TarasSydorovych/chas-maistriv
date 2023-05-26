@@ -1,0 +1,20 @@
+.titleWrap{
+    width: 100%;
+    height: 703px;
+    background: #D6CFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.h3Title{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 111%;
+/* or 38px */
+
+text-align: center;
+
+color: #3E3092;
+}
