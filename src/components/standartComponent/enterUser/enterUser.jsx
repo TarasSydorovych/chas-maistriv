@@ -5,7 +5,8 @@ import apple from '../../../svg/apple.svg'
 import face from '../../../svg/faceIconEnter.svg'
 import google from '../../../svg/googleEnter.svg'
 import { useState } from 'react';
-import { doc, setDoc } from "firebase/firestore"; 
+import { Link, useNavigate } from 'react-router-dom';
+import { doc, setDoc, getDoc } from "firebase/firestore"; 
 import { AiOutlineEye } from "react-icons/ai";
 import { SlArrowDown } from "react-icons/sl";
 import { OAuthProvider ,signInWithRedirect, FacebookAuthProvider } from "firebase/auth";
@@ -17,22 +18,32 @@ export default function EnterUser({setLogin, setEnterUser, enterUser}) {
     const [showPassword, setShowPassword] = useState(false);
     const [phone, setPhone] = useState("+380");
     const [emailVal, setEmailVal] = useState('')
-
+    const navigate = useNavigate();
     const singInWithGoogle = async (e) => {
         e.preventDefault();
-    signInWithPopup(auth, googleAuthProvider).then(async (result) => {
-        await setDoc(doc(db, "users", result.user.uid), {
-            uid: result.user.uid,
-            displayName: result.user.displayName,
-            email: result.user.email,
-        
-           })
-          
-     console.log(result)
-    }).catch((err) => {
-        console.log('Error')
-    })
-    }
+        signInWithPopup(auth, googleAuthProvider)
+          .then(async (result) => {
+            const userDocRef = doc(db, 'users', result.user.uid);
+            const userDocSnap = await getDoc(userDocRef);
+      
+            if (!userDocSnap.exists()) {
+              await setDoc(userDocRef, {
+                uid: result.user.uid,
+                displayName: result.user.displayName,
+                email: result.user.email,
+                category: 'покупець',
+                signed: 'false',
+                discount: '0',
+                elefant: '0',
+              });
+            }
+      
+            navigate('/user')
+          })
+          .catch((err) => {
+            console.log('Error');
+          });
+      };
 
     const signWithFacebook = async (e) => {
         e.preventDefault();
@@ -97,15 +108,9 @@ export default function EnterUser({setLogin, setEnterUser, enterUser}) {
     
         try{
             
-      const res = await createUserWithEmailAndPassword(auth, emailVal, password);
+      const res = await signInWithEmailAndPassword(auth, emailVal, password);
+      navigate('/user')
     
-      await setDoc(doc(db, "users", res.user.uid), {
-        uid: res.user.uid,
-        displayName: emailVal,
-        email: emailVal,
-        phone:  phone
-    
-       })
     }catch (error) {
             alert('The user with this login is not registered', error)
         }

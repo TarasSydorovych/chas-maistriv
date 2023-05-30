@@ -3,7 +3,7 @@ import Footer from '../standartComponent/footer/footer'
 import Header from '../standartComponent/header/header'
 import css from './order.module.css'
 import { v4 as uuidv4 } from 'uuid';
-import { getFirestore,  query, where, getDocs } from 'firebase/firestore';
+import { getFirestore,  query, where, getDocs, getDoc  } from 'firebase/firestore';
 import arrowImp from '../../img/arrowDownPick.png'
 import {auth, db} from '../../firebase'
 import { getAuth, signInWithPhoneNumber, signOut , onAuthStateChanged } from "firebase/auth";
@@ -32,9 +32,41 @@ const [dataFromBase, setDataFromBase] = useState(null);
 const [promo, setPromo] = useState('');
 const [fullPrice, setFullPrice] = useState();
 const [user, setUser] = useState('');
+const [promoCode, setPromoCode] = useState('');
+const [newFinValue, setNewFinValue] = useState('');
+const [discount, setDiscount] = useState(0);
 const [depo, setDepo] = useState('');
 const [selectedDepartment, setSelectedDepartment] = useState('');
 const [countProductForCart, setCountProductForCart] = useState([]);
+
+
+const handleApplyPromoCode = async () => {
+  // Отримання документа "promo" з колекції
+  const promoDocRef = doc(db, 'promo', 'promo-document');
+  const promoDocSnapshot = await getDoc(promoDocRef);
+
+  if (promoDocSnapshot.exists()) {
+    // Перевірка, чи введений промокод співпадає з uid промокода в документі
+    const promoData = promoDocSnapshot.data();
+    if (promoData.uid === promoCode) {
+      // Промокод знайдено, оновлення значення знижки
+      const discountValue = parseInt(promoData.discount);
+      const discValue = (finishPrice * discountValue) / 100;
+      const resul = (finishPrice - discValue);
+      setNewFinValue(resul)
+      setDiscount(discValue);
+    } else {
+      // Промокод не знайдено, виведення повідомлення
+      alert('Такого промокоду не існує');
+    }
+  } else {
+    // Документ promo не існує, виведення повідомлення
+    alert('Такого промокоду не існує');
+  }
+};
+
+
+
 const handleNewBuyerClick = () => {
   setIsNewBuyer(true);
 };
@@ -304,6 +336,7 @@ const totalPrice = updatedCartProducts.reduce((acc, product) => {
   return acc + (product.price * product.quantity);
 }, 0);
 setFinishPrice(totalPrice);
+setNewFinValue(totalPrice)
 setCartProducts(updatedCartProducts);
 
 // Update the quantity of the product with the corresponding uid in the localStorage
@@ -349,6 +382,7 @@ const totalPrice = updatedCart.reduce((acc, product) => {
   return acc + (product.price * product.quantity);
 }, 0);
 setFinishPrice(totalPrice || 0); // if updatedCart is empty, set totalPrice to 0
+setNewFinValue(totalPrice || 0)
 };
 useEffect(() => {
 if (cartProducts && cartProducts.length) {
@@ -356,6 +390,7 @@ if (cartProducts && cartProducts.length) {
     return acc + (product.price * product.quantity);
   }, 0);
   setFinishPrice(totalPrice);
+  setNewFinValue(totalPrice);
 
   // Update the total quantity of products in the cart
   const totalQuantity = cartProducts.reduce((acc, product) => {
@@ -479,32 +514,7 @@ const handleChange = (event) => {
 const apiKey = 'f579aac88b980dff3f819958ce1cbca6';
       const apiUrl = 'https://api.novaposhta.ua/v2.0/json/';
       const ttnNumber = '20450715436175'; 
-      useEffect(() => {
-        const trackPackageByTtn = async () => {
-          try {
-            const response = await axios.post(apiUrl, {
-              apiKey: apiKey,
-              modelName: 'TrackingDocument',
-              calledMethod: 'getStatusDocuments',
-              methodProperties: {
-                Documents: [
-                  {
-                    DocumentNumber: ttnNumber,
-                  },
-                ],
-              },
-            });
-    
-            const status = response.data.data[0].Status;
-    
-            console.log('Статус посилки:', status);
-          } catch (error) {
-            console.error('Помилка при відстеженні посилки:', error.message);
-          }
-        };
-    
-        trackPackageByTtn();
-      }, []);
+   
     
 
     return(
@@ -659,14 +669,14 @@ cartProducts.map((el, index) => {
 
                 <div className={css.lineWrap}></div>
                 <p className={css.sumOrder}>Всього: {finishPrice} грн</p>
-                <p className={css.sumOrder}>Знижка: 0 грн</p>
+                <p className={css.sumOrder}>Знижка: {discount} грн</p>
                 <div className={css.discountWrapOrder}>
-                <input className={css.promoInput} type='text' placeholder="Промокод" value={promo} onChange={promoFunc}/>
-                <div className={css.promoButton}>
+                <input className={css.promoInput} type='text' placeholder="Промокод" value={promoCode} onChange={(e) => setPromoCode(e.target.value)}/>
+                <div className={css.promoButton} onClick={handleApplyPromoCode}>
                     Застосувати
                 </div>
                 </div>
-                <p className={css.sum}>Сума: {finishPrice} грн</p>
+                <p className={css.sum}>Сума: {newFinValue} грн</p>
 
 
 </div>

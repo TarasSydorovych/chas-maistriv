@@ -199,6 +199,15 @@ line-height: 111%;
     height: 67px;
     background: #3E51C1;
 }
+.likeProductBigClick{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 67px;
+    height: 67px;
+    background: #FF3416;
+}
 .youLikeItWrap{
     width: 100%;
     height: auto;

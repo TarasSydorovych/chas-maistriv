@@ -9,9 +9,10 @@ import { GrInstagram } from "react-icons/gr";
 import React, { useState, useEffect } from 'react';
 
 
-export default function Search({login, setLogin, setCart, countProductForCart}) {
+export default function Search({user, login, setLogin, setCart, countProductForCart}) {
     const [cartItems, setCartItems] = useState([]);
     const [countProduct, setCountProduct] = useState(null);
+    const navigate = useNavigate();
     useEffect(() => {
         const storedCart = localStorage.getItem('cart');
         let count = 0;
@@ -24,10 +25,16 @@ export default function Search({login, setLogin, setCart, countProductForCart}) 
         setCountProduct(count);
       }, [cartItems]);
 const loginFun = () => {
+    if(user){
+        navigate('/user')
+    }else{
     setLogin(!login)
+    }
 }
 const openCart = () => {
+ 
     setCart(true)
+
 }
 
     return(

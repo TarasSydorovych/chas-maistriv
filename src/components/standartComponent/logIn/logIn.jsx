@@ -5,9 +5,10 @@ import apple from '../../../svg/apple.svg'
 import face from '../../../svg/faceIconEnter.svg'
 import google from '../../../svg/googleEnter.svg'
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { AiOutlineEye } from "react-icons/ai";
 import { SlArrowDown } from "react-icons/sl";
-import { doc, setDoc } from "firebase/firestore"; 
+import { doc, setDoc, getDoc } from "firebase/firestore"; 
 import {auth, db, googleAuthProvider, appleProvider, facebookProvider} from '../../../firebase'
 import { OAuthProvider ,signInWithRedirect, FacebookAuthProvider } from "firebase/auth";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signInWithPopup } from "firebase/auth";
@@ -20,7 +21,7 @@ export default function LogIn({login, setLogin, setEnterUser}) {
     const [showPassword, setShowPassword] = useState(false);
     const [phone, setPhone] = useState("+380");
     const [emailVal, setEmailVal] = useState('')
-
+    const navigate = useNavigate();
     const handlePasswordChange = (event) => {
         setPassword(event.target.value);
       };
@@ -60,9 +61,14 @@ const signUp = async (e) => {
     uid: res.user.uid,
     displayName: emailVal,
     email: emailVal,
-    phone:  phone
+    phone:  phone,
+    category: 'покупець',
+        signed: 'fasle',
+        discount: '0',
+        elefant: '0',
 
    })
+   navigate('/user')
 }catch (error) {
         alert('The user with this login is not registered', error)
     }
@@ -71,19 +77,29 @@ const signUp = async (e) => {
 }
 const singInWithGoogle = async (e) => {
     e.preventDefault();
-signInWithPopup(auth, googleAuthProvider).then(async (result) => {
-    await setDoc(doc(db, "users", result.user.uid), {
-        uid: result.user.uid,
-        displayName: result.user.displayName,
-        email: result.user.email,
-    
-       })
-      
- console.log(result)
-}).catch((err) => {
-    console.log('Error')
-})
-}
+    signInWithPopup(auth, googleAuthProvider)
+      .then(async (result) => {
+        const userDocRef = doc(db, 'users', result.user.uid);
+        const userDocSnap = await getDoc(userDocRef);
+  
+        if (!userDocSnap.exists()) {
+          await setDoc(userDocRef, {
+            uid: result.user.uid,
+            displayName: result.user.displayName,
+            email: result.user.email,
+            category: 'покупець',
+            signed: 'false',
+            discount: '0',
+            elefant: '0',
+          });
+        }
+  
+        navigate('/user')
+      })
+      .catch((err) => {
+        console.log('Error');
+      });
+  };
 
 const signWithFacebook = async (e) => {
     e.preventDefault();

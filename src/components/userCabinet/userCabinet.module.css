@@ -243,7 +243,7 @@ color: #3E3092;
 }
 .deliveryInform{
     width: 100%;
-    height: 56px;
+    min-height: 56px;
     background: #3E51C1;
     display: flex;
     align-items: center;

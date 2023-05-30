@@ -16,6 +16,7 @@ import Hero from "./components/product/hero";
 import HeroPage from "./components/hero/hero";
 import PriceOpt from "./components/priceOpt/priceOpt";
 import HeroAdm from "./components/heroAdm/heroAdm";
+import AddPromo from "./components/admin/addPromo";
 
 export const MyContext = React.createContext({
   value: "",
@@ -70,6 +71,7 @@ function App() {
     <Route path='/user' element={<UserCabinet products={products} addressChanged={addressChanged} setAddressChanged={setAddressChanged}/>}/>
     <Route path='/adm' element={<AddBooks/>}/>
     <Route path='/admHero' element={<HeroAdm/>}/>
+    <Route path='/promo' element={<AddPromo/>}/>
     </Routes>
     }
    
