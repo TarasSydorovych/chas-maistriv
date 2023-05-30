@@ -4,6 +4,7 @@ import {HandySvg} from 'handy-svg';
 import iconSrc from '../../../svg/xCardIcon.svg';
 import ProdInCard from './prodInCard';
 import {useState, useEffect} from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 import {auth, db} from '../../../firebase'
 import { doc, setDoc, addDoc, collection, serverTimestamp, getDocs } from "firebase/firestore"; 
 
@@ -11,6 +12,7 @@ export default function Card({setCart, setCountProductForCart}) {
     const [products, setProducts] = useState([]);
     const [haveProduct, setHaveProduct] = useState(false);
     const [cartProducts, setCartProducts] = useState();
+    const navigate = useNavigate();
     const [finishPrice, setFinishPrice] = useState(0);
     
     useEffect(() => {
@@ -87,7 +89,9 @@ export default function Card({setCart, setCountProductForCart}) {
     setTotalQuantity(totalQuantity);
   };
 
-
+const goToOrder = () => {
+  navigate('/order')
+}
 
   
 
@@ -153,7 +157,7 @@ export default function Card({setCart, setCountProductForCart}) {
 <h3 className={css.finalPrice}>Всього: {finishPrice} грн</h3>
 <div className={css.buttonPriceWrap}>
     <div className={css.nextJoin}>Продовжити вибір</div>
-    <div className={css.finalOrder}>Оформити замовлення</div>
+    <div onClick={goToOrder} className={css.finalOrder}>Оформити замовлення</div>
 </div>
 
 
