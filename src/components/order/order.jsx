@@ -6,11 +6,12 @@ import { v4 as uuidv4 } from 'uuid';
 import { getFirestore,  query, where, getDocs } from 'firebase/firestore';
 import arrowImp from '../../img/arrowDownPick.png'
 import {auth, db} from '../../firebase'
+import { getAuth, signInWithPhoneNumber, signOut , onAuthStateChanged } from "firebase/auth";
 import { Buffer } from 'buffer';
 import sha1 from 'sha1'
 import { doc, setDoc, addDoc, collection, serverTimestamp } from "firebase/firestore"; 
 import ProductInOrder from './productInOrder'
-
+import axios from 'axios';
 export default function Order() {
 const [name, setName] = useState('');
 const uid = uuidv4();
@@ -31,6 +32,7 @@ const [dataFromBase, setDataFromBase] = useState(null);
 const [promo, setPromo] = useState('');
 const [fullPrice, setFullPrice] = useState();
 const [user, setUser] = useState('');
+const [depo, setDepo] = useState('');
 const [selectedDepartment, setSelectedDepartment] = useState('');
 const [countProductForCart, setCountProductForCart] = useState([]);
 const handleNewBuyerClick = () => {
@@ -62,9 +64,13 @@ const handleSelectChange = (event) => {
             // Отримайте дані документа
             const userData = doc.data();
             console.log('userData',userData)
-            setName(userData.name);
+           
+            if(userData.phone){
             setPhone(userData.phone);
             setDataFromBase(userData);
+            setName(userData.name);
+          }
+           
           });
         } else {
           // Документ не знайдено
@@ -80,6 +86,26 @@ const handleSelectChange = (event) => {
   
     fetchUser();
   }, [user]);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+       
+        // Користувач увійшов в систему
+        setUser(currentUser);
+      } else {
+        // Користувач вийшов з системи
+    
+        
+        setUser(null);
+      }
+    });
+   
+
+    return () => {
+      // Відписка від слухача після розмонтовування компоненти
+      unsubscribe();
+    };
+  },[])
   const generateSignature = () => {
     const publicKey = 'sandbox_i47427856209';
     const privateKey = 'sandbox_nLRix8HatIf5clJkORUvGIFrNFCgRbbjOZQnneIK';
@@ -360,11 +386,14 @@ const handleChange = (event) => {
     e.preventDefault();
     console.log('Інвалід дата not json', cartProducts)
     const json = JSON.stringify(cartProducts);
-  console.log('Інвалід дата', json)
+  
   let us = '';
+  
   if (user){
-    us = user.uid
+    us = user.uid;
+   
   }
+  console.log('Інвалід дата', us)
     if(whatSelect === 1){
       try {
           // Створюємо об'єкт документу для запису в Firestore
@@ -381,17 +410,20 @@ const handleChange = (event) => {
             surNameOtr,
             phoneOtr,
             isNewBuyer,
-            selectedCity,
-            departments,
+            cityName,
+            selectedDepartment,
             pay: 'card',
             paymentStatus: 'false',
-            user: us
+            user: us,
+            status: 'Очікує підтвердження'
             // Додайте інші поля форми за необхідності
           };
     
           // Записуємо новий продукт в Firestore
-          const docRef = await addDoc(collection(db, 'orders'), newProduct);
-          console.log('Документ успішно додано з ID:', docRef.id);
+         // const docRef = await addDoc(collection(db, 'orders'), newProduct);
+          const frankDocRef = doc(db, 'orders', uid);
+      await setDoc(frankDocRef, newProduct);
+          console.log('Документ успішно додано з ID:', );
         } catch (error) {
           console.error('Помилка при додаванні документа:', error);
         }
@@ -418,17 +450,20 @@ const handleChange = (event) => {
             surNameOtr,
             phoneOtr,
             isNewBuyer,
-            selectedCity,
-            departments,
+            cityName,
+            selectedDepartment,
             pay: 'cash',
             paymentStatus: 'false',
-            user: us
+            user: us,
+            status: 'Очікує підтвердження'
             // Додайте інші поля форми за необхідності
           };
     
           // Записуємо новий продукт в Firestore
-          const docRef = await addDoc(collection(db, 'orders'), newProduct);
-          console.log('Документ успішно додано з ID:', docRef.id);
+          //const docRef = await addDoc(collection(db, 'orders'), newProduct);
+          const frankDocRef = doc(db, 'orders', uid);
+      await setDoc(frankDocRef, newProduct);
+          console.log('Документ успішно додано з ID:');
         } catch (error) {
           console.error('Помилка при додаванні документа:', error);
         }
@@ -441,9 +476,36 @@ const handleChange = (event) => {
    
   }
 
-
-
-
+const apiKey = 'f579aac88b980dff3f819958ce1cbca6';
+      const apiUrl = 'https://api.novaposhta.ua/v2.0/json/';
+      const ttnNumber = '20450715436175'; 
+      useEffect(() => {
+        const trackPackageByTtn = async () => {
+          try {
+            const response = await axios.post(apiUrl, {
+              apiKey: apiKey,
+              modelName: 'TrackingDocument',
+              calledMethod: 'getStatusDocuments',
+              methodProperties: {
+                Documents: [
+                  {
+                    DocumentNumber: ttnNumber,
+                  },
+                ],
+              },
+            });
+    
+            const status = response.data.data[0].Status;
+    
+            console.log('Статус посилки:', status);
+          } catch (error) {
+            console.error('Помилка при відстеженні посилки:', error.message);
+          }
+        };
+    
+        trackPackageByTtn();
+      }, []);
+    
 
     return(
         <>
@@ -538,7 +600,7 @@ const handleChange = (event) => {
   <select className={css.customSelect} onChange={handleSelectChange}>
     <option className={css.customOpin} value="0">Нова пошта номер</option>
    {departments.map((el, index) => {
-  return  <option className={css.customOpin} key={index} value={index}>{el.Description}</option>
+  return  <option  className={css.customOpin} key={index} value={index}>{el.Description}</option>
    })}
     
     
