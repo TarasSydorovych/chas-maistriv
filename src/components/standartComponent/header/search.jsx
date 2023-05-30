@@ -3,7 +3,7 @@ import iconSrc from '../../../svg/searsh.svg';
 import iconSrctele from '../../../svg/like.svg';
 import iconSrcYou from '../../../svg/cabinetIcon.svg';
 import shopIco from '../../../svg/shopIco.svg';
-
+import { Link, useNavigate } from 'react-router-dom';
 import './header.css'
 import { GrInstagram } from "react-icons/gr";
 import React, { useState, useEffect } from 'react';
@@ -44,7 +44,7 @@ const openCart = () => {
             </div>
             </a>
            
-            <a href='/'>
+            <Link to='/like'>
             <div className='searchBlock'>
                 <div className='socialIcon'>
                     <HandySvg 
@@ -54,7 +54,7 @@ const openCart = () => {
                     />
                 </div>
             </div>
-            </a>
+            </Link>
             
             <div className='searchBlock' onClick={openCart}>
                 <div className='socialIcon'>

@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import './header.css'
 
-
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
@@ -21,14 +21,14 @@ console.log(allBooks);
             <li className='navigationLi' onClick={changState}>
              Усі Книги
             </li>
-            <li className='navigationLi'><a href="/">
-             Прайс-гурт</a>
+            <li className='navigationLi'><Link to="/opt">
+             Прайс-гурт</Link>
             </li>
             <li className='navigationLi'><a href="/">
              Майстри</a>
             </li>
-            <li className='navigationLi'><a href="/">
-             Герої</a>
+            <li className='navigationLi'><Link to="/hero">
+             Герої</Link>
             </li>
             <li className='navigationLi'><a href="/">
              Блог</a>
