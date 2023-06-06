@@ -3,12 +3,12 @@ import {HandySvg} from 'handy-svg';
 import iconSrc from '../../svg/sendMess.svg';
 import { v4 as uuidv4 } from 'uuid';
 import {auth, db} from '../../firebase'
-import { doc, setDoc, addDoc, collection, serverTimestamp } from "firebase/firestore"; 
+import { doc, setDoc, addDoc, collection, serverTimestamp, updateDoc, getDoc } from "firebase/firestore"; 
 import { useState } from 'react';
 import { useEffect } from 'react';
 
 
-export default function ResponsTextArea({oneProd, setReloadP, reloadP}){
+export default function ResponsTextArea({oneProd, setReloadP, reloadP, user, setRerenderAfter, rerenderAfter}){
    const [areT, setAreaT] = useState('');
    
  const changeTextArea = (e) => {
@@ -26,11 +26,33 @@ const sendVidguk = async () => {
         nameAutor: '',
         autorPic: '',
         rating: 4, 
+        userUid: user.uid,
         
     }
         );
         setAreaT('')
         setReloadP(!reloadP);
+        try {
+            const userDocRef = doc(db, 'users', user.uid);
+      
+      // Отримуємо попереднє значення elefant
+      const userDoc = await getDoc(userDocRef);
+      const previousElefant = userDoc.data().elefant;
+      const elefantNumber = parseInt(previousElefant, 10);
+
+      const newElefant1 = (oneProd.price * 5) / 100;
+      
+      
+      const updatedElefant = elefantNumber + newElefant1;
+            
+            
+            await updateDoc(userDocRef, { elefant: updatedElefant.toString() });
+      
+           alert(`Ваш відгук успішно відправлений та нараховано ${newElefant1} слонів`);
+           setRerenderAfter(!rerenderAfter);
+          } catch (error) {
+            console.error('Error updating elefant:', error);
+          }
 
 }
 

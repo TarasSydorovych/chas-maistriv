@@ -33,7 +33,7 @@ export default function Like() {
       };
     return(
         <div>
-            <Header/>
+           
 <div className={css.blueBlockHead}>
     <div className={css.blueBlockHeadSmall}>
         <p className={css.countJoin}>Вибране ({likedProducts.length})</p>

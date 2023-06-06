@@ -480,6 +480,41 @@ font-size: 34px;
 line-height: 121%;
 color: #3E51C1;
 }
+.canNotAddDesc{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 121%;
+    width: 60%;
+    margin-left: 10%;
+    text-align: center;
+    color: #3E51C1;
+}
+.buttonReg{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 121%;
+    width: 60%;
+    margin-left: 10%;
+    text-align: center;
+    color: #3E51C1;
+    align-self: center;
+}
+.buttonRegSpan{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 121%;
+    width: 60%;
+    cursor: pointer;
+    text-align: center;
+    color: #3E51C1;
+    align-self: center;
+}
 .wrapHeroTextP{
     font-family: 'Ubuntu';
 font-style: normal;

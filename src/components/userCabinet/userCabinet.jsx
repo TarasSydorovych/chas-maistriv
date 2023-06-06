@@ -19,6 +19,7 @@ import axios from 'axios';
 import { getAuth, signInWithPhoneNumber, signOut , onAuthStateChanged } from "firebase/auth";
 import elefant from '../../img/elefant.png'
 import ViewProductCatalog from "../catalog/viewProductCatalog";
+import WaitProdLike from "./waitProdLike";
 export default function UserCabinet({products, setAddressChanged, addressChanged}) {
 
     const navigate = useNavigate();
@@ -32,7 +33,7 @@ export default function UserCabinet({products, setAddressChanged, addressChanged
     const apiUrl = 'https://api.novaposhta.ua/v2.0/json/';
     
     const [waitProdComponents, setWaitProdComponents] = useState([]);
-    const ttnNumber = '20450715436175'; 
+    
     // useEffect(() => {
     //   const trackPackageByTtn = async () => {
     //     try {
@@ -86,7 +87,7 @@ export default function UserCabinet({products, setAddressChanged, addressChanged
       useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
           if (currentUser) {
-            console.log('Поточний користувач', currentUser.uid);
+            
             // Користувач увійшов в систему
             setUser(currentUser);
       
@@ -110,7 +111,7 @@ export default function UserCabinet({products, setAddressChanged, addressChanged
         const unsubscribeUser = onSnapshot(userQuery, (snapshot) => {
           snapshot.forEach((doc) => {
             const userData = doc.data();
-            console.log('userData',userData)
+            
             setUserBd(userData);
           });
         });
@@ -265,28 +266,32 @@ export default function UserCabinet({products, setAddressChanged, addressChanged
             });
       
             let filteredData;
-      
+       console.log('selectedText', selectedText)
             if (selectedText === 2) {
               filteredData = parsedData.filter(({ order }) => order.status === 'Очікує підтвердження');
-            } else {
+            } else if(selectedText === 3){
+               filteredData = JSON.parse(localStorage.getItem('likedProducts')) || [];
+
+            }else {
               filteredData = parsedData.filter(({ order }) => order.status !== 'Очікує підтвердження');
             }
       
             setOrders(filteredData);
       
-            const ttnNumbers = filteredData.map(({ order }) => order.status);
+          
+            if(selectedText !== 3){
+              const ttnNumbers = filteredData.map(({ order }) => order.status);
       
-            const response = await axios.post(apiUrl, {
-              apiKey: apiKey,
-              modelName: 'TrackingDocument',
-              calledMethod: 'getStatusDocuments',
-              methodProperties: {
-                Documents: ttnNumbers.map((status) => ({ DocumentNumber: status })),
-              },
-            });
-      
-            const statuses = response.data.data;
-      
+              const response = await axios.post(apiUrl, {
+                apiKey: apiKey,
+                modelName: 'TrackingDocument',
+                calledMethod: 'getStatusDocuments',
+                methodProperties: {
+                  Documents: ttnNumbers.map((status) => ({ DocumentNumber: status })),
+                },
+              });
+        
+              const statuses = response.data.data;
             const waitProdComponents = filteredData.map(({ order, tovar }, index) => {
               const status = statuses.find((s) => s.Number === order.status)?.Status || 'Очікує підтвердження';
       
@@ -296,6 +301,15 @@ export default function UserCabinet({products, setAddressChanged, addressChanged
             });
       
             setWaitProdComponents(waitProdComponents);
+          }else if(selectedText === 3){
+            const waitProdComponents = filteredData.map((tovar, index) => {
+              return (
+                <WaitProdLike key={index} tovar={tovar}  />
+              );
+            });
+      
+            setWaitProdComponents(waitProdComponents);
+          }
           } catch (error) {
             console.error('Помилка при отриманні замовлень:', error);
           }
@@ -314,7 +328,7 @@ export default function UserCabinet({products, setAddressChanged, addressChanged
 
     return(
         <div>
-            <Header/>
+            
 <div className={css.bleuLabel}>
 <div className={css.blueLabelWnutr}>
     <button onClick={handleLogout}>вийти</button>
@@ -392,7 +406,7 @@ export default function UserCabinet({products, setAddressChanged, addressChanged
 {waitProdComponents.length > 0 ? (
       <div className={css.waitOrderInPostWrap}>{waitProdComponents}</div>
     ) : (
-      <p>Немає очікуваних замовлень</p>
+      <p></p>
     )}
 </div>
 

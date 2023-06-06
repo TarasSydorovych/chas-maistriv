@@ -3,8 +3,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 477px;
+    height: auto;
     background: #D6CFFF;
+    padding-bottom: 80px;
 }
 .allHero{
     width: 100%;
@@ -100,19 +101,15 @@ color: #3E3092;
 
 
           .autorListSmal{
-            width: 75%;
-            height: 200px;
+            width: 90%;
+            height: auto;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-        .imgAutorWrapSmall{
-    
-            position: relative;
-            
-            width: 126.57px;
-        height: 126.57px;
-            rotate: 0deg;
+        .imgAutorWrapSmall{         
+            width: 351px;
+height: auto;
         }
         .imgAutorWrapBig{
             
@@ -129,26 +126,32 @@ color: #3E3092;
            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
         }
         .imgAutorSmall{
-            position: absolute;
-            width: 178.99px;
-        height: 178.99px;
-           clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            width: 352px;
+            height: 376px;
         }
         .autorNameM{
-            position: absolute;
-            top: 90%;
-            left: 80%;
-            z-index: 100;
             font-family: 'Ubuntu';
             font-style: normal;
             font-weight: 700;
-            font-size: 18px;
-            line-height: 121%;
-            color: #3E51C1;
-            overflow: visible;
-            transform: rotate(-45deg);
-            margin-bottom: 0;
-            
+            font-size: 24px;
+            line-height: 111%;
+            color: #000000;
+            }
+            .autorNameMSma{
+                font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 152.5%;
+color: #000000;
+            }
+            .autorNameMbigCol{
+                font-family: 'Ubuntu';
+font-style: italic;
+font-weight: 700;
+font-size: 28px;
+line-height: 111%;
+color: #3E3092;
             }
             .arrowWrap{
                 margin-top: 65px;

@@ -12,7 +12,7 @@ import sha1 from 'sha1'
 import { doc, setDoc, addDoc, collection, serverTimestamp } from "firebase/firestore"; 
 import ProductInOrder from './productInOrder'
 import axios from 'axios';
-export default function Order() {
+export default function Order({setLogin}) {
 const [name, setName] = useState('');
 const uid = uuidv4();
 const [fatherName, setFatherName] = useState('');
@@ -38,7 +38,7 @@ const [discount, setDiscount] = useState(0);
 const [depo, setDepo] = useState('');
 const [selectedDepartment, setSelectedDepartment] = useState('');
 const [countProductForCart, setCountProductForCart] = useState([]);
-
+const [whoCust, setWhoCust] = useState(true)
 
 const handleApplyPromoCode = async () => {
   // Отримання документа "promo" з колекції
@@ -203,7 +203,14 @@ const nameChange = (e) => {
         const [selectedOption, setSelectedOption] = useState(null);
 
         const handleOptionClick = (option) => {
+          if(selectedOption === option){
+            setSelectedOption('');
+          }else{
           setSelectedOption(option);
+        }
+          setWhoCust(!whoCust);
+
+
         };
 
         //код для виведення міста
@@ -519,7 +526,7 @@ const apiKey = 'f579aac88b980dff3f819958ce1cbca6';
 
     return(
         <>
-        <Header/>
+        
 <div className={css.blueHeaderOrder}>
     <div className={css.blueHeaderOrderEnter}>
         <h3 className={css.titleH3OrderEnter}>Оформлення замовлення</h3>
@@ -544,6 +551,9 @@ const apiKey = 'f579aac88b980dff3f819958ce1cbca6';
         Я постійний покупець
       </div>
     </div>
+    {!user &&
+    <p className={css.registerToOrder}><span onClick={() => setLogin(true)} className={css.registerToOrderSpan}>ЗАРЕЄСТРУВАТИСЬ</span> для відслідковування замовлення</p>
+}
 <p className={css.labelMi}>
     Особисті дані
 </p>
@@ -558,14 +568,9 @@ const apiKey = 'f579aac88b980dff3f819958ce1cbca6';
         <div className={css.choisWi}>
           {selectedOption === 'Доставка' && <div className={css.wi}></div>}
         </div>
-        <p className={css.choisP}>Доставка</p>
+        <p className={css.choisP}>Я отримувач</p>
       </div>
-      <div className={css.choisWrap} onClick={() => handleOptionClick('Самовивіз')}>
-        <div className={css.choisWi}>
-          {selectedOption === 'Самовивіз' && <div className={css.wi}></div>}
-        </div>
-        <p className={css.choisP}>Самовивіз</p>
-      </div>
+    
 </div>
 {choisDostavka &&
     <div className={css.wrapUserData}>
@@ -639,17 +644,20 @@ const apiKey = 'f579aac88b980dff3f819958ce1cbca6';
 
 
 
-
+{whoCust &&
+<>
 <p className={css.labelMi}>
     Контактні дані отримувача
 </p>
+
 <div className={css.wrapUserData}>
 <input className={css.inputSmall} type='text' placeholder="Ім'я" value={nameOtr} onChange={nameChangeOtr}/>
 <input className={css.inputSmall} type='text' placeholder="По-батькові" value={fatherNameOtr} onChange={fatherNameChangeOtr}/>
 <input className={css.inputBig} type='text' placeholder="Прізвище" value={surNameOtr} onChange={surNameChangeOtr}/>
 <input className={css.inputBig} type="tel" placeholder="Телефон" value={phoneOtr} onChange={handlePhoneChangeOtr} required/>
 </div>
-
+</>
+}
 <button className={css.orderConfirmation} onClick={payParam}>Оформити замовлення</button>
 
 

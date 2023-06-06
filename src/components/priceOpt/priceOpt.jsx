@@ -10,6 +10,10 @@ import optBirdSix from '../../img/optBirdSix.png'
 import arrowBirdOpt from '../../img/arrowBirdOpt.png'
 import saleNewOne from '../../img/saleNewOne.png'
 import saleNewTwo from '../../img/saleNewTwo.png'
+import { getAuth, signInWithPhoneNumber, signOut , onAuthStateChanged } from "firebase/auth";
+import { doc, setDoc, addDoc, collection, serverTimestamp, getDocs, query, where } from "firebase/firestore"; 
+import {auth, db} from '../../firebase'
+import { useEffect, useState} from 'react'
 import saleThreBlock from '../../img/saleThreBlock.png'
 import rotatePic from '../../img/rotatePic.png'
 import notRotatePic from '../../img/notRotatePic.png'
@@ -17,14 +21,152 @@ import soonPicProd from '../../img/soonPicProd.png'
 import ProductInOpt from './productInOpt'
 import LitShow from '../standartComponent/litShow/litShow'
 export default function PriceOpt() {
+    const [productsData, setProductsData] = useState([]);
+    const [totalPrice, setTotalPrice] = useState(0);
+
+const obj = [
+    {
+     name: 'Я граюся, я вчуся',
+     desc: 'Гра — найлегший, найприродніший та найприємніший спосіб пізнання світу. Навчаючись через гру, діти почуваються комфортно, впевнено, творчо мислять, не бояться помилитися. Книжки цієї серії покликані надати дітям можливість розвиватися через гру. Із ними можна приємно провести час, водночас отримуючи нові знання та навички.',
+     arr: [],
+    },
+    {
+        name: 'Вімельбух',
+        desc: 'Вімельбухи («мерехтливі книжки») знайомлять малюків зі світом навколо, розвивають уяву та мовлення. Кожен розгорт містить велику ілюстрацію із безліччю деталей і дозволяє дитині вигадати та розповісти власні історії про все, що відбувається на малюнку.',
+        arr: [],
+    },
+       {
+        name: 'Відкривай',
+        desc: 'Пізнавальні книжки, які допомагають дитині зробити маленькі відкриття про великий світ, у якому вона живе',
+        arr: [],
+    },
+       {
+        name: 'Найкраще — дітям',
+        desc: '«Найкраще — дітям» — це купецький проект. Ми подорожуємо усім світом у пошуках найкращих дитячих книг. Обираємо правильні тексти і вишукані ілюстрації. А потім купуємо права на ці книги, щоб надрукувати їх для наших діток.',
+        arr: [],
+    },
+       {
+        name: 'Казкова допомога',
+        desc: 'Книжки, які допомагають розшифрувати зміст казок, що з доісторичних часів зберігають важливі для набуття щастя послання. Спробуйте разом із нами розгадати таємниці казок, усвідомити істини наших прабатьків — і ви здобудете казкову допомогу Роду.',
+        arr: [],
+    },
+       {
+        name: 'Книжка іграшка',
+        desc: 'Книжки цієї серії покликані сприяти розвитку дитини найприроднішим шляхом — через гру.',
+        arr: [],
+    },
+       {
+        name: 'Малювальна історія',
+        desc: 'Видання цієї серії дозволяють читачу стати співавтором: вони містять не лише цікаві історії, а й незавершені ілюстрації, які кожна дитина може домалювати і розфарбувати по-своєму, отримавши в результаті унікальну книжку-картинку.',
+        arr: [],
+    },
+       {
+        name: 'Рекомендуємо прочитати',
+        desc: 'Книжки, які редколегія видавництва — літературознавці, психологи, критики, батьки, діти — обрала для видання з-поміж величезної кількості творів. Довіртеся у виборі книжки для читання експертам та лідерам думок!',
+        arr: [],
+    },
+       {
+        name: 'Книга нового року',
+        desc: 'Захопливі новорічні історії та яскраві ілюстрації роблять книжки цієї серії найкращим подарунком до зимових свят.',
+        arr: [],
+    },
+       {
+        name: 'Батькам',
+        desc: 'Видання, призначені для прогресивних і турботливих батьків, що прагнуть до всебічного розвитку дітей та гармонійного родинного життя.',
+        arr: [],
+    },
+       {
+        name: 'Дитячий путівник',
+        desc: 'Яскраво ілюстровані пізнавальні видання, які зацікавлюють дітей світом навколо них.',
+        arr: [],
+    },
+       {
+        name: '2000 вправ та завдань',
+        desc: 'До серії входять робочі зошити для учнів початкових класів, які допомагають опанувати знання з математики, української, англійської та російської мови.',
+        arr: [],
+    },
+       {
+        name: 'Цікаво',
+        desc: 'До серії входять посібники для учнів початкових класів, що поєднують прості цікаві завдання, які поступово пояснюють логіку обчислення, з великою кількістю типових вправ, виконання яких допомагає набути навичок миттєвого обчислення',
+       arr: [],
+    },
+      
+]
+
+useEffect(() => {
+    const fetchData = async () => {
+  
+      const collectionRef = collection(db, 'product');
+      const querySnapshot = await getDocs(collectionRef);
+      const products = querySnapshot.docs.map((doc) => doc.data());
+
+      const updatedProductsData = obj.reduce((acc, item) => {
+        const matchingProducts = products.filter((product) => product.seria === item.name);
+        if (matchingProducts.length > 0) {
+          acc.push({
+            name: item.name,
+            desc: item.desc,
+            products: matchingProducts,
+          });
+        }
+        return acc;
+      }, []);
+
+      setProductsData(updatedProductsData);
+    };
+
+    fetchData();
+  }, []);
+  const [products, setProducts] = useState([]);
+    const [haveProduct, setHaveProduct] = useState(false);
+    const [cartProducts, setCartProducts] = useState();
+   
+    const [finishPrice, setFinishPrice] = useState(0);
+    
+
+  
 
 
+  const [totalSum, setTotalSum] = useState(0);
+ 
 
+  useEffect(() => {
+    const calculateTotalSum = () => {
+      let totalSum = 0;
+  
+      // Отримуємо корзину з localStorage
+      const storedCart = localStorage.getItem('cart');
+      if (storedCart) {
+        const cartItems = JSON.parse(storedCart);
+  
+        // Отримуємо товари з бази даних
+        const productUids = cartItems.map((item) => item.uid);
+  
+        // Рахуємо загальну суму на основі кількості та ціни товарів з бази даних
+        productsData.forEach((category) => {
+          category.products.forEach((product) => {
+            if (productUids.includes(product.uid)) {
+              const quantity = cartItems.find((item) => item.uid === product.uid).quantity;
+              totalSum += product.price * quantity;
+            }
+          });
+        });
+      }
+  
+      // Оновлюємо загальну суму
+      setTotalSum(totalSum);
+    };
+  
+    calculateTotalSum();
+  }, [haveProduct]);
+  
+
+ 
 
 
     return(
         <div>
-            <Header/>
+           
             {/* Верхній блок з пташками */}
 <div className={css.titleWrap}>
     <h3 className={css.h3Title}>На цій сторінці зручно робити гуртові замовлення</h3>
@@ -154,31 +296,36 @@ export default function PriceOpt() {
                 <h5 className={css.needReadH5}>Радимо прочитати</h5>
                 <p className={css.needReadP}>“Час майстрів” перечитує багацько рукописів, є членом журі “Коронації слова” та «Корнійчуковської премії». Ми обираємо тексти, що читаються на одному подиху, написані добротною мовою, з урахування психологічних потреб дітей та головне відповідають нашій місії (інтерактив перекидає на сторінку опису місії компанії). З цих рукописів ми творимо книгу як витвір мистецтва. Нами вже зроблена велика робота й ми відповідаємо за якість рекомендованих нами книг.</p>
                 <div className={css.needProductWrap}>
-                    <ProductInOpt/>
-                    <ProductInOpt/>
-                    <ProductInOpt/>
-                    <ProductInOpt/>
-                    <ProductInOpt/>
-                    <ProductInOpt/>
+                   
                 </div>
              </div>
               {/* Блок найкраще дітям */}
-              <div className={css.theBestForChildren}>
-                <h5 className={css.theBestForChildrenH5}>
-                Найкраще — дiтям
-                </h5>
-                <p className={css.theBestForChildrenP}>“Час майстрів” мандрує світом. Їздить найбільшими книжковими ярмарками, перемацує тисячі книг з різних куточків світу. Аналізує іноземні інтернет-магазини, рейтинги, читає описи на іноземних мовах, спілкується з місцевими жителями, читаємо рукописи і обираємо для наших дітей найкращі книги що видаються у всьому Світі.</p>
-                <div className={css.needProductWrap}>
-                    <ProductInOpt/>
-                    <ProductInOpt/>
-                    <ProductInOpt/>
-                  
-                </div>
-                <div className={css.bestForChildrenWrapEnd}>
-                    <h2 className={css.priceOptH2}>Всього: 8040 грн</h2>
-                    <button className={css.buttonOrderOpt}>Замовити</button>
-                </div>
-              </div>
+              {productsData.map((item, index) => {
+               
+   return <div key={index} className={css.theBestForChildren}>
+    <h5 className={css.theBestForChildrenH5}>
+    {item.name}
+    </h5>
+    <p className={css.theBestForChildrenP}>{item.desc}</p>
+    <div className={css.needProductWrap}>
+        {item.products.map((el, ind) => {
+            
+            return   <ProductInOpt setHaveProduct={setHaveProduct} haveProduct={haveProduct} setTotalPrice={setTotalPrice} key={ind} el={el}/>
+       
+        })}
+      
+        
+      
+    </div>
+  {index === (productsData.length - 1) &&
+    <div className={css.bestForChildrenWrapEnd}>
+        <h2 className={css.priceOptH2}>Всього: {totalSum} грн</h2>
+        <button className={css.buttonOrderOpt}>Замовити</button>
+    </div>
+    }
+  </div>
+              })};
+          
                 {/* Блок різнокольорович */}
                 <div className={css.colorBlockWrap}>
                     <div className={css.electro}>Елетронний документообіг</div>

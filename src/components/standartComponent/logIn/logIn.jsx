@@ -4,7 +4,8 @@ import iconSrc from '../../../svg/xCardIcon.svg';
 import apple from '../../../svg/apple.svg'
 import face from '../../../svg/faceIconEnter.svg'
 import google from '../../../svg/googleEnter.svg'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AiOutlineEye } from "react-icons/ai";
 import { SlArrowDown } from "react-icons/sl";
@@ -15,7 +16,7 @@ import { signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthState
 
 
 
-export default function LogIn({login, setLogin, setEnterUser}) {
+export default function LogIn({login, setLogin, setEnterUser, scrollHeight}) {
     
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
@@ -68,7 +69,8 @@ const signUp = async (e) => {
         elefant: '0',
 
    })
-   navigate('/user')
+   setLogin(false)
+      setEnterUser(false)
 }catch (error) {
         alert('The user with this login is not registered', error)
     }
@@ -94,7 +96,8 @@ const singInWithGoogle = async (e) => {
           });
         }
   
-        navigate('/user')
+        setLogin(false)
+        setEnterUser(false)
       })
       .catch((err) => {
         console.log('Error');
@@ -131,7 +134,14 @@ const signWithFacebook = async (e) => {
 
 
 }
+const productBigWrapRef = useRef(null);
+useEffect(() => {
+  const productBigWrapElement = productBigWrapRef.current;
+  if (productBigWrapElement) {
+      productBigWrapElement.style.top = `${scrollHeight}px`;
+  }
 
+},[productBigWrapRef])
 
 
 
@@ -139,8 +149,8 @@ const signWithFacebook = async (e) => {
 
 
     return(
-        <div className={css.cardWrap}>
-<div className={css.popUpWrap}>
+        <div className={css.cardWrap} ref={productBigWrapRef}>
+<div className={css.popUpWrap} >
 <div className={css.nameCountWrap}>
 <h2 className={css.countH2}></h2>
              <HandySvg 

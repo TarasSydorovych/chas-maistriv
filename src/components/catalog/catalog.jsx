@@ -59,7 +59,7 @@ for (let i = numberOfPages - lastDisplayedPages; i < numberOfPages; i++) {
 
     return(
         <>
-        <Header/>
+        
         
         <Filter filters={filters}/>
         <FirstBlockCat/>

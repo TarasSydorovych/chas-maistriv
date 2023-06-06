@@ -5,7 +5,7 @@ import iconSrc from '../../../svg/smallProductLike.svg';
 import iconSrcCard from '../../../svg/smallProductCard.svg';
 import {Link} from 'react-router-dom'
 import addToCart from '../../../function/addToCard'
-
+import { useState, useEffect } from 'react';
 export default function CatalogProductComponent({el, index, setVisitedProducts, visitedProducts}) {
     const handleProductClick = (product) => {
         const productId = product;
@@ -17,7 +17,37 @@ export default function CatalogProductComponent({el, index, setVisitedProducts, 
           localStorage.setItem('visitedProducts', JSON.stringify(newVisitedProducts));
         }
       };
-
+      const [liked, setLiked] = useState(false);
+      useEffect(() => {
+              // Отримуємо дані з localStorage
+              const likedProducts = JSON.parse(localStorage.getItem('likedProducts')) || [];
+          
+              // Перевіряємо, чи товар є в масиві подобається
+              const isLiked = likedProducts.some(product => product.uid === el.uid);
+          
+              // Встановлюємо відповідний стан liked
+              setLiked(isLiked);
+            }, []);
+            const handleLike = () => {
+              // Отримуємо дані з localStorage
+              let likedProducts = JSON.parse(localStorage.getItem('likedProducts')) || [];
+          
+              if (!liked) {
+                // Додаємо товар до масиву подобається
+                
+                likedProducts.push(el);
+              } else {
+                // Видаляємо товар з масиву подобається
+                const updatedLikedProducts = likedProducts.filter(product => product.uid !== el.uid);
+                likedProducts = updatedLikedProducts;
+              }
+          
+              // Зберігаємо оновлений масив у localStorage
+              localStorage.setItem('likedProducts', JSON.stringify(likedProducts));
+          
+              // Змінюємо стан liked
+              setLiked(!liked);
+            };
 
     return(
         <div className='productBigInCatWrap'>
@@ -75,7 +105,7 @@ export default function CatalogProductComponent({el, index, setVisitedProducts, 
 </div>
 </div>
 <div className='likeCardWrapSmall'>
-<div className='likeProductBig'>
+<div className={`likeProductBig${liked ? 'Click' : ''}`} onClick={handleLike}>
 <HandySvg 
         src={iconSrc}
         width="34"

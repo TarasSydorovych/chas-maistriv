@@ -30,6 +30,24 @@ function App() {
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [addressChanged, setAddressChanged] = useState(false);
   const targetDate = new Date("2023-06-01T12:00:00");
+  const [login, setLogin] = useState(false);
+  const [enterUser, setEnterUser] = useState(false);
+  const [scrollHeight, setScrollHeight] = useState(0);
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollHeight = window.pageYOffset;
+      setScrollHeight(currentScrollHeight);
+     
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+
   useEffect(() => {
     // отримати з localStorage список відвіданих товарів
     const storedProducts = JSON.parse(localStorage.getItem('visitedProducts'));
@@ -59,20 +77,23 @@ function App() {
    <>
     <MyContext.Provider value={{ selectedFilters, setSelectedFilters }}>
     {haveProduct && 
+    <>
+    <Header scrollHeight={scrollHeight} setLogin={setLogin} login={login} setEnterUser={setEnterUser} enterUser={enterUser}/>
     <Routes>
     <Route path='/' element={<MainPage targetDate={targetDate}/>}/>
     <Route path='/catalog' element={<Catalog visitedProducts={visitedProducts} productsAll={products} setVisitedProducts={setVisitedProducts}/>}/>
     <Route path='/product/' element={<Product/>}/>
-    <Route path='/product/:id' element={<Product products={products} addressChanged={addressChanged} setAddressChanged={setAddressChanged}/>}/>
-    <Route path='/order' element={<Order/>}/>
+    <Route path='/product/:id' element={<Product setLogin={setLogin} products={products} addressChanged={addressChanged} setAddressChanged={setAddressChanged}/>}/>
+    <Route path='/order' element={<Order setLogin={setLogin}/>}/>
     <Route path='/like' element={<Like/>}/>
     <Route path='/hero' element={<HeroPage/>}/>
     <Route path='/opt' element={<PriceOpt/>}/>
-    <Route path='/user' element={<UserCabinet products={products} addressChanged={addressChanged} setAddressChanged={setAddressChanged}/>}/>
+    <Route path='/user' element={<UserCabinet  products={products} addressChanged={addressChanged} setAddressChanged={setAddressChanged}/>}/>
     <Route path='/adm' element={<AddBooks/>}/>
     <Route path='/admHero' element={<HeroAdm/>}/>
     <Route path='/promo' element={<AddPromo/>}/>
     </Routes>
+    </>
     }
    
    

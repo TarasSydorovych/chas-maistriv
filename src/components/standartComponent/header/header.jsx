@@ -9,10 +9,9 @@ import Card from "../card/card";
 
 
 
-export default function Header() {
+export default function Header({setLogin, login, setEnterUser, enterUser, scrollHeight}) {
     const [allBooks, setAllBooks] = useState(false);
-    const [login, setLogin] = useState(false);
-    const [enterUser, setEnterUser] = useState(false);
+    
     const [cart, setCart] = useState(false);
     const [countProductForCart, setCountProductForCart] = useState();
 
@@ -24,7 +23,7 @@ export default function Header() {
         <FilterMenu/>
         }
         {login && 
-        <LogIn setLogin={setLogin} login={login} setEnterUser={setEnterUser}/>
+        <LogIn scrollHeight={scrollHeight} setLogin={setLogin} login={login} setEnterUser={setEnterUser}/>
         }
         {enterUser &&
         <EnterUser setEnterUser={setEnterUser} enterUser={enterUser} setLogin={setLogin}/>

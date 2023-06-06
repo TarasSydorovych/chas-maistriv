@@ -38,7 +38,8 @@ export default function EnterUser({setLogin, setEnterUser, enterUser}) {
               });
             }
       
-            navigate('/user')
+            setLogin(false)
+      setEnterUser(false)
           })
           .catch((err) => {
             console.log('Error');
@@ -109,7 +110,8 @@ export default function EnterUser({setLogin, setEnterUser, enterUser}) {
         try{
             
       const res = await signInWithEmailAndPassword(auth, emailVal, password);
-      navigate('/user')
+      setLogin(false)
+      setEnterUser(false)
     
     }catch (error) {
             alert('The user with this login is not registered', error)

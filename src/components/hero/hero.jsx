@@ -20,7 +20,7 @@ export default function HeroPage() {
 
     const [heroes, setHeroes] = useState([]);
     const [startIndex, setStartIndex] = useState(0);
-    const heroesPerPage = 6;
+    const heroesPerPage = 3;
     const navigate = useNavigate();
     const [product, setProduct] = useState(null);
     const [selectedHero, setSelectedHero] = useState(null);
@@ -100,7 +100,7 @@ export default function HeroPage() {
 
     return(
         <div>
-            <Header/>
+            
             <div className={css.allBooksWrap}>
                 <div className={css.allHero}>
                     <p className={css.yourPerfectHero}>Ваші улюблені герої книг<br/><span className={css.yourPerfectHeroSpan}>переймай найкраще від улюблених персонажів</span></p>
@@ -126,6 +126,8 @@ export default function HeroPage() {
            
            <img src={hero.foto} className={css.imgAutorSmall}/>
            <p className={css.autorNameM}>{hero.name}</p>
+           <p className={css.autorNameMSma}>Герой книги:&nbsp;{hero.book}</p>
+           <p className={css.autorNameMbigCol}>{hero.descSecond}</p>
            </div>
           ))}
            

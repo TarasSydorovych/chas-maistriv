@@ -357,6 +357,19 @@ margin-bottom: 38px;
     color: #3E3092;
     margin-right: 14px;
     }
+    .registerToOrder{
+        color: #3E3092;
+        font-weight: 500;
+    font-size: 20px;
+    line-height: 117.5%;
+    }
+    .registerToOrderSpan{
+        color: #3E3092;
+        font-weight: 700;
+    font-size: 20px;
+    line-height: 117.5%;
+    cursor: pointer;
+    }
     .countValue{
         font-family: 'Ubuntu';
     font-style: normal;

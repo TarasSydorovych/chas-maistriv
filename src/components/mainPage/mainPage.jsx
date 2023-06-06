@@ -29,7 +29,7 @@ export default function MainPage({targetDate}) {
 
     return(
         <div className="allWrapMainPage">
-        <Header/>
+        
         <Banner/>
         <Obcladunka/>
         <PredProdag targetDate={targetDate}/>
