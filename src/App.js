@@ -17,6 +17,10 @@ import HeroPage from "./components/hero/hero";
 import PriceOpt from "./components/priceOpt/priceOpt";
 import HeroAdm from "./components/heroAdm/heroAdm";
 import AddPromo from "./components/admin/addPromo";
+import VideoView from "./components/videoView/videoView";
+import Blog from "./components/blog/blog";
+import AddBlog from "./components/admBlog/addBlog";
+import AddRuk from "./components/addRuk/addRuk";
 
 export const MyContext = React.createContext({
   value: "",
@@ -90,8 +94,13 @@ function App() {
     <Route path='/opt' element={<PriceOpt/>}/>
     <Route path='/user' element={<UserCabinet  products={products} addressChanged={addressChanged} setAddressChanged={setAddressChanged}/>}/>
     <Route path='/adm' element={<AddBooks/>}/>
+    <Route path='/admRuk' element={<AddRuk/>}/>
     <Route path='/admHero' element={<HeroAdm/>}/>
+    <Route path='/admBlog' element={<AddBlog/>}/>
+
     <Route path='/promo' element={<AddPromo/>}/>
+    <Route path='/video' element={<VideoView/>}/>
+    <Route path='/blog' element={<Blog/>}/>
     </Routes>
     </>
     }
