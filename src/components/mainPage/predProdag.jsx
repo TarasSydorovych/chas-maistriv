@@ -4,11 +4,21 @@ import './mainPage.css'
 import {HandySvg} from 'handy-svg';
 import React, { useState, useEffect } from "react";
 
-
-export default function PredProdag({ targetDate }) {
+import { Link, useNavigate } from 'react-router-dom';
+import addToCart from '../../function/addToCard'
+import withFieldData from '../HOK/withFieldData';
+const PredProdag = ({products}) => {
+  
     const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0 });
+   
+    const [currentProductIndex, setCurrentProductIndex] = useState(0);
+    const [currentProduct, setCurrentProduct] = useState(null);
+    const [targetDate, setTargetDate] = useState('');
+    const navigate = useNavigate();
     useEffect(() => {
+        if(currentProduct){
         const intervalId = setInterval(() => {
+            
           const timeDiff = targetDate - new Date();
           const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
           const hours = Math.floor((timeDiff / (1000 * 60 * 60)) % 24);
@@ -20,21 +30,47 @@ export default function PredProdag({ targetDate }) {
             clearInterval(intervalId);
           }
         }, 1000);
-    
+   
         return () => clearInterval(intervalId);
+    }
       }, [targetDate]);
+     
 
+   
+
+    
+      useEffect(() => {
+        setCurrentProduct(products[currentProductIndex]);
+    
+        if (products.length > 0) {
+          const predprodDate = new Date(products[currentProductIndex].predprodDate);
+          setTargetDate(predprodDate);
+        }
+      }, [products, currentProductIndex]);
+
+      const handleNextProduct = () => {
+        setCurrentProductIndex((prevIndex) => {
+          const nextIndex = prevIndex + 1;
+          return nextIndex >= products.length ? 0 : nextIndex;
+        });
+      };
+      const orderPredProdag = () => {
+        addToCart(currentProduct.uid);
+        navigate('/order')
+      }
 
     return(
 
       <div className="predProdazWrap">
-        <div className="imgPredProdag">
+       {currentProduct && 
+        <>
+         <div className="imgPredProdag">
         <div className="imgRelDiv">
-           <img src={pic} className="imgRelDivImg"/>
+           <img src={currentProduct.bookFoto} className="imgRelDivImg"/>
            <div className='prdeProdPricing'>
             <div className='prdeProdPricingRotate'>
-            <p className='fullPrice'>290грн</p>
-            <h2 className='salePrice'>203</h2>
+            <p className='fullPriceKr'>{currentProduct.priceSale}грн</p>
+            <h2 className='salePrice'>{currentProduct.price}</h2>
             <p className='fullPrice'>грн</p>
             </div>
            </div>
@@ -67,26 +103,27 @@ export default function PredProdag({ targetDate }) {
                 </div>
             </div>
            
-            <h1 className='nameBooks'> Маленький принц</h1>
+            <h1 className='nameBooks'><Link className='nameBooks' to={`/product/${currentProduct.uid}`}>{currentProduct.bookName}</Link></h1>
             <div className='autorInform'>
                 <div className='autorInformSection'>
-                    <p>Автор:&nbsp;</p><h4>Сент - Екзюпері А.</h4>
+                    <p>Автор:&nbsp;</p><h4>{currentProduct.textAutor}</h4>
                 </div>
                 <div className='autorInformSection'>
-                    <p>Вік:&nbsp;</p><h4>10+</h4>
+                    <p>Вік:&nbsp;</p><h4>{currentProduct.yearGroup}</h4>
                 </div>
                 <div className='autorInformSection'>
-                    <p>Художник:&nbsp;</p><h4>Сілівончик Г.</h4>
+                    <p>Художник:&nbsp;</p><h4>{currentProduct.bDesign}</h4>
                 </div>
             </div>
-            <p className='descriptionBooks'>Під час зимових свят у кожній оселі, де є діти, таємничим чином з’являються подарунки. Звідки ж вони беруться? Ця книжка може стати першим поясненням такої дивовижної події для маленьких чомучок, бо...Передусім це переказ знаменитого вірша Клемента Кларка Мура «Ніч проти Різдва». Саме в цьому творі Санта-Клаус уперше постав таким, яким його знає і любить увесь англомовний світ. Маленький вірш справив величезний вплив на святкові традиції — і це справжня дивовижа. Друга дивовижа — атмосферні малюнки Кріса Данна. Третя дивовижа банальна, але важлива для найменших — це те, що героями переказу стали звірі. </p>
+            <p className='descriptionBooks'>{currentProduct.descriptionSe}</p>
 <div className='blockOrderBooksWrap'>
-<button className='kOrderBooksPredButton'>
+<button className='kOrderBooksPredButton' onClick={orderPredProdag}>
     Замовити
 </button>
 
 
 <HandySvg 
+                    onClick={handleNextProduct}
                     src={arrow}
                     className="arrovIconBanner"
                     width="52"
@@ -96,6 +133,8 @@ export default function PredProdag({ targetDate }) {
 
 
         </div>
+        </> }
       </div>
     )
 }
+export default withFieldData('predprodag', 'product', 'true')(PredProdag);

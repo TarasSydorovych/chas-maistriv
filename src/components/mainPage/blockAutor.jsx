@@ -4,13 +4,28 @@ import {HandySvg} from 'handy-svg';
 import iconSrc from '../../svg/smallBlue.svg';
 import iconSrc2 from '../../svg/icanicon.svg';
 import authPic from '../../img/fotoAutor.png'
+import { useState, useEffect} from 'react';
+import {auth, db} from '../../firebase'
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import withFieldData from '../HOK/withFieldData';
+import withFirebaseCollection from '../HOK/withFirebaseCollection';
+import withFirebaseCollectionReserv from '../HOK/withFirebaseCollectionReserv';
+import { Link } from 'react-router-dom';
 
-export default function BlockAutor() {
+const BlockAutor = ({data, product}) => {
 
 
+
+  const [prodList, setProdList] = useState([]);
+  useEffect(() => {
+    const filteredProducts = product.filter((item) => item.textAutor === data[0].name);
+    setProdList(filteredProducts);
+  }, [data, product]);
 
     return(
         <div className='blockAutorBig'>
+            {data.length > 0 &&
+            <>
             <div className='imgAutorWrap'>
            
            <img src={authPic} className="imgAutor"/>
@@ -24,14 +39,14 @@ export default function BlockAutor() {
             
             <div className='infoAutor'>
                 <h1 className='autorName'>
-                Юрій Нікітінський
+                {data[0].name}
                 </h1>
                 <p className='autorDescription'>
-                автор книжок, що малюють на вустах посмішку: «Будинок двірників», «Вовчик, який осідлав бомбу», «Страшенно-хуліганська книга» (у співавторстві з В.Кириченком), «Дивні пригоди (не)дивної вчительки» та ін.
+                {data[0].smallDesc}
                 </p>
                 <div className='autorYelowBlock'>
                     <p className='autorPYellow'>
-                    Пише зазвичай з іронією і не дуже любить мандрувати вигаданими світами. Переважно дія його творів відбувається «тут» і «тепер», герої – сучасні дітлахи (але інколи – пінгвіни чи навіть Діди Морози). Він не публічна особа, не намагається активно рекламувати свою творчість, але вже чверть століття його тексти читають і люблять діти різного віку – від малечі до підлітків.
+                    {data[0].history}
                     </p>
                     <div className='hvist'></div>
                 </div>
@@ -40,81 +55,55 @@ export default function BlockAutor() {
 
 
 
-                <div className="productAutorWrapSM">
-        <img src={picSmallProd} className="picSmallProdAutor"/>
-        <h3 className='smalProdName'>
-        Дивні пригоди (не) дивної вчительки
-        </h3>
-        <div className='smallProdIcon'>
-            <div className='iconCartSMBlue'>
-            <HandySvg 
-                    src={iconSrc}
-                    width="34"
-        height="34"
-                    />
-            </div>
-            <div className='iconCartSMGreen'>
-            <HandySvg 
-                    src={iconSrc2}
-                    width="37"
-        height="34"
-                    />
-</div>
-        </div>
-        </div>
+                
 
 
-        <div className="productAutorWrapSM">
-        <img src={picSmallProd} className="picSmallProdAutor"/>
-        <h3 className='smalProdName'>
-        Дивні пригоди (не) дивної вчительки
-        </h3>
-        <div className='smallProdIcon'>
-            <div className='iconCartSMBlue'>
-            <HandySvg 
-                    src={iconSrc}
-                    width="34"
-        height="34"
-                    />
-            </div>
-            <div className='iconCartSMGreen'>
-            <HandySvg 
-                    src={iconSrc2}
-                    width="37"
-        height="34"
-                    />
-</div>
-        </div>
-        </div>
-        
-        <div className="productAutorWrapSM">
-        <img src={picSmallProd} className="picSmallProdAutor"/>
-        <h3 className='smalProdName'>
-        Дивні пригоди (не) дивної вчительки
-        </h3>
-        <div className='smallProdIcon'>
-            <div className='iconCartSMBlue'>
-            <HandySvg 
-                    src={iconSrc}
-                    width="34"
-        height="34"
-                    />
-            </div>
-            <div className='iconCartSMGreen'>
-            <HandySvg 
-                    src={iconSrc2}
-                    width="37"
-        height="34"
-                    />
-</div>
-        </div>
-        </div>
+      
+        {prodList.length > 0 && 
+        <>
+        {prodList.map((el, index) => {
+          if(index < 3){
+          return   <div className="productAutorWrapSM">
+          <img src={el.bookFoto} className="picSmallProdAutor"/>
+          <h3 className='smalProdName'><Link className='smalProdName' to={`/product/${el.uid}`}>
+          {el.bookName}</Link>
+          </h3>
+          <div className='smallProdIcon'>
+              <div className='iconCartSMBlue'>
+              <HandySvg 
+                      src={iconSrc}
+                      width="34"
+          height="34"
+                      />
+              </div>
+              <div className='iconCartSMGreen'>
+              <HandySvg 
+                      src={iconSrc2}
+                      width="37"
+          height="34"
+                      />
+  </div>
+          </div>
+          </div>
+          }
+        })}
+            </>
+        }
+
 
 
 
                 </div>
             </div>
         </div>
+        </>
+        }
         </div>
     )
 }
+
+
+export default withFirebaseCollection('author')(
+  withFirebaseCollectionReserv('product')(BlockAutor)
+);
+

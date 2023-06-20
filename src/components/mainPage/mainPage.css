@@ -140,7 +140,8 @@ color: #3FAC8C;
     display: flex;
     border: 20px solid #3FAC8C;
     width: calc(100% - 40px);
-    height: calc(669px - 40px);
+    height: auto;
+    padding-bottom: 20px;
 }
 .imgPredProdag{
     display: flex;
@@ -148,6 +149,7 @@ color: #3FAC8C;
     justify-content: flex-end;
     width: 40%;
     height: 100%;
+    
 }
 .imgRelDiv{
     position: relative;
@@ -157,6 +159,12 @@ color: #3FAC8C;
 .imgRelDivImg{
     object-fit: cover;
     box-shadow: 5px 2px 5px #c3c3c3;
+    width: 432px;
+height: 577px;
+}
+.newBookImgImg{
+    width: 100%;
+    height: 100%;
 }
 .imgRelDivImg{
     position: absolute;
@@ -194,6 +202,18 @@ line-height: 152.5%;
 
 text-align: center;
     margin: 0;
+}
+.fullPriceKr{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 152.5%;
+    /* or 27px */
+    text-decoration: line-through;
+    text-decoration-color: #FF3416;
+    text-align: center;
+        margin: 0;
 }
 .salePrice{
     font-family: 'Ubuntu';
@@ -285,6 +305,7 @@ font-weight: 700;
 font-size: 34px;
 line-height: 111%;
 color: #3E3092;
+text-decoration: none;
 }
 .nameBooksNewBooks{
     font-family: 'Ubuntu';
@@ -610,6 +631,15 @@ margin-left: 20px;
     height: 53px;
     background: #3FAC8C;
 }
+.likeProductSmallSaleNovuGrClick{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 53px;
+    height: 53px;
+    background: #FF3416;
+}
 .imgPictureBox{
     position: relative;
     width: 72%;
@@ -892,6 +922,14 @@ color: #000000;
     border: 5px solid  #3E51C1;
     flex-shrink: 0;
 }
+.checkQuestion.selected{
+    width: 35px;
+    height: 35px;
+    margin-right: 18px;
+    border: 5px solid  #3E51C1;
+    background: #3E51C1;
+    flex-shrink: 0;
+}
 .questionButton{
     display: flex;
     align-items: center;
@@ -1073,6 +1111,7 @@ font-size: 16px;
 margin-top: 0;
 line-height: 121%;
 color: #3E51C1;
+text-decoration: none;
 }
 .smallProdIcon{
     width: 100%;
@@ -1099,6 +1138,7 @@ justify-content: center;
 }
 .picSmallProdAutor{
     width: 100%;
+    height: 220px;
 }
 .blockForText{position: relative;}
 .AllBooksAutorH2{
@@ -1155,6 +1195,7 @@ color: #3E51C1;
 overflow: visible;
 transform: rotate(-45deg);
 margin-bottom: 0;
+width: 126.57px;
 
 }
 .autorListSmal{
@@ -1243,6 +1284,7 @@ font-size: 20px;
 cursor: pointer;
 line-height: 117.5%;
 color: #3E3092;
+text-decoration: none;
 }
 .videoViewAgeWrap{
     display: flex;

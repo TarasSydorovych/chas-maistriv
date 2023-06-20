@@ -1,0 +1,381 @@
+.filterWrap{
+    width: calc(100% - 140px);
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-bottom: 55px;
+}
+.allBoksFilterH2{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 111%;
+text-align: center;
+
+color: #3E3092;
+}
+.filterSetiningWrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.filterSetining{
+    height: 30px;
+    width: auto;
+    padding-left: 55px;
+    border: 1px solid #F7CB25;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 15px;
+    margin-left: 20px;
+
+}
+.setiningsFilterName{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+color: #3E3092;
+margin-right: 25px;
+}
+.delSetiningsFilter{
+    margin-right: 17px;
+}
+.clearFilter{
+    width: calc(227px - 4px);
+    height: calc(60px - 4px);
+    border: 2px solid #3E3092;
+    background: white;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+color: #3E3092;
+margin-top: 32px;
+align-self: flex-end;
+}
+.firstBlockBooksHoNeedWrap{
+    width: 100%;
+    height: 527px;
+    display: flex;
+}
+.firstBlockWhisPic{
+    width: 50%;
+    height: 100%;
+   background:#D6CFFF;
+}
+.picBookTitle{
+margin-top: 32px;
+margin-bottom: 38px;
+margin-left: 200px;
+box-shadow: 5px 2px 5px #c3c3c3;
+
+}
+.secondBlockWhisPic{
+
+    width: calc(50% - 75px);
+    height: calc(100% - 51px - 70px);
+    padding-left: 75px;
+    padding-bottom: 70px;
+    padding-top: 51px;
+   background:#3E51C1;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   justify-content: space-around;
+}
+.firstBlockBooksHoNeedH1{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 111%;
+color: #FFFFFF;
+width: 75%;
+}
+.descParametr{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.descForRecoPage{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 152.5%;
+color: #FFFFFF;
+margin: 0px;
+
+}
+.firstBlockCatPFullDesc{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 130%;
+width: 70%;
+color: #FFFFFF;
+}
+.wrapIconBlocCatFirst{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 38%;
+    margin-top: 20px;
+    height: auto;
+}
+.prdeProdPricingCartBigProd{
+    cursor: pointer;
+       width: 81.36px;
+    height: 81.36px;
+    color: white;
+    background:#F7CB25;
+    transform: rotate(45deg);
+    font-family: 'Ubuntu';
+    display: flex;
+    margin-left: 20px;
+    margin-top: 5px;
+    align-items: center;
+    justify-content: center;
+}
+.prdeProdPricingRotateCart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    transform: rotate(-45deg);
+}
+.fullPriceCartBigProd{
+    font-family: 'Ubuntu';
+    font-weight: 500;
+font-size: 18px;
+line-height: 152.5%;
+    text-align: center;
+    color: #3E51C1;
+    margin: 0;
+
+}
+.salePriceCartBigProd{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+font-size: 36px;
+line-height: 111%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #3E51C1;
+    margin: 0;
+}
+.prodPricLikeCartBigProd{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    margin-top: 20px;
+    height: auto;
+    margin-bottom: 10px;
+}
+.likeProductBig{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 67px;
+    height: 67px;
+    background: #3E51C1;
+}
+.likeProductBigClick{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 67px;
+    height: 67px;
+    background: #FF3416;
+}
+.youLikeItWrap{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 100px;
+
+}
+.youLikeItWrapNew{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 100px;
+    padding-top: 80px;
+
+}
+.youLikewrapSmall{
+    width: calc(100% - 124px);
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 124px;
+    overflow: hidden;
+}
+.youLikeItH2{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 111%;
+color: #FF3416;
+}
+.youLikeProductWrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+}
+.smallProdNameSaleYouLike{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 111%;
+color: #3E51C1;
+text-decoration: none;
+}
+.discountAndACWrapp{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    
+}
+.discountAndACWrappFirst{
+    display: flex;
+}
+.freeDelyvery{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 58%;
+    height: 155px;
+    background: #3E51C1;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 36px;
+line-height: 24px;
+color: #FFFFFF;
+}
+.procentSale{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42%;
+    height: 155px;
+    background: #FF3416;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 36px;
+line-height: 42px;
+color: #FFFFFF;
+}
+.discountAndACWrappSecond{
+    display: flex;
+}
+.discountForNine{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 41%;
+    height: 155px;
+    background: #F7CB25;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 36px;
+line-height: 42px;
+color: #3E3092;
+}
+.krohmalPackeg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 155px;
+    background: #3FAC8C;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 36px;
+line-height: 42px;
+color: #FFFFFF;
+text-align: center;
+}
+.smakolukForUser{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 29%;
+    height: 155px;
+    background: #3E3092;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 36px;
+line-height: 42px;
+color: #FFFFFF;
+text-align: center;
+}
+.ProductCatalogH2{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 111%;
+color: #3E51C1;
+}
+.wrapButtonCountList{
+
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.buttonWithCountPage{
+    width: 50px;
+    height: 50px;
+    background: #F7CB25;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 152.5%;
+margin-left: 20px;
+margin-top: 50px;
+margin-bottom: 50px;
+color: #3E51C1;
+}

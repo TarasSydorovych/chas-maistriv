@@ -2,36 +2,77 @@ import pic1 from '../../img/pic1.png'
 import pic2 from '../../img/pic2.png'
 import {HandySvg} from 'handy-svg';
 import iconSrc from '../../svg/likeBook.svg';
-
 import './mainPage.css'
-import { useState } from 'react';
-
+import {auth, db} from '../../firebase'
+import { useState, useEffect } from 'react';
+import { collection, query, onSnapshot, doc, updateDoc } from 'firebase/firestore';
 export default function Obcladunka() {
     const [first, setFirst] = useState(false);
     const [second, setSecond] = useState(false);
-const likepick = (lab) => {
-if(lab === 'first'){
-    setFirst(true)
-    setSecond(false)
-}else if(lab === 'second'){
-    setFirst(false)
-    setSecond(true)
-}
+    const likepick = async (lab) => {
+        const selectedOption = sessionStorage.getItem('selectedOption');
+        const ratingRef = doc(db, 'rating', '7e168909-a016-46ce-a3a0-575b50c3b225'); // Замініть 'your_document_id' на ID вашого документа
+      
+        let newFirstRating = parseInt(ratings[0].firstRating);
+        let newSecondRating = parseInt(ratings[0].secondRating);
+      
+        if (selectedOption === 'first') {
+          newFirstRating -= 1;
+        } else if (selectedOption === 'second') {
+          newSecondRating -= 1;
+        }
+      
+        if (lab === 'first') {
+          newFirstRating += 1;
+          setFirst(true);
+          setSecond(false);
+          sessionStorage.setItem('selectedOption', 'first');
+        } else if (lab === 'second') {
+          newSecondRating += 1;
+          setFirst(false);
+          setSecond(true);
+          sessionStorage.setItem('selectedOption', 'second');
+        }
+      
+        await updateDoc(ratingRef, { firstRating: newFirstRating.toString(), secondRating: newSecondRating.toString() });
+      };
+const [ratings, setRatings] = useState();
 
-
-
-}
-
-
+useEffect(() => {
+    const ratingsRef = collection(db, 'rating');
+    const q = query(ratingsRef);
+  
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const updatedRatings = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      setRatings(updatedRatings);
+      console.log(updatedRatings);
+    });
+  
+    // Get selected option from sessionStorage
+    const selectedOption = sessionStorage.getItem('selectedOption');
+    if (selectedOption === 'first') {
+      setFirst(true);
+      setSecond(false);
+    } else if (selectedOption === 'second') {
+      setFirst(false);
+      setSecond(true);
+    }
+  
+    // Cleanup subscription
+    return () => {
+      unsubscribe();
+    };
+  }, []);
     return(
        <div className="opWrap">
+{ratings &&
         <div className="obSmallWrap">
             <h1 className="obcladH1">
             Яка обкладинка вам більше довподоби ?
             </h1>
             <div className="wrapTwoPic">
                 <div className="wrapPicAndIcon">
-                    <img src={pic1}  className="picOb"/>
+                    <img src={ratings[0].bookFoto}  className="picOb"/>
                     <div onClick={() => likepick('first')} className={`likeBook ${
                         first ? "selected" : ""
                       }`}>
@@ -45,7 +86,7 @@ if(lab === 'first'){
                     </div>
                 </div>
                 <div className="wrapPicAndIcon">
-                    <img src={pic1}  className="picOb"/>
+                    <img src={ratings[0].fotoRozgort}  className="picOb"/>
                     <div onClick={() => likepick('second')} className={`likeBook ${
                         second ? "selected" : ""
                       }`}>
@@ -60,6 +101,7 @@ if(lab === 'first'){
                 </div>
             </div>
         </div>
+    }
        </div>
     )
 }

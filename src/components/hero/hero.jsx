@@ -13,17 +13,21 @@ import ProductForHero from "./productForHero";
 import YouTube from 'react-youtube';
 import kurluk from '../../img/kurluk.png'
 import LitShow from "../standartComponent/litShow/litShow";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams, useLocation  } from 'react-router-dom';
 import {auth, db} from '../../firebase'
 import { getAuth, signInWithPhoneNumber, signOut , onAuthStateChanged } from "firebase/auth";
 export default function HeroPage() {
-
+  const { id } = useParams();
     const [heroes, setHeroes] = useState([]);
     const [startIndex, setStartIndex] = useState(0);
+    const location = useLocation();
     const heroesPerPage = 3;
     const navigate = useNavigate();
     const [product, setProduct] = useState(null);
     const [selectedHero, setSelectedHero] = useState(null);
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [location]);
     const handleClickLeft = () => {
         setStartIndex((prevIndex) => Math.max(0, prevIndex - heroesPerPage));
       };
@@ -43,10 +47,13 @@ export default function HeroPage() {
             querySnapshot.forEach((doc) => {
               heroData.push(doc.data());
             });
-            
-            setHeroes(heroData);
-            setSelectedHero(heroData[0])
-            console.log('selectedHero',selectedHero)
+            setHeroes(heroData)
+            if (typeof id === 'undefined') {
+              setSelectedHero(heroData[0]);
+            } else {
+              const selected = heroData.find((hero) => hero.uid === id);
+              setSelectedHero(selected);
+            }
           } catch (error) {
             console.error('Помилка при отриманні документів:', error);
           }

@@ -587,71 +587,74 @@ export default function AddRuk() {
                 },
             ]);
   
-    const storage = getStorage();
-    const newManuscript = {};
-    const manuscriptRef = collection(db, "manuscript");
-    const handleSubmit = async () => {
-        try {
-          for (const obj of objList) {
-            if (
-              obj.transliter === "longPdf" ||
-              obj.transliter === "shortPdf" ||
-              obj.transliter === "fotoRozgort" ||
-              obj.transliter === "bookFoto"
-            ) {
-              if (obj.file) {
-                const file = obj.file;
-                const storageRef = ref(storage, `manuscript/${uuidv4()}/${obj.transliter}`);
-                await uploadBytes(storageRef, file);
-                const downloadURL = await getDownloadURL(storageRef);
-                newManuscript[obj.transliter] = downloadURL;
+            const storage = getStorage();
+            const manuscriptRef = collection(db, "manuscript");
+            const manuscriptId = uuidv4();
+            const newManuscript = {
+              uid: manuscriptId,
+              createdAt: serverTimestamp(),
+            };
+          
+            const handleSubmit = async () => {
+              try {
+                for (const obj of objList) {
+                  if (
+                    obj.transliter === "longPdf" ||
+                    obj.transliter === "shortPdf" ||
+                    obj.transliter === "fotoRozgort" ||
+                    obj.transliter === "bookFoto"
+                  ) {
+                    if (obj.file) {
+                      const file = obj.file;
+                      const storageRef = ref(storage, `manuscript/${manuscriptId}/${obj.transliter}`);
+                      await uploadBytes(storageRef, file);
+                      const downloadURL = await getDownloadURL(storageRef);
+                      newManuscript[obj.transliter] = downloadURL;
+                    }
+                  } else {
+                    newManuscript[obj.transliter] = obj.value;
+                  }
+                }
+          
+                if (Object.keys(newManuscript).length > 2) {
+                  const docRef = doc(manuscriptRef, manuscriptId);
+                  await setDoc(docRef, newManuscript);
+          
+                  console.log("Document written with ID:", manuscriptId);
+                } else {
+                  console.log("No data to write.");
+                }
+              } catch (error) {
+                console.error("Error adding document or uploading file:", error);
               }
-            } else {
-              newManuscript[obj.transliter] = obj.value;
-            }
-          }
-    
-          if (Object.keys(newManuscript).length > 0) {
-            newManuscript.createdAt = serverTimestamp();
-    
-            const docRef = doc(manuscriptRef, uuidv4());
-            await setDoc(docRef, newManuscript);
-    
-            console.log("Document written with ID:", docRef.id);
-          } else {
-            console.log("No data to write.");
-          }
-        } catch (error) {
-          console.error("Error adding document or uploading file:", error);
-        }
-      };
-    
-      const handleFileChange = (transliter, file) => {
-        const updatedObjList = objList.map((obj) => {
-          if (obj.transliter === transliter) {
-            return {
-              ...obj,
-              file: file,
             };
-          }
-          return obj;
-        });
-        setObjList(updatedObjList);
-      };
-    
-      const handleInputChange = (transliter, value) => {
-        const updatedObjList = objList.map((obj) => {
-          if (obj.transliter === transliter) {
-            return {
-              ...obj,
-              value: value,
+          
+            const handleFileChange = (transliter, file) => {
+              const updatedObjList = objList.map((obj) => {
+                if (obj.transliter === transliter) {
+                  return {
+                    ...obj,
+                    file: file,
+                  };
+                }
+                return obj;
+              });
+              setObjList(updatedObjList);
             };
-          }
-          return obj;
-        });
-        setObjList(updatedObjList);
-      };
-  
+          
+            const handleInputChange = (transliter, value) => {
+              const updatedObjList = objList.map((obj) => {
+                if (obj.transliter === transliter) {
+                  return {
+                    ...obj,
+                    value: value,
+                  };
+                }
+                return obj;
+              });
+              setObjList(updatedObjList);
+            };
+          
     return (
       <div>
         {objList.map((obj) => (

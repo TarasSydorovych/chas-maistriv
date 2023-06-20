@@ -21,6 +21,13 @@ import VideoView from "./components/videoView/videoView";
 import Blog from "./components/blog/blog";
 import AddBlog from "./components/admBlog/addBlog";
 import AddRuk from "./components/addRuk/addRuk";
+import Manuscript from "./components/manuscript/manuscript";
+import CatalogMan from "./components/catalogMan/catalogMan";
+import Author from "./components/autor/author";
+import AutorAdm from "./components/autorAdm/autorAdm";
+import Obcladunka from "./components/mainPage/obcladunka";
+import Carton from "./components/admin/carton";
+import SurveyForm from "./components/admin/surveyForm";
 
 export const MyContext = React.createContext({
   value: "",
@@ -33,7 +40,7 @@ function App() {
   const [haveProduct, setHaveProduct] = useState(false)
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [addressChanged, setAddressChanged] = useState(false);
-  const targetDate = new Date("2023-06-01T12:00:00");
+ 
   const [login, setLogin] = useState(false);
   const [enterUser, setEnterUser] = useState(false);
   const [scrollHeight, setScrollHeight] = useState(0);
@@ -74,6 +81,23 @@ function App() {
     };
     fetchProducts();
   }, []);
+  const [haveManu, setHaveManu] = useState(false);
+  const [manuscript, setManuscript] = useState([]);
+  useEffect(() => {
+    const fetchManuscript = async () => {
+      const productsRef = collection(db, 'manuscript');
+      const productsSnapshot = await getDocs(productsRef);
+      const productsList = productsSnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      
+      setHaveManu(true)
+      setManuscript(productsList);
+      console.log('Список продуктів',products);
+    };
+    fetchManuscript();
+  }, []);
 
 
  
@@ -84,23 +108,31 @@ function App() {
     <>
     <Header scrollHeight={scrollHeight} setLogin={setLogin} login={login} setEnterUser={setEnterUser} enterUser={enterUser}/>
     <Routes>
-    <Route path='/' element={<MainPage targetDate={targetDate}/>}/>
+    <Route path='/' element={<MainPage />}/>
     <Route path='/catalog' element={<Catalog visitedProducts={visitedProducts} productsAll={products} setVisitedProducts={setVisitedProducts}/>}/>
+    <Route path='/manuscriptCatalog' element={<CatalogMan visitedProducts={visitedProducts} productsAll={manuscript} setVisitedProducts={setVisitedProducts}/>}/>
     <Route path='/product/' element={<Product/>}/>
     <Route path='/product/:id' element={<Product setLogin={setLogin} products={products} addressChanged={addressChanged} setAddressChanged={setAddressChanged}/>}/>
     <Route path='/order' element={<Order setLogin={setLogin}/>}/>
     <Route path='/like' element={<Like/>}/>
+    <Route path='/syrv' element={<SurveyForm/>}/>
     <Route path='/hero' element={<HeroPage/>}/>
+    <Route path='/hero/:id' element={<HeroPage/>}/>
     <Route path='/opt' element={<PriceOpt/>}/>
     <Route path='/user' element={<UserCabinet  products={products} addressChanged={addressChanged} setAddressChanged={setAddressChanged}/>}/>
     <Route path='/adm' element={<AddBooks/>}/>
     <Route path='/admRuk' element={<AddRuk/>}/>
     <Route path='/admHero' element={<HeroAdm/>}/>
     <Route path='/admBlog' element={<AddBlog/>}/>
-
+    <Route path='/manuscript/:id' element={<Manuscript setLogin={setLogin} products={manuscript} addressChanged={addressChanged} setAddressChanged={setAddressChanged}/>}/>
     <Route path='/promo' element={<AddPromo/>}/>
     <Route path='/video' element={<VideoView/>}/>
     <Route path='/blog' element={<Blog/>}/>
+    <Route path='/author' element={<Author/>}/>
+    <Route path='/author/:id' element={<Author/>}/>
+    <Route path='/admAutor' element={<AutorAdm/>}/>
+    <Route path='/obcladunka' element={<Carton/>}/>
+    
     </Routes>
     </>
     }

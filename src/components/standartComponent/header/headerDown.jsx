@@ -7,7 +7,7 @@ import NavList from './navList'
 
 
 
-export default function HeaderDown({setAllBooks, allBooks}) {
+export default function HeaderDown({setAllBooks, allBooks, setAllManus, allManus}) {
 
 
 
@@ -15,7 +15,7 @@ export default function HeaderDown({setAllBooks, allBooks}) {
     return(
        <div className='headeDownWrap'>
        <Link to="/" className='logoH1'><Logo/></Link> 
-        <NavList allBooks={allBooks} setAllBooks={setAllBooks}/>
+        <NavList allManus={allManus} setAllManus={setAllManus} allBooks={allBooks} setAllBooks={setAllBooks}/>
        </div>
     )
 }

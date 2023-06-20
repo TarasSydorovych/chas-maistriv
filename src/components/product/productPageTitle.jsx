@@ -7,9 +7,31 @@ import audio from '../../svg/audioSvg.svg'
 import arrow from '../../img/arrowToSvg.png'
 import autorPic from '../../img/productAutorPic.png'
 import addToCart from '../../function/addToCard'
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import {auth, db} from '../../firebase'
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 export default function ProductPageTitle({oneProd}) {
         const [liked, setLiked] = useState(false);
+        const [heroData, setHeroData] = useState(null);
+        
+  useEffect(() => {
+        const fetchHeroData = async () => {
+          try {
+            const heroQuery = query(collection(db, 'author'), where('name', '==', oneProd.textAutor));
+            const querySnapshot = await getDocs(heroQuery);
+    
+            querySnapshot.forEach((doc) => {
+              const heroData = doc.data();
+              setHeroData(heroData);
+            });
+          } catch (error) {
+            console.error('Помилка при отриманні документів:', error);
+          }
+        };
+    
+        fetchHeroData();
+      }, [oneProd.bookHero]);
         useEffect(() => {
                 // Отримуємо дані з localStorage
                 const likedProducts = JSON.parse(localStorage.getItem('likedProducts')) || [];
@@ -86,10 +108,11 @@ height="28"
 </div>
 
              </div>
+             {heroData &&
              <div className={css.productTitleWrap}>
                 <h1 className={css.nameBook}>{oneProd.bookName}</h1>
                 <div className={css.wrapHud}>
-                <p className={css.autor}>Автор:&nbsp;<span className={css.autorNameSpan}>{oneProd.textAutor} &nbsp;</span><span className={css.autorDesc}>- мега-мозок, християнин, знаток теорії літератури, майстер слова</span></p>
+                <p className={css.autor}>Автор:&nbsp;<span className={css.autorNameSpan}><Link className={css.autorNameSpan} to={`/author/${heroData.uid}`}>{oneProd.textAutor} </Link>&nbsp;</span><span className={css.autorDesc}>- мега-мозок, християнин, знаток теорії літератури, майстер слова</span></p>
                 <p className={css.autor}>Художник:&nbsp;<span className={css.autorNameSpan}>{oneProd.picWriter}&nbsp;</span><span className={css.autorDesc}>- майстер іллюстрації, реаліст, графік, захоплюється історією</span></p>
                 </div>
                <div className={css.powerWrap}>
@@ -110,7 +133,7 @@ height="28"
 </div>
 </div>
 <h3 className={css.autorNameInComment}>
-Коментар автора<br/><span className={css.autorNameInCommentSpan}>{oneProd.textAutor}</span> 
+Коментар автора<br/><span className={css.autorNameInCommentSpan}><Link className={css.autorNameInCommentSpan} to={`/author/${heroData.uid}`}>{oneProd.textAutor}</Link></span> 
 </h3>
 </div>
 <div className={css.commentAndMoreWrapp}>
@@ -125,6 +148,7 @@ height="28"
 
 
              </div>
+             }
         </div>
     )
 }

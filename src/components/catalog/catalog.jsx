@@ -22,6 +22,7 @@ export default function Catalog({setVisitedProducts, visitedProducts, productsAl
     const productsPerPage = 2;
     const products = useSelector((state) => state.products.items);
     const filters = useSelector(state => state.filters);
+   
 
 const maxDisplayedPages = 6; // максимальна кількість кнопок для відображення
 const firstDisplayedPages = 0; // кількість кнопок з початку

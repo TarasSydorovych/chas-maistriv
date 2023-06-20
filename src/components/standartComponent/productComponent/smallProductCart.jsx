@@ -3,33 +3,72 @@ import ProductPic  from '../../../img/smaPicCart.png'
 import {HandySvg} from 'handy-svg';
 import iconSrc from '../../../svg/smallProductLike.svg';
 import iconSrcCard from '../../../svg/smallProductCard.svg';
+import { useState, useEffect } from 'react';
+import addToCart from '../../../function/addToCard'
+import { Link } from 'react-router-dom';
+export default function SmallProductCart({el}) {
 
-export default function SmallProductCart() {
-
+    const [liked, setLiked] = useState(false);
+    
+    
+    useEffect(() => {
+        // Отримуємо дані з localStorage
+        const likedProducts = JSON.parse(localStorage.getItem('likedProducts')) || [];
+    
+        // Перевіряємо, чи товар є в масиві подобається
+        const isLiked = likedProducts.some(product => product.uid === el.uid);
+    
+        // Встановлюємо відповідний стан liked
+        setLiked(isLiked);
+      }, []);
+      const handleLike = () => {
+        // Отримуємо дані з localStorage
+        let likedProducts = JSON.parse(localStorage.getItem('likedProducts')) || [];
+    
+        if (!liked) {
+          // Додаємо товар до масиву подобається
+          
+          likedProducts.push(el);
+        } else {
+          // Видаляємо товар з масиву подобається
+          const updatedLikedProducts = likedProducts.filter(product => product.uid !== el.uid);
+          likedProducts = updatedLikedProducts;
+        }
+    
+        // Зберігаємо оновлений масив у localStorage
+        localStorage.setItem('likedProducts', JSON.stringify(likedProducts));
+    
+        // Змінюємо стан liked
+        setLiked(!liked);
+      };
 
 
 
     return(
+       
         <div className='smallProductWrap'>
-            <img src={ProductPic} className="productPicSmall"/>
+             {el &&
+             <>
+            <img src={el.bookFoto} className="productPicSmall"/>
             <div className='prodPricLikeCart'>
 
             <div className='prdeProdPricingCart'>
             <div className='prdeProdPricingRotateCart'>
-            <p className='fullPriceCart'>290</p>
-            <p className='salePriceCart'>203</p>
+            <p className='fullPriceCart'>{el.priceSale}</p>
+            <p className='salePriceCart'>{el.price}</p>
             <p className='fullPriceCart'>грн</p>
             </div>
            </div>
            <div className='likeCardWrapSmall'>
-<div className='likeProductSmall'>
+<div className={`likeProductSmall${liked ? 'Click' : ''}`} onClick={handleLike}>
 <HandySvg 
+
                     src={iconSrc}
                     width="34"
         height="31"
                     />
 </div>
-<div className='likeProductSmall'>
+<div className='likeProductSmall' onClick={() => addToCart(el.uid)}>
 <HandySvg 
                     src={iconSrcCard}
                     width="28.33"
@@ -39,22 +78,26 @@ export default function SmallProductCart() {
 </div>
             </div>
     <h2 className='smallProdName'>
-    Дивні пригоди (не) дивної
+      <Link className='smallProdName' to={`/product/${el.uid}`}>
+    {el.bookName}
+    </Link>
     </h2>
 
 
 
     <div className='autorInformCart'>
                 <div className='autorInformSectionCart'>
-                    <p>Автор:&nbsp;</p><h4>Стів Річардсон, Клемент Кларк Мур</h4>
+                    <p>Автор:&nbsp;</p><h4>{el.textAutor}</h4>
                 </div>
                 <div className='autorInformSectionCart'>
-                    <p>Художник:&nbsp;</p><h4>Кріс Данн</h4>
+                    <p>Художник:&nbsp;</p><h4>{el.bDesign}</h4>
                 </div>
             </div>
-            <p className='descriptionBooksCart'>Збірка кумедних історій про (не)дивну вчительку викликає усмішку і навіть в гомеопатичних дозах руйнує стереотипи. Тамарочку Павлівну вже люблять 200 учнів, 30 колег, 22 родичі, чоловік-офіцер і кішка Мурка. Її — харизматичну і незвичайну — полюбите і ви.
+            <p className='descriptionBooksCart'>{el.descriptionSe}
 </p>
-
+</>
+}
         </div>
+    
     )
 }

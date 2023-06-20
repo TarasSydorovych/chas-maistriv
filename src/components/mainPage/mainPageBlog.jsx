@@ -1,17 +1,9 @@
 
 import imgBlog from '../../img/blogimg.png'
-
-
-
-
-
-
-
-
-
-export default function MainPageBlog() {
-
-
+import hokBlog from '../HOK/hokBlog'
+import YouTube from 'react-youtube';
+import { Link } from 'react-router-dom';
+const MainPageBlog = ({blogData}) => {
 
 
     return(
@@ -21,53 +13,34 @@ export default function MainPageBlog() {
     Блог
 </h2>
 <div className="blogList">
+{blogData.length > 0 &&
     <div className="publishListWrap">
-      <div className="blogProdPage">
-         <div className="vidoPic">
-            <img src={imgBlog} className="vidoPicImg"/>
-         </div>
-         <h3 className='nameBlog'>
-         Як зробити щоб дитина читала?
-         </h3>
-<p className='descriptionBlogSmall'>
-Наші митці дослідили це питання і допоможуть вам вирішити цю проблему. Пргнемо щоб діти читали більше
-</p>
+       {blogData.map((el, index) => {
+        if(index < 3){
+           return  <div key={index} className="blogProdPage">
+           <div className="vidoPic">
+           <YouTube videoId={`${el.videoId}`} opts={{ width: '348px', height: '196px' }} />
+           </div>
+           <h3 className='nameBlog'>
+           {el.zag}
+           </h3>
+  <p className='descriptionBlogSmall'>
+  {el.chortDesc}
+  </p>
+  
+        </div>
+  }
+       })}
+       </div>  
+}
 
-      </div>
-
-
-      <div className="blogProdPage">
-         <div className="vidoPic">
-            <img src={imgBlog} className="vidoPicImg"/>
-         </div>
-         <h3 className='nameBlog'>
-         Ігри в читанні. Як правильно залучити дитину до читання
-         </h3>
-<p className='descriptionBlogSmall'>
-Наші митці дослідили це питання і допоможуть вам вирішити цю проблему. Пргнемо щоб діти читали більше
-</p>
-
-      </div>
-
-
-      <div className="blogProdPage">
-         <div className="vidoPic">
-            <img src={imgBlog} className="vidoPicImg"/>
-         </div>
-         <h3 className='nameBlog'>
-         Читання з малюками
-         </h3>
-<p className='descriptionBlogSmall'>
-Наші митці дослідили це питання і допоможуть вам вирішити цю проблему. Пргнемо щоб діти читали більше
-</p>
-
-      </div>
-
-    </div>
-    <button className='moreBlogBut'>
+    <button className='moreBlogBut' >
+        <Link className='moreBlogBut' to='/blog'>
         Більше
+        </Link>
     </button>
 </div>
         </div>
     )
 }
+export default hokBlog(MainPageBlog)

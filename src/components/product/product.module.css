@@ -87,6 +87,8 @@ width: 65%;
 .autorNameSpan{
     color: #3E51C1;
     font-weight: 400;
+    text-decoration: none;
+    cursor: pointer;
 }
 .autorDesc{
     font-weight: 600;
@@ -201,6 +203,8 @@ margin-left: 30px;
 }
 .autorNameInCommentSpan{
     color: #3E51C1;
+    cursor: pointer;
+    text-decoration: none;
 }
 .autorPicWrap{
     display: flex;

@@ -11,7 +11,7 @@ import Respons from "./respons";
 import ResponsTextArea from "./responsTextArea";
 import VideoBlock from "./videoBlock";
 import WhyNeedRead from "./whyNeedRead";
-import { useParams } from "react-router-dom"
+import { useParams, useLocation } from "react-router-dom"
 import { useState } from "react";
 import { getAuth, signInWithPhoneNumber, signOut , onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
@@ -30,7 +30,7 @@ const [rerenderAfter, setRerenderAfter] = useState(false);
        const [oneProd, setOneProd] = useState();
        const [haveProd, setHaveProd] = useState(false);
        const [rewievList, setRewievList] = useState([]);
-
+       const location = useLocation();
 
     let params = useParams();
 
@@ -72,11 +72,8 @@ useEffect(() => {
     
 }, [products, addressChanged])
 useEffect(() => {
-  if (addressChanged) {
-    window.scrollTo(0, 0);
-    setAddressChanged(false);
-  }
-}, [addressChanged]);
+  window.scrollTo(0, 0);
+}, [location]);
 useEffect(() => {
  
 
@@ -112,21 +109,6 @@ useEffect(() => {
 // функціонал для корегування відгуків
 
 useEffect(() => {
-  // Перевіряємо, чи користувач замовив цей товар
-  // const checkOrder = async () => {
-  //   try {
-  //     const ordersCol = collection(db, 'orders');
-  //     //const q = query(ordersCol, where('user', '==', user.uid), where('choice', 'array-contains', { uid: oneProd.uid }));
-  //     const q = query(ordersCol, where('user', '==', user.uid), where('choice', 'array-contains', oneProd.uid));
-  //     const querySnapshot = await getDocs(q);
-  //    console.log('querySnapshot', querySnapshot.empty)
-  //     if (!querySnapshot.empty) {
-  //       setIsOrdered(true);
-  //     }
-  //   } catch (error) {
-  //     console.error('Error checking order:', error);
-  //   }
-  // };
   const checkOrder = async () => {
     try {
       const ordersCol = collection(db, 'orders');
@@ -184,7 +166,7 @@ const enterUser = () => {
 <VideoBlock/>
 
 <Hero/>
-<HeroPage/>
+<HeroPage oneProd={oneProd}/>
 {rewievList.length > 0 && 
 <>
 <Respons rewievList={rewievList} reloadP={reloadP}/>

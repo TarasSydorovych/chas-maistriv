@@ -78,6 +78,34 @@ export default function AddBooks() {
             transliter: "price",
         },
         {
+            name: "Ціна без знижки",
+            transliter: "priceSale",
+        },
+        {
+            name: "Дата закінчення пред продажу",
+            transliter: "predprodDate",
+        },
+        {
+            name: "Новинка",
+            transliter: "isNew",
+        },
+        {
+            name: "Топ",
+            transliter: "top",
+        },
+        {
+            name: "Розпродаж",
+            transliter: "rozprodaz",
+        },
+        {
+            name: "Акція",
+            transliter: "sale",
+        },
+        {
+            name: "Предпродаж",
+            transliter: "predprodag",
+        },
+        {
             name: "Палітурка",
             transliter: "paliturka",
         },

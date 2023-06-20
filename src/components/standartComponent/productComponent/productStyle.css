@@ -130,6 +130,15 @@
     height: 53px;
     background: #3E3092;
 }
+.likeProductSmallClick{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 53px;
+    height: 53px;
+    background: #FF3416;
+}
 .likeProductSmallSale{
     cursor: pointer;
     display: flex;
@@ -138,6 +147,15 @@
     width: 53px;
     height: 53px;
     background: #F7CB25;
+}
+.likeProductSmallSaleClick{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 53px;
+    height: 53px;
+    background: #FF3416;
 }
 .likeProductSmallCatalog{
     cursor: pointer;
@@ -158,6 +176,7 @@ font-size: 24px;
 line-height: 111%;
 color: #3E51C1;
 margin-top: 35px;
+text-decoration: none;
 }
 
 

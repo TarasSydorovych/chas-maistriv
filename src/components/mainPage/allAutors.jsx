@@ -1,11 +1,16 @@
+import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import authPic from '../../img/fotoAutor.png'
 
+import withFirebaseCollection from '../HOK/withFirebaseCollection'
 
 
 
+const  AllAutors = ({data}) => {
 
-export default function AllAutors() {
+useEffect(() => {
 
+})
 
 
 
@@ -15,37 +20,18 @@ export default function AllAutors() {
             <div className="allAutorsWrapSmall">
 <h1 className="ourAutor">Наші митці</h1>
 <div className="autorListSmal">
-   
-<div className='imgAutorWrapSmall'>
-           
-           <img src={authPic} className="imgAutorSmall"/>
-           <p className='autorNameM'>Юрій<br/> Нікітінський</p>
-           </div>
-           <div className='imgAutorWrapSmall'>
-           
-           <img src={authPic} className="imgAutorSmall"/>
-           <p className='autorNameM'>Юрій<br/> Нікітінський</p>
-           </div>
-           <div className='imgAutorWrapSmall'>
-           
-           <img src={authPic} className="imgAutorSmall"/>
-           <p className='autorNameM'>Юрій<br/> Нікітінський</p>
-           </div>
-           <div className='imgAutorWrapSmall'>
-           
-           <img src={authPic} className="imgAutorSmall"/>
-           <p className='autorNameM'>Юрій<br/> Нікітінський</p>
-           </div>
-           <div className='imgAutorWrapSmall'>
-           
-           <img src={authPic} className="imgAutorSmall"/>
-           <p className='autorNameM'>Юрій<br/> Нікітінський</p>
-           </div>
-           <div className='imgAutorWrapSmall'>
-           
-           <img src={authPic} className="imgAutorSmall"/>
-           <p className='autorNameM'>Юрій<br/> Нікітінський</p>
-           </div>
+   {data && data.length > 0 && 
+   <>
+              {data.map((el, index) => {
+               return <div key={index} className='imgAutorWrapSmall'>
+           <Link to={`/author/${el.uid}`}>
+                <img src={el.foto} className="imgAutorSmall"/>
+                <p className='autorNameM'>{el.name}</p>
+                </Link>
+                </div>
+            })}
+            </>
+         }
            
            
 </div>
@@ -53,3 +39,5 @@ export default function AllAutors() {
         </div>
     )
 }
+export default withFirebaseCollection('author')(AllAutors);
+  

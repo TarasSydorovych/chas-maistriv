@@ -8,6 +8,7 @@ export default function Number() {
 
 
     return(
+     
         <a className='phoneHref' href="tel:+380672315737">
       <div className='numberWrap'>
          <HandySvg 
@@ -20,5 +21,7 @@ export default function Number() {
                     </p>
       </div>
       </a>
+  
+  
     )
 }
