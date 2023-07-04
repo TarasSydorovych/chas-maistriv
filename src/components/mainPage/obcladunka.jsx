@@ -6,12 +6,12 @@ import './mainPage.css'
 import {auth, db} from '../../firebase'
 import { useState, useEffect } from 'react';
 import { collection, query, onSnapshot, doc, updateDoc } from 'firebase/firestore';
-export default function Obcladunka() {
+export default function Obcladunka({windowDimensions}) {
     const [first, setFirst] = useState(false);
     const [second, setSecond] = useState(false);
     const likepick = async (lab) => {
         const selectedOption = sessionStorage.getItem('selectedOption');
-        const ratingRef = doc(db, 'rating', '7e168909-a016-46ce-a3a0-575b50c3b225'); // Замініть 'your_document_id' на ID вашого документа
+        const ratingRef = doc(db, 'rating', '24ac945b-7109-489a-8901-d3667388f6a0'); // Замініть 'your_document_id' на ID вашого документа
       
         let newFirstRating = parseInt(ratings[0].firstRating);
         let newSecondRating = parseInt(ratings[0].secondRating);

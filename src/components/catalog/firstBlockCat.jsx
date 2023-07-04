@@ -1,4 +1,4 @@
-import './catalog.css'
+import css from './catalog.module.css'
 import picBook from '../../img/catfirstBook.png'
 
 import {HandySvg} from 'handy-svg';
@@ -12,46 +12,46 @@ export default function FirstBlockCat(){
 
 
     return(
-        <div className='firstBlockBooksHoNeedWrap'>
-            <div className='firstBlockWhisPic'>
-                <img src={picBook} className="picBookTitle"/>
+        <div className={css.firstBlockBooksHoNeedWrap}>
+            <div className={css.firstBlockWhisPic}>
+                <img src={picBook} className={css.picBookTitle}/>
             </div>
-            <div className='secondBlockWhisPic'>
-                <h2 className='firstBlockBooksHoNeedH1'>
+            <div className={css.secondBlockWhisPic}>
+                <h2 className={css.firstBlockBooksHoNeedH1}>
                 Книга яку треба прочитати до дня Святого Миколая
                 </h2>
-                <div className='descParametr'>
-                    <p className='descForRecoPage'>
+                <div className={css.descParametr}>
+                    <p className={css.descForRecoPage}>
                     Мова: українська, російська
                     </p>
-                    <p className='descForRecoPage'>
+                    <p className={css.descForRecoPage}>
                     Жанр: короткі оповідання
                     </p>
-                    <p className='descForRecoPage'>
+                    <p className={css.descForRecoPage}>
                     Вік: 4 - 8 років
                     </p>
                 </div>
-                <p className='firstBlockCatPFullDesc'>
+                <p className={css.firstBlockCatPFullDesc}>
                 Ця книга пренесе у ваш дім диво перед святом Миколая.Дітям дуже цікаво дізнатись хто такий Миколай і чому він всім дарить подарунки
                 </p>
-                <div className='wrapIconBlocCatFirst'>
+                <div className={css.wrapIconBlocCatFirst}>
 
-                <div className='prdeProdPricingCart'>
-            <div className='prdeProdPricingRotateCart'>
-            <p className='fullPriceCart'>290</p>
-            <p className='salePriceCart'>203</p>
-            <p className='fullPriceCart'>грн</p>
+                <div className={css.prdeProdPricingCart}>
+            <div className={css.prdeProdPricingRotateCart}>
+            <p className={css.fullPriceCart}>290</p>
+            <p className={css.salePriceCart}>203</p>
+            <p className={css.fullPriceCart}>грн</p>
             </div>
            </div>
-<div className='likeCardWrapSmall'>
-<div className='likeProductSmallSale'>
+<div className={css.likeCardWrapSmall}>
+<div className={css.likeProductSmallSale}>
 <HandySvg 
         src={iconSrc}
         width="34"
 height="31"
         />
 </div>
-<div className='likeProductSmallSale'>
+<div className={css.likeProductSmallSale}>
 <HandySvg 
         src={iconSrcCard}
         width="28.33"

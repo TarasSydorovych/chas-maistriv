@@ -55,21 +55,24 @@ export default function ManuscriptProductComponent({el, index, setVisitedProduct
             <div className='productBigPicture'>
                 <div className='productBigPictureImgWrap'>
             <img src={el.bookFoto} className="productBigPictureImg"/>
-            <div className='topBooksMonthLabel'>ТОП місяця</div>
-            <div className='topBooksYersLabel'>Книга року</div>
-            <div className='newBooksLabel'>Новинка</div>
+         
             </div>
             </div>
             <div className='productBigDescription'>
                 <div className='autorAndHud'>
                     <p className='autorAndHudP'>
+                    Дітям: <span className='autorAndHudPSpan'>{el.yearGroup}</span>
+                    </p>
+                  
+                    
+                </div>
+                <p className='autorAndHudP'>
+                    Доступ жо повного тексту: <span className='autorAndHudPSpan'>{el.rating}</span>
+                    </p>
+                <h1 className='bookTitleBigProd' onClick={() => handleProductClick(el.uid)}><Link className='bookTitleBigProd' to={`/manuscript/${el.uid}`}> {el.bookName}</Link></h1>
+                <p className='autorAndHudP'>
                     Автор: <span className='autorAndHudPSpan'>{el.autorIdea}</span>
                     </p>
-                    <p className='autorAndHudP'>
-                    Художник: <span className='autorAndHudPSpan'>{el.picWriter}</span>
-                    </p>
-                </div>
-                <h1 className='bookTitleBigProd' onClick={() => handleProductClick(el.uid)}><Link className='bookTitleBigProd' to={`/manuscript/${el.uid}`}> {el.bookName}</Link></h1>
                 <div className='pawerWrapBlock'>
                 <p className='power'>
                     Сила
@@ -98,7 +101,7 @@ export default function ManuscriptProductComponent({el, index, setVisitedProduct
                 </div>
 
                 
-<button className={css.buttonToManuscript}>Читати</button>
+                <Link className={css.buttonToManuscript} to={`/manuscript/${el.uid}`}><button className={css.buttonToManuscript} onClick={() => handleProductClick(el.uid)}> Читати</button></Link>
 
             </div>
 

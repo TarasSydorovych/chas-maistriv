@@ -17,12 +17,12 @@ import {
     updateDoc,
     collection,
   } from "firebase/firestore";
-import { Link } from "react-router-dom";
-export default function FilterMenu() {
+import { Link, useNavigate } from "react-router-dom";
+export default function FilterMenu({windowDimensions, setAllBooks, allBooks}) {
    // const { selectedFilters, setSelectedFilters } = useContext(MyContext);
     const [selectedFilters, setSelectedFilters] = useState([]);
     const dispatch = useDispatch();
-    
+    const navigate = useNavigate();
 
 
 const objFilter = [
@@ -312,6 +312,16 @@ const handleFilterClick = (filter) => {
       dispatch(addFilter(filter));
     }
   };
+  const closeMenu = () => {
+    setAllBooks(false)
+    
+    navigate('/catalog')
+  }
+  const allBooksClose = () => {
+    dispatch(fetchProductsAll())
+    setAllBooks(false)
+    navigate('/catalog')
+  }
 
 
     return(
@@ -319,7 +329,9 @@ const handleFilterClick = (filter) => {
 
             <div className="secondBlockWrapFilterProd">
                 <ul className="ulFirstfilter">
-                    <li className="ulFirstfilterLi"><div className="blockCheckFilterJoin"></div>Предпродаж</li>
+                    <li className="ulFirstfilterLi"><div className="blockCheckFilterJoin" onClick={() => { handleFilterClick({field: 'predprodag', value: 'true'})
+                        handleFilterClickst({field: 'predprodag', value: 'true'})
+                      }}></div>Предпродаж</li>
                     <li className="ulFirstfilterLi"><div className="blockCheckFilterJoin"></div>Новинка</li>
                     <li className="ulFirstfilterLi"><div className="blockCheckFilterJoin"></div>Останні екземпляри</li>
                     <li className="ulFirstfilterLi"><div className="blockCheckFilterJoin"></div>Святкові</li>
@@ -355,25 +367,42 @@ const handleFilterClick = (filter) => {
                 
 
             
-
+{windowDimensions && 
+<>
     <div className="twoButtonAllWrap">
-<div className="buttonAllBooksFilter" onClick={() => dispatch(fetchProductsAll())}>
-<Link className="buttonAllBooksFilterLink" to="/catalog">
+<div className="buttonAllBooksFilter" onClick={allBooksClose}>
+
 Усі книги
-</Link>
+
 </div>
 <div className="buttonAllBooksFilter" onClick={() => setSelectedFilters([])}>
 Скинути
 </div>
     </div>
     <div className="oneButtonAllWrap">
-<div className="buttonWatch" >
-    <Link className="buttonWatch" to="/catalog">
-Дивитися</Link>
+<div className="buttonWatch" onClick={closeMenu}>
+    
+Дивитися
 </div>
 
     </div>
+    </>}
+    {!windowDimensions && <>
+    <div className="wrapbuttonInMobile">
+      <div className="buttonAllBooksFilter" onClick={allBooksClose}>
 
+Усі книги
+
+</div>
+<div className="buttonAllBooksFilter" onClick={() => setSelectedFilters([])}>
+Скинути
+</div>
+<div className="buttonWatch" onClick={closeMenu}>
+    
+Дивитися
+</div>
+</div>
+    </>}
 
 
         </div>

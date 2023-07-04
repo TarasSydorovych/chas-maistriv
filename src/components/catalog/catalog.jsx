@@ -17,47 +17,65 @@ import { useSelector, useDispatch } from 'react-redux';
 
 
 export default function Catalog({setVisitedProducts, visitedProducts, productsAll}) {
-    const [indexPage, setIndexPage] = useState(1);
-    const [currentPage, setCurrentPage] = useState(0);
-    const productsPerPage = 2;
-    const products = useSelector((state) => state.products.items);
-    const filters = useSelector(state => state.filters);
-   
 
-const maxDisplayedPages = 6; // максимальна кількість кнопок для відображення
-const firstDisplayedPages = 0; // кількість кнопок з початку
-const lastDisplayedPages = 1;
-    const handlePageClick = (pageNumber) => {
-        setCurrentPage(pageNumber + 1);
-      };
+// const [currentPage, setCurrentPage] = useState(1);
+// const productsPerPage = 1;
+// const products = useSelector((state) => state.products.items);
+// const filters = useSelector((state) => state.filters);
 
+// const handlePageClick = (pageNumber) => {
+//   setCurrentPage(pageNumber);
+// };
 
-      const numberOfPages = Math.ceil(products.length / productsPerPage);
-      const pageNumbers = [];
-      let startPage = currentPage - Math.floor(maxDisplayedPages / 2) + firstDisplayedPages;
-let endPage = currentPage + Math.floor(maxDisplayedPages / 2) + lastDisplayedPages;
-if (startPage < firstDisplayedPages) {
-  startPage = firstDisplayedPages;
-  endPage = startPage + maxDisplayedPages - 1;
-}
-if (endPage > numberOfPages - lastDisplayedPages) {
-  endPage = numberOfPages - lastDisplayedPages;
-  startPage = endPage - maxDisplayedPages + 1;
-}
-for (let i = startPage; i <= endPage; i++) {
+// const startIndex = (currentPage - 1) * productsPerPage;
+// const endIndex = startIndex + productsPerPage;
+// const currentProducts = products.slice(startIndex, endIndex);
+
+// const numberOfPages = Math.ceil(products.length / productsPerPage);
+// const maxDisplayedPages = 2; // Максимальна кількість відображуваних сторінок
+
+// let startPage = currentPage - Math.floor(maxDisplayedPages / 2);
+// let endPage = currentPage + Math.floor(maxDisplayedPages / 2);
+
+// if (startPage < 1) {
+//   startPage = 1;
+//   endPage = startPage + maxDisplayedPages - 1;
+// }
+
+// if (endPage > numberOfPages) {
+//   endPage = numberOfPages;
+//   startPage = endPage - maxDisplayedPages + 1;
+//   if (startPage < 1) {
+//     startPage = 1;
+//   }
+// }
+
+// const pageNumbers = [];
+// for (let i = startPage; i <= endPage; i++) {
+//   pageNumbers.push(i);
+// }
+const [currentPage, setCurrentPage] = useState(1);
+const productsPerPage = 10;
+const products = useSelector((state) => state.products.items);
+const filters = useSelector((state) => state.filters);
+
+const handlePageClick = (pageNumber) => {
+  setCurrentPage(pageNumber);
+};
+
+const startIndex = (currentPage - 1) * productsPerPage;
+const endIndex = startIndex + productsPerPage;
+const currentProducts = products.slice(startIndex, endIndex);
+
+const numberOfPages = Math.ceil(products.length / productsPerPage);
+const maxDisplayedPages = 5; // Максимальна кількість відображуваних сторінок
+const firstDisplayedPages = Math.max(currentPage - Math.floor(maxDisplayedPages / 2), 1);
+const lastDisplayedPages = Math.min(firstDisplayedPages + maxDisplayedPages - 1, numberOfPages);
+
+const pageNumbers = [];
+for (let i = firstDisplayedPages; i <= lastDisplayedPages; i++) {
   pageNumbers.push(i);
 }
-
-// відображаємо останні сторінки
-for (let i = numberOfPages - lastDisplayedPages; i < numberOfPages; i++) {
-  if (i >= firstDisplayedPages && !pageNumbers.includes(i)) {
-    pageNumbers.push(i);
-  }
-}
-  const startIndex = currentPage * productsPerPage;
-  const endIndex = startIndex + productsPerPage;
-  const currentProducts = products.slice(startIndex, endIndex);
-
     return(
         <>
         
@@ -76,7 +94,7 @@ for (let i = numberOfPages - lastDisplayedPages; i < numberOfPages; i++) {
         <YouLikeIt/>
         <DiscountAndAction/>
         <ViewProductCatalog products={productsAll}/>
-        <Footer/>
+        
         </>
     )
 }

@@ -62,6 +62,10 @@ export default function HeroAdm() {
             name: "Фото",
             transliter: "foto",
         },
+        {
+            name: "Вікова група",
+            transliter: "yearGroup",
+        },
        
     ]
 

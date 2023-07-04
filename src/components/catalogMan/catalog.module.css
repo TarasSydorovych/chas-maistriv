@@ -8,6 +8,25 @@
     padding-top: 40px;
     padding-bottom: 40px;
 }
+.manTextWrapUp{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.manTextWrapUpSmall{
+    width: 90%;
+    height: auto;
+}
+.manTextWrapUpP{
+    color: #3E3092;
+font-size: 24px;
+font-family: Ubuntu;
+font-style: normal;
+font-weight: 700;
+line-height: 122%;
+}
 .wrapFirstManus{
     width: 80%;
     height: auto;

@@ -4,7 +4,7 @@ import {HandySvg} from 'handy-svg';
 import iconSrc from '../../svg/pta.svg';
 import arrow from '../../svg/arrow.svg';
 
-export default function Banner() {
+export default function Banner({windowDimensions}) {
 
 
 
@@ -23,11 +23,20 @@ export default function Banner() {
 
         </div>
         <div className='bannerIcon'>
+            {windowDimensions &&
         <HandySvg 
                     src={iconSrc}
                     width="972.27"
         height="512.83"
                     />
+                }
+                  {!windowDimensions &&
+        <HandySvg 
+                    src={iconSrc}
+                    width="381"
+        height="201"
+                    />
+                }
         </div>
        </div>
        <HandySvg 

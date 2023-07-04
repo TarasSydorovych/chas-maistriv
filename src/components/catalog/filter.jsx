@@ -1,5 +1,5 @@
 
-import './catalog.css'
+import css from './catalog.module.css'
 import {HandySvg} from 'handy-svg';
 import iconSrc from '../../svg/xFilter.svg';
 import { MyContext } from '../../App';
@@ -11,21 +11,21 @@ export default function Filter({filters}) {
 
 
     return(
-        <div className="filterWrap">
-            <h2 className='allBoksFilterH2'>
+        <div className={css.filterWrap}>
+            <h2 className={css.allBoksFilterH2}>
                 Всі книги
             </h2>
             {filters &&
             <>
-<div className='filterSetiningWrap'>
+<div className={css.filterSetiningWrap}>
     {filters.map((el, index) => {
-       return <div key={index} className='filterSetining'>
-        <p className='setiningsFilterName'>
+       return <div key={index} className={css.filterSetining}>
+        <p className={css.setiningsFilterName}>
         {el.value}
         </p>
         <HandySvg 
                     src={iconSrc}
-                    className="delSetiningsFilter"
+                    className={css.delSetiningsFilter}
                     width="16"
         height="16"
                     />
@@ -34,7 +34,7 @@ export default function Filter({filters}) {
     
 </div>
 
-<button className='clearFilter'>
+<button className={css.clearFilter}>
 Скинути фільтр
 </button>
 </>

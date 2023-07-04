@@ -5,7 +5,7 @@ import iconSrc from '../../img/withLeg.png';
 import arrowImp from '../../img/arrowDownPick.png'
 import you from '../../svg/youVideo.svg'
 
-export default function VideoTitle() {
+export default function VideoTitle({windowDimensions}) {
 
 
 
@@ -27,6 +27,7 @@ export default function VideoTitle() {
     <h2 className={css.joinH2}>Підписуйтесь на нас на Youtube</h2>
     <a href='https://www.youtube.com/@chasmaistriv' target='_blanck'>
     <div className={css.youWrap}>
+        
     <HandySvg 
                     src={you}
                   

@@ -1,0 +1,62 @@
+.aboutWrapAll{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.smallWrapAbout{
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.aboutCompanyH1{
+    color: #3E3092;
+font-size: 34px;
+font-family: Ubuntu;
+font-style: normal;
+font-weight: 700;
+line-height: 111%;
+}
+.wpaPicAbout{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.paragInWrap{
+    color: #000;
+font-size: 24px;
+font-family: Ubuntu;
+font-style: normal;
+font-weight: 500;
+line-height: 168%;
+width: 50%;
+}
+.paragInWrapBig{
+    color: #000;
+    font-size: 24px;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 168%;
+}
+.imgAboutWrap{
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(50% - 10px);
+    height: auto;
+}
+.imgAbout{
+    width: 100%;
+    height: auto;
+}
+.aboutSpan{
+    color: #3FAC8C;
+}

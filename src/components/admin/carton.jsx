@@ -82,6 +82,7 @@ export default function Carton() {
             newObj.secondUid = uuidv4();
             newObj.firsRating = '';
             newObj.secondRating = '';
+            newObj.data = serverTimestamp();
       
             const frankDocRef = doc(db, 'rating', newObj.uid);
             await setDoc(frankDocRef, newObj);

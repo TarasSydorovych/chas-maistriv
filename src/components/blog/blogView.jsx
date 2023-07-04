@@ -1,9 +1,10 @@
 import css from './blog.module.css'
 import YouTube from 'react-youtube';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
-export default function BlogView({blogData}){
+export default function BlogView({blogData, windowDimensions}){
 
     const [showCount, setShowCount] = useState(6);
 
@@ -19,11 +20,16 @@ export default function BlogView({blogData}){
     <div className={css.bigVideoWrapSmall}>
    
    <div className={css.bigWrap}>
+      {windowDimensions && 
+       <img className={css.bigImgBlog} src={blogData[0].photo}/>
+      }
+       {!windowDimensions && 
+       <YouTube videoId="rg-wgk2_4FQ" opts={{ width: '300px', height: '200px' }} />
+      }
       
-       <YouTube videoId="rg-wgk2_4FQ" opts={{ width: '758px', height: '454px' }} />
        <div className={css.someTextWrap}>
-               <h1 className={css.videoViewvH1}>Дитина не хоче читати. Що робити?</h1>
-               <p className={css.bigVideoP}>Наші відеоогляди допоможуть Вам ближче ознайомитися з нашими книгами та обрати саме ті, які будуть Вам найбільше до душі! Цей відеоогляд покликаний обрати книгу саме для дітей 3х та 4х років.</p>
+               <h1 className={css.videoViewvH1}>{blogData[0].zag}</h1>
+               <p className={css.bigVideoP}>{blogData[0].chortDesc}</p>
            </div>
        </div>
        <div className={css.smallVideoWrap}>
@@ -32,11 +38,24 @@ export default function BlogView({blogData}){
            {blogData.map((el, index) => {
                 if (index < showCount) {
                   return (
+                   
                     <div key={index} className={css.smalVideoPro}>
-                      <YouTube videoId={el.videoId} opts={{ width: '376px', height: '224px' }} />
+                       {windowDimensions &&
+                       <div className={css.imgWrapBorder}>
+                         <Link to={`/blog/${el.uid}`}>
+                      <img src={el.photo} className={css.smallImgBlog} />
+                      </Link>
+                      </div>
+                       }
+                         {!windowDimensions &&
+                         <div className={css.imgWrapBorder}>
+                      <img src={el.photo} className={css.smallImgBlog} />
+                      </div>
+                       }
                       <p className={css.videoName}>{el.zag}</p>
                       <p className={css.videoNameDesc}>{el.chortDesc}</p>
                     </div>
+                 
                   );
                 }
                 return null;

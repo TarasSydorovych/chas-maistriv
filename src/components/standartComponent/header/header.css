@@ -55,6 +55,7 @@ height: 33.56px;
     justify-content: space-between;
 }
 .socialBlock{
+    margin-top: 23px;
     width: 32.6px;
 height: 32.01px;
 display: flex;
@@ -229,6 +230,8 @@ color: #3E3092;
     justify-content: flex-start;
     flex-wrap: wrap;
     background: #F7CB25;
+    position: absolute;
+    z-index: 10;
 }
 .firstBlockWrap{
     width: 19.5%;
@@ -279,10 +282,6 @@ height: auto;
     flex-direction: column;
     background: white;
     height: calc(263px - 28px - 32px);
-   
-   
-    
-    
     padding-left: 26px;
     padding-top: 28px;
     padding-bottom: 32px;
@@ -379,7 +378,7 @@ margin-bottom: 18px;
 flex-direction: row;
 justify-content: center;
 align-items: center;
-width: 227px;
+width: calc(227px - 6px);
 height: 60px;
 border: 3px solid #3E3092;
 font-family: 'Ubuntu';
@@ -388,6 +387,12 @@ font-weight: 500;
 font-size: 20px;
 line-height: 117.5%;
 color: #3E3092;
+}
+.wrapbuttonInMobile{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
 }
 .buttonAllBooksFilterLink{
     text-decoration: none;
@@ -434,8 +439,49 @@ line-height: 117.5%;
 cursor: pointer;
 }
 
-
-
+.burger{
+    cursor: pointer;
+}
+.burgerWrap{
+    
+    position: fixed;
+    top: 102px;
+    background: #3E3092;
+    width: 100%;
+    height: 100vh;
+    z-index: 3;
+}
+.smallWrap{
+    width: calc(100% - 46px);
+    height: auto;
+    padding-left: 46px;
+    position: relative;
+}
+.iconFromBurger{
+    position: absolute;
+    left: 85%;
+    top: 20px;
+    cursor: pointer;
+}
+.burgerList{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 470px;
+    padding-left: 0;
+    margin-top: 43px;
+}
+.burgerListLi{
+    font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 20px;
+line-height: 117.5%;
+color: #FFFFFF;
+text-decoration: none;
+list-style-type: none;
+}
 @media only screen and (max-width: 600px) and (min-width: 300px) {
     .sunWrap{
         width: 100%;
@@ -454,6 +500,11 @@ cursor: pointer;
       clip-path: none;
         
     }
+    .instaIcon{
+        width: 34.66px;
+            height: 33.65px;
+            color: #3E3092;
+    }
     .numberWrap{
         display: flex;
         align-items: center;
@@ -463,6 +514,71 @@ cursor: pointer;
         background: white;
         border-radius: 50%;
     }
+    .wrapSocial{
+        width: 150px;
+    height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .socialBlock{
+        width: 56.85px;
+    height: 55.82px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    }
+    .secondBlockWrapFilterProd:nth-child(5n+1){
+        width: calc(90% - 30px); 
+        margin-top: 0px;
+    }
+    .secondBlockWrapFilterProd:nth-child(5n+2){
+        margin-left: 0;
+        width: calc(90% - 30px); 
+        margin-top: 0px;
+    }
+    .secondBlockWrapFilterProd:nth-child(5n+3){
+        width: calc(90% - 30px); 
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+    .secondBlockWrapFilterProd:nth-child(5n+4){
+        width: calc(90% - 30px);
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+    .secondBlockWrapFilterProd:nth-child(5n+5) {
+      width: calc(90% - 30px); 
+      margin-left: 0px;
+      margin-top: 0px;
+    }
+    .buttonAllBooksFilter{
+        width: calc(100% - 6px);
+        margin-top: 20px;
+    }
+    .buttonWatch{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+    .buttonWatcha{
+        background: #3E3092;
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        color: #FFFFFF;
+        line-height: 117.5%;
+        cursor: pointer;
+        text-decoration: none;
+    }
+   
    }
   @media only screen and (max-width: 700px) and (min-width: 479px) {
     .sunWrap{

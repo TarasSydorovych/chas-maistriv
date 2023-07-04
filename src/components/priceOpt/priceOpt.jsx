@@ -20,7 +20,7 @@ import notRotatePic from '../../img/notRotatePic.png'
 import soonPicProd from '../../img/soonPicProd.png'
 import ProductInOpt from './productInOpt'
 import LitShow from '../standartComponent/litShow/litShow'
-export default function PriceOpt() {
+export default function PriceOpt({windowDimensions}) {
     const [productsData, setProductsData] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
 
@@ -170,6 +170,8 @@ useEffect(() => {
             {/* Верхній блок з пташками */}
 <div className={css.titleWrap}>
     <h3 className={css.h3Title}>На цій сторінці зручно робити гуртові замовлення</h3>
+    {windowDimensions &&
+    <>
     <div className={css.birdWrapFirst}>
         <div className={css.birdWrap}>
 <img src={optBirdFirst}/>
@@ -206,6 +208,15 @@ useEffect(() => {
 </div>
 
     </div>
+    </>
+    }
+      {!windowDimensions &&
+      <>
+        <div className={css.birdWrap}>
+<img src={optBirdFirst}/>
+<p className={css.birdPDesc}>В графі “замовлення” проставте кількість </p>
+</div>
+      </>}
 
 </div>
   {/* Верхній блок з пташками */}
@@ -254,7 +265,7 @@ useEffect(() => {
         </div>
     </div>
         {/* Блок акційний */}
-            {/* Блок вже скоро */}
+            {/* Блок вже скоро 
             <div className={css.blockSoonWrap}>
                 <h5 className={css.soonH5}>Вже скоро</h5>
                 <div className={css.blockSoonProd}>
@@ -291,7 +302,8 @@ useEffect(() => {
                
                 </div>
             </div>
-             {/* Блок Радимо прочитати */}
+            */}
+             {/* Блок Радимо прочитати
              <div className={css.needReadWrap}>
                 <h5 className={css.needReadH5}>Радимо прочитати</h5>
                 <p className={css.needReadP}>“Час майстрів” перечитує багацько рукописів, є членом журі “Коронації слова” та «Корнійчуковської премії». Ми обираємо тексти, що читаються на одному подиху, написані добротною мовою, з урахування психологічних потреб дітей та головне відповідають нашій місії (інтерактив перекидає на сторінку опису місії компанії). З цих рукописів ми творимо книгу як витвір мистецтва. Нами вже зроблена велика робота й ми відповідаємо за якість рекомендованих нами книг.</p>
@@ -299,6 +311,7 @@ useEffect(() => {
                    
                 </div>
              </div>
+             */}
               {/* Блок найкраще дітям */}
               {productsData.map((item, index) => {
                
@@ -336,7 +349,7 @@ useEffect(() => {
                 </div>
                  {/* Блок літ шоу */}
                  <LitShow/>
-            <Footer/>
+         
         </div>
     )
 

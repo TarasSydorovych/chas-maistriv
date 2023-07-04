@@ -110,7 +110,7 @@ const Question = () => {
     <div className="questionWrap">
       {surveys.length > 0 && (
         <div className="questionWrapSmall">
-          <h1 className="questionSinc">{surveys[0].title}</h1>
+          <h1 className="questionSinc">Яка ваша думка?</h1>
           <div className="wrapBlockAw">
             <div className="pictureAnswerWrap">
               <img src={surveys[0].imageURL} className="pictureAnswer" />

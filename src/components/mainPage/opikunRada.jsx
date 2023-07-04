@@ -1,16 +1,22 @@
 import pictureBook from '../../img/opicunBooK.png'
-
+import PopUpRada from '../popUp/popUpRada';
+import { useState } from 'react';
 
 
 
 export default function OpikunRada() {
 
-
+    const [popUp, setPopUp] = useState(false);
+    const handleMouseEnter = () => {
+        setPopUp(!popUp);
+      };
+    
+   
 
     return(
         <div className='newBooksWrapBlock'>
 <div className='GreenBlockMal'>
-<h1 className='HelpCreateBooks'>Ти можеш нам допомогти створити книгу!</h1>
+<h1 className='HelpCreateBooks'>Ти можеш допомогти нам створити книгу!</h1>
 
 
 
@@ -18,13 +24,14 @@ export default function OpikunRada() {
                 
                 <h1 className='nameBooksNewBooksMal'>Ти і Малевич</h1>
                 <p className='descriptionOpikunBook'>«Ти і Малевич» — це книжка-альбом із творчими завданнями, наліпками, розмальовками, яка дитині 5–13 років дає можливість уявити себе учнем чи ученицею Казимира Малевича. Кожен розгорт книжки присвячено одній із головних ідей художника, що спонукає не тільки читати й пізнавати, а й самостійно створити свою версію «Чорного квадрата», супрематичну композицію, проєкт планіту для земляніта, відкрити першоелементи, безпредметність та зрозуміти персонажів картин Малевича, розмалювавши їх по-своєму.</p>
-
-<button className='whoyIsOpRada'>
+                {popUp &&
+<PopUpRada/>}
+<button className='whoyIsOpRada' onClick={handleMouseEnter}>
 Що таке опікунська рада
+
 </button>
+
 </div>
-
-
 
 
 

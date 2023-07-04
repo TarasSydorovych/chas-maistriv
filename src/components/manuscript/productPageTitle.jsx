@@ -52,6 +52,12 @@ export default function ProductPageTitle({oneProd}) {
 
              </div>
              <div className={css.productTitleWrap}>
+             <p className='autorAndHudP'>
+                    Дітям: <span className='autorAndHudPSpan'>{oneProd.yearGroup}</span>
+                    </p>
+                    <p className='autorAndHudP'>
+                    Доступ до повного тексту: <span className='autorAndHudPSpan'>{oneProd.rating}</span>
+                    </p>
                 <h1 className={css.nameBook}>{oneProd.bookName}</h1>
                 <div className={css.wrapHud}>
                 <p className={css.autor}>Автор:&nbsp;<span className={css.autorNameSpan}>{oneProd.textAutor} &nbsp;</span></p>

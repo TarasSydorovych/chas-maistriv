@@ -21,7 +21,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-export default function Product({products, setAddressChanged, addressChanged, setLogin}) {
+export default function Product({products, setAddressChanged, addressChanged, setLogin, windowDimensions}) {
   const [reloadP, setReloadP] = useState(true);
   const [isOrdered, setIsOrdered] = useState(false);
   const [hasReviewed, setHasReviewed] = useState(false);
@@ -88,7 +88,6 @@ useEffect(() => {
       for(let i = 0; i < productsList.length; i++){
         if(productsList[i].productId === oneProd?.uid){
           arr.push(productsList[i])
-          console.log('aaaaaaaaaaaaaaaaaaa',arr);
         }
       }
       if(isMounted) {
@@ -98,6 +97,17 @@ useEffect(() => {
 
     let isMounted = true;
     if (haveProd && oneProd) {
+      document.title = oneProd.ceoTitle; // Встановлюємо заголовок сторінки
+
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', oneProd.coeDescription); // Встановлюємо опис сторінки
+    } else {
+      const newMetaDescription = document.createElement('meta');
+      newMetaDescription.setAttribute('name', 'description');
+      newMetaDescription.setAttribute('content', oneProd.coeDescription);
+      document.head.appendChild(newMetaDescription); // Створюємо та вставляємо новий елемент <meta> з описом сторінки
+    }
       fetchProducts();
     }
 
@@ -162,8 +172,8 @@ const enterUser = () => {
       
 <ProductPageTitle oneProd={oneProd}/>
 <Description oneProd={oneProd}/>
-<WhyNeedRead/>
-<VideoBlock/>
+<WhyNeedRead oneProd={oneProd}/>
+<VideoBlock windowDimensions={windowDimensions}/>
 
 <Hero/>
 <HeroPage oneProd={oneProd}/>

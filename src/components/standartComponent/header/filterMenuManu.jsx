@@ -17,12 +17,12 @@ import {
     updateDoc,
     collection,
   } from "firebase/firestore";
-import { Link } from "react-router-dom";
-export default function FilterMenuManu() {
+import { Link, useNavigate} from "react-router-dom";
+export default function FilterMenuManu({windowDimensions, setAllManus}) {
    // const { selectedFilters, setSelectedFilters } = useContext(MyContext);
     const [selectedFilters, setSelectedFilters] = useState([]);
     const dispatch = useDispatch();
-    
+    const navigate = useNavigate();
 
 
 const objFilter = [
@@ -300,7 +300,16 @@ const handleFilterClick = (filter) => {
       dispatch(addFilter(filter));
     }
   };
-
+  const closeMenu = () => {
+    setAllManus(false)
+    
+    navigate('/manuscriptCatalog')
+  }
+  const allBooksClose = () => {
+    dispatch(fetchProductsAll())
+    setAllManus(false)
+    navigate('/manuscriptCatalog')
+  }
 
     return(
         <div className="filterMenuWrapHeadr">
@@ -343,25 +352,26 @@ const handleFilterClick = (filter) => {
                 
 
             
-
+{windowDimensions &&
+<>
     <div className="twoButtonAllWrap">
-<div className="buttonAllBooksFilter" onClick={() => dispatch(fetchProductsAll())}>
-<Link className="buttonAllBooksFilterLink" to="/manuscriptCatalog">
+<div className="buttonAllBooksFilter" onClick={allBooksClose}>
+
 Усі рукописи
-</Link>
+
 </div>
 <div className="buttonAllBooksFilter" onClick={() => setSelectedFilters([])}>
 Скинути
 </div>
     </div>
     <div className="oneButtonAllWrap">
-<div className="buttonWatch" >
-    <Link className="buttonWatch" to="/manuscriptCatalog">
-Дивитися</Link>
+<div className="buttonWatch" onClick={closeMenu}>
+    
+Дивитися
 </div>
 
     </div>
-
+    </>}
 
 
         </div>

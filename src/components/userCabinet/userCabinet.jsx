@@ -5,10 +5,13 @@ import { collection, query, where, getDocs, doc, getDoc, updateDoc } from 'fireb
 import authPic from '../../img/userPic.png'
 import iconProp from '../../img/iconProp.png'
 import Group16 from '../../img/Group16.png'
+import Group17 from '../../img/smallGroup.png'
+import TelegramLoginButton from 'react-telegram-login';
 import facForUs from '../../img/facForUs.png'
 import mailForSoc from '../../img/mailForSoc.png'
 import tgUser from '../../img/tgUser.png'
 import { onSnapshot} from 'firebase/firestore';
+
 import whatUser from '../../img/whatUser.png'
 import { useState, useEffect } from "react";
 import WaitProd from "./waitProd";
@@ -20,7 +23,8 @@ import { getAuth, signInWithPhoneNumber, signOut , onAuthStateChanged } from "fi
 import elefant from '../../img/elefant.png'
 import ViewProductCatalog from "../catalog/viewProductCatalog";
 import WaitProdLike from "./waitProdLike";
-export default function UserCabinet({products, setAddressChanged, addressChanged}) {
+
+export default function UserCabinet({products, setAddressChanged, addressChanged, windowDimensions}) {
 
     const navigate = useNavigate();
     const [selectedText, setSelectedText] = useState(1);
@@ -31,46 +35,67 @@ export default function UserCabinet({products, setAddressChanged, addressChanged
     const [needRe, setNeedRe] = useState(false);
     const apiKey = 'f579aac88b980dff3f819958ce1cbca6';
     const apiUrl = 'https://api.novaposhta.ua/v2.0/json/';
-    
+    const [telegramUserId, setTelegramUserId] = useState('');
     const [waitProdComponents, setWaitProdComponents] = useState([]);
+
+   
+    async function checkTelegramSubscription(user) {
+      const botToken = '6266005117:AAHxzv2HFvvbNQ1CkPCumJg7tvPGDdNPusY';
+      const channelId = '-1001865626987';
+      
+      try {
+        // Виклик Telegram Bot API для отримання інформації про підписку користувача
+        const response = await axios.get(`https://api.telegram.org/bot${botToken}/getChatMember`, {
+          params: {
+            chat_id: channelId,
+            user_id: '1476312771',
+          },
+        });
+      
+        if (response.data.ok && response.data.result && response.data.result.status === 'member') {
+          console.log('true Chanel')
+          return true; // Користувач підписаний на канал
+        } else {
+          console.log('false Chanel')
+          return false; // Користувач не підписаний на канал
+        }
+      } catch (error) {
+        console.error('Помилка при виклику Telegram Bot API:', error);
+        return false; // Помилка при виклику Telegram Bot API
+      }
+    }
     
-    // useEffect(() => {
-    //   const trackPackageByTtn = async () => {
-    //     try {
-    //       const response = await axios.post(apiUrl, {
-    //         apiKey: apiKey,
-    //         modelName: 'TrackingDocument',
-    //         calledMethod: 'getStatusDocuments',
-    //         methodProperties: {
-    //           Documents: [
-    //             {
-    //               DocumentNumber: ttnNumber,
-    //             },
-    //           ],
-    //         },
-    //       });
-  
-    //       const status = response.data.data[0].Status;
-  
-    //       console.log('Статус посилки:', status);
-    //     } catch (error) {
-    //       console.error('Помилка при відстеженні посилки:', error.message);
-    //     }
-    //   };
-  
-    //   trackPackageByTtn();
-    // }, []);
-    // const parseChoices = () => {
-    //     const parsedData = orders.map((order) => {
-    //       const choice = JSON.parse(order.choice);
-    //       return { ...order, choice };
-    //     });
-    //     setParsedChoices(parsedData);
-    //     console.log(
-    //         'розпарсені товари',parsedData
-    //     )
-    //   };
-  
+
+    async function getTelegramUserId() {
+      try {
+        const botToken = '6266005117:AAHxzv2HFvvbNQ1CkPCumJg7tvPGDdNPusY';
+        const response = await axios.get(`https://api.telegram.org/bot${botToken}/getMe`);
+        const telegramUserId = response.data.result;
+        return telegramUserId;
+      } catch (error) {
+        console.error('Error:', error);
+        throw error;
+      }
+    }
+   
+
+    const handleTelegramResponse = (response) => {
+      // Обробка отриманих даних від Telegram
+      console.log('Telegram response:', response);
+      // Виконайте необхідні дії з отриманими даними, наприклад, реєстрація користувача
+    };
+
+    // Функція, що викликається при кліку на кнопку підписки
+    async function handleSubscribeClick() {
+      try {
+        const telegramUserId = await getTelegramUserId();
+        console.log('Telegram User ID:', telegramUserId);
+    
+        // Виконайте інші дії після отримання Telegram ID, наприклад, збереження у базі даних або відправка на сервер.
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
     const handleLogout = () => {
 
       
@@ -152,102 +177,7 @@ export default function UserCabinet({products, setAddressChanged, addressChanged
     const handleBlockClick = (text) => {
        setSelectedText(text);
     };
-    // useEffect(() => {
-    //     const fetchOrdersByUser = async () => {
-    //       try {
-    //         const ordersRef = collection(db, 'orders');
-    //         const q = query(ordersRef, where('user', '==', user.uid));
-    //         const querySnapshot = await getDocs(q);
     
-    //         const ordersData = [];
-    //         querySnapshot.forEach((doc) => {
-    //           ordersData.push({ id: doc.id, ...doc.data() });
-    //         });
-    
-    //         // Встановлюємо отримані замовлення у стан компонента
-    //         console.log('всі товари користувача', ordersData);
-    //         setOrders(ordersData);
-    //         parseChoices();
-    //       } catch (error) {
-    //         console.error('Помилка при отриманні замовлень:', error);
-    //       }
-    //     };
-    
-    //     // Викликаємо функцію для отримання замовлень користувача
-    //     fetchOrdersByUser();
-    //   }, [user]);
-    // useEffect(() => {
-    //     const fetchOrdersByUser = async () => {
-    //       try {
-    //         const ordersRef = collection(db, 'orders');
-    //         const q = query(ordersRef, where('user', '==', user.uid));
-    //         const querySnapshot = await getDocs(q);
-    
-    //         const parsedData = [];
-    //         querySnapshot.forEach((doc) => {
-    //           const order = { id: doc.id, ...doc.data() };
-    //           const choice = JSON.parse(order.choice);
-    //           choice.forEach((tovar) => {
-    //             parsedData.push({ order, tovar });
-    //           });
-    //         });
-    
-    //         setOrders(parsedData);
-    
-    //             const waitProdComponents = parsedData.map(({ order, tovar }, index) => (
-    //             <WaitProd key={index} el={order} tovar={tovar} />
-    //             ));
-    
-    //         setWaitProdComponents(waitProdComponents);
-    //         console.log('waitProdComponents', parsedData)
-    //       } catch (error) {
-    //         console.error('Помилка при отриманні замовлень:', error);
-    //       }
-    //     };
-    
-    //     fetchOrdersByUser();
-    //   }, [user]);
-  //Це робочий ефектіііііііііііііііііііііііііііііііііііііііііііііііііііііііі
-    // useEffect(() => {
-    //     const fetchOrdersByUser = async () => {
-    //       try {
-    //         const ordersRef = collection(db, 'orders');
-    //         const q = query(ordersRef, where('user', '==', user.uid));
-    //         const querySnapshot = await getDocs(q);
-      
-    //         const parsedData = [];
-    //         querySnapshot.forEach((doc) => {
-    //           const order = { id: doc.id, ...doc.data() };
-    //           const choice = JSON.parse(order.choice);
-    //           choice.forEach((tovar) => {
-    //             parsedData.push({ order, tovar });
-    //           });
-    //         });
-      
-    //         let filteredData;
-     
-    //         if (selectedText === 2) {
-    //             console.log('selectedText', selectedText)
-    //           filteredData = parsedData.filter(({ order }) => order.status === 'Очікує підтвердження');
-    //         }else{
-    //             filteredData = parsedData.filter(({ order }) => order.status !== 'Очікує підтвердження');
-    //         }       
-      
-    //         setOrders(filteredData);
-      
-    //         const waitProdComponents = filteredData.map(({ order, tovar }, index) => (
-    //           <WaitProd key={index} el={order} tovar={tovar} />
-    //         ));
-      
-    //         setWaitProdComponents(waitProdComponents);
-    //         console.log('waitProdComponents', waitProdComponents);
-    //       } catch (error) {
-    //         console.error('Помилка при отриманні замовлень:', error);
-    //       }
-    //     };
-      
-    //     fetchOrdersByUser();
-    //   }, [user, selectedText]);
       //Це робочий ефектіііііііііііііііііііііііііііііііііііііііііііііііііііііііі
       useEffect(() => {
         const fetchOrdersByUser = async () => {
@@ -323,7 +253,7 @@ export default function UserCabinet({products, setAddressChanged, addressChanged
       { id: 3, text: 'Бажане' },
     ];
    const onClickToElefant = () => {
-    alert("Нараховуються слони автоматчно за наступною логікою: З’являється відгук під певним товаром – запускається программа нарахування с слонів -програмка перевіряє минулі замовлення користувача, якщо відгук під книжкою, що користувач купував, тоді програмка автоматично нараховує слони в об’єму 5%,  від ціни яку сплатив користувач.")
+    alert("Слон дорівнює 1 грн. Слони нараховуються за ваші відгуки про наші книги. Ваші відгуки важливі, бо вони допомагають в просуванні книги в яку віримо ми і ви. Кількість слонів яка вам нараховується залежить від ціни і об'єму книги. Щоб отримати слони ви маєте розмістити відгук під книжкою яку ви раніше придбали. Слони не нараховуються автоматично за відгук, якщо ви не купували книгу на яку написали відгук на нашому сайті. Але вам можуть нарахуватись слони вручному режимі, якщо такий відгук підтвердить адміністратор сайта. Для цього ви повинні відправити лист адміністратору з посиланням на відгук.")
    }
 
     return(
@@ -331,6 +261,10 @@ export default function UserCabinet({products, setAddressChanged, addressChanged
             
 <div className={css.bleuLabel}>
 <div className={css.blueLabelWnutr}>
+
+<TelegramLoginButton dataOnauth={handleTelegramResponse} botName="chasTest_bot" />
+<button onClick={checkTelegramSubscription}>telegram</button>
+<button onClick={handleSubscribeClick}>Користува</button>
     <button onClick={handleLogout}>вийти</button>
 <p className={css.firstTextInBlock}>Наша місія — допомогти батькам ростити дітей людьми, які вміють бути щасливими</p>
 <p className={css.firstTextInBlock}>Наша мета — створювати якісні дитячі книги, від яких важко відірватися, та які збагачують.</p>
@@ -355,8 +289,12 @@ export default function UserCabinet({products, setAddressChanged, addressChanged
             </div>
            </div>
 </div>
-
+{windowDimensions &&
 <img src={Group16} className={css.iconPicBird}/>
+}
+{!windowDimensions &&
+<img src={Group17} className={css.iconPicBird}/>
+}
 
         </div>
         <div className={css.ourInformation}>
@@ -460,7 +398,6 @@ export default function UserCabinet({products, setAddressChanged, addressChanged
 <ViewProductCatalog products={products} setAddressChanged={setAddressChanged}/>
 
 
-<Footer/>
         </div>
     )
 }

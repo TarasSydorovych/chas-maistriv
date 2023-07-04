@@ -43,7 +43,7 @@ color: #3E3092;
 .chousBooksSelect{
     display: flex;
     position: relative;
-    width: 362px;
+    width: 80%;
     height: 56px;
 margin-top: 25px;
 margin-bottom: 20px;
@@ -207,4 +207,45 @@ color: #FFFFFF;
 cursor: pointer;
 align-self: center;
 margin-top: 64px;
+}
+
+@media only screen and (max-width: 600px) and (min-width: 300px) {
+    .totalVideoWrap{
+        width: calc(100% - 6%);
+        padding-left: 3%;
+        padding-right: 3%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .svgForVideo{
+        width: 295.686px;
+        height: 280;
+    }
+    .bigWrap{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 64px;
+    }
+    .someTextWrap{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        align-self: flex-start;
+        margin-left: 0px;
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 700px) and (min-width: 479px) {
+
+}
+@media only screen and (max-width: 1288px) and (min-width: 1024px) { 
+
+}
+@media only screen and (max-width: 1024px) and (min-width: 701px) {
+
 }

@@ -5,11 +5,8 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/
 import { v4 as uuidv4 } from 'uuid';
 import {auth, db} from '../../firebase'
 import { doc, setDoc, addDoc, collection, serverTimestamp } from "firebase/firestore"; 
-
 export default function AddBooks() {
     const storage = getStorage();
-
-
     const objList = [
         {
             name: "ISBN",
@@ -144,6 +141,26 @@ export default function AddBooks() {
         {
             name: "Підбірки книг",
             transliter: "pidbirkuBoo",
+        },
+        {
+            name: "Чому варто читати 1",
+            transliter: "whyNeedReadO",
+        },
+        {
+            name: "Чому варто читати 2",
+            transliter: "whyNeedReadT",
+        },
+        {
+            name: "Чому варто читати 3",
+            transliter: "whyNeedReadTH",
+        },
+        {
+            name: "Лауреат Корнійчуковської премії",
+            transliter: "laureat",
+        },
+        {
+            name: "Книга року",
+            transliter: "bookYear",
         },
         {
             name: "Категорія за ціною",
@@ -290,9 +307,6 @@ uploadTask2.on('state_changed',
   console.log('error uploading file2', error);
 }
 );
-
-
-
 uploadTask1.on('state_changed', async () => {
     const downloadURL1 = await getDownloadURL(uploadTask1.snapshot.ref);
     uploadTask2.on('state_changed', async () => {
@@ -304,41 +318,27 @@ uploadTask1.on('state_changed', async () => {
       await setDoc(frankDocRef, newObj);
     });
   });
-
-
-        
-
-
-
       }else if(formData.fotoRozgort.name){
         console.log('нема імя')
       }
-
-      // Log the form data to the console
-
-      
-
-      
-    };
-
-
-
-    return(
+  };
+return(
         <div className={css.WrapAdm}>
-            <form onSubmit={handleFormSubmit}>
+            <h1 className={css.addBooksAdmH1}>Для додавання книги заповніть всі дані</h1>
+            <form className={css.formAddBook} onSubmit={handleFormSubmit}>
             {objList.map((el, index) => {
                 if(el.name === 'фото' || el.name === 'фото розгорток'){
                     return  <div key={index} className={css.wrapSmallList}>
 
 <p className={css.paramBooks}>{el.name}</p>
- <input type="file" name={el.transliter} id='nameProp'/>
+ <input type="file" name={el.transliter}  id='nameProp' />
 
 </div>
                 }else{
                     return  <div key={index} className={css.wrapSmallList}>
 
                     <p className={css.paramBooks}>{el.name}</p>
-                     <input type="text" name={el.transliter} id='nameProp'/>
+                     <input type="text" className={css.inputBooks} name={el.transliter} id='nameProp'/>
                     
                     </div>
                 }
@@ -346,7 +346,7 @@ uploadTask1.on('state_changed', async () => {
 
             })}
                 
-<button type='submit'>Додати книгу</button>
+<button className={css.addBookButton} type='submit'>Додати книгу</button>
 
 </form>
 

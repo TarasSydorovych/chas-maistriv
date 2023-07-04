@@ -48,7 +48,7 @@ export default function Like() {
         
     </div>
 </div>
-            <Footer/>
+           
         </div>
     )
 }

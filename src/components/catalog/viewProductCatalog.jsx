@@ -1,5 +1,5 @@
 import ProductNewReview from "../standartComponent/productComponent/productNewReview";
-
+import css from '../catalog/catalog.module.css'
 import { useState, useEffect } from 'react';
 
 
@@ -27,7 +27,7 @@ export default function ViewProductCatalog({products, setAddressChanged}) {
         <h2 className="ProductCatalogH2">
         Ви нещодавно переглядали
         </h2>
-        <div className="youLikeProductWrap">
+        <div className={css.youLikeProductWrap}>
             {visitedProducts.map((el, index) => {
                 if(index < 3){
 return <ProductNewReview key={index} el={el} setAddressChanged={setAddressChanged}/>

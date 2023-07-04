@@ -521,3 +521,130 @@ line-height: 111%;
 
 color: #3E51C1;
     }
+    @media only screen and (max-width: 600px) and (min-width: 300px) {
+        .wrapProdForOrder{
+            margin-top: 53px;
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            align-self: flex-start;
+           
+            
+          }
+        .wrapCenterOrderSmall{
+            width: calc(100% - 20px);
+            height: auto;
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            justify-content: space-between;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .prodInCardWrap{
+            width: 100%;
+            height: auto;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            justify-self: flex-end;
+            
+        }
+        .bookFoto{
+            width: 133.336px;
+            height: 152.384px;
+            flex-shrink: 0;
+        }
+        .prodInfoWrap{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 60%;
+            
+            height: auto;
+        }
+        .firstBlockWrap{
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-top: 26px;
+        }
+        .newUserOrNoWrap{
+            width: 80%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .newAlwaysBayer{
+            width: 200px;
+        height: calc(52px);
+        border: 3px solid #F7CB25;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 111%;
+        text-align: center;
+        align-self: center;
+        color: #3E51C1;
+        margin-top: 10px;
+        }
+        .inputSmall{
+            margin-top: 15px;
+            width: calc(100% - 6px);
+        height: calc(56px - 6px);
+        padding-top: 0;
+        padding-bottom: 0;
+        background: #FFFFFF;
+        border: 3px solid #3FAC8C;
+        padding-left: 15px;
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 30px;
+        color: #C4C4C4;
+        }
+        .chousBooksSelect{
+            position: relative;
+            width: calc(100% + 17px);
+            height: auto;
+            }
+            .inputSmallWrap{
+                width: calc(95%);
+                height: calc(56px - 6px);
+                padding-top: 0;
+                padding-bottom: 0;
+                background: #FFFFFF;
+                border: 3px solid #3FAC8C;
+                padding-left: 15px;
+                font-family: 'Raleway';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 24px;
+                line-height: 30px;
+                color: #758391;
+                margin-top: 5px;
+            }
+         
+    }
+    @media only screen and (max-width: 700px) and (min-width: 479px) {
+    
+    }
+    @media only screen and (max-width: 1288px) and (min-width: 1024px) { 
+    
+    }
+    @media only screen and (max-width: 1024px) and (min-width: 701px) {
+    
+    }

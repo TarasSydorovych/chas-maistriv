@@ -17,7 +17,7 @@ import { useState } from "react";
 import { getAuth, signInWithPhoneNumber, signOut , onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 import {auth, db} from '../../firebase'
-import { doc, setDoc, addDoc, collection, serverTimestamp, getDocs, query, where } from "firebase/firestore"; 
+import { doc, setDoc, addDoc, collection, serverTimestamp, getDocs, query, where, updateDoc, increment   } from "firebase/firestore"; 
 import { useNavigate } from 'react-router-dom';
 import PdfReader from "./pdfReader";
 
@@ -36,26 +36,17 @@ const [rerenderAfter, setRerenderAfter] = useState(false);
        const [isTimerRunning, setIsTimerRunning] = useState(false);
     let params = useParams();
 
-    useEffect(() => {
-      const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-        if (currentUser) {
-          
-          // Користувач увійшов в систему
-          setUser(currentUser);
-           console.log('currentUser',currentUser)
-     
-        } else {
-          // Користувач вийшов з системи
-         
-          setUser(null);
-        }
-      });
-    
-      return () => {
-        // Відписка від слухача після розмонтовування компоненти
-        unsubscribe();
-      };
-    }, []);
+    const increaseRating = async (uid) => {
+      try {
+        const manuscriptRef = doc(db, 'manuscript', uid);
+        await updateDoc(manuscriptRef, {
+          rating: increment(1)
+        });
+        console.log('Значення rating оновлено успішно!');
+      } catch (error) {
+        console.error('Помилка при оновленні значення rating:', error);
+      }
+    };
 
 
 
@@ -74,75 +65,9 @@ useEffect(() => {
     setAddressChanged(false);
   }
 }, [addressChanged]);
-useEffect(() => {
-    const fetchProducts = async () => {
-      const productsRef = collection(db, 'reviews');
-      const productsSnapshot = await getDocs(productsRef);
-      const productsList = productsSnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      }));
-      const arr = []
-      for(let i = 0; i < productsList.length; i++){
-        if(productsList[i].productId === oneProd?.uid){
-          arr.push(productsList[i])
-          console.log('aaaaaaaaaaaaaaaaaaa',arr);
-        }
-      }
-      if(isMounted) {
-        setRewievList(arr)
-      }
-    };
 
-    let isMounted = true;
-    if (haveProd && oneProd) {
-      fetchProducts();
-    }
 
-    return () => {
-      isMounted = false;
-    };
-  }, [oneProd, haveProd, reloadP]);
 
-// функціонал для корегування відгуків
-useEffect(() => {
-  const checkOrder = async () => {
-    try {
-      const ordersCol = collection(db, 'orders');
-      const q = query(ordersCol, where('user', '==', user.uid));
-      const querySnapshot = await getDocs(q);
-
-      querySnapshot.forEach((doc) => {
-        const order = { id: doc.id, ...doc.data() };
-        const choice = JSON.parse(order.choice);
-
-        const foundProduct = choice.find((tovar) => tovar.uid === oneProd.uid);
-        if (foundProduct) {
-          setIsOrdered(true);
-        }
-      });
-    } catch (error) {
-      console.error('Error checking order:', error);
-    }
-  };
-  // Перевіряємо, чи користувач вже робив відгук для цього товару
-  const checkReview = async () => {
-    try {
-      const reviewsCol = collection(db, 'reviews');
-      const q = query(reviewsCol, where('productId', '==', oneProd.uid), where('userUid', '==', user.uid));
-      const querySnapshot = await getDocs(q);
-
-      if (!querySnapshot.empty) {
-        setHasReviewed(true);
-      }
-    } catch (error) {
-      console.error('Error checking review:', error);
-    }
-  };
-
-  checkOrder();
-  checkReview();
-}, [oneProd, user, rerenderAfter]);
 
 const enterUser = () => {
   setLogin(true)
@@ -162,7 +87,9 @@ useEffect(() => {
   }
 }, [isTimerRunning, setIsTimerFinished]);
 
-
+const handleButtonClick = (uid) => {
+   increaseRating(uid);
+};
 
     return(
         
@@ -182,7 +109,7 @@ useEffect(() => {
 <div className={css.descWrapAutor}>
   <h4 className={css.manuscripnAuthRes}>Відгук експерта</h4>
 <div className={css.yellowFitchWrap}>
-    <p className={css.yellowFitchWrapP}>dsddddddddddddddddddd</p>
+    <p className={css.yellowFitchWrapP}>{oneProd.expert}</p>
 <div className={css.hvist}></div>
 </div>
 </div>
@@ -199,7 +126,7 @@ useEffect(() => {
 <div className={css.descWrapAutor}>
   <h4 className={css.manuscripnAuthRes}>Відгук читача</h4>
 <div className={css.yellowFitchWrap}>
-    <p className={css.yellowFitchWrapP}>dsddddddddddddddddddd</p>
+    <p className={css.yellowFitchWrapP}>{oneProd.respUser}</p>
 <div className={css.hvist}></div>
 </div>
 </div>
@@ -209,7 +136,7 @@ useEffect(() => {
 {isTimerFinished && 
 <div className={css.manuscriptPdfBigButWr}>
 <a href={oneProd.longPdf} target="_blanck">
-<button className={css.manuscriptPdfBigBut}>Переглянути весь літопис</button>
+<button onClick={() => handleButtonClick(oneProd.uid)} className={css.manuscriptPdfBigBut}>Переглянути весь літопис</button>
 </a>
 </div>
 }

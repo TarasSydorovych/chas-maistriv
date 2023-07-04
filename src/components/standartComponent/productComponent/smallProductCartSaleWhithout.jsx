@@ -3,7 +3,7 @@ import ProductPic  from '../../../img/smaPicCart.png'
 import {HandySvg} from 'handy-svg';
 import iconSrc from '../../../svg/likeSvgSale.svg';
 import iconSrcCard from '../../../svg/shapCartSale.svg';
-
+import css from '../../catalog/catalog.module.css'
 export default function SmallProductCartSaleWhithout() {
 
 
@@ -38,7 +38,7 @@ export default function SmallProductCartSaleWhithout() {
 </div>
 </div>
             </div>
-    <h2 className='smallProdNameSaleYouLike'>
+    <h2 className={css.smallProdNameSaleYouLike}>
     Дивні пригоди (не) дивної
     </h2>
 

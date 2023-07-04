@@ -16,11 +16,13 @@ import LitShow from "../standartComponent/litShow/litShow";
 import { Link, useNavigate, useParams, useLocation  } from 'react-router-dom';
 import {auth, db} from '../../firebase'
 import { getAuth, signInWithPhoneNumber, signOut , onAuthStateChanged } from "firebase/auth";
-export default function HeroPage() {
+export default function HeroPage({windowDimensions}) {
   const { id } = useParams();
     const [heroes, setHeroes] = useState([]);
+    const [heroesList, setHeroesList] = useState([]);
     const [startIndex, setStartIndex] = useState(0);
     const location = useLocation();
+    const [selectedAge, setSelectedAge] = useState('');
     const heroesPerPage = 3;
     const navigate = useNavigate();
     const [product, setProduct] = useState(null);
@@ -37,7 +39,7 @@ export default function HeroPage() {
         setStartIndex((prevIndex) => Math.min(maxIndex, prevIndex + heroesPerPage));
       };
     useEffect(() => {
-        console.log('heroes',heroes);
+       
         const fetchHeroes = async () => {
           try {
             const heroesRef = collection(db, 'hero');
@@ -48,6 +50,7 @@ export default function HeroPage() {
               heroData.push(doc.data());
             });
             setHeroes(heroData)
+            setHeroesList(heroData)
             if (typeof id === 'undefined') {
               setSelectedHero(heroData[0]);
             } else {
@@ -104,6 +107,34 @@ export default function HeroPage() {
         console.log('product',product)
         navigate(`/product/${product.uid}`)
       }
+      const age = [
+        'Всі герої',
+        'до 1 року',
+        '2 роки',
+        '3 роки',
+        '4 роки',
+        '5 років',
+        '6 років',
+        '7 років',
+        '8 років',
+        '9 років',
+        '10 років',
+      ];
+      const handleAgeChange = (event) => {
+        const selectedValue = event.target.value;
+       
+        setSelectedAge(selectedValue);
+
+    if(selectedValue === '0'){
+      setHeroesList(heroes);
+    }else{
+      const selectedHeroes = heroes.filter(
+        (hero) => hero.yearGroup === age[selectedValue]
+      );
+        
+        setHeroesList(selectedHeroes);
+      }
+      };
 
     return(
         <div>
@@ -114,11 +145,13 @@ export default function HeroPage() {
                     <div className={css.ageWrap}>
                         <p className={css.children}>Дитині</p>
                         <div className={css.chousBooksSelect}>
-  <select className={css.customSelect} >
-    <option className={css.customOpin} value="0">10 років</option>
-    <option className={css.customOpin} value="1">8 років</option>
-   
-  </select>
+  <select className={css.customSelect} value={selectedAge} onChange={handleAgeChange}>
+            {age.map((value, index) => (
+              <option key={index} className={css.customOpin} value={index}>
+                {value}
+              </option>
+            ))}
+          </select>
   <img src={arrowImp} className={css.customArrowSelect} />
 </div>
                     </div>
@@ -126,7 +159,8 @@ export default function HeroPage() {
 
 
                 <div className={css.autorListSmal}>
-                {heroes
+                {heroesList &&
+                heroesList
           .slice(startIndex, startIndex + heroesPerPage)
           .map((hero) => (
                 <div onClick={() => handleHeroClick(hero)} className={css.imgAutorWrapSmall}>
@@ -236,7 +270,15 @@ export default function HeroPage() {
                 <h4 className={css.seeBook}>Огляд книги</h4>
                 <div className={css.video}>
                 {selectedHero &&
-<YouTube videoId={selectedHero.video} opts={{ width: '1193.03px', height: '714.56px' }} />
+                <>
+                {windowDimensions && 
+                <YouTube videoId={selectedHero.video} opts={{ width: '1193.03px', height: '714.56px' }} />
+                }
+                {!windowDimensions && 
+                <YouTube videoId={selectedHero.video} opts={{ width: '300px', height: '196px' }} />
+                }
+                </>
+
 }
 </div>
             </div>
@@ -245,7 +287,7 @@ export default function HeroPage() {
           {/* блок умови проведення */}
          <LitShow/>
           
-            <Footer/>
+          
         </div>
     )
 }

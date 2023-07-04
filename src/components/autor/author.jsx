@@ -16,11 +16,12 @@ import LitShow from "../standartComponent/litShow/litShow";
 import { Link, useNavigate, useParams, useLocation} from 'react-router-dom';
 import {auth, db} from '../../firebase'
 import { getAuth, signInWithPhoneNumber, signOut , onAuthStateChanged } from "firebase/auth";
-export default function Author() {
+export default function Author({windowDimensions}) {
   const [products, setProducts] = useState([]);
     const [heroes, setHeroes] = useState([]);
     const [startIndex, setStartIndex] = useState(0);
     const heroesPerPage = 3;
+    const [selectedAuthor, setSelectedAuthor] = useState(0); // Доданий стан для зберігання вибраного автора
     const location = useLocation();
     const navigate = useNavigate();
     const [product, setProduct] = useState(null);
@@ -75,7 +76,7 @@ export default function Author() {
               setSelectedHero(selected);
             }
       
-            console.log('selectedHero', selectedHero);
+           
           } catch (error) {
             console.error('Помилка при отриманні документів:', error);
           }
@@ -86,15 +87,21 @@ export default function Author() {
     
       const handleHeroClick = (hero) => {
         setSelectedHero(hero);
+       
       };
       useEffect(() => {
         console.log('selectedHero', selectedHero);
       }, [selectedHero, product]);
-
+      const handleAuthorChange = (event) => {
+        const selectedAuthorIndex = parseInt(event.target.value);
+        setSelectedAuthor(selectedAuthorIndex);
+        setSelectedHero(heroes[selectedAuthorIndex]);
+       
+      };
 
 
       const goToBook = () => {
-        console.log('product',product)
+       
         navigate(`/product/${product.uid}`)
       }
 
@@ -105,13 +112,18 @@ export default function Author() {
                 <div className={css.allHero}>
                     <p className={css.yourPerfectHero}>Майстри, яких представляє видавництво “Час майстрів”<br/><span className={css.yourPerfectHeroSpan}>відкриті до безпосереднього спілкування з дітьми, батьками та спеціалістами</span></p>
                     <div className={css.ageWrap}>
-                        <p className={css.children}>Дитині</p>
+                        
                         <div className={css.chousBooksSelect}>
-  <select className={css.customSelect} >
-    <option className={css.customOpin} value="0">Автор</option>
-    <option className={css.customOpin} value="1">8 років</option>
-   
-  </select>
+                        <select className={css.customSelect} value={selectedAuthor} onChange={handleAuthorChange}>
+            <option className={css.customOpin} value={0}>
+              Автор
+            </option>
+            {heroes.map((hero, index) => (
+              <option className={css.customOpin} value={index} key={index}>
+                {hero.name}
+              </option>
+            ))}
+          </select>
   <img src={arrowImp} className={css.customArrowSelect} />
 </div>
                     </div>
@@ -155,8 +167,8 @@ export default function Author() {
             <div className={css.dot}></div>
             <p className={css.dotP}>{selectedHero.descSecond}</p>
             </div>
-            <p className={css.whatBook}>герой книги {selectedHero.autor}&nbsp; {selectedHero.book}</p>
-            <button onClick={goToBook} className={css.buttonHeroo}>Перейти до книги</button>
+            <p className={css.whatBook}>{selectedHero.autor}&nbsp; {selectedHero.book}</p>
+           
           </div>
 </div>
 {/* жовтий блок */}
@@ -208,10 +220,17 @@ export default function Author() {
           {/* блок відео */}
           <div className={css.videoBlockWrap}>
             <div className={css.videoBlockWrapSmall}>
-                <h4 className={css.seeBook}>Огляд книги</h4>
+                <h4 className={css.seeBook}>Відеознайомство</h4>
                 <div className={css.video}>
                 {selectedHero &&
+                <>
+                {windowDimensions &&
 <YouTube videoId={selectedHero.video} opts={{ width: '1193.03px', height: '714.56px' }} />
+}
+{!windowDimensions &&
+<YouTube videoId={selectedHero.video} opts={{ width: '300px', height: '196px' }} />
+}
+</>
 }
 </div>
             </div>

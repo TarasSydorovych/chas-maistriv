@@ -195,6 +195,7 @@ color: #3FAC8C;
 
 }
 .smallvidelListWrap{
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -244,4 +245,151 @@ line-height: 122%;
 
 
 color: #3E3092;
+}
+.bigImgBlog{
+    width: 100%;
+    height: 100%;
+}
+.imgWrapBorder{
+    width: 348px;
+height: 196px;
+border: 14px solid #3E51C1;
+}
+.smallImgBlog{
+    width: 100%;
+height: 100%;
+}
+.blogWrapPage{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.blogWrapPageSmall{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.wpaPicAbout{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.wpaPicAboutYou{
+
+}
+.youtube{
+    
+}
+.paragInWrap{
+    color: #000;
+font-size: 24px;
+font-family: Ubuntu;
+font-style: normal;
+font-weight: 500;
+line-height: 168%;
+width: 50%;
+}
+.paragInWrapYou{
+    color: #000;
+    font-size: 24px;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 168%;
+    width: 50%;
+    margin-left: 15px;
+}
+.imgAboutWrap{
+    border: 20px solid #3FAC8C;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(50% - 10px - 40px);
+    height: auto;
+}
+.imgAboutWrapYou{
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(50% - 10px - 40px);
+    height: auto;
+}
+.imgAbout{
+    width: 100%;
+    height: 454px;
+}
+.paragInWrapBig{
+    color: #000;
+    font-size: 24px;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 168%;
+}
+.blogWrapPageH1{
+    color: #3E3092;
+    font-size: 34px;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 111%; 
+}
+@media only screen and (max-width: 600px) and (min-width: 300px) {
+    .totalVideoWrap{
+        width: calc(100%);
+        padding-left: 0%;
+       height: auto;
+        display: flex;
+flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .firstBlockWrap{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+    }
+    .secondBlockWrap{
+        width: 100%;
+        margin-top: 20px;
+    }
+    .bigWrap{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 64px;
+    }
+    .someTextWrap{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        align-self: flex-start;
+        margin-left: 0px;
+    }
+    .smalVideoPro{
+        width: 100%;
+        overflow: hidden;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+@media only screen and (max-width: 700px) and (min-width: 479px) {
+
+}
+@media only screen and (max-width: 1288px) and (min-width: 1024px) { 
+
+}
+@media only screen and (max-width: 1024px) and (min-width: 701px) {
+
 }

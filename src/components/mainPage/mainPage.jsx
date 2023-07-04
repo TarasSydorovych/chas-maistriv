@@ -22,7 +22,7 @@ import Footer from "../standartComponent/footer/footer";
 
 
 
-export default function MainPage({targetDate}) {
+export default function MainPage({targetDate, windowDimensions}) {
 
 
 
@@ -30,9 +30,9 @@ export default function MainPage({targetDate}) {
     return(
         <div className="allWrapMainPage">
         
-        <Banner/>
-        <Obcladunka/>
-        <PredProdag targetDate={targetDate}/>
+        <Banner windowDimensions={windowDimensions} />
+        <Obcladunka windowDimensions={windowDimensions} />
+        <PredProdag targetDate={targetDate} windowDimensions={windowDimensions}/>
         <BookAge/>
         <SaleBooks/>
         <ActionPrice/>
@@ -40,13 +40,13 @@ export default function MainPage({targetDate}) {
         <NewBooks/>
         <OpikunRada/>
         <Question/>
-        <BlockAutor/>
+        <BlockAutor windowDimensions={windowDimensions}/>
         <AllAutors/>
         <MainPageBlog/>
         <VideoViewAge/>
         <Subscribe/>
         <div className="polosa"></div>
-        <Footer/>
+        
         </div>
     )
 }

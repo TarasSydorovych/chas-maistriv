@@ -4,14 +4,14 @@ import BlogView from './blogView'
 import YouLikeIt from '../catalog/youLikeIt'
 import hokBlog from '../HOK/hokBlog';
 
-const Blog = ({blogData}) => {
+const Blog = ({blogData, windowDimensions}) => {
  
 
     return(
         <div>
             <BlogTitle/>
             {blogData &&
-            <BlogView blogData={blogData}/>
+            <BlogView windowDimensions={windowDimensions} blogData={blogData}/>
           }
             <YouLikeIt/>
         </div>

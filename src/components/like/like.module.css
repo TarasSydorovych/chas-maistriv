@@ -197,3 +197,55 @@ line-height: 152.5%;
     background: #3E51C1;
     margin-left: 37px;
 }
+@media only screen and (max-width: 600px) and (min-width: 300px) {
+    .likeProductWrapSmall{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    
+    }
+    .productWrap{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 65px;
+    }
+    .likePicWrap{
+        width: 100%;
+        height: auto;
+        
+    }
+    .dexcriptionProdactWrap{
+        display: flex;
+        width: 90%;
+        height: auto;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .iconWithPrice{
+        align-self: center;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+       margin-top: 20px;
+       margin-bottom: 30px;
+        height: auto;
+       
+    
+        
+    }
+}
+@media only screen and (max-width: 700px) and (min-width: 479px) {
+
+}
+@media only screen and (max-width: 1288px) and (min-width: 1024px) { 
+
+}
+@media only screen and (max-width: 1024px) and (min-width: 701px) {
+
+}

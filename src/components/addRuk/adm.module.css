@@ -1,0 +1,99 @@
+.WrapAdm{
+    width: 80%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.fullAdmWrapp{
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+.admList{
+    width: 20%;
+    height: 100vh;
+    position: static;
+    top: 0;
+    left: 0;
+    background: #3e3092;
+}
+.listUlForAdm{
+    padding: 0;
+    
+}
+.listUlForAdmLi{
+   
+    color: #FFF;
+font-size: 24px;
+font-family: Ubuntu;
+font-weight: 500;
+width: 100%;
+line-height: 120%;
+border-bottom: 1px solid #FFF;
+list-style-type: none;
+height: 60px;
+}
+.listUlForAdmLiA{
+    text-decoration: none;
+    color: #FFF;
+font-size: 24px;
+font-family: Ubuntu;
+font-weight: 500;
+width: 100%;
+line-height: 120%;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+list-style-type: none;
+height: 60px;
+}
+.formAddBook{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.wrapSmallList{
+width: 30%;
+}
+.paramBooks{
+    color: #3E3092;
+    font-size: 18px;
+    font-family: Ubuntu;
+    font-weight: 500;
+    line-height: 120%; 
+}
+.inputBooks{
+    width: calc(100% - 4px);
+    height: 40px;
+    border: 2px solid #3E3092;
+    border-radius: 0;
+}
+.addBooksAdmH1{
+    color: #3E3092;
+font-size: 36px;
+font-family: Ubuntu;
+font-weight: 300;
+line-height: 120%;
+}
+.addBookButton{
+    width: 227px;
+height: 60px;
+border: none;
+background: #3E3092;
+color: #FFF;
+text-align: center;
+font-size: 20px;
+font-family: Ubuntu;
+font-weight: 500;
+line-height: 117.5%;
+}
+.listUlForAdmLiAA{
+    color:#f7cb25;
+}

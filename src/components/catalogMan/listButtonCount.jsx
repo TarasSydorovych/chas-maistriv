@@ -13,7 +13,7 @@ export default function ListButtonCount({pageNumbers, handlePageClick}) {
         <div className="wrapButtonCountList">
             {pageNumbers.map((pageNumber) => (
         <button className="buttonWithCountPage" key={pageNumber} onClick={() => handlePageClick(pageNumber)}>
-          {pageNumber + 1}
+          {pageNumber}
         </button>
       ))}
 

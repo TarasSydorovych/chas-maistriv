@@ -1,6 +1,7 @@
 
-import css from '../admin/adm.module.css'
+import css from './adm.module.css'
 import { useState } from 'react';
+
 import { getStorage, ref, uploadBytesResumable, getDownloadURL,uploadBytes  } from "firebase/storage";
 import { v4 as uuidv4 } from 'uuid';
 import {auth, db} from '../../firebase'
@@ -370,15 +371,15 @@ export default function AddRuk() {
                     transliter: "ISBN",
                 },
                 {
-                    name: "СЕО Имя книги",
+                    name: "СЕО Имя літопису",
                     transliter: "ceoName",
                 },
                 {
-                    name: "Назва книги",
+                    name: "Назва літопису",
                     transliter: "bookName",
                 },
                 {
-                    name: "Прізвисько книги(коротка назва для короткої корзини)",
+                    name: "Прізвисько літопису",
                     transliter: "prizvusko",
                 },
                 {
@@ -427,10 +428,7 @@ export default function AddRuk() {
                     transliter: "prodType",
                 },
                 
-                {
-                    name: "Ціна",
-                    transliter: "price",
-                },
+              
                 {
                     name: "Палітурка",
                     transliter: "paliturka",
@@ -471,10 +469,7 @@ export default function AddRuk() {
                     name: "Підбірки книг",
                     transliter: "pidbirkuBoo",
                 },
-                {
-                    name: "Категорія за ціною",
-                    transliter: "proceCat",
-                },
+            
                 {
                     name: "Категрорія за об'ємом",
                     transliter: "priceMas",
@@ -515,6 +510,7 @@ export default function AddRuk() {
                     name: "Популярність",
                     transliter: "popular",
                 },
+            
                 {
                     name: "Герої книги",
                     transliter: "bookHero",
@@ -535,10 +531,7 @@ export default function AddRuk() {
                     name: "фото розгорток",
                     transliter: "fotoRozgort",
                 },
-                {
-                    name: "Відео",
-                    transliter: "bookVideo",
-                },
+               
                 {
                     name: "Короткий опис",
                     transliter: "smallDesc",
@@ -547,6 +540,14 @@ export default function AddRuk() {
                     name: "Середній опис",
                     transliter: "descriptionSe",
                 },
+                {
+                  name: "Відгук експерта",
+                  transliter: "expert",
+              },
+              {
+                name: "Відгук читача",
+                transliter: "respUser",
+            },
                 {
                     name: "Довгий опис",
                     transliter: "longDesk",
@@ -593,6 +594,7 @@ export default function AddRuk() {
             const newManuscript = {
               uid: manuscriptId,
               createdAt: serverTimestamp(),
+              rating: 1,
             };
           
             const handleSubmit = async () => {
@@ -656,10 +658,12 @@ export default function AddRuk() {
             };
           
     return (
-      <div>
+      <div className={css.WrapAdm}>
+         <h1 className={css.addBooksAdmH1}>Для додавання літопису заповніть всі дані</h1>
+      <div className={css.formAddBook}>
         {objList.map((obj) => (
-          <div key={obj.transliter}>
-            <p>{obj.name}</p>
+          <div className={css.wrapSmallList} key={obj.transliter}>
+            <p className={css.paramBooks}>{obj.name}</p>
             {obj.transliter === "longPdf" ||
             obj.transliter === "shortPdf" ||
             obj.transliter === "fotoRozgort" ||
@@ -672,12 +676,14 @@ export default function AddRuk() {
             ) : (
               <input
                 type="text"
+                className={css.inputBooks}
                 onChange={(e) => handleInputChange(obj.transliter, e.target.value)}
               />
             )}
           </div>
         ))}
-        <button onClick={handleSubmit}>Submit</button>
+        <button className={css.addBookButton} onClick={handleSubmit}>Додати рукопис</button>
+      </div>
       </div>
     );
   }

@@ -9,6 +9,7 @@ import emailFooter from '../../../svg/emailFooter.svg';
 
 import '../header/header.css'
 import { GrInstagram } from "react-icons/gr";
+import { Link } from 'react-router-dom';
 
 export default function FooterUp() {
 
@@ -28,7 +29,7 @@ export default function FooterUp() {
             </p>
 
 
-            <div className='wrapSocial'>
+            <div className='wrapSocialFo'>
             <a href='/'>
             <div className='socialBlockFooter'>
                 <div className='socialIcon'>
@@ -78,7 +79,7 @@ export default function FooterUp() {
             <ul className='listUpSomeUl'>
                 <li className='listUpSomeUlLi'>Для авторів</li>
                 <li className='listUpSomeUlLi'>Для художників</li>
-                <li className='listUpSomeUlLi'>Вакансії</li>
+                <li className='listUpSomeUlLi'><Link to="/about" className="listUpSomeUlLi">Вакансії</Link></li>
                 <li className='listUpSomeUlLi'>Foreign rights</li>
             </ul>
             </div>

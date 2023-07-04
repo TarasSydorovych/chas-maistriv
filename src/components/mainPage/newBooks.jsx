@@ -42,10 +42,12 @@ const NewBooks = ({products}) => {
       const likedProducts = JSON.parse(localStorage.getItem('likedProducts')) || [];
   
       // Перевіряємо, чи товар є в масиві подобається
+      if(currentProduct){
       const isLiked = likedProducts.some(product => product.uid === currentProduct.uid);
-  
+    
       // Встановлюємо відповідний стан liked
       setLiked(isLiked);
+    }
     }, []);
     const handleLike = () => {
       // Отримуємо дані з localStorage
@@ -73,7 +75,7 @@ const NewBooks = ({products}) => {
           {currentProduct && <>
             <div className='yellowBorderWrap'>
                 <div className='imgPictureBox'>
-                <img src={currentProduct.bookFoto} className="newBookImgImg"/>
+                <img src={currentProduct.imageList[0]} className="newBookImgImg"/>
                 <div className='markerNew'>
                     Новеньке
                 </div>
@@ -113,7 +115,7 @@ const NewBooks = ({products}) => {
             <div className='prdeProdPricingRotateCart'>
             
             <p className='salePriceCartSale'>{currentProduct.price}</p>
-            <p className='fullPriceCart'>грн</p>
+            <p className='fullPriceCartG'>грн</p>
             </div>
            </div>
            <div className='likeCardWrapSmall'>

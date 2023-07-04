@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 
@@ -9,8 +10,8 @@ export default function FooterCenter() {
         <div className="footerWrapperCenter">
             <div className="wrapCenterFirst">
               <ul className="centerFirstUlF">
-               <li className="centerFirstLi">Про видавництво</li>
-               <li className="centerFirstLi">Контакти</li>
+               <li className="centerFirstLi"><Link to="/about" className="centerFirstLi">Про видавництво</Link> </li>
+               <li className="centerFirstLi"><Link to="/about" className="centerFirstLi">Контакти</Link></li>
                <li className="centerFirstLi">Доставка</li>
                <li className="centerFirstLi">Самовивіз</li>
                <li className="centerFirstLi">Клуб ЧМ</li>
@@ -19,7 +20,7 @@ export default function FooterCenter() {
               <li className="centerFirstLi">Де пощупати наші книги</li>
                <li className="centerFirstLi">Публічна оферта</li>
                <li className="centerFirstLi">Книги ЧМ на АМАЗОН</li>
-               <li className="centerFirstLi">Книги ЧМ на платформах: allegro.pl</li>
+               <li className="centerFirstLi"><a className="centerFirstLi" target='_blanck' href="https://www.facebook.com/baarnabus/shop/%D0%A7%D0%B0%D1%81-%D0%9C%D0%B0%D0%B9%D1%81%D1%82%D1%80%D1%96%D0%B2-1193846147677425/?ref_code=mini_shop_profile_plus_shop_tab_cta&ref_surface=mini_shop_storefront"> Книги ЧМ в Європі</a></li>
                
               </ul>
 

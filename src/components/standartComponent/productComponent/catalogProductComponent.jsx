@@ -53,10 +53,16 @@ export default function CatalogProductComponent({el, index, setVisitedProducts, 
         <div className='productBigInCatWrap'>
             <div className='productBigPicture'>
                 <div className='productBigPictureImgWrap'>
-            <img src={el.bookFoto} className="productBigPictureImg"/>
+            <img src={el.imageList[0]} className="productBigPictureImg"/>
+            {el.top === 'true' &&
             <div className='topBooksMonthLabel'>ТОП місяця</div>
+          }
+           {el.bookYear === 'true' &&
             <div className='topBooksYersLabel'>Книга року</div>
+        }
+        {el.novunka === 'true' &&
             <div className='newBooksLabel'>Новинка</div>
+      }
             </div>
             </div>
             <div className='productBigDescription'>

@@ -49,14 +49,14 @@ export default function SmallProductCart({el}) {
         <div className='smallProductWrap'>
              {el &&
              <>
-            <img src={el.bookFoto} className="productPicSmall"/>
+            <img src={el.imageList[0]} className="productPicSmall"/>
             <div className='prodPricLikeCart'>
 
             <div className='prdeProdPricingCart'>
             <div className='prdeProdPricingRotateCart'>
             <p className='fullPriceCart'>{el.priceSale}</p>
             <p className='salePriceCart'>{el.price}</p>
-            <p className='fullPriceCart'>грн</p>
+            <p className='fullPriceCartG'>грн</p>
             </div>
            </div>
            <div className='likeCardWrapSmall'>
@@ -93,8 +93,7 @@ export default function SmallProductCart({el}) {
                     <p>Художник:&nbsp;</p><h4>{el.bDesign}</h4>
                 </div>
             </div>
-            <p className='descriptionBooksCart'>{el.descriptionSe}
-</p>
+            <p className='descriptionBooksCart'>{el.descriptionSe}</p>
 </>
 }
         </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { collection, doc, setDoc, getDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
+import css from './adm.module.css';
 import { v4 as uuidv4 } from 'uuid';
 export default function AddPromo() {
   const [uid, setUid] = useState('');
@@ -45,17 +46,21 @@ useEffect(() => {
   }, []);
 
   return (
-    <form onSubmit={handleFormSubmit}>
-      <label>
+    <form className={css.faromToPromo} onSubmit={handleFormSubmit}>
+      <div className={css.promoWrapOne}>
+      <label className={css.labelPromo}> 
         UID промокоду:
-        <input type="text" value={uid} onChange={(e) => setUid(e.target.value)} />
+        <input className={css.promoInput} type="text" value={uid} onChange={(e) => setUid(e.target.value)} />
       </label>
-      <button onClick={generateId}>Згенерувати код</button>
-      <label>
+      <button className={css.promoBut} onClick={generateId}>Згенерувати код</button>
+      </div>
+      <div className={css.promoWrapTwo}>
+      <label className={css.labelPromo}>
         Знижка (%):
-        <input type="number" value={discount} onChange={(e) => setDiscount(e.target.value)} />
+        <input className={css.promoInput} type="number" value={discount} onChange={(e) => setDiscount(e.target.value)} />
       </label>
-      <button type="submit">Зберегти</button>
+      <button className={css.promoBut} type="submit">Зберегти</button>
+      </div>
     </form>
   );
 }

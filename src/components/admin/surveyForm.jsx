@@ -1,5 +1,5 @@
 import { useState} from "react";
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import {auth, db} from '../../firebase'
 const SurveyForm = () => {
@@ -50,6 +50,7 @@ const SurveyForm = () => {
           description,
           options,
           imageURL,
+          data: serverTimestamp(),
         };
   
         // Додавання опитування до колекції "surveys" у Firebase

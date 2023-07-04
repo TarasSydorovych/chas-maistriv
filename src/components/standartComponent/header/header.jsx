@@ -13,23 +13,38 @@ import { useEffect } from 'react';
 
 export default function Header({setLogin, login, setEnterUser, enterUser, scrollHeight}) {
     const [allBooks, setAllBooks] = useState(false);
+    const [windowDimensions, setWindowDimensions] = useState(true)
     const [allManus, setAllManus] = useState(false);
     const [cart, setCart] = useState(false);
     const [countProductForCart, setCountProductForCart] = useState();
     const location = useLocation();
-
+    useEffect(() => {
+      
+        function handleResize() {
+         
+          if(window.innerWidth < 1100){
+      
+          setWindowDimensions(false);
+        }else{
+          setWindowDimensions(true);
+        }
+        }
+        handleResize()
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+      }, []);
     useEffect(() => {
         window.scrollTo(0, 0);
-      }, [location]);
+      }, [location, allBooks]);
     return(
         <>
-        <HeaderApp countProductForCart={countProductForCart} setLogin={setLogin} login={login} setCart={setCart}/>
-        <HeaderDown setAllBooks={setAllBooks} allManus={allManus} setAllManus={setAllManus} allBooks={allBooks}/>
+        <HeaderApp windowDimensions={windowDimensions} setWindowDimensions={setWindowDimensions} countProductForCart={countProductForCart} setLogin={setLogin} login={login} setCart={setCart}/>
+        <HeaderDown windowDimensions={windowDimensions} setWindowDimensions={setWindowDimensions} setAllBooks={setAllBooks} allManus={allManus} setAllManus={setAllManus} allBooks={allBooks}/>
         {allBooks && 
-        <FilterMenu/>
+        <FilterMenu allBooks={allBooks} setAllBooks={setAllBooks} windowDimensions={windowDimensions} setWindowDimensions={setWindowDimensions}/>
         }
          {allManus && 
-        <FilterMenuManu/>
+        <FilterMenuManu setAllManus={setAllManus} windowDimensions={windowDimensions} setWindowDimensions={setWindowDimensions}/>
         }
         {login && 
         <LogIn scrollHeight={scrollHeight} setLogin={setLogin} login={login} setEnterUser={setEnterUser}/>

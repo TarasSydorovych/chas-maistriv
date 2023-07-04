@@ -47,14 +47,14 @@ export default function SmallProductCartTop({el}) {
 
     return(
         <div className='smallProductWrap'>
-            <img src={el.bookFoto} className="productPicSmall"/>
+            <img src={el.imageList[0]} className="productPicSmall"/>
             <div className='prodPricLikeCart'>
 
             <div className='prdeProdPricingCartTop'>
             <div className='prdeProdPricingRotateCart'>
             
             <p className='salePriceCartSale'>{el.price}</p>
-            <p className='fullPriceCart'>грн</p>
+            <p className='fullPriceCartG'>грн</p>
             </div>
            </div>
            <div className='likeCardWrapSmall'>

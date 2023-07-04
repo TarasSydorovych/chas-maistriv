@@ -3,7 +3,7 @@ import VideoTitle from './videoTitle'
 import css from './videoView.module.css'
 
 
-export default function VideoView() {
+export default function VideoView({windowDimensions}) {
 
 
 
@@ -11,8 +11,8 @@ export default function VideoView() {
 
     return(
         <div>
-           <VideoTitle/>
-           <BigVideo/>
+           <VideoTitle windowDimensions={windowDimensions}/>
+           <BigVideo windowDimensions={windowDimensions}/>
         </div>
     )
 }

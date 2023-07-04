@@ -19,7 +19,7 @@ export default function Respons({rewievList}) {
             {rewievList.map((el, index) => {
            return   <div key={index} className={css.respons}>
                 <div className={css.responsAuthPic}>
-                    <img src={pic}/>
+                    <img src={pic} className={css.responsAuthPic}/>
                 </div>
                 <div className={css.responsAuthText}>
                     <p className={css.autorName}>{el.nameAutor}</p>

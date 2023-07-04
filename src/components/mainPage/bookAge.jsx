@@ -6,7 +6,7 @@ import './mainPage.css'
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {fetchProductsAll, fetchProducts} from '../../function/productsSlice'
-import { addFilter, removeFilter } from '../../function/filtersSlice';
+import { addFilter, removeFilter, clearFilters  } from '../../function/filtersSlice';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -20,6 +20,7 @@ export default function BookAge() {
 const obj = [{
     name: 'Вікова група',
     list: [
+         'Виберіть категорію',
         'Книги для дітей до 1',
         'Книги для дітей 2 років',
         'Книги для дітей 3 років',
@@ -39,12 +40,14 @@ const obj = [{
     transliter: "yearGroup",
 }];
 const handleSelectChange = (event) => {
+  dispatch(clearFilters());
     const selectedValue = event.target.value;
+    
     const filter = {
       field: obj[0].transliter,
-      value: obj[0].list[selectedValue],
+      value: selectedValue,
     };
-  
+    console.log('selectedValue ' , filter)
     handleFilterClick(filter);
     handleFilterClickst(filter);
   };
@@ -100,7 +103,7 @@ const handleFilterClick = (filter) => {
                         <div className='chousBooksSelect'>
                         <select className='customSelect' onChange={handleSelectChange}>
     {obj[0].list.map((item, index) => (
-      <option className='customOpin' value={index} key={index}>
+      <option className='customOpin' value={item} key={index}>
         {item}
       </option>
     ))}

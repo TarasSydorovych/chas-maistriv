@@ -28,6 +28,11 @@ import AutorAdm from "./components/autorAdm/autorAdm";
 import Obcladunka from "./components/mainPage/obcladunka";
 import Carton from "./components/admin/carton";
 import SurveyForm from "./components/admin/surveyForm";
+import Footer from "./components/standartComponent/footer/footer";
+import FullAdm from "./components/admin/fullAdm";
+import AboutComp from "./components/infoComponent/aboutComp";
+import BlogPage from "./components/blog/blogPage";
+import Delivery from "./components/infoComponent/delivery";
 
 export const MyContext = React.createContext({
   value: "",
@@ -40,10 +45,24 @@ function App() {
   const [haveProduct, setHaveProduct] = useState(false)
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [addressChanged, setAddressChanged] = useState(false);
- 
+  const [windowDimensions, setWindowDimensions] = useState(true)
   const [login, setLogin] = useState(false);
   const [enterUser, setEnterUser] = useState(false);
   const [scrollHeight, setScrollHeight] = useState(0);
+  useEffect(() => {
+  function handleResize() {
+         
+    if(window.innerWidth < 1100){
+
+    setWindowDimensions(false);
+  }else{
+    setWindowDimensions(true);
+  }
+  }
+  handleResize()
+  window.addEventListener('resize', handleResize);
+  return () => window.removeEventListener('resize', handleResize);
+}, []);
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollHeight = window.pageYOffset;
@@ -108,32 +127,36 @@ function App() {
     <>
     <Header scrollHeight={scrollHeight} setLogin={setLogin} login={login} setEnterUser={setEnterUser} enterUser={enterUser}/>
     <Routes>
-    <Route path='/' element={<MainPage />}/>
+    <Route path='/' element={<MainPage windowDimensions={windowDimensions}/>}/>
     <Route path='/catalog' element={<Catalog visitedProducts={visitedProducts} productsAll={products} setVisitedProducts={setVisitedProducts}/>}/>
     <Route path='/manuscriptCatalog' element={<CatalogMan visitedProducts={visitedProducts} productsAll={manuscript} setVisitedProducts={setVisitedProducts}/>}/>
     <Route path='/product/' element={<Product/>}/>
-    <Route path='/product/:id' element={<Product setLogin={setLogin} products={products} addressChanged={addressChanged} setAddressChanged={setAddressChanged}/>}/>
+    <Route path='/product/:id' element={<Product windowDimensions={windowDimensions} setLogin={setLogin} products={products} addressChanged={addressChanged} setAddressChanged={setAddressChanged}/>}/>
     <Route path='/order' element={<Order setLogin={setLogin}/>}/>
     <Route path='/like' element={<Like/>}/>
     <Route path='/syrv' element={<SurveyForm/>}/>
-    <Route path='/hero' element={<HeroPage/>}/>
+    <Route path='/hero' element={<HeroPage windowDimensions={windowDimensions}/>}/>
     <Route path='/hero/:id' element={<HeroPage/>}/>
-    <Route path='/opt' element={<PriceOpt/>}/>
-    <Route path='/user' element={<UserCabinet  products={products} addressChanged={addressChanged} setAddressChanged={setAddressChanged}/>}/>
-    <Route path='/adm' element={<AddBooks/>}/>
+    <Route path='/opt' element={<PriceOpt windowDimensions={windowDimensions}/>}/>
+    <Route path='/user' element={<UserCabinet windowDimensions={windowDimensions}  products={products} addressChanged={addressChanged} setAddressChanged={setAddressChanged}/>}/>
+    <Route path='/adm' element={<FullAdm/>}/>
     <Route path='/admRuk' element={<AddRuk/>}/>
     <Route path='/admHero' element={<HeroAdm/>}/>
     <Route path='/admBlog' element={<AddBlog/>}/>
     <Route path='/manuscript/:id' element={<Manuscript setLogin={setLogin} products={manuscript} addressChanged={addressChanged} setAddressChanged={setAddressChanged}/>}/>
     <Route path='/promo' element={<AddPromo/>}/>
-    <Route path='/video' element={<VideoView/>}/>
-    <Route path='/blog' element={<Blog/>}/>
-    <Route path='/author' element={<Author/>}/>
+    <Route path='/video' element={<VideoView windowDimensions={windowDimensions}/>}/>
+    <Route path='/blog' element={<Blog windowDimensions={windowDimensions}/>}/>
+    <Route path='/blog/:id' element={<BlogPage/>}/>
+    <Route path='/author' element={<Author windowDimensions={windowDimensions}/>}/>
     <Route path='/author/:id' element={<Author/>}/>
     <Route path='/admAutor' element={<AutorAdm/>}/>
     <Route path='/obcladunka' element={<Carton/>}/>
-    
+    <Route path='/about' element={<AboutComp/>}/>
+    <Route path='/delivery' element={<Delivery/>}/>
+
     </Routes>
+    <Footer windowDimensions={windowDimensions}/>
     </>
     }
    

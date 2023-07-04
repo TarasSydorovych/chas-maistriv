@@ -19,7 +19,7 @@ const MainPageBlog = ({blogData}) => {
         if(index < 3){
            return  <div key={index} className="blogProdPage">
            <div className="vidoPic">
-           <YouTube videoId={`${el.videoId}`} opts={{ width: '348px', height: '196px' }} />
+           <img src={el.photo} className='blogFotoInMain'/>
            </div>
            <h3 className='nameBlog'>
            {el.zag}

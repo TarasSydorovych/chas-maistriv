@@ -6,7 +6,7 @@ import FooterUp from "./footerUp";
 
 
 
-export default function Footer() {
+export default function Footer({windowDimensions}) {
 
 
 
@@ -15,7 +15,7 @@ export default function Footer() {
         <footer>
             <FooterUp/>
             <FooterCenter/>
-            <FooterBottom/>
+            <FooterBottom windowDimensions={windowDimensions}/>
         </footer>
     )
 }

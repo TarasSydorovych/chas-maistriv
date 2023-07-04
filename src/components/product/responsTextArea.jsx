@@ -17,6 +17,13 @@ export default function ResponsTextArea({oneProd, setReloadP, reloadP, user, set
 
  }
 const sendVidguk = async () => {
+
+
+    if (areT.length < 350) {
+        alert('Мінімальна кількість символів для відгуку - 350');
+        return;
+      }
+
     const uid = uuidv4();
     const frankDocRef = doc(db, 'reviews', uid);
     await setDoc(frankDocRef, {
@@ -62,6 +69,7 @@ const sendVidguk = async () => {
             <div className={css.respTextAreaWrapSmall}>
                 <textarea value={areT} onChange={changeTextArea} placeholder='Залишити відгук...' className={css.textAreaStyle}>
                 </textarea>
+                
                 <div className={css.sendMessage} onClick={sendVidguk}>
                 <HandySvg 
                     src={iconSrc}

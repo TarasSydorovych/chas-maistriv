@@ -23,12 +23,18 @@ useEffect(() => {
    {data && data.length > 0 && 
    <>
               {data.map((el, index) => {
-               return <div key={index} className='imgAutorWrapSmall'>
+               return <><div key={index} className='imgAutorWrapSmall'>
            <Link to={`/author/${el.uid}`}>
                 <img src={el.foto} className="imgAutorSmall"/>
                 <p className='autorNameM'>{el.name}</p>
                 </Link>
                 </div>
+                <div key={index} className='imgAutorWrapSmall'>
+                <Link to={`/author/${el.uid}`}>
+                     <img src={el.foto} className="imgAutorSmall"/>
+                     <p className='autorNameM'>{el.name}</p>
+                     </Link>
+                     </div></>
             })}
             </>
          }

@@ -9,138 +9,169 @@ import css from '../admin/adm.module.css'
 
 
 
-export default function AddBlog() {
+// export default function AddBlog() {
 
+//     const objList = [
+//         {
+//             name: "Заголовок",
+//             transliter: "zag",
+//         },
+//         {
+//             name: "Коротки опис",
+//             transliter: "chortDesc",
+//         },
+//         {
+//             name: "Довгий опис",
+//             transliter: "longDesc",
+//         },
+//         {
+//             name: "ID відео",
+//             transliter: "videoId",
+//         },
+  
+//     ]
+//     const [formData, setFormData] = useState({});
+
+// const handleFormSubmit = async (event) => {
+//     event.preventDefault(); // prevent the default form submission behaviour
+
+//     // Collect form data and update the state
+//     const form = event.target;
+//     const formDataValue = new FormData(form);
+//     const formDataObj = Object.fromEntries(formDataValue.entries());
+//     setFormData(formDataObj);
+
+    
+
+//     // Добавка даних блогу
+//     const newObj = { ...formDataObj };
+//     newObj.uid = uuidv4();
+//     newObj.timestamp = serverTimestamp();
+//     const frankDocRef = doc(db, 'blog', newObj.uid);
+//     await setDoc(frankDocRef, newObj);
+
+//     // Очистити форму після надсилання
+//     alert('Ваша стаття додана')
+//     form.reset();
+//   };
+  
+
+
+//     return(
+//         <div className={css.blogWrap}>
+//   <form onSubmit={handleFormSubmit}>
+//             {objList.map((el, index) => {
+             
+//                     return  <div key={index} className={css.wrapSmallList}>
+
+//                     <p className={css.paramBooks}>{el.name}</p>
+//                      <input type="text" name={el.transliter} id='nameProp'/>
+                    
+//                     </div>
+             
+             
+
+//             })}
+                
+// <button className={css.addBookButtonBlog} type='submit'>Додати статтю</button>
+
+// </form>
+//         </div>
+//     )
+// }
+export default function AddBlog() {
     const objList = [
         {
-            name: "Заголовок",
-            transliter: "zag",
+          name: 'Заголовок',
+          transliter: 'zag',
         },
         {
-            name: "Коротки опис",
-            transliter: "chortDesc",
+          name: 'Перший опис',
+          transliter: 'chortDesc',
         },
         {
-            name: "Довгий опис",
-            transliter: "longDesc",
+            name: 'Другий опис',
+            transliter: 'centrDesc',
+          },
+        {
+          name: 'Третій',
+          transliter: 'longDesc',
         },
         {
-            name: "ID відео",
-            transliter: "videoId",
+          name: 'ID відео',
+          transliter: 'videoId',
         },
-  
-    ]
-    const [formData, setFormData] = useState({});
-//     const handleFormSubmit = (event) => {
-//         event.preventDefault(); // prevent the default form submission behaviour
+      ];
     
-//         // Collect form data and update the state
-//         const form = event.target;
-        
-//         const data = new FormData(form);
-//         const formDataObj = Object.fromEntries(data.entries());
-//         setFormData(formDataObj);
-  
-//         console.log('перший форм дата',formData)
-//         //добавка товару якщо є два фото
-//         if (formData.bookFoto.name && formData.fotoRozgort.name){
-//           const newObj = formData;
-//           const storageRef1 = ref(storage, formData.bookFoto.name);
-//     const storageRef2 = ref(storage, formData.fotoRozgort.name);
-//     const uploadTask1 = uploadBytesResumable(storageRef1, formData.bookFoto);
-//     const uploadTask2 = uploadBytesResumable(storageRef2, formData.fotoRozgort);
-//     uploadTask1.on('state_changed',
-//     (snapshot) => {
-//       const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-//       console.log('progress1', progress);
-//     },
-//     (error) => {
-//       console.log('error uploading file1', error);
-//     }
-//   );
-//   uploadTask2.on('state_changed',
-//   (snapshot) => {
-//     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-//     console.log('progress2', progress);
-//   },
-//   (error) => {
-//     console.log('error uploading file2', error);
-//   }
-//   );
-  
-  
-  
-//   uploadTask1.on('state_changed', async () => {
-//       const downloadURL1 = await getDownloadURL(uploadTask1.snapshot.ref);
-//       uploadTask2.on('state_changed', async () => {
-//         const downloadURL2 = await getDownloadURL(uploadTask2.snapshot.ref);
-//         newObj.bookFoto = downloadURL1;
-//         newObj.fotoRozgort = downloadURL2;
-//         newObj.uid = uuidv4();
-//         const frankDocRef = doc(db, 'product', newObj.uid);
-//         await setDoc(frankDocRef, newObj);
-//       });
-//     });
-  
-  
-          
-  
-  
-  
-//         }else if(formData.fotoRozgort.name){
-//           console.log('нема імя')
-//         }
-  
-//         // Log the form data to the console
-  
-        
-  
-        
-//       };
-const handleFormSubmit = async (event) => {
-    event.preventDefault(); // prevent the default form submission behaviour
-
-    // Collect form data and update the state
-    const form = event.target;
-    const formDataValue = new FormData(form);
-    const formDataObj = Object.fromEntries(formDataValue.entries());
-    setFormData(formDataObj);
-
+      const [formData, setFormData] = useState({});
+      const [file, setFile] = useState(null);
+    
+      const handleFormSubmit = async (event) => {
+        event.preventDefault();
+    
+        const form = event.target;
+        const formDataValue = new FormData(form);
+        const formDataObj = Object.fromEntries(formDataValue.entries());
+        setFormData(formDataObj);
+    
+        console.log('formData', formDataObj);
+    
+        if (file) {
+          try {
+            const newObj = { ...formDataObj };
+            const storage = getStorage();
+            const storageRef = ref(storage, `blog/${uuidv4()}/${file.name}`);
+            const uploadTask = uploadBytesResumable(storageRef, file);
+    
+            uploadTask.on('state_changed', (snapshot) => {
+              const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              console.log('Upload progress:', progress);
+            }, (error) => {
+              console.error('Error uploading file:', error);
+            });
+    
+            await uploadTask;
+    
+            const downloadURL = await getDownloadURL(storageRef);
+            newObj.photo = downloadURL;
+            newObj.uid = uuidv4();
+            newObj.timestamp = serverTimestamp();
+            await addDoc(collection(db, 'blog'), newObj);
+    
+            console.log('Стаття успішно додана до Firestore:', newObj);
+          } catch (error) {
+            console.error('Помилка під час додавання статті:', error);
+          }
+        } else {
+          console.log('Фото не вибрано');
+        }
+      };
+    
+      const handleFileChange = (event) => {
+        const selectedFile = event.target.files[0];
+        setFile(selectedFile);
+      };
     
 
-    // Добавка даних блогу
-    const newObj = { ...formDataObj };
-    newObj.uid = uuidv4();
-    newObj.timestamp = serverTimestamp();
-    const frankDocRef = doc(db, 'blog', newObj.uid);
-    await setDoc(frankDocRef, newObj);
-
-    // Очистити форму після надсилання
-    alert('Ваша стаття додана')
-    form.reset();
-  };
+    return (
+      <div className={css.blogWrap}>
+        <form onSubmit={handleFormSubmit}>
+          {objList.map((el, index) => (
+            <div key={index} className={css.wrapSmallList}>
+              <p className={css.paramBooks}>{el.name}</p>
+              <input type="text" name={el.transliter} id="nameProp" />
+            </div>
+          ))}
   
-
-
-    return(
-        <div>
-  <form onSubmit={handleFormSubmit}>
-            {objList.map((el, index) => {
-             
-                    return  <div key={index} className={css.wrapSmallList}>
-
-                    <p className={css.paramBooks}>{el.name}</p>
-                     <input type="text" name={el.transliter} id='nameProp'/>
-                    
-                    </div>
-             
-             
-
-            })}
-                
-<button type='submit'>Додати статтю</button>
-
+          <div className={css.wrapSmallList}>
+            <p className={css.paramBooks}>Фото</p>
+            <input type="file" name="photo" onChange={handleFileChange} />
+          </div>
+  
+          <button className={css.addBookButtonBlog} type="submit">
+Додати статтю
+</button>
 </form>
-        </div>
-    )
+</div>
+);
 }

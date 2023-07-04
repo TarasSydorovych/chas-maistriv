@@ -101,8 +101,8 @@ margin-bottom: 21px;
     top:16px;
     cursor: pointer;
     left: 225px;
-    width: 19px;
-height: 9px;
+    width: 13.233px;
+height: 6.303px;
 }
 .counterWrap{
     display: flex;
@@ -233,4 +233,200 @@ cursor: pointer;
 .bookFoto{
     width: 172px;
     height: 197px;
+}
+@media only screen and (max-width: 600px) and (min-width: 300px) {
+    .popUpWrap{
+        display: flex;
+        width: calc(100% - 50px);
+        height: auto;
+        border: 20px solid #3E51C1;
+        padding-left: 10px;
+        background: white;
+        margin-top: 172px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        
+    }
+    .fullPriceBlockWrap{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .buttonPriceWrap{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .nextJoin{
+        display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(266px - 6px);
+    height: calc(56px - 6px);
+    border: 3px solid #3FAC8C;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 117.5%;
+    color: #3FAC8C;
+    margin-right: 0px;
+    cursor: pointer;
+    }
+    .finalOrder{
+        display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 266px;
+    height: 56px;
+    background: #3FAC8C;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 117.5%;
+    color: #FFFFFF;
+    margin-right: 0px;
+    cursor: pointer;
+    margin-top: 25px;
+    }
+    .productInCardWrap{
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 100%;
+        height: auto;
+    }
+    .bookFoto{
+        width: 123.119px;
+        height: 141.014px;
+    }
+    .prodInCardWrap{
+        width: 100%;
+        height: auto;
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 30px;
+        margin-top: 20px;
+    }
+    .prodInfoWrap{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 60%;
+        margin-left: 10px;
+        height: auto;
+    }
+    .booksNameCard{
+        font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 111%;
+    color: #3E51C1;
+    margin-top: 0;
+    }
+    .customSelectInCard{
+        cursor: pointer;
+        border: 3px solid #3FAC8C;
+        width: 178.599px;
+height: 28.716px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    padding-left: 14px;
+    appearance: none;
+    line-height: 111%;
+    color: #3FAC8C;
+    margin-bottom: 21px;
+    }
+    .arrowDown{
+        position: absolute;
+        top:10px;
+        cursor: pointer;
+        left: 150px;
+        width: 13.233px;
+    height: 6.303px;
+    }
+    .counterWrap{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: auto;   
+    }
+    .minus{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 26px;
+    background: #FFFFFF;
+    border: 1px solid #FF3416;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 117.5%;
+    color: #3E3092;
+    margin-right: 14px;
+    }
+    .countValue{
+        font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 117.5%;
+    color: #FF3416;
+    margin-right: 14px;
+    }
+    .plus{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 26px;
+    background: #FFFFFF;
+    border: 1px solid #FF3416;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 117.5%;
+    color: #3E3092;
+    }
+    .price{
+        font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 111%;
+    color: #3E51C1;
+    margin: 0;
+    margin-left: 30px;
+    }
+    .delete{
+        position: absolute;
+        right: 1%;
+        cursor: pointer;
+        top: 5%;
+    }
+}
+@media only screen and (max-width: 700px) and (min-width: 479px) {
+
+}
+@media only screen and (max-width: 1288px) and (min-width: 1024px) { 
+
+}
+@media only screen and (max-width: 1024px) and (min-width: 701px) {
+
 }
