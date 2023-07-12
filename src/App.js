@@ -33,6 +33,10 @@ import FullAdm from "./components/admin/fullAdm";
 import AboutComp from "./components/infoComponent/aboutComp";
 import BlogPage from "./components/blog/blogPage";
 import Delivery from "./components/infoComponent/delivery";
+import AboutAuth from "./components/infoComponent/aboutAuth";
+import PublicOffer from "./components/infoComponent/publicOffer";
+import AuthTH from "./components/userCabinet/authTG";
+import Coock from "./components/infoComponent/coock";
 
 export const MyContext = React.createContext({
   value: "",
@@ -41,12 +45,14 @@ export const MyContext = React.createContext({
 function App() {
   const [visitedProducts, setVisitedProducts] = useState([]);
   const [value, setValue] = useState([]);
+  const [coock, setCoock] = useState(true);
   const [products, setProducts] = useState([]);
   const [haveProduct, setHaveProduct] = useState(false)
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [addressChanged, setAddressChanged] = useState(false);
   const [windowDimensions, setWindowDimensions] = useState(true)
   const [login, setLogin] = useState(false);
+  const [reRe, setReRe] = useState(false)
   const [enterUser, setEnterUser] = useState(false);
   const [scrollHeight, setScrollHeight] = useState(0);
   useEffect(() => {
@@ -96,7 +102,7 @@ function App() {
       
       setHaveProduct(true)
       setProducts(productsList);
-      console.log('Список продуктів',products);
+      
     };
     fetchProducts();
   }, []);
@@ -113,7 +119,7 @@ function App() {
       
       setHaveManu(true)
       setManuscript(productsList);
-      console.log('Список продуктів',products);
+  
     };
     fetchManuscript();
   }, []);
@@ -138,7 +144,7 @@ function App() {
     <Route path='/hero' element={<HeroPage windowDimensions={windowDimensions}/>}/>
     <Route path='/hero/:id' element={<HeroPage/>}/>
     <Route path='/opt' element={<PriceOpt windowDimensions={windowDimensions}/>}/>
-    <Route path='/user' element={<UserCabinet windowDimensions={windowDimensions}  products={products} addressChanged={addressChanged} setAddressChanged={setAddressChanged}/>}/>
+    <Route path='/user' element={<UserCabinet reRe={reRe} setReRe={setReRe} windowDimensions={windowDimensions}  products={products} addressChanged={addressChanged} setAddressChanged={setAddressChanged}/>}/>
     <Route path='/adm' element={<FullAdm/>}/>
     <Route path='/admRuk' element={<AddRuk/>}/>
     <Route path='/admHero' element={<HeroAdm/>}/>
@@ -154,8 +160,13 @@ function App() {
     <Route path='/obcladunka' element={<Carton/>}/>
     <Route path='/about' element={<AboutComp/>}/>
     <Route path='/delivery' element={<Delivery/>}/>
-
+    <Route path='/authdes' element={<AboutAuth/>}/>
+    <Route path='/publicOffer' element={<PublicOffer/>}/>
+    <Route path='/tg' element={<AuthTH/>}/>
+    
     </Routes>
+    {coock && 
+    <Coock setCoock={setCoock}/>}
     <Footer windowDimensions={windowDimensions}/>
     </>
     }

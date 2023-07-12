@@ -289,7 +289,7 @@ const [products, setProducts] = useState([]);
     });
   };
   const filters = useSelector(state => state.filters);
-  console.log('Фільтерс з редаксу',filters);
+ 
   
 const handleFilterClick = (filter) => {
     if (filters.some((selectedFilter) =>

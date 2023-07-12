@@ -12,11 +12,12 @@ import ListButtonCount from "./listButtonCount";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
+import withFirebaseCollection from "../HOK/withFirebaseCollection";
 
 
 
 
-export default function Catalog({setVisitedProducts, visitedProducts, productsAll}) {
+const Catalog = ({setVisitedProducts, visitedProducts, productsAll, data}) => {
 
 // const [currentPage, setCurrentPage] = useState(1);
 // const productsPerPage = 1;
@@ -91,10 +92,11 @@ for (let i = firstDisplayedPages; i <= lastDisplayedPages; i++) {
         
        
         <ListButtonCount pageNumbers={pageNumbers} handlePageClick={handlePageClick}/>
-        <YouLikeIt/>
+        {/*<YouLikeIt/>*/}
         <DiscountAndAction/>
         <ViewProductCatalog products={productsAll}/>
         
         </>
     )
 }
+export default withFirebaseCollection('seo')(Catalog);

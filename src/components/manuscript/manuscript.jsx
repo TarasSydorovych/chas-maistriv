@@ -79,7 +79,7 @@ useEffect(() => {
     console.log('Timer start')
     timer = setTimeout(() => {
       setIsTimerFinished(true);
-    }, 5000); // Час таймера - 5000 мс (5 секунд)
+    }, 180000); // Час таймера - 3хв
 
     return () => {
       clearTimeout(timer);

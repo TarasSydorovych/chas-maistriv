@@ -23,7 +23,7 @@ const BlockAutor = ({data, product, windowDimensions}) => {
   const [selectedFilters, setSelectedFilters] = useState([]);
   
   const handleSelectChange = () => {
-    console.log('Ми в функції');
+  
     dispatch(clearFilters());    
       const filter = {
         field: 'textAutor',
@@ -109,7 +109,7 @@ const BlockAutor = ({data, product, windowDimensions}) => {
         {windowDimensions && <>
         {prodList.map((el, index) => {
           if(index < 3){
-          return   <div className="productAutorWrapSM">
+          return   <div key={index} className="productAutorWrapSM">
           <img src={el.imageList[0]} className="picSmallProdAutor"/>
           <h3 className='smalProdName'><Link className='smalProdName' to={`/product/${el.uid}`}>
           {el.bookName}</Link>
@@ -151,7 +151,7 @@ const BlockAutor = ({data, product, windowDimensions}) => {
         {!windowDimensions && <>
         {prodList.map((el, index) => {
           if(index < 3){
-          return   <div className="productAutorWrapSM">
+          return   <div key={index} className="productAutorWrapSM">
           <img src={el.bookFoto} className="picSmallProdAutor"/>
           <h3 className='smalProdName'><Link className='smalProdName' to={`/product/${el.uid}`}>
           {el.bookName}</Link>

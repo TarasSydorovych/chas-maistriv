@@ -67,7 +67,7 @@ export default function CatalogMan({setVisitedProducts, visitedProducts, product
         
        
         <ListButtonCount pageNumbers={pageNumbers} handlePageClick={handlePageClick}/>
-        <YouLikeIt/>
+       {/*<YouLikeIt/>*/} 
         <DiscountAndAction/>
         <ViewProductCatalog products={productsAll}/>
         <Footer/>

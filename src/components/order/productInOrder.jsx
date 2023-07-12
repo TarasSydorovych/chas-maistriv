@@ -31,7 +31,7 @@ export default function ProductInOrder({el, handleQuantityChange, removeProduct}
     return(
         <div className={css.prodInCardWrap}>
             
-              <img src={el.bookFoto} className={css.bookFoto}/>
+              <img src={el.imageList[0]} className={css.bookFoto}/>
 
 <div className={css.prodInfoWrap}>
 <h1 className={css.booksNameCard}>{el.bookName}</h1>

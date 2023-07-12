@@ -40,7 +40,7 @@ const [rerenderAfter, setRerenderAfter] = useState(false);
           
           // Користувач увійшов в систему
           setUser(currentUser);
-           console.log('currentUser',currentUser)
+        
      
         } else {
           // Користувач вийшов з системи
@@ -120,6 +120,7 @@ useEffect(() => {
 
 useEffect(() => {
   const checkOrder = async () => {
+    if(user && oneProd){
     try {
       const ordersCol = collection(db, 'orders');
       const q = query(ordersCol, where('user', '==', user.uid));
@@ -137,9 +138,11 @@ useEffect(() => {
     } catch (error) {
       console.error('Error checking order:', error);
     }
+  }
   };
   // Перевіряємо, чи користувач вже робив відгук для цього товару
   const checkReview = async () => {
+    if(user && oneProd){
     try {
       const reviewsCol = collection(db, 'reviews');
       const q = query(reviewsCol, where('productId', '==', oneProd.uid), where('userUid', '==', user.uid));
@@ -151,6 +154,7 @@ useEffect(() => {
     } catch (error) {
       console.error('Error checking review:', error);
     }
+  }
   };
 
   checkOrder();

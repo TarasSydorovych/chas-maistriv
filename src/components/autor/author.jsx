@@ -90,7 +90,7 @@ export default function Author({windowDimensions}) {
        
       };
       useEffect(() => {
-        console.log('selectedHero', selectedHero);
+       
       }, [selectedHero, product]);
       const handleAuthorChange = (event) => {
         const selectedAuthorIndex = parseInt(event.target.value);
@@ -133,8 +133,8 @@ export default function Author({windowDimensions}) {
                 <div className={css.autorListSmal}>
                 {heroes
           .slice(startIndex, startIndex + heroesPerPage)
-          .map((hero) => (
-                <div onClick={() => handleHeroClick(hero)} className={css.imgAutorWrapSmall}>
+          .map((hero, index) => (
+                <div key={index} onClick={() => handleHeroClick(hero)} className={css.imgAutorWrapSmall}>
            
            <img src={hero.foto} className={css.imgAutorSmall}/>
            <p className={css.autorNameM}>{hero.name}</p>

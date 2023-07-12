@@ -266,6 +266,11 @@ export default function AddBooks() {
             transliter: "novunka",
             
         },
+        {
+            name: "Промоакція",
+            transliter: "havePromo",
+            
+        },
     ]
 
 

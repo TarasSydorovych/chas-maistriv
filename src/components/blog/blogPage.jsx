@@ -43,8 +43,8 @@ const BlogPage = ({blogData}) => {
                  {selectedBlog.videoId.length < 1 &&
                  <p className={css.paragInWrapBig}>{selectedBlog.longDesc}</p>
                  }
-          {/* Додаткові поля блогу */}
-          <YouLikeIt/>
+          {/* Додаткові поля блогу 
+          <YouLikeIt/>*/}
         </div>
       ) : (
         <p>Завантаження блогу...</p>

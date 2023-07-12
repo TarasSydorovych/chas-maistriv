@@ -26,7 +26,7 @@ export default function Card({setCart, setCountProductForCart}) {
           
           setHaveProduct(true);
           setProducts(productsList);
-          console.log('Список продуктів', productsList);
+        
 
           const cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
           const productsWithQuantities = cartProducts.map(product => {
@@ -37,7 +37,7 @@ export default function Card({setCart, setCountProductForCart}) {
             }
           });
           setCartProducts(productsWithQuantities);
-          console.log('Товари в корзині', productsWithQuantities);
+         
         };
       
         fetchProducts();
@@ -90,6 +90,7 @@ export default function Card({setCart, setCountProductForCart}) {
   };
 
 const goToOrder = () => {
+  setCart(false)
   navigate('/order')
 }
 

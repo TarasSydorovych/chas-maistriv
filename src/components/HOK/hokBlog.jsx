@@ -16,7 +16,7 @@ const hokBlog = (WrappedComponent) => {
             querySnapshot.forEach((doc) => {
               data.push({ id: doc.id, ...doc.data() });
             });
-            console.log(data);
+           
             setBlogData(data);
           };
       

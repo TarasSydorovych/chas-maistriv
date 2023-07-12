@@ -47,7 +47,7 @@ const handleSelectChange = (event) => {
       field: obj[0].transliter,
       value: selectedValue,
     };
-    console.log('selectedValue ' , filter)
+   
     handleFilterClick(filter);
     handleFilterClickst(filter);
   };

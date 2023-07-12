@@ -12,7 +12,7 @@ export default function ProductNewReview({el, setAddressChanged}) {
 
     return(
         <div className='smallProductWrap'>
-        <img src={el.bookFoto} className="productPicSmall"/>
+        <img src={el.imageList[0]} className="productPicSmall"/>
         <div className='prodPricLikeCart'>
 
         <div className='prdeProdPricingCatalogSale'>

@@ -77,8 +77,8 @@ export default function FooterUp() {
             </div>
             <div className='footerUpSomeList'>
             <ul className='listUpSomeUl'>
-                <li className='listUpSomeUlLi'>Для авторів</li>
-                <li className='listUpSomeUlLi'>Для художників</li>
+                <li className='listUpSomeUlLi'><Link to="/authdes" className="listUpSomeUlLi">Для авторів</Link></li>
+                <li className='listUpSomeUlLi'><Link to="/authdes" className="listUpSomeUlLi">Для художників</Link></li>
                 <li className='listUpSomeUlLi'><Link to="/about" className="listUpSomeUlLi">Вакансії</Link></li>
                 <li className='listUpSomeUlLi'>Foreign rights</li>
             </ul>
@@ -93,8 +93,9 @@ export default function FooterUp() {
                     width="18"
         height="18"
                     />
-                    <p className='numberPhone'>+38&nbsp;067&nbsp;231&nbsp;57&nbsp;37</p>
+                    <a href="tel:+380672315737" className='numberPhone'>+38&nbsp;067&nbsp;231&nbsp;57&nbsp;37</a>
            </div>
+           <a className='numberPhone' href="mailto:sales@chasmaistriv.com.ua">
            <div className='emailFooterUp'>
            <HandySvg 
                     src={emailFooter}
@@ -103,6 +104,7 @@ export default function FooterUp() {
                     />
                     <p className='numberPhone'>sales@chasmaistriv.com.ua</p>
            </div>
+           </a>
             </div>
 
         </div>

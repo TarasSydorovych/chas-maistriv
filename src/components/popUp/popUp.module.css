@@ -11,6 +11,71 @@ align-items: center;
 justify-content: center;
 padding: 10px;
 }
+.dropPopWrap{
+    width: calc(331px - 2px);
+height: auto;
+border: 2px solid #F7CB25;
+position: fixed;
+top: 115px;
+left: 850px;
+background: white;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 10px;
+}
+.librPopWrap{
+    width: calc(331px - 2px);
+height: auto;
+border: 2px solid #F7CB25;
+position: fixed;
+top: 250px;
+left: 850px;
+background: white;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 10px;
+}
+.suportPopWrap{
+    width: calc(331px - 2px);
+    height: auto;
+    border: 2px solid #F7CB25;
+    position: fixed;
+    top: 360px;
+    left: 850px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+.popCHWrap{
+    width: calc(331px - 2px);
+height: auto;
+border: 2px solid #F7CB25;
+position: fixed;
+top: 220px;
+left: 75px;
+background: white;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 10px;
+}
+.popSPWrap{
+    width: calc(331px - 2px);
+    height: auto;
+    border: 2px solid #F7CB25;
+    position: fixed;
+    top: 270px;
+    left: 550px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
 .musicWrap{
     width: auto;
 height: auto;

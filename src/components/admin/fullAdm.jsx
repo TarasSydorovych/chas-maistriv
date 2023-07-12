@@ -12,6 +12,8 @@ import Carton from './carton'
 import CartonCha from './cartonCha'
 import SurveyForm from './surveyForm'
 import AddBooksTest from './addBooksTest'
+import UserList from './userList'
+import SeoBlock from './seoBlock'
 
 export default function FullAdm() {
 const [addB, setAddB] = useState(false)
@@ -24,7 +26,8 @@ const [promo, setPromo] = useState(false);
 const [carton, setCarton] = useState(false);
 const [cartonCha, setCartonCha] = useState(false);
 const [question, setQuestion] = useState(false);
-
+const [user, setUser] = useState(false)
+const [seo, setSeo] = useState(false)
    const  addBooksTrue = () => {
     setAddB(!addB)
     setAddM(false)
@@ -36,6 +39,8 @@ const [question, setQuestion] = useState(false);
     setCarton(false)
     setCartonCha(false)
     setQuestion(false)
+    setUser(false)
+    setSeo(false)
    }
    const  addManTrue = () => {
     setAddB(false)
@@ -48,6 +53,8 @@ const [question, setQuestion] = useState(false);
     setCarton(false)
     setCartonCha(false)
     setQuestion(false)
+    setUser(false)
+    setSeo(false)
    }
    const  bookListCha = () => {
     setAddB(false)
@@ -60,6 +67,8 @@ const [question, setQuestion] = useState(false);
     setCarton(false)
     setCartonCha(false)
     setQuestion(false)
+    setUser(false)
+    setSeo(false)
    }
    const  manListCha = () => {
     setAddB(false)
@@ -71,6 +80,8 @@ const [question, setQuestion] = useState(false);
     setCarton(false)
     setCartonCha(false)
     setQuestion(false)
+    setUser(false)
+    setSeo(false)
    }
    const  prodListFunc = () => {
     setAddB(false)
@@ -83,6 +94,8 @@ const [question, setQuestion] = useState(false);
     setCarton(false)
     setCartonCha(false)
     setQuestion(false)
+    setUser(false)
+    setSeo(false)
    }
    const  addBlogP = () => {
     setAddB(false)
@@ -95,6 +108,8 @@ const [question, setQuestion] = useState(false);
     setCarton(false)
     setCartonCha(false)
     setQuestion(false)
+    setUser(false)
+    setSeo(false)
    }
    const  changeToPromo = () => {
     setAddB(false)
@@ -107,6 +122,8 @@ const [question, setQuestion] = useState(false);
     setCarton(false)
     setCartonCha(false)
     setQuestion(false)
+    setUser(false)
+    setSeo(false)
    }
    const  cartonFun = () => {
     setAddB(false)
@@ -119,6 +136,8 @@ const [question, setQuestion] = useState(false);
     setCarton(!carton)
     setCartonCha(false)
     setQuestion(false)
+    setUser(false)
+    setSeo(false)
    }
    const  cartonFunCha = () => {
     setAddB(false)
@@ -131,6 +150,8 @@ const [question, setQuestion] = useState(false);
     setCarton(false)
     setCartonCha(!cartonCha)
     setQuestion(false)
+    setUser(false)
+    setSeo(false)
    }
    const addQuestion = () => {
     setAddB(false)
@@ -143,8 +164,37 @@ const [question, setQuestion] = useState(false);
     setCarton(false)
     setCartonCha(false)
     setQuestion(!question)
+    setUser(false)
+    setSeo(false)
    }
-
+   const userBlock = () => {
+    setAddB(false)
+    setAddM(false)
+    setBookList(false)
+    setManList(false)
+    setProdList(false)
+    setAddBlog(false)
+    setPromo(false)
+    setCarton(false)
+    setCartonCha(false)
+    setQuestion(false)
+    setUser(!user)
+    setSeo(false)
+   }
+   const seoBlock = () => {
+    setAddB(false)
+    setAddM(false)
+    setBookList(false)
+    setManList(false)
+    setProdList(false)
+    setAddBlog(false)
+    setPromo(false)
+    setCarton(false)
+    setCartonCha(false)
+    setQuestion(false)
+    setUser(false)
+    setSeo(!seo)
+   }
 
     return(
 <div className={css.fullAdmWrapp}>
@@ -168,6 +218,10 @@ const [question, setQuestion] = useState(false);
             className={`${css.listUlForAdmLiA} ${cartonCha ? css.listUlForAdmLiAA : ''}`}>Змінити обкладинку</Link></li>
                        <li className={css.listUlForAdmLi} onClick={addQuestion}><Link
             className={`${css.listUlForAdmLiA} ${question ? css.listUlForAdmLiAA : ''}`}>Додати опитування</Link></li>
+            <li className={css.listUlForAdmLi} onClick={userBlock}><Link
+            className={`${css.listUlForAdmLiA} ${user ? css.listUlForAdmLiAA : ''}`}>Список користувачів</Link></li>
+                   <li className={css.listUlForAdmLi} onClick={seoBlock}><Link
+            className={`${css.listUlForAdmLiA} ${seo ? css.listUlForAdmLiAA : ''}`}>Seo</Link></li>
         </ul>
     </div>
     {addB && 
@@ -199,6 +253,12 @@ const [question, setQuestion] = useState(false);
     }
     {question &&
         <SurveyForm/>
+    }
+    {user &&
+    <UserList/>
+    }
+    {seo &&
+    <SeoBlock/>
     }
 </div>
 

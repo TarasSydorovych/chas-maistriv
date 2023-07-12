@@ -60,3 +60,71 @@ width: 50%;
 .aboutSpan{
     color: #3FAC8C;
 }
+.autorWr{
+    width: 400px;
+    height: auto;
+}
+.coockWrap{
+    width: calc(100% - 40px);
+    height: 200px;
+    background: gainsboro;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+.coockieP{
+    width: 70%;
+    color: #3E3092;
+font-family: Ubuntu;
+font-size: 15px;
+font-style: normal;
+font-weight: 700;
+line-height: 143.5%;
+}
+.buttonCoockieWrap{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.firstButtonCoocki{
+    display: flex;
+width: 276px;
+height: 56px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+flex-shrink: 0;
+background: #3E51C1;
+color: #FFF;
+text-align: center;
+font-family: Ubuntu;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: 117.5%;
+border: none;
+cursor: pointer;
+}
+.secondButtonCoocki{
+    display: flex;
+width: 276px;
+height: 56px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+flex-shrink: 0;
+color: #FFF;
+text-align: center;
+font-family: Ubuntu;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: 117.5%;
+background: #F7CB25;
+border: none;
+margin-top: 10px;
+cursor: pointer;
+}

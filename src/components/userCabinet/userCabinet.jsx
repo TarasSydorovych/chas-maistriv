@@ -1,17 +1,14 @@
-import Footer from "../standartComponent/footer/footer";
-import Header from "../standartComponent/header/header";
 import css from './userCabinet.module.css'
 import { collection, query, where, getDocs, doc, getDoc, updateDoc } from 'firebase/firestore';
-import authPic from '../../img/userPic.png'
+
 import iconProp from '../../img/iconProp.png'
 import Group16 from '../../img/Group16.png'
 import Group17 from '../../img/smallGroup.png'
-import TelegramLoginButton from 'react-telegram-login';
+
 import facForUs from '../../img/facForUs.png'
 import mailForSoc from '../../img/mailForSoc.png'
 import tgUser from '../../img/tgUser.png'
-import { onSnapshot} from 'firebase/firestore';
-
+import checkTelegramSubscription from '../../function/checkTelegramSubscription'
 import whatUser from '../../img/whatUser.png'
 import { useState, useEffect } from "react";
 import WaitProd from "./waitProd";
@@ -19,83 +16,37 @@ import discIcon from '../../img/discIcon.png'
 import { Link, useNavigate } from 'react-router-dom';
 import {auth, db} from '../../firebase'
 import axios from 'axios';
+import withUserData from "../HOK/withUserData";
 import { getAuth, signInWithPhoneNumber, signOut , onAuthStateChanged } from "firebase/auth";
 import elefant from '../../img/elefant.png'
 import ViewProductCatalog from "../catalog/viewProductCatalog";
 import WaitProdLike from "./waitProdLike";
+import que from '../../img/que.png'
+import BlockReader from './blockReader';
+import BlockMaister from './blockMaister';
+import BlockBusiness from './blockBusiness';
 
-export default function UserCabinet({products, setAddressChanged, addressChanged, windowDimensions}) {
+
+const UserCabinet = ({products, setAddressChanged, addressChanged, windowDimensions, user, userBd}) => {
 
     const navigate = useNavigate();
     const [selectedText, setSelectedText] = useState(1);
-    const [user, setUser] = useState('');
-    const [userBd, setUserBd] = useState('');
+  
+    const [infoTg, setInfoTg] = useState(false)
+    const [tgId, setTgId] = useState('')
+  
     const [orders, setOrders] = useState([]);
+    const [workFunc, setWorkFunc] = useState(false)
     const [parsedChoices, setParsedChoices] = useState([]);
     const [needRe, setNeedRe] = useState(false);
     const apiKey = 'f579aac88b980dff3f819958ce1cbca6';
     const apiUrl = 'https://api.novaposhta.ua/v2.0/json/';
     const [telegramUserId, setTelegramUserId] = useState('');
     const [waitProdComponents, setWaitProdComponents] = useState([]);
-
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
    
-    async function checkTelegramSubscription(user) {
-      const botToken = '6266005117:AAHxzv2HFvvbNQ1CkPCumJg7tvPGDdNPusY';
-      const channelId = '-1001865626987';
-      
-      try {
-        // Виклик Telegram Bot API для отримання інформації про підписку користувача
-        const response = await axios.get(`https://api.telegram.org/bot${botToken}/getChatMember`, {
-          params: {
-            chat_id: channelId,
-            user_id: '1476312771',
-          },
-        });
-      
-        if (response.data.ok && response.data.result && response.data.result.status === 'member') {
-          console.log('true Chanel')
-          return true; // Користувач підписаний на канал
-        } else {
-          console.log('false Chanel')
-          return false; // Користувач не підписаний на канал
-        }
-      } catch (error) {
-        console.error('Помилка при виклику Telegram Bot API:', error);
-        return false; // Помилка при виклику Telegram Bot API
-      }
-    }
-    
-
-    async function getTelegramUserId() {
-      try {
-        const botToken = '6266005117:AAHxzv2HFvvbNQ1CkPCumJg7tvPGDdNPusY';
-        const response = await axios.get(`https://api.telegram.org/bot${botToken}/getMe`);
-        const telegramUserId = response.data.result;
-        return telegramUserId;
-      } catch (error) {
-        console.error('Error:', error);
-        throw error;
-      }
-    }
-   
-
-    const handleTelegramResponse = (response) => {
-      // Обробка отриманих даних від Telegram
-      console.log('Telegram response:', response);
-      // Виконайте необхідні дії з отриманими даними, наприклад, реєстрація користувача
-    };
-
     // Функція, що викликається при кліку на кнопку підписки
-    async function handleSubscribeClick() {
-      try {
-        const telegramUserId = await getTelegramUserId();
-        console.log('Telegram User ID:', telegramUserId);
-    
-        // Виконайте інші дії після отримання Telegram ID, наприклад, збереження у базі даних або відправка на сервер.
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    }
+
     const handleLogout = () => {
 
       
@@ -109,71 +60,7 @@ export default function UserCabinet({products, setAddressChanged, addressChanged
             console.log('Помилка під час виходу з системи:', error);
           });
       };
-      useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-          if (currentUser) {
-            
-            // Користувач увійшов в систему
-            setUser(currentUser);
-      
-       
-          } else {
-            // Користувач вийшов з системи
-            navigate('/');
-            setUser(null);
-          }
-        });
-      
-        return () => {
-          // Відписка від слухача після розмонтовування компоненти
-          unsubscribe();
-        };
-      }, []);
-      useEffect(() => {
-        if(user){
-        const usersRef = collection(db, 'users');
-        const userQuery = query(usersRef, where('uid', '==', user.uid));
-        const unsubscribeUser = onSnapshot(userQuery, (snapshot) => {
-          snapshot.forEach((doc) => {
-            const userData = doc.data();
-            
-            setUserBd(userData);
-          });
-        });
-      
-        return () => {
-          // Відписка від слухача користувача після розмонтовування компоненти
-          unsubscribeUser();
-        };
-      }
-      }, [user, needRe])
-      const handleClick = async () => {
-        try {
-          // Отримання документу користувача з колекції "users" за його uid
-          const userDocRef = doc(collection(db, 'users'), userBd.uid);
-          const userDocSnap = await getDoc(userDocRef);
-    
-          if (userDocSnap.exists()) {
-            // Оновлення значення поля "discount" на 10
-            const updatedDiscount = 5;
-    
-            // Оновлення значення поля "signed" на true
-            const updatedSigned = 'true';
-    
-            // Оновлення документу користувача
-            await updateDoc(userDocRef, {
-              discount: updatedDiscount,
-              signed: updatedSigned,
-            });
-            setNeedRe(!needRe);
-            // Оновлення стану з новими даними користувача
-          } else {
-            console.log('Користувача з таким uid не знайдено');
-          }
-        } catch (error) {
-          console.error('Помилка при оновленні даних користувача:', error);
-        }
-      }
+
     const handleBlockClick = (text) => {
        setSelectedText(text);
     };
@@ -181,7 +68,9 @@ export default function UserCabinet({products, setAddressChanged, addressChanged
       //Це робочий ефектіііііііііііііііііііііііііііііііііііііііііііііііііііііііі
       useEffect(() => {
         const fetchOrdersByUser = async () => {
+          if(user){
           try {
+
             const ordersRef = collection(db, 'orders');
             const q = query(ordersRef, where('user', '==', user.uid));
             const querySnapshot = await getDocs(q);
@@ -196,7 +85,7 @@ export default function UserCabinet({products, setAddressChanged, addressChanged
             });
       
             let filteredData;
-       console.log('selectedText', selectedText)
+    
             if (selectedText === 2) {
               filteredData = parsedData.filter(({ order }) => order.status === 'Очікує підтвердження');
             } else if(selectedText === 3){
@@ -243,6 +132,7 @@ export default function UserCabinet({products, setAddressChanged, addressChanged
           } catch (error) {
             console.error('Помилка при отриманні замовлень:', error);
           }
+        }
         };
       
         fetchOrdersByUser();
@@ -256,36 +146,83 @@ export default function UserCabinet({products, setAddressChanged, addressChanged
     alert("Слон дорівнює 1 грн. Слони нараховуються за ваші відгуки про наші книги. Ваші відгуки важливі, бо вони допомагають в просуванні книги в яку віримо ми і ви. Кількість слонів яка вам нараховується залежить від ціни і об'єму книги. Щоб отримати слони ви маєте розмістити відгук під книжкою яку ви раніше придбали. Слони не нараховуються автоматично за відгук, якщо ви не купували книгу на яку написали відгук на нашому сайті. Але вам можуть нарахуватись слони вручному режимі, якщо такий відгук підтвердить адміністратор сайта. Для цього ви повинні відправити лист адміністратору з посиланням на відгук.")
    }
 
+// TELEGRAM AUTHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+
+
+const handleClickInfo = () => {
+  setInfoTg(!infoTg);
+}
+const changeInput = (e) => {
+setTgId(e.target.value)
+
+}
+useEffect(() => {
+  setInfoTg(false)
+}, [workFunc])
+const tgIdChange = async (uid) => {
+ 
+  try {
+    const usersRef = collection(db, 'users');
+    const q = query(usersRef, where('__name__', '==', uid));
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach(async (doc) => {
+      const userRef = doc.ref;
+      await updateDoc(userRef, { telegramId: tgId });
+    });
+    setWorkFunc(!workFunc)
+    window.location.reload();
+  } catch (error) {
+    console.error('Помилка при оновленні значення telegramId:', error);
+  }
+}
+
+
+//TELDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+
+
+
+
     return(
         <div>
             
 <div className={css.bleuLabel}>
 <div className={css.blueLabelWnutr}>
 
-<TelegramLoginButton dataOnauth={handleTelegramResponse} botName="chasTest_bot" />
-<button onClick={checkTelegramSubscription}>telegram</button>
-<button onClick={handleSubscribeClick}>Користува</button>
-    <button onClick={handleLogout}>вийти</button>
+
+
+
+   
 <p className={css.firstTextInBlock}>Наша місія — допомогти батькам ростити дітей людьми, які вміють бути щасливими</p>
 <p className={css.firstTextInBlock}>Наша мета — створювати якісні дитячі книги, від яких важко відірватися, та які збагачують.</p>
 </div>
 
 </div>
 
-
+{userBd && 
 <div className={css.userInformationWrap}>
     <div className={css.userInformationWrapSmall}>
         <div className={css.yourInformation}>
 <div className={css.userData}>
 <div className={css.imgAutorWrapSmall}>
-           
-           <img src={authPic} className={css.imgAutorSmall}/>
+{userBd.photo &&
+           <img src={userBd.photo} className={css.imgAutorSmall}/>
+}
+{userBd.photo === null &&
+           <img src={que} className={css.imgAutorSmall}/>
+}
            </div>
            <div className={css.nameAndPropWr}>
-            <h4 className={css.userNameHello}>{user.displayName}, вітаємо!</h4>
+            {userBd.displayName &&
+            <h4 className={css.userNameHello}>{userBd.displayName}, вітаємо!</h4>
+          }
+          {userBd.displayName === null &&
+            <h4 className={css.userNameHello}>Користувач, вітаємо!</h4>
+          }
             <div className={css.propWrap}>
                 <img src={iconProp}/>
                 <p className={css.propP}>Налаштування</p>
+                <h2 className={css.outButton} onClick={handleLogout}>Вийти з кабінету</h2>
             </div>
            </div>
 </div>
@@ -298,7 +235,7 @@ export default function UserCabinet({products, setAddressChanged, addressChanged
 
         </div>
         <div className={css.ourInformation}>
-<h4 className={css.yourRegistration}>Ви зареєстровані як член клуба “Час майстрів”</h4>
+<h4 className={css.yourRegistration}>Ви зареєстровані як {userBd.category}</h4>
 <p className={css.yourDescription}>Це дає вам знижки та доступ до коментів, а також ви потрапляєте під роздачу слонів (бонусів), можете брати участь в опікунських радах і тестуванні книг, впливати на вибір обкладинок, назв текстів та обговорювати злободенні питання. Якщо ви довіряєте нам як спеціалістам у виборі та створенні дитячої книги, запрошуємо вас встановити з нами прямий контакт через імейл, вайбер, телеграм, або вотсап. Приєднуйтесь до спільноти поціновувачів книжок, підписавшись на наші соцмережі. Настав Час майстрів.</p>
 <div className={css.socialWrap}>
 <a href='https://www.facebook.com/chasmaistriv' target="_blanck">
@@ -325,7 +262,7 @@ export default function UserCabinet({products, setAddressChanged, addressChanged
         </div>
     </div>
 </div>
-
+}
 
 <div className={css.orderingProductWrap}>
 <div className={css.orderingProductWrapSmall}>
@@ -353,20 +290,45 @@ export default function UserCabinet({products, setAddressChanged, addressChanged
 </div>
 
 {userBd.signed === 'false' &&
+<>
 <div className={css.yourDiscountWrap}>
     <div className={css.yourDiscountWrapSmall}>
         <div className={css.dicsTextWr}>
             <p className={css.yourDicrFive}>Ваша знижка*<br/><span className={css.yourDicrFiveSpan}>{userBd.discount}%</span></p>
-            <p className={css.yourDicrFiveSmall}>Для отримання знижки 5% підпишіться на email розсилку</p>
+            <p className={css.yourDicrFiveSmall}>Для отримання знижки 5% підпишіться на наш телеграм канал </p>
         </div>
         <img src={discIcon} className={css.discIconIc}/>
         <div className={css.buttonConfFRW}>
-            <p className={css.confirmP}>Підпишіться</p>
-            <div className={css.likeButton} onClick={handleClick}>Підписатись</div>
+            <p className={css.confirmP}>Детальніше</p>
+            <div className={css.likeButton} onClick={handleClickInfo}>Інформація</div>
         </div>
     </div>
 
 </div>
+{infoTg && 
+  <div className={css.yourDiscountWrapInfo}>
+  <div className={css.yourDiscountWrapSmall}>
+      <div className={css.dicsTextWrInfo}>
+      <p className={css.yourDicrFive}>Для успішного отримання знажки вам потрібно зробити наступні кроки:<br/></p>
+          <p className={css.yourDicrFiveSmall}>
+          1) Натисніть на кнопку отримати ID яка відкриє телеграм бот для отримання вашого ID та натисніть START.<br/><br/>
+          2) Скопіюйте отриманий ID та вставте його в поле ваш телеграм ID.<br/><br/>
+          3) Натисніть кнопку підписатись на телеграм канал Час майстрів.<br/><br/>
+          4) Врахуйте, що при скасуванні підписки знижка автоматично анулюється!<br/><br/>
+          </p>
+      </div>
+
+      <div className={css.buttonConfFRW}>
+         
+         <a className={css.likeButton} href="https://t.me/getidsbot" target='_blanck'> <div className={css.likeButton} >Отримати ID</div></a>
+         <input className={css.inputTgId} value={tgId} placeholder='Ваш телеграм ID' onChange={changeInput}></input>
+         <a className={css.likeButton} href="https://t.me/chas_maistriv" target='_blanck'>  <div className={css.likeButton} onClick={() => tgIdChange(user.uid)}>Підписатись</div></a>
+      </div>
+  </div>
+
+</div>
+}
+</>
 }
 {userBd.signed === 'true' &&
 <div className={css.yourDiscountWrap}>
@@ -384,8 +346,19 @@ export default function UserCabinet({products, setAddressChanged, addressChanged
 
 </div>
 }
-
-
+{userBd.category === 'Член "Клубу Майстрів"'  &&
+<BlockReader/>
+}
+{userBd.category === 'Читач' &&
+<BlockReader/>
+}
+{userBd.category === 'Бізнес-партнер' &&
+<BlockBusiness userBd={userBd}/>
+}
+{userBd.category === 'Майстер' &&
+<BlockMaister userBd={userBd}/>
+}
+{userBd.category === 'Член "Клубу Майстрів"'  &&
 <div className={css.elefantWrap} onClick={onClickToElefant}>
     <div className={css.elefantWrapSmall}>
         <div className={css.elef}>
@@ -395,9 +368,22 @@ export default function UserCabinet({products, setAddressChanged, addressChanged
         <p className={css.elefantDescription}>Ви можете <br/> сплачувати слонами<br/> за наші книги<br/> курс <span className={css.elefantDescriptionSpan}>1 Слон = 1 Грн</span></p>
     </div>
 </div>
+}
+{userBd.category === 'Читач'  &&
+<div className={css.elefantWrap} onClick={onClickToElefant}>
+    <div className={css.elefantWrapSmall}>
+        <div className={css.elef}>
+<img src={elefant} className={css.elefant}/>
+<p className={css.howMathElefant}>Ваші слони (бонуси) <br/><span className={css.howMathElefantSpan}>{userBd.elefant}</span></p>
+        </div>
+        <p className={css.elefantDescription}>Ви можете <br/> сплачувати слонами<br/> за наші книги<br/> курс <span className={css.elefantDescriptionSpan}>1 Слон = 1 Грн</span></p>
+    </div>
+</div>
+}
 <ViewProductCatalog products={products} setAddressChanged={setAddressChanged}/>
 
 
         </div>
     )
 }
+export default withUserData(UserCabinet);

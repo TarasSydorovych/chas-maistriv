@@ -97,14 +97,13 @@ export default function HeroPage({windowDimensions}) {
         setSelectedHero(hero);
       };
       useEffect(() => {
-        console.log('selectedHero', selectedHero);
-        console.log('selectedHero', product);
+      
       }, [selectedHero, product]);
 
 
 
       const goToBook = () => {
-        console.log('product',product)
+       
         navigate(`/product/${product.uid}`)
       }
       const age = [
@@ -162,8 +161,8 @@ export default function HeroPage({windowDimensions}) {
                 {heroesList &&
                 heroesList
           .slice(startIndex, startIndex + heroesPerPage)
-          .map((hero) => (
-                <div onClick={() => handleHeroClick(hero)} className={css.imgAutorWrapSmall}>
+          .map((hero, index) => (
+                <div key={index} onClick={() => handleHeroClick(hero)} className={css.imgAutorWrapSmall}>
            
            <img src={hero.foto} className={css.imgAutorSmall}/>
            <p className={css.autorNameM}>{hero.name}</p>
@@ -252,7 +251,7 @@ export default function HeroPage({windowDimensions}) {
           </div>
           }
 
-{/* блок товарів */}
+{/* блок товарів 
           <div className={css.theSameBooksWrap}>
             <div className={css.theSameBooksWrapSmall}>
                 <h4 className={css.theSameH4}>Схожі книги</h4>
@@ -263,6 +262,7 @@ export default function HeroPage({windowDimensions}) {
                 </div>
             </div>
           </div>
+          */}
           {/* блок товарів */}
           {/* блок відео */}
           <div className={css.videoBlockWrap}>

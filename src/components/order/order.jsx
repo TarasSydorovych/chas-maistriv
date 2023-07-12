@@ -1,18 +1,21 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo, useCallback } from 'react'
 import Footer from '../standartComponent/footer/footer'
 import Header from '../standartComponent/header/header'
 import css from './order.module.css'
 import { v4 as uuidv4 } from 'uuid';
+import withUserData from '../HOK/withUserData';
 import { getFirestore,  query, where, getDocs, getDoc  } from 'firebase/firestore';
 import arrowImp from '../../img/arrowDownPick.png'
+import fetchDepartments from '../../function/fetchDepartments';
 import {auth, db} from '../../firebase'
+import generateSignature from '../../function/generateSignature'
 import { getAuth, signInWithPhoneNumber, signOut , onAuthStateChanged } from "firebase/auth";
 import { Buffer } from 'buffer';
 import sha1 from 'sha1'
 import { doc, setDoc, addDoc, collection, serverTimestamp } from "firebase/firestore"; 
 import ProductInOrder from './productInOrder'
 import axios from 'axios';
-export default function Order({setLogin}) {
+const Order = ({setLogin, user, discountInHok, dataFromBase}) => {
 const [name, setName] = useState('');
 const uid = uuidv4();
 const [fatherName, setFatherName] = useState('');
@@ -28,19 +31,25 @@ const [ulVisible, setUlVisible] = useState(false);
 const [departments, setDepartments] = useState([]);
 const [visibleForm, setVisibleForm] = useState(false);
 const [whatSelect, setWhatSelect] = useState(0)
-const [dataFromBase, setDataFromBase] = useState(null);
+const [discount, setDiscount] = useState(null);
 const [promo, setPromo] = useState('');
 const [fullPrice, setFullPrice] = useState();
-const [user, setUser] = useState('');
+const [products, setProducts] = useState([]);
+const [haveProduct, setHaveProduct] = useState(false);
+const [cartProducts, setCartProducts] = useState();
+const [finishPrice, setFinishPrice] = useState(0);
 const [promoCode, setPromoCode] = useState('');
 const [newFinValue, setNewFinValue] = useState('');
-const [discount, setDiscount] = useState(0);
+
+const [visibleDiscount, setVisibleDiscount] = useState(0);
 const [depo, setDepo] = useState('');
 const [selectedDepartment, setSelectedDepartment] = useState('');
 const [countProductForCart, setCountProductForCart] = useState([]);
 const [whoCust, setWhoCust] = useState(true)
 
-const handleApplyPromoCode = async () => {
+// Функція промокоду
+
+const handleApplyPromoCode = useCallback(async () => {
   // Отримання документа "promo" з колекції
   const promoDocRef = doc(db, 'promo', 'promo-document');
   const promoDocSnapshot = await getDoc(promoDocRef);
@@ -51,10 +60,32 @@ const handleApplyPromoCode = async () => {
     if (promoData.uid === promoCode) {
       // Промокод знайдено, оновлення значення знижки
       const discountValue = parseInt(promoData.discount);
-      const discValue = (finishPrice * discountValue) / 100;
-      const resul = (finishPrice - discValue);
-      setNewFinValue(resul)
-      setDiscount(discValue);
+      
+      // Розрахунок нової суми для кожного товару
+      const updatedCartProducts = cartProducts.map(product => {
+        if (product.havePromo === 'true') {
+          const discValue = (product.price * discountValue) / 100;
+          const newPrice = product.price - discValue;
+          return {
+            ...product,
+            price: newPrice
+          };
+        }
+        return product;
+      });
+
+      // Розрахунок нової загальної суми
+      const totalPrice = updatedCartProducts.reduce((acc, product) => {
+        return acc + (product.price * product.quantity);
+      }, 0);
+      
+      console.log('totalPrice',totalPrice)
+
+      const discValue = (totalPrice * discountValue) / 100;
+      const resul = totalPrice - discValue;
+      setNewFinValue(totalPrice);
+      setVisibleDiscount(discValue);
+      
     } else {
       // Промокод не знайдено, виведення повідомлення
       alert('Такого промокоду не існує');
@@ -63,10 +94,9 @@ const handleApplyPromoCode = async () => {
     // Документ promo не існує, виведення повідомлення
     alert('Такого промокоду не існує');
   }
-};
-
-
-
+}, [cartProducts, promoCode]);
+// закінчення функції промокоду
+// функції для зміни значень стандартних
 const handleNewBuyerClick = () => {
   setIsNewBuyer(true);
 };
@@ -81,78 +111,8 @@ const handleSelectChange = (event) => {
     setSelectedDepartment(selectedDepartmentName);
   };
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const db = getFirestore();
-      const usersRef = collection(db, 'users');
-      if(user){
-      const q = query(usersRef, where('uid', '==', user.uid));
-      
-      try {
-        const querySnapshot = await getDocs(q);
-        
-        if (!querySnapshot.empty) {
-          querySnapshot.forEach((doc) => {
-            // Отримайте дані документа
-            const userData = doc.data();
-            console.log('userData',userData)
-           
-            if(userData.phone){
-            setPhone(userData.phone);
-            setDataFromBase(userData);
-            setName(userData.name);
-          }
-           
-          });
-        } else {
-          // Документ не знайдено
-          setUser(null);
-        }
-      } catch (error) {
-        console.log('Помилка під час отримання даних:', error);
-      }
-    }
-  
-  
-    };
-  
-    fetchUser();
-  }, [user]);
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
-       
-        // Користувач увійшов в систему
-        setUser(currentUser);
-      } else {
-        // Користувач вийшов з системи
-    
-        
-        setUser(null);
-      }
-    });
-   
 
-    return () => {
-      // Відписка від слухача після розмонтовування компоненти
-      unsubscribe();
-    };
-  },[])
-  const generateSignature = () => {
-    const publicKey = 'sandbox_i47427856209';
-    const privateKey = 'sandbox_nLRix8HatIf5clJkORUvGIFrNFCgRbbjOZQnneIK';
 
-    const params = {"public_key": publicKey,"version":"3","action":"pay","amount":finishPrice,"currency":"UAH","description":"test","order_id":uid}
-
-    const data = Buffer.from(JSON.stringify(params)).toString('base64');
-    const fi = privateKey + data + privateKey;
-    const signString = privateKey + data + privateKey;
-    const hash = sha1(signString);
-    const signature = Buffer.from(hash, 'hex').toString('base64');
-
-    
-    return { data, signature };
-  };
 const [choisDostavka, setChoisDostavka] = useState(true);
 //Другі контактні данні
 const nameChangeOtr = (e) => {
@@ -240,13 +200,13 @@ const nameChange = (e) => {
         },
         body: JSON.stringify(requestData),
       });
-       console.log('Response', response)
+       
       const data = await response.json();
       const citiesList = data.data || [];
     
       setCities(citiesList);
 
-      console.log('Міста', cities);
+    
     } catch (error) {
       console.error('Error searching cities:', error);
     }
@@ -257,44 +217,13 @@ const nameChange = (e) => {
     setCityName(city.Description);
     setCities([]);
     setUlVisible(false)
-    fetchDepartments(city.Ref)
-    console.log(city)
-  };
-  const fetchDepartments = async (ref) => {
-    try {
-      const response = await fetch('https://api.novaposhta.ua/v2.0/json/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          apiKey: 'f579aac88b980dff3f819958ce1cbca6',
-          modelName: 'Address',
-          calledMethod: 'getWarehouses',
-          methodProperties: {
-            CityRef: ref
-          }
-        })
-      });
+    setDepartments(fetchDepartments(city.Ref))
 
-      if (response.ok) {
-        const data = await response.json();
-        const warehouses = data.data;
-        console.log(warehouses)
-        setDepartments(warehouses);
-      } else {
-        console.error('Error fetching Nova Poshta departments');
-      }
-    } catch (error) {
-      console.error('Error fetching Nova Poshta departments', error);
-    }
   };
+
 
 // все для продуктів в корзині
-const [products, setProducts] = useState([]);
-const [haveProduct, setHaveProduct] = useState(false);
-const [cartProducts, setCartProducts] = useState();
-const [finishPrice, setFinishPrice] = useState(0);
+
 
 useEffect(() => {
     const fetchProducts = async () => {
@@ -307,7 +236,7 @@ useEffect(() => {
       
       setHaveProduct(true);
       setProducts(productsList);
-      console.log('Список продуктів', productsList);
+      
 
       const cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
       const productsWithQuantities = cartProducts.map(product => {
@@ -318,7 +247,7 @@ useEffect(() => {
         }
       });
       setCartProducts(productsWithQuantities);
-      console.log('Товари в корзині', productsWithQuantities);
+    
     };
   
     fetchProducts();
@@ -343,7 +272,15 @@ const totalPrice = updatedCartProducts.reduce((acc, product) => {
   return acc + (product.price * product.quantity);
 }, 0);
 setFinishPrice(totalPrice);
-setNewFinValue(totalPrice)
+if(discountInHok > 0){
+  const discValue = (totalPrice * discountInHok) / 100;
+      const resul = (totalPrice - discValue);
+      setNewFinValue(resul)
+      setDiscount(discValue)
+}else{
+  setNewFinValue(totalPrice)
+}
+
 setCartProducts(updatedCartProducts);
 
 // Update the quantity of the product with the corresponding uid in the localStorage
@@ -372,7 +309,6 @@ setTotalQuantity(totalQuantity);
 
 
 
-
 const removeProduct = (uid) => {
 const updatedCart = cartProducts.filter(product => product.uid !== uid);
 localStorage.setItem('cart', JSON.stringify(updatedCart));
@@ -389,15 +325,29 @@ const totalPrice = updatedCart.reduce((acc, product) => {
   return acc + (product.price * product.quantity);
 }, 0);
 setFinishPrice(totalPrice || 0); // if updatedCart is empty, set totalPrice to 0
-setNewFinValue(totalPrice || 0)
+if(discountInHok > 0){
+  const discValue = (totalPrice * discountInHok) / 100;
+      const resul = (totalPrice - discValue);
+setNewFinValue(resul || 0)
+setDiscount(discValue)
+}else{
+  setNewFinValue(totalPrice || 0)
+}
 };
 useEffect(() => {
-if (cartProducts && cartProducts.length) {
+if (cartProducts && cartProducts.length ) {
   const totalPrice = cartProducts.reduce((acc, product) => {
     return acc + (product.price * product.quantity);
   }, 0);
   setFinishPrice(totalPrice);
-  setNewFinValue(totalPrice);
+  if(discountInHok > 0){
+    const discValue = (totalPrice * discountInHok) / 100;
+        const resul = (totalPrice - discValue);
+  setNewFinValue(resul);
+  setVisibleDiscount(discValue)
+  }else{
+    setNewFinValue(totalPrice);
+  }
 
   // Update the total quantity of products in the cart
   const totalQuantity = cartProducts.reduce((acc, product) => {
@@ -405,7 +355,7 @@ if (cartProducts && cartProducts.length) {
     }, 0);
     setCountProductForCart(totalQuantity);
     }
-    }, [cartProducts]);
+    }, [cartProducts, discountInHok]);
     // заключаючий
 const promoFunc = () => {
 
@@ -417,7 +367,7 @@ const handleChange = (event) => {
     if (selectedValue === '2') {
         setVisibleForm(true)
         setWhatSelect(1)
-        console.log('Зайшло і поміняло форму')
+        
     }else  if (selectedValue === '1' || selectedValue === '0') {
         setWhatSelect(0)
     }
@@ -426,7 +376,7 @@ const handleChange = (event) => {
   //Оплатва
   const payParam = async (e) => {
     e.preventDefault();
-    console.log('Інвалід дата not json', cartProducts)
+
     const json = JSON.stringify(cartProducts);
   
   let us = '';
@@ -435,7 +385,7 @@ const handleChange = (event) => {
     us = user.uid;
    
   }
-  console.log('Інвалід дата', us)
+ 
     if(whatSelect === 1){
       try {
           // Створюємо об'єкт документу для запису в Firestore
@@ -465,11 +415,11 @@ const handleChange = (event) => {
          // const docRef = await addDoc(collection(db, 'orders'), newProduct);
           const frankDocRef = doc(db, 'orders', uid);
       await setDoc(frankDocRef, newProduct);
-          console.log('Документ успішно додано з ID:', );
+     
         } catch (error) {
           console.error('Помилка при додаванні документа:', error);
         }
-      const { data, signature } = generateSignature();
+      const { data, signature } = generateSignature(newFinValue, uid);
   
       const form = document.getElementById('liqpay-form');
     
@@ -505,7 +455,7 @@ const handleChange = (event) => {
           //const docRef = await addDoc(collection(db, 'orders'), newProduct);
           const frankDocRef = doc(db, 'orders', uid);
       await setDoc(frankDocRef, newProduct);
-          console.log('Документ успішно додано з ID:');
+        
         } catch (error) {
           console.error('Помилка при додаванні документа:', error);
         }
@@ -517,7 +467,9 @@ const handleChange = (event) => {
    
    
   }
-
+  useEffect(() => {
+    // Оновлюйте компоненту тут
+  }, [discount]);
 const apiKey = 'f579aac88b980dff3f819958ce1cbca6';
       const apiUrl = 'https://api.novaposhta.ua/v2.0/json/';
       const ttnNumber = '20450715436175'; 
@@ -525,17 +477,14 @@ const apiKey = 'f579aac88b980dff3f819958ce1cbca6';
     
 
     return(
-        <>
-        
+        <> 
 <div className={css.blueHeaderOrder}>
     <div className={css.blueHeaderOrderEnter}>
         <h3 className={css.titleH3OrderEnter}>Оформлення замовлення</h3>
     </div>
 </div>
-
 <div className={css.wrapCenterOrder}>
 <div className={css.wrapCenterOrderSmall}>
-
 <div className={css.firstBlockWrap}>
     <div className={css.newUserOrNoWrap}>
     <div
@@ -617,8 +566,6 @@ const apiKey = 'f579aac88b980dff3f819958ce1cbca6';
    {departments.map((el, index) => {
   return  <option  className={css.customOpin} key={index} value={index}>{el.Description}</option>
    })}
-    
-    
   </select>
   <img src={arrowImp} className={css.customArrowSelect} />
 </div>
@@ -639,17 +586,12 @@ const apiKey = 'f579aac88b980dff3f819958ce1cbca6';
                               </form>
                             }
 </div>
-
 }
-
-
-
 {whoCust &&
 <>
 <p className={css.labelMi}>
     Контактні дані отримувача
 </p>
-
 <div className={css.wrapUserData}>
 <input className={css.inputSmall} type='text' placeholder="Ім'я" value={nameOtr} onChange={nameChangeOtr}/>
 <input className={css.inputSmall} type='text' placeholder="По-батькові" value={fatherNameOtr} onChange={fatherNameChangeOtr}/>
@@ -659,17 +601,8 @@ const apiKey = 'f579aac88b980dff3f819958ce1cbca6';
 </>
 }
 <button className={css.orderConfirmation} onClick={payParam}>Оформити замовлення</button>
-
-
-
-
-
 </div>
-
-
-
 <div className={css.wrapProdForOrder}>
-
 {cartProducts &&
 cartProducts.map((el, index) => {
                    return <ProductInOrder key={index} el={el} removeProduct={removeProduct} handleQuantityChange={handleQuantityChange}/>
@@ -677,7 +610,7 @@ cartProducts.map((el, index) => {
 
                 <div className={css.lineWrap}></div>
                 <p className={css.sumOrder}>Всього: {finishPrice} грн</p>
-                <p className={css.sumOrder}>Знижка: {discount} грн</p>
+                <p className={css.sumOrder}>Знижка: {discountInHok} %</p>
                 <div className={css.discountWrapOrder}>
                 <input className={css.promoInput} type='text' placeholder="Промокод" value={promoCode} onChange={(e) => setPromoCode(e.target.value)}/>
                 <div className={css.promoButton} onClick={handleApplyPromoCode}>
@@ -685,34 +618,12 @@ cartProducts.map((el, index) => {
                 </div>
                 </div>
                 <p className={css.sum}>Сума: {newFinValue} грн</p>
-
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
 </div>
-
-
-
-
 </div>
-
-
-
-
-
-
         <Footer/>
 
         </>
     )
 }
+export default withUserData(Order);

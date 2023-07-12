@@ -33,7 +33,7 @@ export default function IconSocial() {
                 </div>
             </div>
             </a>
-            <a href='https://t.me/chasmaistriv_bot' target="_blanck">
+            <a href='https://t.me/chas_maistriv' target="_blanck">
             <div className='socialBlock'>
                 <div className='socialIcon'>
                     <HandySvg 

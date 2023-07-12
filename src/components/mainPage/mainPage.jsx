@@ -16,15 +16,29 @@ import MainPageBlog from "./mainPageBlog";
 import VideoViewAge from "./videoViewAge";
 import Subscribe from "./subscribe";
 import Footer from "../standartComponent/footer/footer";
+import withFirebaseCollection from "../HOK/withFirebaseCollection";
 
 
 
 
 
+const MainPage = ({targetDate, windowDimensions, data}) => {
 
-export default function MainPage({targetDate, windowDimensions}) {
-
-
+    if (data.length > 0) {
+        
+        document.title = data[0].mainTitle; // Встановлюємо заголовок сторінки
+  
+      const metaDescription = document.querySelector('meta[name="description"]');
+      if (metaDescription) {
+        metaDescription.setAttribute('content', data[0].mainDescription); // Встановлюємо опис сторінки
+      } else {
+        const newMetaDescription = document.createElement('meta');
+        newMetaDescription.setAttribute('name', 'description');
+        newMetaDescription.setAttribute('content', data[0].mainDescription);
+        document.head.appendChild(newMetaDescription); // Створюємо та вставляємо новий елемент <meta> з описом сторінки
+      }
+    
+      }
 
 
     return(
@@ -50,3 +64,4 @@ export default function MainPage({targetDate, windowDimensions}) {
         </div>
     )
 }
+export default withFirebaseCollection('seo')(MainPage);

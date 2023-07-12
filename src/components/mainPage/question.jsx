@@ -70,7 +70,7 @@ const Question = () => {
         ...doc.data(),
       }));
       setSurveys(surveysData);
-      console.log('surveysData', surveysData);
+      
     };
 
     fetchSurveys();

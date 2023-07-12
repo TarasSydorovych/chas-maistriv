@@ -14,7 +14,7 @@ export default function ViewProductCatalog({products, setAddressChanged}) {
       // Перевіряємо, чи масив існує та чи він не пустий
       if (visitedProductsFromLocalStorage && visitedProductsFromLocalStorage.length > 0 && products) {
         const selectedProducts = products.filter(product => visitedProductsFromLocalStorage.includes(product.uid));
-        console.log(selectedProducts);
+       
         setVisitedProducts(selectedProducts)
       }
     }, []);

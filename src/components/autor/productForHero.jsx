@@ -33,7 +33,7 @@ export default function ProductForHero({el}) {
 
     return(
         <div className={css.smallProductWrap}>
-        <img src={el.bookFoto} className={css.productPicSmall}/>
+        <img src={el.imageList[0]} className={css.productPicSmall}/>
         <div className={css.prodPricLikeCart}>
 
         <div className={css.prdeProdPricingCart}>

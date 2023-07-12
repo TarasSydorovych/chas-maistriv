@@ -277,7 +277,7 @@ const [products, setProducts] = useState([]);
 //     const snapshot = await getDocs(collectionRef);
 //     const products = snapshot.docs.map((doc) => doc.data());
 //     setProducts(products);
-//     console.log('Filtered Product List  ', products);
+
 //   };
   useEffect(() => {
     dispatch(fetchProducts(selectedFilters));
@@ -301,7 +301,7 @@ const [products, setProducts] = useState([]);
     });
   };
   const filters = useSelector(state => state.filters);
-  console.log('Фільтерс з редаксу',filters);
+ 
   
 const handleFilterClick = (filter) => {
     if (filters.some((selectedFilter) =>

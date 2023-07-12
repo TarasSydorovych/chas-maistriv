@@ -110,7 +110,7 @@ export default function ProductInOpt({el, setTotalPrice,setHaveProduct, haveProd
 
     return(
         <div className={css.blockSoonSecond}>
-        <img src={el.bookFoto} className={css.soonPicProdSt}/>
+        <img src={el.imageList[0]} className={css.soonPicProdSt}/>
         <div className={css.soonPicProdStDesc}>
             <p className={css.soonAuthor}>{el.textAutor}</p>
             <h1 className={css.soonAuthorName}>{el.bookName}</h1>

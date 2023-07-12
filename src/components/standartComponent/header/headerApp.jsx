@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 import IconSocial from './iconSocial';
 import Number from './number';
 import Search from './search';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import iconSrc from '../../../svg/phone.svg';
+import checkTelegramSubscription from '../../../function/checkTelegramSubscription'
 import {auth, db} from '../../../firebase'
 import Sun from './sun';
 import { Link, useNavigate } from 'react-router-dom';
@@ -15,10 +17,22 @@ const navigate = useNavigate();
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
           if (currentUser) {
-            console.log('Поточний користувач', currentUser.uid);
+          
             // Користувач увійшов в систему
             setUser(currentUser);
-      
+            const fetchData = async () => {
+              
+              const userRef = doc(db, 'users', currentUser.uid);
+              const userDoc = await getDoc(userRef);
+          
+              if (userDoc.exists()) {
+                const userData = userDoc.data();
+                checkTelegramSubscription(userData)
+                // Виконати потрібні дії з userData
+              }
+            };
+          
+            fetchData();
        
           } else {
             // Користувач вийшов з системи

@@ -35,7 +35,7 @@ color: #FFFFFF;
     width: 95%;
     height: auto;
     display: flex;
-    flex-direction: column;
+    
     align-items: center;
     justify-content: space-between;
 }
@@ -46,6 +46,16 @@ color: #FFFFFF;
     flex-direction: column;
     align-items: flex-start;
     margin-top: 10px;
+}
+.outButton{
+ 
+    color: #3E51C1;
+font-family: Ubuntu;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: 141.5%;
+text-decoration-line: underline;
 }
 .ourInformation{
     width: 50%;
@@ -110,6 +120,9 @@ color: rgba(0, 0, 0, 0.4);
 }
 .propWrap{
     display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 .iconPicBird{
 
@@ -269,6 +282,15 @@ color: #FFFFFF;
     justify-content: center;
     margin-top: 82px;
 }
+.yourDiscountWrapInfo{
+    width: 100%;
+    height: auto;
+    background: #3FAC8C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
 .yourDiscountWrapSmall{
     width: 70%;
     height: auto;
@@ -281,6 +303,12 @@ color: #FFFFFF;
     flex-direction: column;
     align-items: flex-start;
     width: 33%;
+}
+.dicsTextWrInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 70%;
 }
 .yourDicrFive{
     font-family: 'Ubuntu';
@@ -335,6 +363,13 @@ text-align: center;
 margin-bottom: 10px;
 color: #FFFFFF;
 }
+.inputTgId{
+    width: 227px;
+height: 60px;
+border: none;
+margin-top: 10px;
+margin-bottom: 10px;
+}
 .likeButton{
     width: 227px;
 height: 60px;
@@ -348,7 +383,7 @@ font-weight: 500;
 font-size: 18px;
 line-height: 117.5%;
 /* or 21px */
-
+text-decoration: none;
 display: flex;
 align-items: center;
 text-align: center;
@@ -428,6 +463,53 @@ align-self: flex-start;
     
     
     color: #3E3092;
+}
+.readerUserWrap{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.readerUserWrapSmall{
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.aboutCompanyH1{
+    color: #3E3092;
+font-size: 34px;
+font-family: Ubuntu;
+font-style: normal;
+font-weight: 700;
+line-height: 111%;
+margin-bottom: 0;
+text-decoration: none;
+}
+.paragInWrapBig{
+    color: #000;
+    font-size: 24px;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 168%;
+}
+.pdfButton{
+    color: white;
+    background: #3E3092;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 168%;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 @media only screen and (max-width: 600px) and (min-width: 300px) {
     .bleuLabel{
@@ -700,6 +782,15 @@ align-self: center;
     color: #3E51C1;
     align-self: flex-start;
     }
+    .userInformationWrapSmall{
+        width: 95%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
 }
 @media only screen and (max-width: 700px) and (min-width: 479px) {
 

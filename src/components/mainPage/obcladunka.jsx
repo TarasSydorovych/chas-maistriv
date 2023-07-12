@@ -45,7 +45,7 @@ useEffect(() => {
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const updatedRatings = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setRatings(updatedRatings);
-      console.log(updatedRatings);
+      
     });
   
     // Get selected option from sessionStorage

@@ -13,7 +13,7 @@ const Blog = ({blogData, windowDimensions}) => {
             {blogData &&
             <BlogView windowDimensions={windowDimensions} blogData={blogData}/>
           }
-            <YouLikeIt/>
+           {/*<YouLikeIt/>*/} 
         </div>
     )
 }

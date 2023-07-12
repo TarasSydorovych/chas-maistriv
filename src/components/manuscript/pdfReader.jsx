@@ -38,7 +38,7 @@ export default function PDFReader({pdfUrl, setIsTimerRunning}) {
         src={pdfUrl}
        className={css.frameStyle}
         ref={iframeRef}
-        frameborder="0"
+        frameBorder="0"
       />
     </div>
   );
