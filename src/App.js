@@ -146,9 +146,6 @@ function App() {
     <Route path='/opt' element={<PriceOpt windowDimensions={windowDimensions}/>}/>
     <Route path='/user' element={<UserCabinet reRe={reRe} setReRe={setReRe} windowDimensions={windowDimensions}  products={products} addressChanged={addressChanged} setAddressChanged={setAddressChanged}/>}/>
     <Route path='/adm' element={<FullAdm/>}/>
-    <Route path='/admRuk' element={<AddRuk/>}/>
-    <Route path='/admHero' element={<HeroAdm/>}/>
-    <Route path='/admBlog' element={<AddBlog/>}/>
     <Route path='/manuscript/:id' element={<Manuscript setLogin={setLogin} products={manuscript} addressChanged={addressChanged} setAddressChanged={setAddressChanged}/>}/>
     <Route path='/promo' element={<AddPromo/>}/>
     <Route path='/video' element={<VideoView windowDimensions={windowDimensions}/>}/>
@@ -156,7 +153,6 @@ function App() {
     <Route path='/blog/:id' element={<BlogPage/>}/>
     <Route path='/author' element={<Author windowDimensions={windowDimensions}/>}/>
     <Route path='/author/:id' element={<Author/>}/>
-    <Route path='/admAutor' element={<AutorAdm/>}/>
     <Route path='/obcladunka' element={<Carton/>}/>
     <Route path='/about' element={<AboutComp/>}/>
     <Route path='/delivery' element={<Delivery/>}/>

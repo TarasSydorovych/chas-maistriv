@@ -25,26 +25,38 @@ import que from '../../img/que.png'
 import BlockReader from './blockReader';
 import BlockMaister from './blockMaister';
 import BlockBusiness from './blockBusiness';
+import ChangeData from './changeData';
 
 
 const UserCabinet = ({products, setAddressChanged, addressChanged, windowDimensions, user, userBd}) => {
 
     const navigate = useNavigate();
     const [selectedText, setSelectedText] = useState(1);
-  
+    const [scrollHeight, setScrollHeight] = useState(0);
     const [infoTg, setInfoTg] = useState(false)
     const [tgId, setTgId] = useState('')
   
     const [orders, setOrders] = useState([]);
     const [workFunc, setWorkFunc] = useState(false)
-    const [parsedChoices, setParsedChoices] = useState([]);
-    const [needRe, setNeedRe] = useState(false);
+const [cheSetinings, setCheSetinings] = useState(false);
     const apiKey = 'f579aac88b980dff3f819958ce1cbca6';
     const apiUrl = 'https://api.novaposhta.ua/v2.0/json/';
-    const [telegramUserId, setTelegramUserId] = useState('');
+ 
     const [waitProdComponents, setWaitProdComponents] = useState([]);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-   
+    
+    useEffect(() => {
+      const handleScroll = () => {
+        const currentScrollHeight = window.pageYOffset;
+        setScrollHeight(currentScrollHeight);
+       
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+  
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
     // Функція, що викликається при кліку на кнопку підписки
 
     const handleLogout = () => {
@@ -179,7 +191,10 @@ const tgIdChange = async (uid) => {
 
 
 //TELDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+const openSet = () => {
 
+  setCheSetinings(!cheSetinings)
+}
 
 
 
@@ -221,9 +236,12 @@ const tgIdChange = async (uid) => {
           }
             <div className={css.propWrap}>
                 <img src={iconProp}/>
-                <p className={css.propP}>Налаштування</p>
+                <p className={css.propP} onClick={openSet}>Налаштування</p>
                 <h2 className={css.outButton} onClick={handleLogout}>Вийти з кабінету</h2>
             </div>
+            {cheSetinings &&
+            <ChangeData scrollHeight={scrollHeight} userBd={userBd} setCheSetinings={setCheSetinings}/>
+            }
            </div>
 </div>
 {windowDimensions &&

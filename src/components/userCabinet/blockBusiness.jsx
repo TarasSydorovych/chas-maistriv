@@ -18,7 +18,7 @@ const BlockBusiness = ({data, userBd}) => {
         <div className={css.readerUserWrap}>
             {data.length > 0 &&
             <div className={css.readerUserWrapSmall}>
-                <h1 className={css.aboutCompanyH1}>Анкета бізнес-партнера/ перехід на гугл-форму/ в будь-який момент Ви можете її редагувати</h1>
+                <h1 className={css.aboutCompanyH1}><a className={css.aboutCompanyH1} href='https://forms.gle/MGmQAvGpNksU6xS9A' target='_blanck'>Анкета бізнес-партнера/ перехід на гугл-форму/ в будь-який момент Ви можете її редагувати</a></h1>
                 <p className={css.paragInWrapBig}>Актуалізуйте ваші дані в нашій базі партнерів. </p>
                 <h1 className={css.aboutCompanyH1}>{data[0].personalManagerContact}</h1>
                 <p className={css.paragInWrapBig}>{data[0].personalManager}</p>

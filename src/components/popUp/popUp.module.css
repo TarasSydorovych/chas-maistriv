@@ -11,6 +11,19 @@ align-items: center;
 justify-content: center;
 padding: 10px;
 }
+.mainPopWrapChose{
+    width: calc(331px - 2px);
+height: auto;
+border: 2px solid #F7CB25;
+position: fixed;
+top: 130px;
+left: 75px;
+background: white;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 10px;
+}
 .dropPopWrap{
     width: calc(331px - 2px);
 height: auto;

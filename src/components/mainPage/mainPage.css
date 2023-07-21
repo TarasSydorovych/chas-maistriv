@@ -119,7 +119,7 @@ color: #3FAC8C;
     transform: rotate(45deg);
     cursor: pointer;
     align-self: flex-end;
-    margin-left: 10px;
+    margin-left: 20px;
 }
 .likeBook.selected{
     display: flex;
@@ -131,7 +131,7 @@ color: #3FAC8C;
     transform: rotate(45deg);
     cursor: pointer;
     align-self: flex-end;
-    margin-left: 10px;
+    margin-left: 20px;
 }
 .likeBookIcon{
     transform: rotate(-45deg);
@@ -1175,7 +1175,7 @@ color: #3E51C1;
 
 }
 .allAutorsWrapSmall{
-    width: calc(100% - 136px);
+    width: calc(100% - 136px - 4%);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -1422,6 +1422,9 @@ cursor: pointer;
     height: 87px;
     width: 100%;
     background: white;
+}
+.linkSubscrib{
+    text-decoration: none;
 }
 @media only screen and (max-width: 600px) and (min-width: 300px) {
     .bannerWrapperAll{

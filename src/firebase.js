@@ -6,13 +6,13 @@ import {getAuth, listUsers} from 'firebase/auth'
 import { OAuthProvider ,signInWithRedirect } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 export const firebaseConfig = {
-  apiKey: "AIzaSyB7NYWLdEy90JC4AVVIrbR9xLr2UZ-ulFQ",
-  authDomain: "chas2-12974.firebaseapp.com",
-  projectId: "chas2-12974",
-  storageBucket: "chas2-12974.appspot.com",
-  messagingSenderId: "508202227569",
-  appId: "1:508202227569:web:a8f1427e4db958e3cc08d0",
-  measurementId: "G-2JSMRR0XQ0"
+  apiKey: "AIzaSyAkQCZosAm28-1oGmUDqH2CaDZQJY5ZBhY",
+  authDomain: "chas-maistriv-4d49a.firebaseapp.com",
+  projectId: "chas-maistriv-4d49a",
+  storageBucket: "chas-maistriv-4d49a.appspot.com",
+  messagingSenderId: "266780545903",
+  appId: "1:266780545903:web:5ad83b1680d28da9eace9a",
+  measurementId: "G-2949SXKMFH"
 };
 
 export const app = initializeApp(firebaseConfig);
