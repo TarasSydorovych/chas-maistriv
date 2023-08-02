@@ -34,9 +34,17 @@ export default function AddBooksTest() {
         transliter: "textAutor",
     },
     {
+      name: "Коротко про автора",
+      transliter: "shortAboutAuth",
+  },
+    {
         name: "Художник",
         transliter: "picWriter",
     },
+    {
+      name: "Коротко про художника",
+      transliter: "shortAboutDesig",
+  },
     {
         name: "Автор ідеї",
         transliter: "autorIdea",
@@ -48,15 +56,6 @@ export default function AddBooksTest() {
     {
         name: "Редактор",
         transliter: "bRedaktor",
-    },
-    
-    {
-        name: "Психологічна експертиза",
-        transliter: "psExpert",
-    },
-    {
-        name: "Мовознавча експертиза",
-        transliter: "lnExpert",
     },
      {
         name: "Дизайн",
@@ -267,12 +266,76 @@ export default function AddBooksTest() {
         transliter: "novunka",
         
     },
+    {
+      name: "Перша кнопка назва",
+      transliter: "labelOneName",
+      
+  },
+  {
+      name: "перша кнопка текст",
+      transliter: "labelOneText",
+      
+  },
+  {
+      name: "Друга кнопка назва",
+      transliter: "labelTwoName",
+      
+  },
+  {
+      name: "Друга кнопка текст",
+      transliter: "labelTwoText",
+      
+  },
+  {
+      name: "Третя кнопка назва",
+      transliter: "labelThreName",
+      
+  },
+  {
+      name: "Третя кнопка текст",
+      transliter: "labelThreText",
+      
+  },
+  {
+      name: "Четверта кнопка назва",
+      transliter: "labelFourName",
+      
+  },
+  {
+      name: "Четверта кнопка текст",
+      transliter: "labelFourText",
+      
+  },
+  {
+      name: "П'ята кнопка назва",
+      transliter: "labelFiveName",
+      
+  },
+  {
+      name: "П'ята кнопка текст",
+      transliter: "labelFiveText",
+      
+  },
+  {
+    name: "Заголовок для блоку героя",
+    transliter: "heroLabelText",
+    
+},
+{
+  name: "Параграф для блоку героя",
+  transliter: "heroParagrafText",
+  
+},
+{
+  name: "Фото героя",
+  transliter: "heroFoto",
+},
 ]
 
   const [photoInputs, setPhotoInputs] = useState([1]);
   const [formData, setFormData] = useState({});
   const [photoURLs, setPhotoURLs] = useState([]);
-
+const [heroFotoUrl, setHeroFotoUrl] = useState('')
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -331,9 +394,11 @@ export default function AddBooksTest() {
     formDataObj.uid = uuidv4();
     formDataObj.audio = audioURL;
     formDataObj.pdf = pdfURL;
-    console.log('formDataObj', formDataObj);
+    formDataObj.heroFoto = heroFotoUrl;
     await setDoc(doc(collection(db, 'product'), formDataObj.uid), formDataObj);
+    window.location.reload();
   };
+
   const [audioURL, setAudioURL] = useState('');
   const [pdfURL, setPdfURL] = useState('');
 
@@ -382,7 +447,27 @@ export default function AddBooksTest() {
       );
     }
   };
+  const handleHeroFotoChange = (e) => {
+    if (e.target.files[0]) {
+      const pdfFile = e.target.files[0];
 
+      const uploadTask = uploadBytesResumable(ref(storage, `${pdfFile.name}`), pdfFile);
+      uploadTask.on(
+        'state_changed',
+        null,
+        (error) => {
+          console.log(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+            if (url) {
+              setHeroFotoUrl(url);
+            }
+          });
+        }
+      );
+    }
+  };
   const renderAudioInput = () => {
     return (
       <div>
@@ -400,7 +485,14 @@ export default function AddBooksTest() {
       </div>
     );
   };
-
+  const renderHeroFoto = () => {
+    return (
+      <div>
+        <label>ФотоГероя</label>
+        <input type="file"  onChange={handleHeroFotoChange} name="heroFoto" />
+      </div>
+    );
+  };
   const uploadPhoto = (photo) => {
     console.log('photo',photo)
     return new Promise((resolve, reject) => {
@@ -448,6 +540,7 @@ export default function AddBooksTest() {
   </div>
 ));   
 };
+
 const renderPhotoInputs = () => {
     return photoInputs.map((index) => (
         <div key={`photoInput_${index}`}>
@@ -470,6 +563,7 @@ const renderPhotoInputs = () => {
     {renderPhotoInputs()}
     {renderAudioInput()}
     {renderPdfInput()}
+    {renderHeroFoto()}
     <button type="button" onClick={addPhotoInput}>
     Add Photo Input
     </button>

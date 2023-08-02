@@ -212,12 +212,12 @@ height="28"
 </div>
 
              </div>
-             {heroData &&
+             {oneProd && heroData &&
              <div className={css.productTitleWrap}>
                 <h1 className={css.nameBook}>{oneProd.bookName}</h1>
                 <div className={css.wrapHud}>
-                <p className={css.autor}>Автор:&nbsp;<span className={css.autorNameSpan}><Link className={css.autorNameSpan} to={`/author/${heroData.uid}`}>{oneProd.textAutor} </Link>&nbsp;</span><span className={css.autorDesc}>- мега-мозок, християнин, знаток теорії літератури, майстер слова</span></p>
-                <p className={css.autor}>Художник:&nbsp;<span className={css.autorNameSpan}>{oneProd.picWriter}&nbsp;</span><span className={css.autorDesc}>- майстер іллюстрації, реаліст, графік, захоплюється історією</span></p>
+                <p className={css.autor}>Автор:&nbsp;<span className={css.autorNameSpan}><Link className={css.autorNameSpan} to={`/author/${heroData.uid}`}>{oneProd.textAutor} </Link>&nbsp;</span><span className={css.autorDesc}>- {oneProd.shortAboutAuth}</span></p>
+                <p className={css.autor}>Художник:&nbsp;<span className={css.autorNameSpan}>{oneProd.picWriter}&nbsp;</span><span className={css.autorDesc}> - {oneProd.shortAboutDesig}</span></p>
                 </div>
                <div className={css.powerWrap}>
                 <p className={css.power}>Сила</p>

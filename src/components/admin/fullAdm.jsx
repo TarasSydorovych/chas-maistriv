@@ -14,6 +14,8 @@ import SurveyForm from './surveyForm'
 import AddBooksTest from './addBooksTest'
 import UserList from './userList'
 import SeoBlock from './seoBlock'
+import AutorAdm from '../autorAdm/autorAdm'
+import HeroAdm from '../heroAdm/heroAdm'
 
 export default function FullAdm() {
 const [addB, setAddB] = useState(false)
@@ -28,6 +30,8 @@ const [cartonCha, setCartonCha] = useState(false);
 const [question, setQuestion] = useState(false);
 const [user, setUser] = useState(false)
 const [seo, setSeo] = useState(false)
+const [auth, setAuth] = useState(false)
+const [hero, setHero] = useState(false)
    const  addBooksTrue = () => {
     setAddB(!addB)
     setAddM(false)
@@ -41,6 +45,7 @@ const [seo, setSeo] = useState(false)
     setQuestion(false)
     setUser(false)
     setSeo(false)
+    setHero(false)
    }
    const  addManTrue = () => {
     setAddB(false)
@@ -55,6 +60,8 @@ const [seo, setSeo] = useState(false)
     setQuestion(false)
     setUser(false)
     setSeo(false)
+    setAuth(false)
+    setHero(false)
    }
    const  bookListCha = () => {
     setAddB(false)
@@ -69,6 +76,8 @@ const [seo, setSeo] = useState(false)
     setQuestion(false)
     setUser(false)
     setSeo(false)
+    setAuth(false)
+    setHero(false)
    }
    const  manListCha = () => {
     setAddB(false)
@@ -96,6 +105,8 @@ const [seo, setSeo] = useState(false)
     setQuestion(false)
     setUser(false)
     setSeo(false)
+    setAuth(false)
+    setHero(false)
    }
    const  addBlogP = () => {
     setAddB(false)
@@ -110,6 +121,7 @@ const [seo, setSeo] = useState(false)
     setQuestion(false)
     setUser(false)
     setSeo(false)
+    setHero(false)
    }
    const  changeToPromo = () => {
     setAddB(false)
@@ -138,6 +150,7 @@ const [seo, setSeo] = useState(false)
     setQuestion(false)
     setUser(false)
     setSeo(false)
+    setHero(false)
    }
    const  cartonFunCha = () => {
     setAddB(false)
@@ -152,6 +165,8 @@ const [seo, setSeo] = useState(false)
     setQuestion(false)
     setUser(false)
     setSeo(false)
+    setAuth(false)
+    setHero(false)
    }
    const addQuestion = () => {
     setAddB(false)
@@ -166,6 +181,7 @@ const [seo, setSeo] = useState(false)
     setQuestion(!question)
     setUser(false)
     setSeo(false)
+    setHero(false)
    }
    const userBlock = () => {
     setAddB(false)
@@ -180,6 +196,8 @@ const [seo, setSeo] = useState(false)
     setQuestion(false)
     setUser(!user)
     setSeo(false)
+    setAuth(false)
+    setHero(false)
    }
    const seoBlock = () => {
     setAddB(false)
@@ -194,8 +212,41 @@ const [seo, setSeo] = useState(false)
     setQuestion(false)
     setUser(false)
     setSeo(!seo)
+    setAuth(false)
+    setHero(false)
    }
-
+   const authBlock = () => {
+    setAddB(false)
+    setAddM(false)
+    setBookList(false)
+    setManList(false)
+    setProdList(false)
+    setAddBlog(false)
+    setPromo(false)
+    setCarton(false)
+    setCartonCha(false)
+    setQuestion(false)
+    setUser(false)
+    setSeo(false)
+    setAuth(!auth)
+    setHero(false)
+   }
+   const heroBlock = () => {
+    setAddB(false)
+    setAddM(false)
+    setBookList(false)
+    setManList(false)
+    setProdList(false)
+    setAddBlog(false)
+    setPromo(false)
+    setCarton(false)
+    setCartonCha(false)
+    setQuestion(false)
+    setUser(false)
+    setSeo(false)
+    setAuth(false)
+    setHero(!hero)
+   }
     return(
 <div className={css.fullAdmWrapp}>
     <div className={css.admList}>
@@ -222,6 +273,10 @@ const [seo, setSeo] = useState(false)
             className={`${css.listUlForAdmLiA} ${user ? css.listUlForAdmLiAA : ''}`}>Список користувачів</Link></li>
                    <li className={css.listUlForAdmLi} onClick={seoBlock}><Link
             className={`${css.listUlForAdmLiA} ${seo ? css.listUlForAdmLiAA : ''}`}>Seo</Link></li>
+             <li className={css.listUlForAdmLi} onClick={authBlock}><Link
+            className={`${css.listUlForAdmLiA} ${auth ? css.listUlForAdmLiAA : ''}`}>Додати автора</Link></li>
+                   <li className={css.listUlForAdmLi} onClick={heroBlock}><Link
+            className={`${css.listUlForAdmLiA} ${hero ? css.listUlForAdmLiAA : ''}`}>Додати героя</Link></li>
         </ul>
     </div>
     {addB && 
@@ -259,6 +314,12 @@ const [seo, setSeo] = useState(false)
     }
     {seo &&
     <SeoBlock/>
+    }
+     {auth &&
+    <AutorAdm/>
+    }
+    {hero &&
+    <HeroAdm/>
     }
 </div>
 

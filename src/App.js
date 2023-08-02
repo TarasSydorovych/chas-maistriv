@@ -55,6 +55,8 @@ function App() {
   const [reRe, setReRe] = useState(false)
   const [enterUser, setEnterUser] = useState(false);
   const [scrollHeight, setScrollHeight] = useState(0);
+  const [haveManu, setHaveManu] = useState(false);
+  const [manuscript, setManuscript] = useState([]);
   useEffect(() => {
   function handleResize() {
          
@@ -106,8 +108,7 @@ function App() {
     };
     fetchProducts();
   }, []);
-  const [haveManu, setHaveManu] = useState(false);
-  const [manuscript, setManuscript] = useState([]);
+
   useEffect(() => {
     const fetchManuscript = async () => {
       const productsRef = collection(db, 'manuscript');

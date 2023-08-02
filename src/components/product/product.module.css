@@ -360,6 +360,7 @@ font-weight: 500;
 font-size: 20px;
 line-height: 117.5%;
 color: #FFFFFF;
+cursor: pointer;
 }
 .startTextSecond{
     display: flex;
@@ -374,6 +375,7 @@ font-weight: 500;
 font-size: 20px;
 line-height: 117.5%;
 color: #FFFFFF;
+cursor: pointer;
 }
 .startTextThree{
     display: flex;
@@ -388,6 +390,7 @@ font-weight: 500;
 font-size: 20px;
 line-height: 117.5%;
 color: #FFFFFF;
+cursor: pointer;
 }
 .startTextSecondFirst{
     display: flex;
@@ -403,6 +406,7 @@ font-weight: 500;
 font-size: 20px;
 line-height: 117.5%;
 color: #FFFFFF;
+cursor: pointer;
 }
 .startTextSecondSecond{
     display: flex;
@@ -418,6 +422,7 @@ font-weight: 500;
 font-size: 20px;
 line-height: 117.5%;
 color: #FFFFFF;
+cursor: pointer;
 }
 .videoBlockWrap{
     width: 100%;
@@ -759,6 +764,38 @@ display: flex;
 align-items: center;
 justify-content: center;
 margin-left: 9px;
+}
+.bigPopUpWrap{
+    position: fixed;
+    width: 70%;
+    height: 500px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+    background: #F7CB25;
+    top:40px;
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    z-index: 100;
+    border-radius: 20px;
+}
+.countSvg{
+    position: absolute;
+    top:10px;
+    left:93%;
+    cursor: pointer;
+}
+.paragrafToPopUp{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 126%;
+    color: #000000; 
+    overflow: auto;
+    width: 100%;
+    height: 100%;
 }
 @media only screen and (max-width: 600px) and (min-width: 300px) {
     .productPageTitleWrap{

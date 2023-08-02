@@ -27,7 +27,7 @@ export default function HeroAdm() {
         },
         
         {
-            name: "Автор",
+            name: "Герой",
             transliter: "autor",
         },
         {

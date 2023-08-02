@@ -179,7 +179,7 @@ const enterUser = () => {
 <WhyNeedRead oneProd={oneProd}/>
 <VideoBlock windowDimensions={windowDimensions}/>
 
-<Hero/>
+<Hero oneProd={oneProd}/>
 <HeroPage oneProd={oneProd}/>
 {rewievList.length > 0 && 
 <>

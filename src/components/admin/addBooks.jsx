@@ -271,6 +271,56 @@ export default function AddBooks() {
             transliter: "havePromo",
             
         },
+        {
+            name: "Перша кнопка назва",
+            transliter: "labelOneName",
+            
+        },
+        {
+            name: "перша кнопка текст",
+            transliter: "labelOneText",
+            
+        },
+        {
+            name: "Друга кнопка назва",
+            transliter: "labelTwoName",
+            
+        },
+        {
+            name: "Друга кнопка текст",
+            transliter: "labelTwoText",
+            
+        },
+        {
+            name: "Третя кнопка назва",
+            transliter: "labelThreName",
+            
+        },
+        {
+            name: "Третя кнопка текст",
+            transliter: "labelThreText",
+            
+        },
+        {
+            name: "Четверта кнопка назва",
+            transliter: "labelFourName",
+            
+        },
+        {
+            name: "Четверта кнопка текст",
+            transliter: "labelFourText",
+            
+        },
+        {
+            name: "П'ята кнопка назва",
+            transliter: "labelFiveName",
+            
+        },
+        {
+            name: "П'ята кнопка текст",
+            transliter: "labelFiveText",
+            
+        },
     ]
 
 

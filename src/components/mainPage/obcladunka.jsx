@@ -5,10 +5,13 @@ import iconSrc from '../../svg/likeBook.svg';
 import './mainPage.css'
 import {auth, db} from '../../firebase'
 import { useState, useEffect } from 'react';
-import { collection, query, onSnapshot, doc, updateDoc } from 'firebase/firestore';
-export default function Obcladunka({windowDimensions}) {
+import { collection, query, onSnapshot, doc, updateDoc, getDocs} from 'firebase/firestore';
+import withFirebaseCollection from '../HOK/withFirebaseCollection';
+import { combineReducers } from '@reduxjs/toolkit';
+const Obcladunka = ({windowDimensions, data}) => {
     const [first, setFirst] = useState(false);
     const [second, setSecond] = useState(false);
+    const [ratings, setRatings] = useState([]);
     const likepick = async (lab) => {
         const selectedOption = sessionStorage.getItem('selectedOption');
         const ratingRef = doc(db, 'rating', '24ac945b-7109-489a-8901-d3667388f6a0'); // Замініть 'your_document_id' на ID вашого документа
@@ -36,43 +39,74 @@ export default function Obcladunka({windowDimensions}) {
       
         await updateDoc(ratingRef, { firstRating: newFirstRating.toString(), secondRating: newSecondRating.toString() });
       };
-const [ratings, setRatings] = useState();
 
+
+// useEffect(() => {
+//     const ratingsRef = collection(db, 'rating');
+//     const q = query(ratingsRef);
+//     console.log('rating', q);
+//     const unsubscribe = onSnapshot(q, (snapshot) => {
+//       const updatedRatings = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+//       setRatings(updatedRatings);
+     
+//     });
+  
+//     // Get selected option from sessionStorage
+//     const selectedOption = sessionStorage.getItem('selectedOption');
+//     if (selectedOption === 'first') {
+//       setFirst(true);
+//       setSecond(false);
+//     } else if (selectedOption === 'second') {
+//       setFirst(false);
+//       setSecond(true);
+//     }
+  
+//     // Cleanup subscription
+//     return () => {
+//       unsubscribe();
+//     };
+//   }, []);
 useEffect(() => {
+  
+},[data])
+useEffect(() => {
+  const fetchRatings = async () => {
     const ratingsRef = collection(db, 'rating');
     const q = query(ratingsRef);
-  
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const updatedRatings = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+
+    try {
+      const querySnapshot = await getDocs(q);
+      const updatedRatings = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+   
       setRatings(updatedRatings);
-      
-    });
-  
-    // Get selected option from sessionStorage
-    const selectedOption = sessionStorage.getItem('selectedOption');
-    if (selectedOption === 'first') {
-      setFirst(true);
-      setSecond(false);
-    } else if (selectedOption === 'second') {
-      setFirst(false);
-      setSecond(true);
+    } catch (error) {
+      console.log('Помилка при отриманні даних з колекції rating:', error);
     }
-  
-    // Cleanup subscription
-    return () => {
-      unsubscribe();
-    };
-  }, []);
+  };
+
+  fetchRatings();
+
+  // Get selected option from sessionStorage
+  const selectedOption = sessionStorage.getItem('selectedOption');
+  if (selectedOption === 'first') {
+    setFirst(true);
+    setSecond(false);
+  } else if (selectedOption === 'second') {
+    setFirst(false);
+    setSecond(true);
+  }
+}, [data]);
+
     return(
        <div className="opWrap">
-{ratings &&
+{data.length > 0 &&
         <div className="obSmallWrap">
             <h1 className="obcladH1">
             Яка обкладинка вам більше довподоби ?
             </h1>
             <div className="wrapTwoPic">
                 <div className="wrapPicAndIcon">
-                    <img src={ratings[0].bookFoto}  className="picOb"/>
+                    <img src={data[0].bookFoto}  className="picOb"/>
                     <div onClick={() => likepick('first')} className={`likeBook ${
                         first ? "selected" : ""
                       }`}>
@@ -86,7 +120,7 @@ useEffect(() => {
                     </div>
                 </div>
                 <div className="wrapPicAndIcon">
-                    <img src={ratings[0].fotoRozgort}  className="picOb"/>
+                    <img src={data[0].fotoRozgort}  className="picOb"/>
                     <div onClick={() => likepick('second')} className={`likeBook ${
                         second ? "selected" : ""
                       }`}>
@@ -105,3 +139,4 @@ useEffect(() => {
        </div>
     )
 }
+export default withFirebaseCollection('rating')(Obcladunka);
