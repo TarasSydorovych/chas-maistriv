@@ -26,6 +26,24 @@ export const fetchProducts = createAsyncThunk(
       return products;
     }
   );
+  export const fetchProductsInSearch = createAsyncThunk(
+    'products/fetchProductsInSearch',
+    async (searchTerm) => {
+      const collectionRef = collection(db, 'product');
+      const snapshot = await getDocs(collectionRef);
+      const products = snapshot.docs.map((doc) => doc.data());
+  
+      const lowercaseSearchTerm = searchTerm.toLowerCase();
+  
+      // Фільтруємо на стороні сервера для наближеного пошуку
+      const filteredProducts = products.filter(product => 
+        product.bookName.toLowerCase().includes(lowercaseSearchTerm) ||
+        product.bookName.includes(searchTerm)
+      );
+      console.log('З редюсера', filteredProducts);
+      return filteredProducts;
+    }
+  );
 
 const productSlice = createSlice({
   name: 'products',
@@ -64,6 +82,17 @@ const productSlice = createSlice({
         state.items = action.payload;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(fetchProductsInSearch.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchProductsInSearch.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.items = action.payload; // Оновлення списку товарів для пошуку
+      })
+      .addCase(fetchProductsInSearch.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
       });

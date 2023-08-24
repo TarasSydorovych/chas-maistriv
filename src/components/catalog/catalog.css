@@ -1,0 +1,9 @@
+.prodPricLikeCartBigProd{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 300px;
+    margin-top: 20px;
+    height: auto;
+    margin-bottom: 10px;
+}

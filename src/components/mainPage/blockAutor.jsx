@@ -152,7 +152,7 @@ const BlockAutor = ({data, product, windowDimensions}) => {
         {prodList.map((el, index) => {
           if(index < 3){
           return   <div key={index} className="productAutorWrapSM">
-          <img src={el.bookFoto} className="picSmallProdAutor"/>
+          <img src={el.imageList[0]} className="picSmallProdAutor"/>
           <h3 className='smalProdName'><Link className='smalProdName' to={`/product/${el.uid}`}>
           {el.bookName}</Link>
           </h3>

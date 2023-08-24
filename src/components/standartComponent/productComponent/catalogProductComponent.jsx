@@ -1,5 +1,6 @@
 import './productStyle.css'
 import pic from '../../../img/pictureBigProdCat.png'
+import css from '../../catalog/catalog.module.css'
 import {HandySvg} from 'handy-svg';
 import iconSrc from '../../../svg/smallProductLike.svg';
 import iconSrcCard from '../../../svg/smallProductCard.svg';
@@ -102,7 +103,7 @@ export default function CatalogProductComponent({el, index, setVisitedProducts, 
                 </p>
                 </div>
 
-                <div className='prodPricLikeCartBigProd'>
+                <div className={css.prodPricLikeCartBigProd}>
 
 <div className='prdeProdPricingCartBigProd'>
 <div className='prdeProdPricingRotateCart'>

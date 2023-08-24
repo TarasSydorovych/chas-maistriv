@@ -185,7 +185,7 @@ line-height: 111%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 50%;
+    width: 300px;
     margin-top: 20px;
     height: auto;
     margin-bottom: 10px;
@@ -432,7 +432,7 @@ color: #3E51C1;
     margin: 0;
 }
 
-@media only screen and (max-width: 600px) and (min-width: 300px) {
+@media only screen and (max-width: 599px) and (min-width: 300px) {
     .firstBlockWhisPic{
         width: 100%;
         height: 100%;
@@ -651,7 +651,474 @@ color: white;
         color: #FFFFFF;
         text-align: center;
         }
+        .prodPricLikeCartBigProd{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 300px;
+            margin-top: 20px;
+            height: auto;
+            margin-bottom: 10px;
+        }
 
+}
+@media only screen and (max-width: 700px) and (min-width: 600px) {
+    .firstBlockWhisPic{
+        width: 100%;
+        height: 100%;
+       background:#D6CFFF;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+    }
+    .clearFilter{
+        width: calc(227px - 4px);
+        height: calc(60px - 4px);
+        border: 2px solid #3E3092;
+        background: white;
+        font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 117.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #3E3092;
+    margin-top: 32px;
+    align-self: center;
+    }
+    .firstBlockBooksHoNeedWrap{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .picBookTitle{
+        margin-top: 32px;
+        margin-bottom: 38px;
+        margin-left: 0px;
+        box-shadow: 5px 2px 5px #c3c3c3;
+        
+        }
+        .secondBlockWhisPic{
+
+            width: calc(100% - 75px);
+            height: calc(100% - 51px - 70px);
+            padding-left: 75px;
+            padding-bottom: 70px;
+            padding-top: 51px;
+           background:#3E51C1;
+           display: flex;
+           flex-direction: column;
+           align-items: flex-start;
+           justify-content: space-around;
+        }
+        .likeCardWrapSmall{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .likeProductSmallSale{
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 53px;
+            height: 53px;
+            background: #F7CB25;
+        }
+        .prdeProdPricingCart{
+            cursor: pointer;
+            width: 69.093px;
+height: 69.093px;
+            color: white;
+            background:#FF3416;
+            transform: rotate(45deg);
+            font-family: 'Ubuntu';
+            display: flex;
+            margin-left: 0px;
+            margin-top: 5px;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .prdeProdPricingRotateCart{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            transform: rotate(-45deg);
+        }
+        .fullPriceCart{
+            font-family: 'Ubuntu';
+            font-size: 18px;
+            text-align: center;
+            color: #FFFFFF;
+            margin: 0;
+            text-decoration: line-through;
+        }
+        .salePriceCart{
+            font-family: 'Ubuntu';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 25px;
+            line-height: 111%;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #FFFFFF;
+            margin: 0;
+        }
+        .wrapIconBlocCatFirst{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 60%;
+            margin-top: 20px;
+            height: auto;
+        }
+        .youLikewrapSmall{
+            width: calc(100% - 10px);
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            
+            overflow: hidden;
+            padding-left: 10px !important;
+        }
+        .youLikeProductWrap{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            flex-wrap: nowrap;
+overflow: hidden;
+overflow-x: scroll;
+white-space: nowrap;
+        }
+        .discountAndACWrappFirst{
+            height: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .freeDelyvery{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            font-family: Ubuntu;
+flex-shrink: 0;
+            height: 60px;
+            background: #3E51C1;
+            font-size: 20px;
+color: white;
+        }
+        .procentSale{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 60px;
+            background: #FF3416;
+            font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 42px;
+        color: #FFFFFF;
+        flex-shrink: 0;
+        }
+        .discountAndACWrappSecond{
+            display: flex;
+            flex-direction: column;
+            height: auto;
+        }
+        .discountForNine{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 60px;
+            background: #F7CB25;
+            font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 42px;
+        color: #3E3092;
+        }
+        .krohmalPackeg{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 60px;
+            background: #3FAC8C;
+            font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 42px;
+        color: #FFFFFF;
+        text-align: center;
+        }
+        .smakolukForUser{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 60px;
+            background: #3E3092;
+            font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 42px;
+        color: #FFFFFF;
+        text-align: center;
+        }
+        .prodPricLikeCartBigProd{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 300px;
+            margin-top: 20px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+}
+@media only screen and (max-width: 1024px) and (min-width: 701px) {
+    .firstBlockWhisPic{
+        width: 100%;
+        height: 100%;
+       background:#D6CFFF;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+    }
+    .clearFilter{
+        width: calc(227px - 4px);
+        height: calc(60px - 4px);
+        border: 2px solid #3E3092;
+        background: white;
+        font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 117.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #3E3092;
+    margin-top: 32px;
+    align-self: center;
+    }
+    .firstBlockBooksHoNeedWrap{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .picBookTitle{
+        margin-top: 32px;
+        margin-bottom: 38px;
+        margin-left: 0px;
+        box-shadow: 5px 2px 5px #c3c3c3;
+        
+        }
+        .secondBlockWhisPic{
+
+            width: calc(100% - 75px);
+            height: calc(100% - 51px - 70px);
+            padding-left: 75px;
+            padding-bottom: 70px;
+            padding-top: 51px;
+           background:#3E51C1;
+           display: flex;
+           flex-direction: column;
+           align-items: flex-start;
+           justify-content: space-around;
+        }
+        .likeCardWrapSmall{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .likeProductSmallSale{
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 53px;
+            height: 53px;
+            background: #F7CB25;
+        }
+        .prdeProdPricingCart{
+            cursor: pointer;
+            width: 69.093px;
+height: 69.093px;
+            color: white;
+            background:#FF3416;
+            transform: rotate(45deg);
+            font-family: 'Ubuntu';
+            display: flex;
+            margin-left: 0px;
+            margin-top: 5px;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .prdeProdPricingRotateCart{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            transform: rotate(-45deg);
+        }
+        .fullPriceCart{
+            font-family: 'Ubuntu';
+            font-size: 18px;
+            text-align: center;
+            color: #FFFFFF;
+            margin: 0;
+            text-decoration: line-through;
+        }
+        .salePriceCart{
+            font-family: 'Ubuntu';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 25px;
+            line-height: 111%;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #FFFFFF;
+            margin: 0;
+        }
+        .wrapIconBlocCatFirst{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 60%;
+            margin-top: 20px;
+            height: auto;
+        }
+        .youLikewrapSmall{
+            width: calc(100% - 10px);
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            
+            overflow: hidden;
+            padding-left: 10px !important;
+        }
+        .youLikeProductWrap{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            flex-wrap: nowrap;
+overflow: hidden;
+overflow-x: scroll;
+white-space: nowrap;
+        }
+        .discountAndACWrappFirst{
+            height: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .freeDelyvery{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            font-family: Ubuntu;
+flex-shrink: 0;
+            height: 60px;
+            background: #3E51C1;
+            font-size: 20px;
+color: white;
+        }
+        .procentSale{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 60px;
+            background: #FF3416;
+            font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 42px;
+        color: #FFFFFF;
+        flex-shrink: 0;
+        }
+        .discountAndACWrappSecond{
+            display: flex;
+            flex-direction: column;
+            height: auto;
+        }
+        .discountForNine{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 60px;
+            background: #F7CB25;
+            font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 42px;
+        color: #3E3092;
+        }
+        .krohmalPackeg{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 60px;
+            background: #3FAC8C;
+            font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 42px;
+        color: #FFFFFF;
+        text-align: center;
+        }
+        .smakolukForUser{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 60px;
+            background: #3E3092;
+            font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 42px;
+        color: #FFFFFF;
+        text-align: center;
+        }
+        .prodPricLikeCartBigProd{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 300px;
+            margin-top: 20px;
+            height: auto;
+            margin-bottom: 10px;
+        }
 }
 
 /*

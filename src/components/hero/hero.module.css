@@ -899,8 +899,190 @@ white-space: nowrap;
             }
     
 }
-@media only screen and (max-width: 700px) and (min-width: 479px) {
+@media only screen and (max-width: 700px) and (min-width: 600px) {
+    .allHero{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .yourPerfectHero{
+        font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 111%;
+    /* or 38px */
+    margin-left: 20px;
+    
+    color: #3E3092;
+    }
+    .yourPerfectHeroSpan{
+        font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 111%;
+    /* or 27px */
+    margin-top: 10px;
+    
+    color: #000000;
+    }
+    .autorListSmal{
+        width: 90%;
+        height: auto;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+overflow: hidden;
+overflow-x: scroll;
+white-space: nowrap;
+margin-top: 15px;
+    }
+    .imgAutorWrapSmall{         
+        width: 90%;
+height: auto;
+margin-right: 30px;
+    }
+    .autorNameMSma{
+        font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 152.5%;
+color: #000000;
+white-space: wrap;
+    }
+    .autorNameMbigCol{
+        font-family: 'Ubuntu';
+font-style: italic;
+font-weight: 700;
+font-size: 28px;
+line-height: 111%;
+color: #3E3092;
+white-space: wrap;
+    }
+    .arrowWrap{
+        margin-top: 65px;
+        width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    }
+    .wrapHeroBigFotoTwo{
+        margin-top: 30px;
+        width: 90%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .imgAutorWrapBig{
+           align-self: flex-start;
+        position: relative;
+        
+        width: 222.032px;
+        height: 222.032px;
+        rotate: 0deg;
+    }
+    .imgAutorBig{
+        position: absolute;
+        width: 319.263px;
+        height: 340.313px;
+       clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    }
+    .descHeroOP{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: 0px;
+        margin-top: 120px;
+    }
+    .hictoryP{
+        font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 141.5%;
+/* or 34px */
 
+margin: 0;
+color: #000000;
+    }
+    .smallBookLikeWrap{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+overflow: hidden;
+overflow-x: scroll;
+white-space: nowrap;
+    }
+    .smallProductWrap{
+        width: 80%;
+        
+        padding-left: 12px;
+        display: flex;
+        flex-direction: column;
+    }
+    .customSelect{
+        position: absolute;
+        cursor: pointer;
+        border: 3px solid #3E51C1;
+        width: 100%;
+        height: 56px;
+        appearance: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding-left: 15px;
+        font-family: 'Raleway';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 30px;
+        /* or 125% */
+        z-index: 1;
+        
+        color: #3E3092;
+        
+    
+        }
+        .ageWrap{
+            width: calc(100% - 10px);
+            padding-left: 10px;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .chousBooksSelect{
+            position: relative;
+            width: 362px;
+            height: 56px;
+            margin-right: 44px;
+            margin-left: 30px;
+            
+            }
+            .comentAutorWrap{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-top: 74px;
+            }
+            .commentAndMoreWrapp{
+                display: flex;
+                flex-direction: column;
+                margin-top: 50px;
+                width: 90%;
+                margin-left: 0px;
+            }
 }
 @media only screen and (max-width: 1288px) and (min-width: 1024px) { 
 

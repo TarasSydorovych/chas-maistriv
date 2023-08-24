@@ -22,7 +22,7 @@ import withFirebaseCollection from "../HOK/withFirebaseCollection";
 
 
 
-const MainPage = ({targetDate, windowDimensions, data}) => {
+const MainPage = ({targetDate, windowDimensions, data, scrollHeight}) => {
 
     if (data.length > 0) {
         
@@ -47,12 +47,13 @@ const MainPage = ({targetDate, windowDimensions, data}) => {
         <Banner windowDimensions={windowDimensions} />
         <Obcladunka windowDimensions={windowDimensions} />
         <PredProdag targetDate={targetDate} windowDimensions={windowDimensions}/>
+        <NewBooks/>
         <BookAge/>
         <SaleBooks/>
         <ActionPrice/>
         <TopBooks/>
-        <NewBooks/>
-        <OpikunRada/>
+        
+        <OpikunRada scrollHeight={scrollHeight}/>
         <Question/>
         <BlockAutor windowDimensions={windowDimensions}/>
         <AllAutors/>

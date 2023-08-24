@@ -718,7 +718,7 @@ font-size: 20px;
 line-height: 117.5%;
 color: #FFFFFF;
 }
-@media only screen and (max-width: 600px) and (min-width: 300px) {
+@media only screen and (max-width: 599px) and (min-width: 300px) {
     .titleWrap{
         width: 100%;
         min-height: auto;
@@ -1059,8 +1059,346 @@ height: 154px;
             align-self: flex-end;
         }
 }
-@media only screen and (max-width: 700px) and (min-width: 479px) {
-
+@media only screen and (max-width: 700px) and (min-width: 600px) {
+    .titleWrap{
+        width: 100%;
+        min-height: auto;
+        background: #D6CFFF;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .h3Title{
+        font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 111%;
+    /* or 38px */
+    margin-bottom: 0;
+    text-align: center;
+    width: 90%;
+    color: #3E3092;
+    }
+    .birdPDesc{
+        font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 111%;
+    /* or 20px */
+    width: 100%;
+    text-align: center;
+    
+    color: #3E3092;
+    }
+    .birdWrap{
+        width: 50%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .salesBlockWrap{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 49px;
+    
+    }
+    .blueBlockWrap{
+        width: 100%;
+        background: #3E3092;
+        height: 510px;
+        position: relative;
+    }
+    .yelowBlockWrap{
+        width: 100%;
+        background: #F7CB25;
+        height: 454px;
+        position: relative;
+    }
+    .saleForNewYear{
+        font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 111%;
+    color: #FFFFFF;
+    position: absolute;
+    left: 8%;
+    }
+    .prdeProdPricingCart{
+        cursor: pointer;
+           width: 120.21px;
+        height: 120.21px;
+        color: white;
+        background: #F7CB25;
+        transform: rotate(45deg);
+        font-family: 'Ubuntu';
+        display: flex;
+        margin-left: 20px;
+        margin-top: 5px;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 25%;
+        left: 5%
+    }
+    .saleNewOneSt{
+        width: 154px;
+height: 136px;
+    position: absolute;
+    left: calc(70% - 68.5px);
+    top: 5%;
+    }
+    .saleThreBlockSt{
+        position: absolute;
+        width: 137px;
+        height: 178px;
+        left: calc(75% - 68.5px);
+    top: 25%;
+    }
+    .saleNewTwoSt{
+        width: 137px;
+        height: 178px;
+    position: absolute;
+    left: calc(65% - 68.5px);
+    top: 44%;
+    }
+    .vidTwPcs{
+        font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 111%;
+    /* or 27px */
+    
+    text-align: right;
+    
+    color: #FFFFFF;
+    position: absolute;
+    top: 68%;
+    left: 5%;
+    
+    }
+    .buttonJoin{
+        border: none;
+        width: 194px;
+        height: 60px;
+        background: #3FAC8C;
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 117.5%;
+        color: #FFFFFF;
+        position: absolute;
+        top: 80%;
+        left: calc(50% - 97px)
+        }
+        .saleForProduction{
+            font-family: 'Ubuntu';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 111%;
+            /* or 38px */
+            
+            
+            color: #3E3092;
+        position: absolute;
+        left: 8%;
+        }
+        .prdeProdPricingCartPr{
+            cursor: pointer;
+               width: 120.21px;
+            height: 120.21px;
+            color: white;
+            background: #FF3416;
+            transform: rotate(45deg);
+            font-family: 'Ubuntu';
+            display: flex;
+            margin-left: 20px;
+            margin-top: 5px;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 23%;
+            left: 5%
+        }
+        .buttonJoinPr{
+            border: none;
+        width: 194px;
+        height: 60px;
+        background: #3E3092;
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 117.5%;
+        color: #FFFFFF;
+        position: absolute;
+        top: 80%;
+        left: calc(50% - 97px);
+        }
+        .prodNewTwoSt{
+            position: absolute;
+            width: 116px;
+height: 154px;
+            top: 25%;
+            left: 65%;
+            z-index: 2;
+        }
+        .prodNewOneSt{
+            position: absolute;
+            width: 116px;
+            height: 154px;
+            top: 28%;
+            left: 50%;
+            z-index: 1;
+        }
+        .vidTwPcsPr{
+            font-family: 'Ubuntu';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 111%;
+            /* or 27px */
+            
+            text-align: right;
+            
+            color: #3E3092;
+            position: absolute;
+            top: 70%;
+            left: 65%;
+        }
+        .theBestForChildrenH5{
+            margin-left: 12px;
+        margin-right: 12px;
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 111%;
+        /* or 40px */
+        margin-top: 12px;
+        margin-bottom: 0;
+        color: #3FAC8C;
+        }
+        .theBestForChildrenP{
+            margin-left: 12px;
+            margin-right: 12px;
+            font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 130%;
+        /* or 26px */
+        
+        
+        color: #000000;
+        }
+        .needProductWrap{
+            margin-left: 12px;
+            margin-right: 12px;
+            margin-top: 50px;
+            width: calc(100% - 24px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+           
+        }
+        .blockSoonSecond{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 50px;
+            width: 90%;
+            
+        }
+        .colorBlockWrap{
+            padding: 0px;
+            width: calc(100% - 0px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+           
+        }
+        .electro{
+            width: 100%;
+            height: 102px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: #3E51C1;
+            
+        font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 117.5%;
+        color: #FFFFFF;
+        }
+        .catolog{
+            width: 100%;
+            height: 102px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: #F7CB25;
+            font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 117.5%;
+        color: #3E3092;
+        }
+        .delivery{
+            width: 100%;
+            height: 102px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: #3E3092;
+            font-family: 'Ubuntu';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 117.5%;
+            color: #FFFFFF;
+        }
+        .discount{
+            width: 100%;
+            height: 102px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: #FF3416;
+            font-family: 'Ubuntu';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 117.5%;
+        color: #FFFFFF;
+        }
+        .bestForChildrenWrapEnd{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 100px;
+            align-self: flex-end;
+        }
 }
 @media only screen and (max-width: 1288px) and (min-width: 1024px) { 
 

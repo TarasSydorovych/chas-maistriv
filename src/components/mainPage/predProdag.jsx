@@ -165,7 +165,7 @@ const PredProdag = ({products, windowDimensions}) => {
             </div>
          <div className="imgPredProdag">
         <div className="imgRelDiv">
-           <img src={currentProduct.bookFoto} className="imgRelDivImg"/>
+           <img src={currentProduct.imageList[0]} className="imgRelDivImg"/>
            <div className='prdeProdPricing'>
             <div className='prdeProdPricingRotate'>
             <p className='fullPriceKr'>{currentProduct.priceSale}грн</p>

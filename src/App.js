@@ -134,7 +134,7 @@ function App() {
     <>
     <Header scrollHeight={scrollHeight} setLogin={setLogin} login={login} setEnterUser={setEnterUser} enterUser={enterUser}/>
     <Routes>
-    <Route path='/' element={<MainPage windowDimensions={windowDimensions}/>}/>
+    <Route path='/' element={<MainPage scrollHeight={scrollHeight} windowDimensions={windowDimensions}/>}/>
     <Route path='/catalog' element={<Catalog visitedProducts={visitedProducts} productsAll={products} setVisitedProducts={setVisitedProducts}/>}/>
     <Route path='/manuscriptCatalog' element={<CatalogMan visitedProducts={visitedProducts} productsAll={manuscript} setVisitedProducts={setVisitedProducts}/>}/>
     <Route path='/product/' element={<Product/>}/>

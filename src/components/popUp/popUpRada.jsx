@@ -1,13 +1,18 @@
+import { useEffect } from 'react'
 import css from './popUp.module.css'
 
 
 
 
-export default function PopUpRada() {
+export default function PopUpRada({popupPosition, scrollHeight}) {
 
 
-
-
+    useEffect(() => {
+        const element = document.querySelector(`.${css.musicWrapOp}`);
+    const computedStyles = window.getComputedStyle(element);
+    console.log(computedStyles);
+    element.style.top = `${scrollHeight+popupPosition-213}px`;
+    }, []);
 
     return(
         <div className={css.musicWrapOp}>

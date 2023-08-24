@@ -1,17 +1,22 @@
 
 import {HandySvg} from 'handy-svg';
 import iconSrc from '../../../svg/Rectangle.svg';
+import withFirebaseCollection from '../../HOK/withFirebaseCollection';
 
 
-export default function Sun() {
+const Sun = ({data}) => {
 
 
 
     return(
-       
+      
        <div className="sunWrap">
-  <span className='spanFast'>Скоро!&nbsp; </span><p className='pFast'> "Експедиція за дивовижнами тваринами" - відкрий свій характер</p>
-                  
+        {data.length > 0 &&
+        <>
+  <span className='spanFast'>Незабаром!&nbsp; </span><p className='pFast'>{data[0].soon}</p>
+  </>
+}
        </div>
     )
 }
+export default withFirebaseCollection('seo')(Sun);
