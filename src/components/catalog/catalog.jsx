@@ -19,42 +19,6 @@ import withFirebaseCollection from "../HOK/withFirebaseCollection";
 
 const Catalog = ({setVisitedProducts, visitedProducts, productsAll, data}) => {
 
-// const [currentPage, setCurrentPage] = useState(1);
-// const productsPerPage = 1;
-// const products = useSelector((state) => state.products.items);
-// const filters = useSelector((state) => state.filters);
-
-// const handlePageClick = (pageNumber) => {
-//   setCurrentPage(pageNumber);
-// };
-
-// const startIndex = (currentPage - 1) * productsPerPage;
-// const endIndex = startIndex + productsPerPage;
-// const currentProducts = products.slice(startIndex, endIndex);
-
-// const numberOfPages = Math.ceil(products.length / productsPerPage);
-// const maxDisplayedPages = 2; // Максимальна кількість відображуваних сторінок
-
-// let startPage = currentPage - Math.floor(maxDisplayedPages / 2);
-// let endPage = currentPage + Math.floor(maxDisplayedPages / 2);
-
-// if (startPage < 1) {
-//   startPage = 1;
-//   endPage = startPage + maxDisplayedPages - 1;
-// }
-
-// if (endPage > numberOfPages) {
-//   endPage = numberOfPages;
-//   startPage = endPage - maxDisplayedPages + 1;
-//   if (startPage < 1) {
-//     startPage = 1;
-//   }
-// }
-
-// const pageNumbers = [];
-// for (let i = startPage; i <= endPage; i++) {
-//   pageNumbers.push(i);
-// }
 const [currentPage, setCurrentPage] = useState(1);
 const productsPerPage = 10;
 const products = useSelector((state) => state.products.items);

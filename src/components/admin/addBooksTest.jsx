@@ -1,341 +1,345 @@
-import css from './adm.module.css'
-import { useState } from 'react';
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { v4 as uuidv4 } from 'uuid';
-import {auth, db} from '../../firebase'
-import { doc, setDoc, addDoc, collection, serverTimestamp } from "firebase/firestore"; 
+import css from "./adm.module.css";
+import { useState } from "react";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
+import { v4 as uuidv4 } from "uuid";
+import { auth, db } from "../../firebase";
+import {
+  doc,
+  setDoc,
+  addDoc,
+  collection,
+  serverTimestamp,
+} from "firebase/firestore";
 
 export default function AddBooksTest() {
   const storage = getStorage();
 
   const objList = [
     {
-        name: "ISBN",
-        transliter: "ISBN",
+      name: "ISBN",
+      transliter: "ISBN",
     },
     {
-        name: "СЕО Имя книги",
-        transliter: "ceoName",
+      name: "СЕО Имя книги",
+      transliter: "ceoName",
     },
     {
-        name: "Назва книги",
-        transliter: "bookName",
+      name: "Назва книги",
+      transliter: "bookName",
     },
     {
-        name: "Прізвисько книги(коротка назва для короткої корзини)",
-        transliter: "prizvusko",
+      name: "Прізвисько книги(коротка назва для короткої корзини)",
+      transliter: "prizvusko",
     },
     {
-        name: "Серія",
-        transliter: "seria",
+      name: "Серія",
+      transliter: "seria",
     },
     {
-        name: "Автор тексту",
-        transliter: "textAutor",
+      name: "Автор тексту",
+      transliter: "textAutor",
     },
     {
       name: "Коротко про автора",
       transliter: "shortAboutAuth",
-  },
+    },
     {
-        name: "Художник",
-        transliter: "picWriter",
+      name: "Художник",
+      transliter: "picWriter",
     },
     {
       name: "Коротко про художника",
       transliter: "shortAboutDesig",
-  },
-    {
-        name: "Автор ідеї",
-        transliter: "autorIdea",
     },
     {
-        name: "Перекладач",
-        transliter: "bookTranslater",
+      name: "Автор ідеї",
+      transliter: "autorIdea",
     },
     {
-        name: "Редактор",
-        transliter: "bRedaktor",
-    },
-     {
-        name: "Дизайн",
-        transliter: "bDesign",
+      name: "Перекладач",
+      transliter: "bookTranslater",
     },
     {
-        name: "Над макетом працювали",
-        transliter: "onMakWork",
-    },
-     {
-        name: "вид продукту",
-        transliter: "prodType",
+      name: "Редактор",
+      transliter: "bRedaktor",
     },
     {
-        name: "Ціна",
-        transliter: "price",
+      name: "Дизайн",
+      transliter: "bDesign",
     },
     {
-        name: "Ціна без знижки",
-        transliter: "priceSale",
+      name: "Над макетом працювали",
+      transliter: "onMakWork",
     },
     {
-        name: "Дата закінчення пред продажу",
-        transliter: "predprodDate",
+      name: "вид продукту",
+      transliter: "prodType",
     },
     {
-        name: "Новинка",
-        transliter: "isNew",
+      name: "Ціна",
+      transliter: "price",
     },
     {
-        name: "Топ",
-        transliter: "top",
+      name: "Ціна без знижки",
+      transliter: "priceSale",
     },
     {
-        name: "Розпродаж",
-        transliter: "rozprodaz",
+      name: "Дата закінчення пред продажу",
+      transliter: "predprodDate",
     },
     {
-        name: "Акція",
-        transliter: "sale",
+      name: "Новинка",
+      transliter: "isNew",
     },
     {
-        name: "Предпродаж",
-        transliter: "predprodag",
+      name: "Топ",
+      transliter: "top",
     },
     {
-        name: "Палітурка",
-        transliter: "paliturka",
+      name: "Розпродаж",
+      transliter: "rozprodaz",
     },
     {
-        name: "Кількість сторінок",
-        transliter: "pageCount",
+      name: "Акція",
+      transliter: "sale",
     },
     {
-        name: "формат (мм)",
-        transliter: "bookFormat",
+      name: "Предпродаж",
+      transliter: "predprodag",
     },
     {
-        name: "Товщина (мм)",
-        transliter: "booksH",
+      name: "Палітурка",
+      transliter: "paliturka",
     },
     {
-        name: "Вага (гр)",
-        transliter: "booksWei",
+      name: "Кількість сторінок",
+      transliter: "pageCount",
     },
     {
-        name: "Рік видання",
-        transliter: "yearWrite",
+      name: "формат (мм)",
+      transliter: "bookFormat",
     },
     {
-        name: "Мова видання",
-        transliter: "bookLanguage",
+      name: "Товщина (мм)",
+      transliter: "booksH",
     },
     {
-        name: "Папір",
-        transliter: "bookPaper",
+      name: "Вага (гр)",
+      transliter: "booksWei",
     },
     {
-        name: "Ілюстрації",
-        transliter: "ilystracii",
+      name: "Рік видання",
+      transliter: "yearWrite",
     },
     {
-        name: "Підбірки книг",
-        transliter: "pidbirkuBoo",
+      name: "Мова видання",
+      transliter: "bookLanguage",
     },
     {
-        name: "Чому варто читати 1",
-        transliter: "whyNeedReadO",
+      name: "Папір",
+      transliter: "bookPaper",
     },
     {
-        name: "Чому варто читати 2",
-        transliter: "whyNeedReadT",
+      name: "Ілюстрації",
+      transliter: "ilystracii",
     },
     {
-        name: "Чому варто читати 3",
-        transliter: "whyNeedReadTH",
+      name: "Підбірки книг",
+      transliter: "pidbirkuBoo",
     },
     {
-        name: "Лауреат Корнійчуковської премії",
-        transliter: "laureat",
+      name: "Чому варто читати 1",
+      transliter: "whyNeedReadO",
     },
     {
-        name: "Книга року",
-        transliter: "bookYear",
+      name: "Чому варто читати 2",
+      transliter: "whyNeedReadT",
     },
     {
-        name: "Категорія за ціною",
-        transliter: "proceCat",
+      name: "Чому варто читати 3",
+      transliter: "whyNeedReadTH",
     },
     {
-        name: "Категрорія за об'ємом",
-        transliter: "priceMas",
+      name: "Лауреат Корнійчуковської премії",
+      transliter: "laureat",
     },
     {
-        name: "Навантаження текстом",
-        transliter: "moreText",
+      name: "Книга року",
+      transliter: "bookYear",
     },
     {
-        name: "Любов до читання",
-        transliter: "readLove",
+      name: "Категорія за ціною",
+      transliter: "proceCat",
     },
     {
-        name: "Вікова група",
-        transliter: "yearGroup",
+      name: "Категрорія за об'ємом",
+      transliter: "priceMas",
     },
     {
-        name: "Жанр",
-        transliter: "ganr",
+      name: "Навантаження текстом",
+      transliter: "moreText",
     },
     {
-        name: "Спосіб взаємодії",
-        transliter: "metVzaem",
+      name: "Любов до читання",
+      transliter: "readLove",
     },
     {
-        name: "За призначенням",
-        transliter: "forWho",
+      name: "Вікова група",
+      transliter: "yearGroup",
     },
     {
-        name: "Комплектація книги",
-        transliter: "complectation",
+      name: "Жанр",
+      transliter: "ganr",
     },
     {
-        name: "Книжкові відзнаки",
-        transliter: "vidznaku",
+      name: "Спосіб взаємодії",
+      transliter: "metVzaem",
     },
     {
-        name: "Популярність",
-        transliter: "popular",
+      name: "За призначенням",
+      transliter: "forWho",
     },
     {
-        name: "Герої книги",
-        transliter: "bookHero",
+      name: "Комплектація книги",
+      transliter: "complectation",
     },
     {
-        name: "Дивіз",
-        transliter: "duviz",
+      name: "Книжкові відзнаки",
+      transliter: "vidznaku",
     },
     {
-        name: "Сила книги",
-        transliter: "bookPower",
+      name: "Популярність",
+      transliter: "popular",
     },
     {
-        name: "фото",
-        transliter: "bookFoto",
+      name: "Герої книги",
+      transliter: "bookHero",
     },
     {
-        name: "фото розгорток",
-        transliter: "fotoRozgort",
+      name: "Дивіз",
+      transliter: "duviz",
     },
     {
-        name: "Відео",
-        transliter: "bookVideo",
+      name: "Сила книги",
+      transliter: "bookPower",
     },
     {
-        name: "Короткий опис",
-        transliter: "smallDesc",
+      name: "фото",
+      transliter: "bookFoto",
     },
     {
-        name: "Середній опис",
-        transliter: "descriptionSe",
+      name: "фото розгорток",
+      transliter: "fotoRozgort",
     },
     {
-        name: "Довгий опис",
-        transliter: "longDesk",
+      name: "Відео",
+      transliter: "bookVideo",
     },
     {
-        name: "цитати з книги",
-        transliter: "bookChu",
+      name: "Короткий опис",
+      transliter: "smallDesc",
     },
     {
-        name: "Ceo title",
-        transliter: "ceoTitle",
+      name: "Середній опис",
+      transliter: "descriptionSe",
+    },
+    {
+      name: "Довгий опис",
+      transliter: "longDesk",
+    },
+    {
+      name: "цитати з книги",
+      transliter: "bookChu",
+    },
+    {
+      name: "Ceo title",
+      transliter: "ceoTitle",
+    },
+    {
+      name: "Ceo description",
+      transliter: "coeDescription",
+    },
+    {
+      name: "Ceo keyWord",
+      transliter: "coekeyWord",
+    },
 
-    },
     {
-        name: "Ceo description",
-        transliter: "coeDescription",
-        
-    },
-    {
-        name: "Ceo keyWord",
-        transliter: "coekeyWord",
-        
-    },
-    
-    {
-        name: "Новинка",
-        transliter: "novunka",
-        
+      name: "Новинка",
+      transliter: "novunka",
     },
     {
       name: "Перша кнопка назва",
       transliter: "labelOneName",
-      
-  },
-  {
+    },
+    {
       name: "перша кнопка текст",
       transliter: "labelOneText",
-      
-  },
-  {
+    },
+    {
       name: "Друга кнопка назва",
       transliter: "labelTwoName",
-      
-  },
-  {
+    },
+    {
       name: "Друга кнопка текст",
       transliter: "labelTwoText",
-      
-  },
-  {
+    },
+    {
       name: "Третя кнопка назва",
       transliter: "labelThreName",
-      
-  },
-  {
+    },
+    {
+      name: "Останній екземпляр",
+      transliter: "lastExam",
+    },
+
+    {
+      name: "Святкові",
+      transliter: "svjatkovi",
+    },
+    {
       name: "Третя кнопка текст",
       transliter: "labelThreText",
-      
-  },
-  {
+    },
+    {
       name: "Четверта кнопка назва",
       transliter: "labelFourName",
-      
-  },
-  {
+    },
+    {
       name: "Четверта кнопка текст",
       transliter: "labelFourText",
-      
-  },
-  {
+    },
+    {
       name: "П'ята кнопка назва",
       transliter: "labelFiveName",
-      
-  },
-  {
+    },
+    {
       name: "П'ята кнопка текст",
       transliter: "labelFiveText",
-      
-  },
-  {
-    name: "Заголовок для блоку героя",
-    transliter: "heroLabelText",
-    
-},
-{
-  name: "Параграф для блоку героя",
-  transliter: "heroParagrafText",
-  
-},
-{
-  name: "Фото героя",
-  transliter: "heroFoto",
-},
-]
+    },
+    {
+      name: "Заголовок для блоку героя",
+      transliter: "heroLabelText",
+    },
+    {
+      name: "Параграф для блоку героя",
+      transliter: "heroParagrafText",
+    },
+    {
+      name: "Фото героя",
+      transliter: "heroFoto",
+    },
+  ];
 
   const [photoInputs, setPhotoInputs] = useState([1]);
   const [formData, setFormData] = useState({});
   const [photoURLs, setPhotoURLs] = useState([]);
-const [heroFotoUrl, setHeroFotoUrl] = useState('')
+  const [heroFotoUrl, setHeroFotoUrl] = useState("");
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -348,8 +352,11 @@ const [heroFotoUrl, setHeroFotoUrl] = useState('')
     if (e.target.files[0]) {
       const image = e.target.files[0];
       const fieldName = `bookFoto${index}`;
-  
-      const uploadTask = uploadBytesResumable(ref(storage, `images/${image.name}`), image);
+
+      const uploadTask = uploadBytesResumable(
+        ref(storage, `images/${image.name}`),
+        image
+      );
       uploadTask.on(
         "state_changed",
         null,
@@ -372,35 +379,35 @@ const [heroFotoUrl, setHeroFotoUrl] = useState('')
   };
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-  
+
     const form = event.target;
     const data = new FormData(form);
     const formDataObj = Object.fromEntries(data.entries());
-  
+
     // Перевірка кожного елементу formDataObj
     for (const key in formDataObj) {
       if (Object.prototype.hasOwnProperty.call(formDataObj, key)) {
         const value = formDataObj[key];
         if (value instanceof File) {
-          formDataObj[key] = '';
+          formDataObj[key] = "";
         }
       }
     }
-  
+
     if (photoInputs.length > 0) {
       formDataObj.imageList = photoURLs;
     }
-  
+
     formDataObj.uid = uuidv4();
     formDataObj.audio = audioURL;
     formDataObj.pdf = pdfURL;
     formDataObj.heroFoto = heroFotoUrl;
-    await setDoc(doc(collection(db, 'product'), formDataObj.uid), formDataObj);
+    await setDoc(doc(collection(db, "product"), formDataObj.uid), formDataObj);
     window.location.reload();
   };
 
-  const [audioURL, setAudioURL] = useState('');
-  const [pdfURL, setPdfURL] = useState('');
+  const [audioURL, setAudioURL] = useState("");
+  const [pdfURL, setPdfURL] = useState("");
 
   // Решта вашого коду
 
@@ -408,9 +415,12 @@ const [heroFotoUrl, setHeroFotoUrl] = useState('')
     if (e.target.files[0]) {
       const audioFile = e.target.files[0];
 
-      const uploadTask = uploadBytesResumable(ref(storage, `audio/${audioFile.name}`), audioFile);
+      const uploadTask = uploadBytesResumable(
+        ref(storage, `audio/${audioFile.name}`),
+        audioFile
+      );
       uploadTask.on(
-        'state_changed',
+        "state_changed",
         null,
         (error) => {
           console.log(error);
@@ -430,9 +440,12 @@ const [heroFotoUrl, setHeroFotoUrl] = useState('')
     if (e.target.files[0]) {
       const pdfFile = e.target.files[0];
 
-      const uploadTask = uploadBytesResumable(ref(storage, `pdf/${pdfFile.name}`), pdfFile);
+      const uploadTask = uploadBytesResumable(
+        ref(storage, `pdf/${pdfFile.name}`),
+        pdfFile
+      );
       uploadTask.on(
-        'state_changed',
+        "state_changed",
         null,
         (error) => {
           console.log(error);
@@ -451,9 +464,12 @@ const [heroFotoUrl, setHeroFotoUrl] = useState('')
     if (e.target.files[0]) {
       const pdfFile = e.target.files[0];
 
-      const uploadTask = uploadBytesResumable(ref(storage, `${pdfFile.name}`), pdfFile);
+      const uploadTask = uploadBytesResumable(
+        ref(storage, `${pdfFile.name}`),
+        pdfFile
+      );
       uploadTask.on(
-        'state_changed',
+        "state_changed",
         null,
         (error) => {
           console.log(error);
@@ -472,7 +488,12 @@ const [heroFotoUrl, setHeroFotoUrl] = useState('')
     return (
       <div>
         <label>Аудіо</label>
-        <input type="file" accept="audio/*" onChange={handleAudioInputChange} name="audio" />
+        <input
+          type="file"
+          accept="audio/*"
+          onChange={handleAudioInputChange}
+          name="audio"
+        />
       </div>
     );
   };
@@ -481,7 +502,12 @@ const [heroFotoUrl, setHeroFotoUrl] = useState('')
     return (
       <div>
         <label>Пдф файл</label>
-        <input type="file" accept=".pdf" onChange={handlePdfInputChange} name="pdfFile" />
+        <input
+          type="file"
+          accept=".pdf"
+          onChange={handlePdfInputChange}
+          name="pdfFile"
+        />
       </div>
     );
   };
@@ -489,24 +515,25 @@ const [heroFotoUrl, setHeroFotoUrl] = useState('')
     return (
       <div>
         <label>ФотоГероя</label>
-        <input type="file"  onChange={handleHeroFotoChange} name="heroFoto" />
+        <input type="file" onChange={handleHeroFotoChange} name="heroFoto" />
       </div>
     );
   };
   const uploadPhoto = (photo) => {
-    console.log('photo',photo)
+    console.log("photo", photo);
     return new Promise((resolve, reject) => {
-        const storageRef = ref(storage, `images/${photo.name}`);
+      const storageRef = ref(storage, `images/${photo.name}`);
       const uploadTask = uploadBytesResumable(storageRef, photo);
 
       uploadTask.on(
-        'state_changed',
+        "state_changed",
         (snapshot) => {
-          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           console.log(`Upload progress: ${progress}%`);
         },
         (error) => {
-          console.log('Error uploading photo:', error);
+          console.log("Error uploading photo:", error);
           reject(error);
         },
         () => {
@@ -515,7 +542,7 @@ const [heroFotoUrl, setHeroFotoUrl] = useState('')
               resolve(downloadURL);
             })
             .catch((error) => {
-              console.log('Error getting photo URL:', error);
+              console.log("Error getting photo URL:", error);
               reject(error);
             });
         }
@@ -535,40 +562,40 @@ const [heroFotoUrl, setHeroFotoUrl] = useState('')
           type="text"
           name={obj.transliter}
           onChange={handleInputChange}
-          value={formData[obj.transliter] || ''}
-    />
-  </div>
-));   
-};
-
-const renderPhotoInputs = () => {
-    return photoInputs.map((index) => (
-        <div key={`photoInput_${index}`}>
-    <label>Book Photo {index}</label>
-    <input
-  type="file"
-  accept="image/*"
-  onChange={(e) => handlePhotoInputChange(e, index)}
-  name={`bookFoto${index}`}
-/>
-    </div>
+          value={formData[obj.transliter] || ""}
+        />
+      </div>
     ));
-    };
-    
-    return (
+  };
+
+  const renderPhotoInputs = () => {
+    return photoInputs.map((index) => (
+      <div key={`photoInput_${index}`}>
+        <label>Book Photo {index}</label>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => handlePhotoInputChange(e, index)}
+          name={`bookFoto${index}`}
+        />
+      </div>
+    ));
+  };
+
+  return (
     <div>
-    <h2>Add Books</h2>
-    <form onSubmit={handleFormSubmit}>
-    {renderInputs()}
-    {renderPhotoInputs()}
-    {renderAudioInput()}
-    {renderPdfInput()}
-    {renderHeroFoto()}
-    <button type="button" onClick={addPhotoInput}>
-    Add Photo Input
-    </button>
-    <button type="submit">Submit</button>
-    </form>
+      <h2>Add Books</h2>
+      <form onSubmit={handleFormSubmit}>
+        {renderInputs()}
+        {renderPhotoInputs()}
+        {renderAudioInput()}
+        {renderPdfInput()}
+        {renderHeroFoto()}
+        <button type="button" onClick={addPhotoInput}>
+          Add Photo Input
+        </button>
+        <button type="submit">Submit</button>
+      </form>
     </div>
-    );
-    }
+  );
+}
