@@ -5,7 +5,7 @@ const axios = require("axios");
 const { format, addHours } = require("date-fns");
 const app = express();
 const port = 4000;
-
+app.use(cors({ origin: "http://185.69.155.241:3000" }));
 // Додамо middleware для обробки CORS запитів
 app.use(cors());
 

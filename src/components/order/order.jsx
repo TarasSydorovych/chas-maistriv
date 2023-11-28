@@ -437,7 +437,7 @@ const Order = ({ setLogin, user, discountInHok, dataFromBase }) => {
       //const docRef = await addDoc(collection(db, 'orders'), newProduct);
       const frankDocRef = doc(db, "orders", uid);
       await setDoc(frankDocRef, newProduct);
-      const apiUrl = "http://localhost:4000/create-order"; // Замініть на відповідний URL свого сервера
+      const apiUrl = "http://185.69.155.241:4000/create-order"; // Замініть на відповідний URL свого сервера
 
       const response = await axios.post(apiUrl, newProduct);
       document.querySelector("form").submit();
@@ -454,7 +454,7 @@ const Order = ({ setLogin, user, discountInHok, dataFromBase }) => {
   const apiUrl = "https://api.novaposhta.ua/v2.0/json/";
   const ttnNumber = "20450715436175";
   const testCalback = async () => {
-    const apiUrl = "http://localhost:4000/callback"; // Замініть на відповідний URL свого сервера
+    const apiUrl = "http://185.69.155.241:4000/callback"; // Замініть на відповідний URL свого сервера
 
     const response = await axios.post(apiUrl, { test: "d" });
   };
