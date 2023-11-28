@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AddBooks from "./addBooks";
 import css from "./adm.module.css";
@@ -17,7 +17,10 @@ import SeoBlock from "./seoBlock";
 import AutorAdm from "../autorAdm/autorAdm";
 import HeroAdm from "../heroAdm/heroAdm";
 import AddVideoOglyd from "./addVideoOglyd";
+import ProductListEditor from "./photoEditor";
+import { onAuthStateChanged } from "firebase/auth";
 
+import { auth } from "../../firebase";
 export default function FullAdm() {
   const [addB, setAddB] = useState(false);
   const [addM, setAddM] = useState(false);
@@ -34,6 +37,8 @@ export default function FullAdm() {
   const [auth, setAuth] = useState(false);
   const [hero, setHero] = useState(false);
   const [addVideoW, setAddVideoW] = useState(false);
+  const [photoChange, setPhotoChange] = useState(false);
+
   const addBooksTrue = () => {
     setAddB(!addB);
     setAddM(false);
@@ -49,6 +54,7 @@ export default function FullAdm() {
     setSeo(false);
     setHero(false);
     setAddVideoW(false);
+    setPhotoChange(false);
   };
   const addManTrue = () => {
     setAddB(false);
@@ -66,6 +72,7 @@ export default function FullAdm() {
     setAuth(false);
     setHero(false);
     setAddVideoW(false);
+    setPhotoChange(false);
   };
   const bookListCha = () => {
     setAddB(false);
@@ -83,6 +90,7 @@ export default function FullAdm() {
     setAuth(false);
     setHero(false);
     setAddVideoW(false);
+    setPhotoChange(false);
   };
   const manListCha = () => {
     setAddB(false);
@@ -96,6 +104,7 @@ export default function FullAdm() {
     setQuestion(false);
     setUser(false);
     setSeo(false);
+    setPhotoChange(false);
     setAddVideoW(false);
   };
   const prodListFunc = () => {
@@ -114,6 +123,7 @@ export default function FullAdm() {
     setAuth(false);
     setHero(false);
     setAddVideoW(false);
+    setPhotoChange(false);
   };
   const addBlogP = () => {
     setAddB(false);
@@ -130,6 +140,7 @@ export default function FullAdm() {
     setSeo(false);
     setHero(false);
     setAddVideoW(false);
+    setPhotoChange(false);
   };
   const changeToPromo = () => {
     setAddB(false);
@@ -145,6 +156,7 @@ export default function FullAdm() {
     setUser(false);
     setSeo(false);
     setAddVideoW(false);
+    setPhotoChange(false);
   };
   const cartonFun = () => {
     setAddB(false);
@@ -161,6 +173,7 @@ export default function FullAdm() {
     setSeo(false);
     setHero(false);
     setAddVideoW(false);
+    setPhotoChange(false);
   };
   const cartonFunCha = () => {
     setAddB(false);
@@ -178,6 +191,7 @@ export default function FullAdm() {
     setAuth(false);
     setHero(false);
     setAddVideoW(false);
+    setPhotoChange(false);
   };
   const addQuestion = () => {
     setAddB(false);
@@ -194,6 +208,7 @@ export default function FullAdm() {
     setSeo(false);
     setHero(false);
     setAddVideoW(false);
+    setPhotoChange(false);
   };
   const userBlock = () => {
     setAddB(false);
@@ -211,6 +226,7 @@ export default function FullAdm() {
     setAuth(false);
     setHero(false);
     setAddVideoW(false);
+    setPhotoChange(false);
   };
   const seoBlock = () => {
     setAddB(false);
@@ -228,6 +244,7 @@ export default function FullAdm() {
     setAuth(false);
     setHero(false);
     setAddVideoW(false);
+    setPhotoChange(false);
   };
   const authBlock = () => {
     setAddB(false);
@@ -245,6 +262,7 @@ export default function FullAdm() {
     setAuth(!auth);
     setHero(false);
     setAddVideoW(false);
+    setPhotoChange(false);
   };
   const heroBlock = () => {
     setAddB(false);
@@ -262,6 +280,7 @@ export default function FullAdm() {
     setAuth(false);
     setHero(!hero);
     setAddVideoW(false);
+    setPhotoChange(false);
   };
   const addvideoO = () => {
     setAddB(false);
@@ -279,6 +298,25 @@ export default function FullAdm() {
     setAuth(false);
     setHero(false);
     setAddVideoW(!addVideoW);
+    setPhotoChange(false);
+  };
+  const changeData = () => {
+    setAddB(false);
+    setAddM(false);
+    setBookList(false);
+    setManList(false);
+    setProdList(false);
+    setAddBlog(false);
+    setPromo(false);
+    setCarton(false);
+    setCartonCha(false);
+    setQuestion(false);
+    setUser(false);
+    setSeo(false);
+    setAuth(false);
+    setHero(false);
+    setAddVideoW(false);
+    setPhotoChange(!photoChange);
   };
   return (
     <div className={css.fullAdmWrapp}>
@@ -410,6 +448,15 @@ export default function FullAdm() {
               Додати героя
             </Link>
           </li>
+          <li className={css.listUlForAdmLi} onClick={changeData}>
+            <Link
+              className={`${css.listUlForAdmLiA} ${
+                photoChange ? css.listUlForAdmLiAA : ""
+              }`}
+            >
+              Змінити фото товару
+            </Link>
+          </li>
         </ul>
       </div>
       {addB && <AddBooksTest />}
@@ -427,6 +474,7 @@ export default function FullAdm() {
       {auth && <AutorAdm />}
       {hero && <HeroAdm />}
       {addVideoW && <AddVideoOglyd />}
+      {photoChange && <ProductListEditor />}
     </div>
   );
 }

@@ -47,6 +47,8 @@ import Coock from "./components/infoComponent/coock";
 import Get from "./components/get";
 import NewPayBlock from "./components/fon";
 
+import { onAuthStateChanged } from "firebase/auth";
+import FourF from "./components/404/fourF";
 export const MyContext = React.createContext({
   value: "",
   setValue: () => {},
@@ -66,6 +68,7 @@ function App() {
   const [scrollHeight, setScrollHeight] = useState(0);
   const [haveManu, setHaveManu] = useState(false);
   const [manuscript, setManuscript] = useState([]);
+  const [admCha, setAdmCha] = useState(false);
   useEffect(() => {
     function handleResize() {
       if (window.innerWidth < 1100) {
@@ -112,7 +115,22 @@ function App() {
     };
     fetchProducts();
   }, []);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser.uid === "V1isGtif6naFawKKg3m224hoaOk2") {
+        // Користувач увійшов в систему
+        setAdmCha(true);
+      } else {
+        setAdmCha(false);
+        // Користувач вийшов з системи
+      }
+    });
 
+    return () => {
+      // Відписка від слухача після розмонтовування компоненти
+      unsubscribe();
+    };
+  }, []);
   useEffect(() => {
     const fetchManuscript = async () => {
       const productsRef = collection(db, "manuscript");
@@ -208,7 +226,8 @@ function App() {
                   />
                 }
               />
-              <Route path="/adm" element={<FullAdm />} />
+              {admCha && <Route path="/adm" element={<FullAdm />} />}
+
               <Route
                 path="/manuscript/:id"
                 element={
@@ -241,10 +260,14 @@ function App() {
               <Route path="/authdes" element={<AboutAuth />} />
               <Route path="/publicOffer" element={<PublicOffer />} />
               <Route path="/tg" element={<AuthTH />} />
-              <Route path="/fon" element={<NewPayBlock />} />
+
+              <Route path="*" element={<FourF />} />
             </Routes>
             {coock && <Coock setCoock={setCoock} />}
-            <Footer windowDimensions={windowDimensions} />
+            <Footer
+              windowDimensions={windowDimensions}
+              scrollHeight={scrollHeight}
+            />
           </>
         )}
       </MyContext.Provider>
