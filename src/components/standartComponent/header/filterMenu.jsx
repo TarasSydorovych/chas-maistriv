@@ -419,7 +419,6 @@ export default function FilterMenu({
             <p className="secondBlockWrapFilterProdP">{el.name}</p>
             <ul className="ulSecondfilter">
               {el.list.map((value, index) => {
-                console.log(value);
                 const filter = { field: el.transliter, value: value };
                 return (
                   <li
