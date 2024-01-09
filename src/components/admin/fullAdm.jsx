@@ -21,6 +21,8 @@ import ProductListEditor from "./photoEditor";
 import { onAuthStateChanged } from "firebase/auth";
 
 import { auth } from "../../firebase";
+import AddBook from "./addBook";
+import UseFiles from "./useFiles";
 export default function FullAdm() {
   const [addB, setAddB] = useState(false);
   const [addM, setAddM] = useState(false);
@@ -454,7 +456,7 @@ export default function FullAdm() {
                 photoChange ? css.listUlForAdmLiAA : ""
               }`}
             >
-              Змінити фото товару
+              Змінити файли книги
             </Link>
           </li>
         </ul>
@@ -474,7 +476,7 @@ export default function FullAdm() {
       {auth && <AutorAdm />}
       {hero && <HeroAdm />}
       {addVideoW && <AddVideoOglyd />}
-      {photoChange && <ProductListEditor />}
+      {photoChange && <UseFiles />}
     </div>
   );
 }

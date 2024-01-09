@@ -105,6 +105,17 @@ const ProductListEditor = () => {
             {selectedProductId === product.id && (
               <div>
                 <h3>{selectedProduct.name} Images</h3>
+                {selectedProduct.imageList.length === 0 && (
+                  <>
+                    {" "}
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => setNewImage(e.currentTarget.files[0])}
+                    />
+                    <button onClick={handleAddImage}>Додати фото</button>
+                  </>
+                )}
                 {selectedProduct.imageList.map((imageUrl, index) => {
                   return (
                     <div key={index}>

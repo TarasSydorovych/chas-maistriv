@@ -619,7 +619,87 @@ import {
 
 export default function AddBooksTest() {
   const storage = getStorage();
-
+  const [formData, setFormData] = useState({
+    ISBN: "",
+    ceoName: "",
+    bookName: "",
+    prizvusko: "",
+    seria: "",
+    textAutor: "",
+    shortAboutAuth: "",
+    picWriter: "",
+    shortAboutDesig: "",
+    autorIdea: "",
+    bookTranslater: "",
+    bRedaktor: "",
+    bDesign: "",
+    onMakWork: "",
+    prodType: "",
+    price: "",
+    priceSale: "",
+    predprodDate: "",
+    isNew: "",
+    top: "",
+    rozprodaz: "",
+    sale: "",
+    predprodag: "",
+    paliturka: "",
+    pageCount: "",
+    bookFormat: "",
+    booksH: "",
+    booksWei: "",
+    yearWrite: "",
+    bookLanguage: "",
+    bookPaper: "",
+    ilystracii: "",
+    pidbirkuBoo: "",
+    whyNeedReadO: "",
+    whyNeedReadT: "",
+    whyNeedReadTH: "",
+    laureat: "",
+    bookYear: "",
+    proceCat: "",
+    priceMas: "",
+    moreText: "",
+    readLove: "",
+    yearGroup: "",
+    yearGroupFor: "",
+    ganr: "",
+    metVzaem: "",
+    forWho: "",
+    complectation: "",
+    vidznaku: "",
+    popular: "",
+    bookHero: "",
+    duviz: "",
+    bookPower: "",
+    bookFoto: "",
+    fotoRozgort: "",
+    bookVideo: "",
+    smallDesc: "",
+    descriptionSe: "",
+    longDesk: "",
+    bookChu: "",
+    ceoTitle: "",
+    coeDescription: "",
+    coekeyWord: "",
+    novunka: "",
+    labelOneName: "",
+    labelOneText: "",
+    labelTwoName: "",
+    labelTwoText: "",
+    labelThreName: "",
+    lastExam: "",
+    svjatkovi: "",
+    labelThreText: "",
+    labelFourName: "",
+    labelFourText: "",
+    labelFiveName: "",
+    labelFiveText: "",
+    heroLabelText: "",
+    heroParagrafText: "",
+    heroFoto: "",
+  });
   const objList = [
     {
       name: "ISBN",
@@ -794,6 +874,10 @@ export default function AddBooksTest() {
       transliter: "yearGroup",
     },
     {
+      name: "Вікова група для відображення",
+      transliter: "yearGroupFor",
+    },
+    {
       name: "Жанр",
       transliter: "ganr",
     },
@@ -938,7 +1022,7 @@ export default function AddBooksTest() {
   ];
 
   const [photoInputs, setPhotoInputs] = useState([1]);
-  const [formData, setFormData] = useState({});
+
   const [photoURLs, setPhotoURLs] = useState([]);
   const [heroFotoUrl, setHeroFotoUrl] = useState("");
 
@@ -1198,18 +1282,6 @@ export default function AddBooksTest() {
       [fieldName]: prev[fieldName] ? [...prev[fieldName], ""] : [""],
     }));
     console.log(formData);
-    // setFormData((prevData) => {
-    //   const currentValue = prevData[fieldName] || [];
-
-    //   console.log(currentValue);
-    //   // Додавання нового значення до існуючого масиву
-    //   const newValue = [currentValue, ""];
-
-    //   return {
-    //     ...prevData,
-    //     [fieldName]: [...newValue],
-    //   };
-    // });
   };
   const renderInputs = () => {
     return objList.map((obj) => {
@@ -1242,7 +1314,7 @@ export default function AddBooksTest() {
             className={css.standartButSt}
             onClick={(e) => handleNewMessage(e, obj.transliter)}
           >
-            Додати повідомлення
+            Додати ще один елемент
           </button>
         </div>
       );

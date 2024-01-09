@@ -22,48 +22,58 @@ export default function WhyNeedRead({ oneProd }) {
         </div>
         <div className={css.wrapRecent}>
           <div className={css.startText}>
-            {oneProd.labelOneText.length > 1 && (
-              <div
-                className={css.startTextFirst}
-                onClick={() => bipPopUp(oneProd.labelOneText)}
-              >
-                {oneProd.labelOneName}
-              </div>
-            )}
-            {oneProd.labelTwoText.length > 1 && (
-              <div
-                className={css.startTextSecond}
-                onClick={() => bipPopUp(oneProd.labelTwoText)}
-              >
-                {oneProd.labelTwoName}
-              </div>
-            )}
-            {oneProd.labelThreText.length > 1 && (
-              <div
-                className={css.startTextThree}
-                onClick={() => bipPopUp(oneProd.labelThreText)}
-              >
-                {oneProd.labelThreName}
-              </div>
-            )}
+            {oneProd &&
+              oneProd.labelOneText &&
+              oneProd.labelOneText.length > 1 && (
+                <div
+                  className={css.startTextFirst}
+                  onClick={() => bipPopUp(oneProd.labelOneText)}
+                >
+                  {oneProd.labelOneName}
+                </div>
+              )}
+            {oneProd &&
+              oneProd.labelTwoText &&
+              oneProd.labelTwoText.length > 1 && (
+                <div
+                  className={css.startTextSecond}
+                  onClick={() => bipPopUp(oneProd.labelTwoText)}
+                >
+                  {oneProd.labelTwoName}
+                </div>
+              )}
+            {oneProd &&
+              oneProd.labelThreText &&
+              oneProd.labelThreText.length > 1 && (
+                <div
+                  className={css.startTextThree}
+                  onClick={() => bipPopUp(oneProd.labelThreText)}
+                >
+                  {oneProd.labelThreName}
+                </div>
+              )}
           </div>
           <div className={css.startText}>
-            {oneProd.labelFourName.length > 1 && (
-              <div
-                className={css.startTextSecondFirst}
-                onClick={() => bipPopUp(oneProd.labelFourText)}
-              >
-                {oneProd.labelFourName}
-              </div>
-            )}
-            {oneProd.labelFiveText.length > 1 && (
-              <div
-                className={css.startTextSecondSecond}
-                onClick={() => bipPopUp(oneProd.labelFiveText)}
-              >
-                {oneProd.labelFiveName}
-              </div>
-            )}
+            {oneProd &&
+              oneProd.labelFourName &&
+              oneProd.labelFourName.length > 1 && (
+                <div
+                  className={css.startTextSecondFirst}
+                  onClick={() => bipPopUp(oneProd.labelFourText)}
+                >
+                  {oneProd.labelFourName}
+                </div>
+              )}
+            {oneProd &&
+              oneProd.labelFiveText &&
+              oneProd.labelFiveText.length > 1 && (
+                <div
+                  className={css.startTextSecondSecond}
+                  onClick={() => bipPopUp(oneProd.labelFiveText)}
+                >
+                  {oneProd.labelFiveName}
+                </div>
+              )}
           </div>
         </div>
       </div>
