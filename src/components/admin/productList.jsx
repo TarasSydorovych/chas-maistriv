@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../firebase";
+import css from "./adm.module.css";
 import {
   collection,
   getDocs,
@@ -359,13 +360,15 @@ const ProductList = ({ data }) => {
     });
   };
   return (
-    <div>
+    <div className={css.divForList}>
       <h1>Список товарів</h1>
-      <ul>
+      <ul className={css.ulHer}>
         {products &&
           products.map((product) => (
-            <li key={product.uid}>
-              {product.name} - {product.price} грн
+            <li className={css.listLiProd} key={product.uid}>
+              <p>
+                {product.bookName}- {product.price} грн
+              </p>
               <button onClick={() => handleEdit(product)}>Редагувати</button>
               <button onClick={() => handleDelete(product.uid)}>
                 Видалити
