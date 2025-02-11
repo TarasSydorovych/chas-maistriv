@@ -78,6 +78,8 @@
   background: #d6cfff;
 }
 .picBookTitle {
+  height: 457px;
+  width: auto;
   margin-top: 32px;
   margin-bottom: 38px;
   margin-left: 200px;
@@ -103,6 +105,7 @@
   line-height: 111%;
   color: #ffffff;
   width: 75%;
+  text-decoration: none;
 }
 .descParametr {
   display: flex;
@@ -118,6 +121,20 @@
   color: #ffffff;
   margin: 0px;
 }
+.likeProductSmallClick {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 53px;
+  height: 53px;
+  background: #ff3416;
+}
+.catalogVisibleCss {
+  color: #3e51c1;
+  cursor: pointer;
+  font-size: 30px;
+}
 .firstBlockCatPFullDesc {
   font-family: "Ubuntu";
   font-style: normal;
@@ -126,6 +143,8 @@
   line-height: 130%;
   width: 70%;
   color: #ffffff;
+  height: 80px;
+  overflow: hidden;
 }
 .wrapIconBlocCatFirst {
   display: flex;
@@ -148,6 +167,19 @@
   margin-top: 5px;
   align-items: center;
   justify-content: center;
+}
+.wrapCatalogChanges {
+  width: calc(100% - 40px);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.nameFormatPere {
+  margin-right: 20px;
+  font-family: "Ubuntu";
+  color: #3e51c1;
+  font-size: 20px;
 }
 .prdeProdPricingRotateCart {
   display: flex;
@@ -240,7 +272,7 @@
 }
 .youLikeProductWrap {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   width: 80%;
 }
@@ -409,7 +441,6 @@
   text-align: center;
   color: #ffffff;
   margin: 0;
-  text-decoration: line-through;
 }
 .salePriceCart {
   font-family: "Ubuntu";
@@ -424,6 +455,17 @@
   margin: 0;
 }
 
+.wrapSmallProductTwoType {
+  width: calc(100% - 200);
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 130px;
+  padding-left: 100px;
+  padding-right: 100px;
+}
 @media only screen and (max-width: 599px) and (min-width: 300px) {
   .firstBlockWhisPic {
     width: 100%;

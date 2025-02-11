@@ -14,11 +14,12 @@ import { auth, db } from "../../firebase";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProductsAll, fetchProducts } from "../../function/productsSlice";
 import withFieldData from "../HOK/withFieldData";
-
+import { PhotoProvider, PhotoSlider, PhotoView } from "react-photo-view";
 import addToCart from "../../function/addToCard";
-const NewBooks = ({ products }) => {
+const NewBooks = ({ products, setCartCounterC, setLikeCounterC }) => {
   const [selectedProductIndex, setSelectedProductIndex] = useState(0);
   const [currentProduct, setCurrentProduct] = useState(null);
+  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
   const handleArrowRightClick = () => {
     setSelectedProductIndex((prevIndex) =>
       prevIndex < products.length - 1 ? prevIndex + 1 : prevIndex
@@ -57,10 +58,11 @@ const NewBooks = ({ products }) => {
 
     if (!liked) {
       // Додаємо товар до масиву подобається
-
+      setLikeCounterC((prev) => prev + 1);
       likedProducts.push(currentProduct);
     } else {
       // Видаляємо товар з масиву подобається
+      setLikeCounterC((prev) => prev + 1);
       const updatedLikedProducts = likedProducts.filter(
         (product) => product.uid !== currentProduct.uid
       );
@@ -73,18 +75,42 @@ const NewBooks = ({ products }) => {
     // Змінюємо стан liked
     setLiked(!liked);
   };
+  const addingToCart = (id) => {
+    addToCart(id);
 
+    setCartCounterC((prev) => prev + 1);
+  };
+  const openPhotoViewer = (index) => {
+    setSelectedPhotoIndex(index);
+    // Simulate a click on the image to open it in full screen
+    document.querySelector(`#photo-${index}`).click();
+  };
   return (
     <div className="newBooksWrapBlock">
       {currentProduct && (
         <>
           <div className="yellowBorderWrap">
             <div className="imgPictureBox">
-              <img
+              {/* <img
                 src={currentProduct.imageList[0]}
                 className="newBookImgImg"
                 alt={`${currentProduct.bookName}`}
-              />
+              /> */}
+              <PhotoProvider>
+                <PhotoView src={currentProduct.imageList[0]}>
+                  <img
+                    src={currentProduct.imageList[0]}
+                    alt={`${currentProduct.bookName}`}
+                    className="productBigPictureImg"
+                  />
+                </PhotoView>
+                {/* Додаємо всі зображення до PhotoView для перегляду в повноекранному режимі */}
+                {currentProduct.imageList.map((item, index) => (
+                  <PhotoView key={index} src={item}>
+                    <span style={{ display: "none" }} />
+                  </PhotoView>
+                ))}
+              </PhotoProvider>
               <div className="markerNew">Новеньке</div>
             </div>
             <HandySvg
@@ -100,17 +126,20 @@ const NewBooks = ({ products }) => {
               <h1 className="nameBooksNewBooks">Новинки</h1>
               <h2 className="nameBooksNew">{currentProduct.bookName}</h2>
               <div className="autorInformNew">
-                <div className="autorInformSection">
-                  <p>Автор:&nbsp;</p>
-                  <h4>{currentProduct.textAutor}</h4>
+                <div className="wrapInFgAuthQW">
+                  <div className="autorInformSection">
+                    <p>Автор:&nbsp;</p>
+                    <h4>{currentProduct.textAutor}</h4>
+                  </div>
+
+                  <div className="autorInformSection">
+                    <p>Художник:&nbsp;</p>
+                    <h4>{currentProduct.bDesign}</h4>
+                  </div>
                 </div>
-                <div className="autorInformSection">
+                <div className="autorInformSectionTwo">
                   <p>Вік:&nbsp;</p>
-                  <h4>{currentProduct.yearGroup}</h4>
-                </div>
-                <div className="autorInformSection">
-                  <p>Художник:&nbsp;</p>
-                  <h4>{currentProduct.bDesign}</h4>
+                  <h4>{currentProduct.yearGroup.join(", ")}</h4>
                 </div>
               </div>
               <p className="descriptionBooksNew">
@@ -129,7 +158,7 @@ const NewBooks = ({ products }) => {
                   <div className="likeCardWrapSmall">
                     <div
                       className="likeProductSmallSaleNovu"
-                      onClick={() => addToCart(currentProduct.uid)}
+                      onClick={() => addingToCart(currentProduct.uid)}
                     >
                       <HandySvg
                         src={iconSrcCardWhite}

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../firebase";
 import css from "./adm.module.css";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import {
   collection,
   getDocs,
@@ -15,9 +17,23 @@ const ProductList = ({ data }) => {
       name: "ISBN",
       transliter: "ISBN",
     },
+    { name: "Код", transliter: "cod" },
+    { name: "EAN", transliter: "ean" },
+    { name: "Переказ", transliter: "perecaz" },
+    { name: "Кількість в пачці", transliter: "kilcastInpachka" },
+    { name: "Рік перевидання", transliter: "rikPerevudania" },
+    { name: "Девіз", transliter: "deviz" },
     {
-      name: "СЕО Имя книги",
+      name: "СЕО Імя книги",
       transliter: "ceoName",
+    },
+    {
+      name: "Порядок відображення",
+      transliter: "sorterNumber",
+    },
+    {
+      name: "Відображення товару",
+      transliter: "productVisible",
     },
     {
       name: "Назва книги",
@@ -36,8 +52,20 @@ const ProductList = ({ data }) => {
       transliter: "textAutor",
     },
     {
+      name: "Коментар автора",
+      transliter: "autorComment",
+    },
+    {
+      name: "Коротко про автора",
+      transliter: "shortAboutAuth",
+    },
+    {
       name: "Художник",
       transliter: "picWriter",
+    },
+    {
+      name: "Коротко про художника",
+      transliter: "shortAboutDesig",
     },
     {
       name: "Автор ідеї",
@@ -146,6 +174,18 @@ const ProductList = ({ data }) => {
       transliter: "pidbirkuBoo",
     },
     {
+      name: "Чому варто читати 1",
+      transliter: "whyNeedReadO",
+    },
+    {
+      name: "Чому варто читати 2",
+      transliter: "whyNeedReadT",
+    },
+    {
+      name: "Чому варто читати 3",
+      transliter: "whyNeedReadTH",
+    },
+    {
       name: "Категорія за ціною",
       transliter: "proceCat",
     },
@@ -249,6 +289,67 @@ const ProductList = ({ data }) => {
       name: "Новинка",
       transliter: "novunka",
     },
+    {
+      name: "Перша кнопка назва",
+      transliter: "labelOneName",
+    },
+    {
+      name: "перша кнопка текст",
+      transliter: "labelOneText",
+    },
+    {
+      name: "Друга кнопка назва",
+      transliter: "labelTwoName",
+    },
+    {
+      name: "Друга кнопка текст",
+      transliter: "labelTwoText",
+    },
+    {
+      name: "Третя кнопка назва",
+      transliter: "labelThreName",
+    },
+    {
+      name: "Останній екземпляр",
+      transliter: "lastExam",
+    },
+
+    {
+      name: "Святкові",
+      transliter: "svjatkovi",
+    },
+    {
+      name: "Третя кнопка текст",
+      transliter: "labelThreText",
+    },
+    {
+      name: "Четверта кнопка назва",
+      transliter: "labelFourName",
+    },
+    {
+      name: "Четверта кнопка текст",
+      transliter: "labelFourText",
+    },
+    {
+      name: "П'ята кнопка назва",
+      transliter: "labelFiveName",
+    },
+    {
+      name: "П'ята кнопка текст",
+      transliter: "labelFiveText",
+    },
+    {
+      name: "Заголовок для блоку героя",
+      transliter: "heroLabelText",
+    },
+    {
+      name: "Параграф для блоку героя",
+      transliter: "heroParagrafText",
+    },
+    {
+      name: "Фото героя",
+      transliter: "heroFoto",
+    },
   ];
   const [products, setProducts] = useState([]);
   const [editedProduct, setEditedProduct] = useState(null);
@@ -256,6 +357,8 @@ const ProductList = ({ data }) => {
   const handleEdit = (product) => {
     setEditedProduct({ ...product });
   };
+  console.log("editedProduct", editedProduct);
+
   const handleSave = async () => {
     if (editedProduct) {
       const productRef = doc(db, "product", editedProduct.uid);
@@ -305,14 +408,19 @@ const ProductList = ({ data }) => {
       }));
     }
   };
-
+  const richTextFields = [
+    "labelOneText",
+    "labelTwoText",
+    "labelThreText",
+    "labelFourText",
+    "labelFiveText",
+  ];
   useEffect(() => {
     setProducts(data);
   }, [data]);
   const handleNewMessage = (e, fieldName) => {
     e.preventDefault();
-    console.log("fieldName", fieldName);
-    console.log("e", e);
+
     if (!Array.isArray(editedProduct[fieldName])) {
       setEditedProduct((prev) => ({
         ...prev,
@@ -359,15 +467,25 @@ const ProductList = ({ data }) => {
       }
     });
   };
+  useEffect(() => {
+    if (data) {
+      const sortedProducts = data.sort((a, b) => {
+        const sorterA = Number(a.sorterNumber) || Infinity;
+        const sorterB = Number(b.sorterNumber) || Infinity;
+        return sorterA - sorterB;
+      });
+      setProducts(sortedProducts);
+    }
+  }, [data]);
   return (
     <div className={css.divForList}>
       <h1>Список товарів</h1>
       <ul className={css.ulHer}>
         {products &&
-          products.map((product) => (
+          products.map((product, index) => (
             <li className={css.listLiProd} key={product.uid}>
               <p>
-                {product.bookName}- {product.price} грн
+                {index + 1}. {product.bookName} - {product.price} грн
               </p>
               <button onClick={() => handleEdit(product)}>Редагувати</button>
               <button onClick={() => handleDelete(product.uid)}>
@@ -389,15 +507,25 @@ const ProductList = ({ data }) => {
                   {Array.isArray(editedProduct[field]) ? (
                     <>
                       {editedProduct[field].map((item, index) => (
-                        <>
-                          <input
-                            key={index}
-                            type="text"
-                            value={item || ""}
-                            onChange={(e) =>
-                              handleChange(`${field}`, e.target.value, index)
-                            }
-                          />
+                        <div key={`${field}-${index}`}>
+                          {richTextFields.includes(field) ? (
+                            <ReactQuill
+                              theme="snow"
+                              value={item || ""}
+                              onChange={(value) =>
+                                handleChange(field, value, index)
+                              }
+                              className={css.quillEditor}
+                            />
+                          ) : (
+                            <input
+                              type="text"
+                              value={item || ""}
+                              onChange={(e) =>
+                                handleChange(`${field}`, e.target.value, index)
+                              }
+                            />
+                          )}
                           <button
                             onClick={() =>
                               handleRemoveItem(obj.transliter, index)
@@ -405,9 +533,8 @@ const ProductList = ({ data }) => {
                           >
                             Видалити
                           </button>
-                        </>
+                        </div>
                       ))}
-
                       <button
                         onClick={(e) => handleNewMessage(e, obj.transliter)}
                       >
@@ -415,13 +542,21 @@ const ProductList = ({ data }) => {
                       </button>
                     </>
                   ) : (
-                    // Якщо поле не масив, виводимо звичайний інпут
                     <>
-                      <input
-                        type="text"
-                        value={editedProduct[field] || ""}
-                        onChange={(e) => handleChange(field, e.target.value)}
-                      />
+                      {richTextFields.includes(field) ? (
+                        <ReactQuill
+                          theme="snow"
+                          value={editedProduct[field] || ""}
+                          onChange={(value) => handleChange(field, value)}
+                          className={css.quillEditor}
+                        />
+                      ) : (
+                        <input
+                          type="text"
+                          value={editedProduct[field] || ""}
+                          onChange={(e) => handleChange(field, e.target.value)}
+                        />
+                      )}
                       <button onClick={() => handleRemoveItem(obj.transliter)}>
                         Видалити
                       </button>

@@ -41,19 +41,24 @@ import BlockBusiness from "./blockBusiness";
 import ChangeData from "./changeData";
 
 const UserCabinet = ({
-  products,
   setAddressChanged,
   addressChanged,
   windowDimensions,
   user,
   userBd,
+  setCartCounterC,
+  visitedProducts,
+
+  setLikeCounterC,
 }) => {
   const navigate = useNavigate();
   const [selectedText, setSelectedText] = useState(1);
   const [scrollHeight, setScrollHeight] = useState(0);
   const [infoTg, setInfoTg] = useState(false);
   const [tgId, setTgId] = useState("");
+  const [products, setProducts] = useState([]);
 
+  const [realUser, setRealUser] = useState(null);
   const [orders, setOrders] = useState([]);
   const [workFunc, setWorkFunc] = useState(false);
   const [cheSetinings, setCheSetinings] = useState(false);
@@ -61,7 +66,22 @@ const UserCabinet = ({
   const apiUrl = "https://api.novaposhta.ua/v2.0/json/";
 
   const [waitProdComponents, setWaitProdComponents] = useState([]);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const productsRef = collection(db, "product");
+      const productsSnapshot = await getDocs(productsRef);
+      const productsList = productsSnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
 
+      setProducts(productsList);
+    };
+    fetchProducts();
+  }, []);
+  useEffect(() => {
+    setRealUser(userBd);
+  }, [userBd]);
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollHeight = window.pageYOffset;
@@ -99,7 +119,7 @@ const UserCabinet = ({
           const ordersRef = collection(db, "orders");
           const q = query(ordersRef, where("user", "==", user.uid));
           const querySnapshot = await getDocs(q);
-          console.log(typeof user.uid);
+
           const parsedData = [];
           querySnapshot.forEach((doc) => {
             const order = { id: doc.id, ...doc.data() };
@@ -141,27 +161,51 @@ const UserCabinet = ({
             });
 
             const statuses = response.data.data;
-            const waitProdComponents = filteredData.map(
-              ({ order, tovar }, index) => {
-                const status =
-                  statuses.find((s) => s.Number === order.status)?.Status ||
-                  "Очікує підтвердження";
+            // const waitProdComponents = filteredData.map(
+            //   ({ order, tovar }, index) => {
+            //     const status =
+            //       statuses.find((s) => s.Number === order.status)?.Status ||
+            //       "Очікує підтвердження";
 
-                return (
-                  <WaitProd
-                    key={index}
-                    el={order}
-                    tovar={tovar}
-                    status={status}
-                  />
-                );
-              }
-            );
+            //     return (
+            //       <WaitProd
+            //         key={index}
+            //         el={order}
+            //         tovar={tovar}
+            //         status={status}
+            //       />
+            //     );
+            //   }
+            // );
+            const waitProdComponents =
+              filteredData.length > 0 ? (
+                filteredData.map(({ order, tovar }, index) => {
+                  const status =
+                    statuses.find((s) => s.Number === order.status)?.Status ||
+                    "Очікує підтвердження";
 
+                  return (
+                    <WaitProd
+                      key={index}
+                      el={order}
+                      tovar={tovar}
+                      status={status}
+                    />
+                  );
+                })
+              ) : (
+                <p>Актуальні замовлення відсутні.</p>
+              );
             setWaitProdComponents(waitProdComponents);
           } else if (selectedText === 3) {
             const waitProdComponents = filteredData.map((tovar, index) => {
-              return <WaitProdLike key={index} tovar={tovar} />;
+              return (
+                <WaitProdLike
+                  key={index}
+                  tovar={tovar}
+                  setCartCounterC={setCartCounterC}
+                />
+              );
             });
 
             setWaitProdComponents(waitProdComponents);
@@ -175,7 +219,7 @@ const UserCabinet = ({
     fetchOrdersByUser();
   }, [user, selectedText]);
   const blocks = [
-    { id: 1, text: "Очікувані замовлення" },
+    { id: 1, text: "Статус замовлення" },
     { id: 2, text: "Чекають опрацювання" },
     { id: 3, text: "Бажане" },
   ];
@@ -217,296 +261,326 @@ const UserCabinet = ({
   const openSet = () => {
     setCheSetinings(!cheSetinings);
   };
+  console.log("realUser", realUser);
 
   return (
-    <div>
-      <div className={css.bleuLabel}>
-        <div className={css.blueLabelWnutr}>
-          <p className={css.firstTextInBlock}>
-            Наша місія — допомогти батькам ростити дітей людьми, які вміють бути
-            щасливими
-          </p>
-          <p className={css.firstTextInBlock}>
-            Наша мета — створювати якісні дитячі книги, від яких важко
-            відірватися, та які збагачують.
-          </p>
-        </div>
-      </div>
-
-      {userBd && (
-        <div className={css.userInformationWrap}>
-          <div className={css.userInformationWrapSmall}>
-            <div className={css.yourInformation}>
-              <div className={css.userData}>
-                <div className={css.imgAutorWrapSmall}>
-                  {userBd.photo && (
-                    <img src={userBd.photo} className={css.imgAutorSmall} />
-                  )}
-                  {userBd.photo === null && (
-                    <img src={que} className={css.imgAutorSmall} />
-                  )}
-                </div>
-                <div className={css.nameAndPropWr}>
-                  {userBd.displayName && (
-                    <h4 className={css.userNameHello}>
-                      {userBd.displayName}, вітаємо!
-                    </h4>
-                  )}
-                  {userBd.displayName === null && (
-                    <h4 className={css.userNameHello}>Користувач, вітаємо!</h4>
-                  )}
-                  <div className={css.propWrap}>
-                    <img src={iconProp} />
-                    <p className={css.propP} onClick={openSet}>
-                      Налаштування
-                    </p>
-                    <h2 className={css.outButton} onClick={handleLogout}>
-                      Вийти з кабінету
-                    </h2>
-                  </div>
-                  {cheSetinings && (
-                    <ChangeData
-                      scrollHeight={scrollHeight}
-                      userBd={userBd}
-                      setCheSetinings={setCheSetinings}
-                    />
-                  )}
-                </div>
-              </div>
-              {windowDimensions && (
-                <img src={Group16} className={css.iconPicBird} />
-              )}
-              {!windowDimensions && (
-                <img src={Group17} className={css.iconPicBird} />
-              )}
-            </div>
-            <div className={css.ourInformation}>
-              <h4 className={css.yourRegistration}>
-                Ви зареєстровані як {userBd.category}
-              </h4>
-              <p className={css.yourDescription}>
-                Це дає вам знижки та доступ до коментів, а також ви потрапляєте
-                під роздачу слонів (бонусів), можете брати участь в опікунських
-                радах і тестуванні книг, впливати на вибір обкладинок, назв
-                текстів та обговорювати злободенні питання. Якщо ви довіряєте
-                нам як спеціалістам у виборі та створенні дитячої книги,
-                запрошуємо вас встановити з нами прямий контакт через імейл,
-                вайбер, телеграм, або вотсап. Приєднуйтесь до спільноти
-                поціновувачів книжок, підписавшись на наші соцмережі. Настав Час
-                майстрів.
+    <>
+      {realUser && (
+        <div>
+          <div className={css.bleuLabel}>
+            <div className={css.blueLabelWnutr}>
+              <p className={css.firstTextInBlock}>
+                Наша місія — допомогти батькам ростити дітей людьми, які вміють
+                бути щасливими
               </p>
-              <div className={css.socialWrap}>
-                <a
-                  href="https://www.facebook.com/chasmaistriv"
-                  target="_blanck"
-                >
-                  <div className={css.standartsocial}>
-                    <img src={facForUs} />
-                  </div>
-                </a>
-                <a href="mailto:sales@chasmaistriv.com.ua" target="_blanck">
-                  <div className={css.standartsocial}>
-                    <img src={mailForSoc} />
-                  </div>
-                </a>
-                <a href="https://t.me/chasmaistriv_bot" target="_blanck">
-                  <div className={css.standartsocial}>
-                    <img src={tgUser} />
-                  </div>
-                </a>
-                <a href="https://wa.me/+380672315737" target="_blanck">
-                  <div className={css.standartsocial}>
-                    <img src={whatUser} />
-                  </div>
-                </a>
-              </div>
+              <p className={css.firstTextInBlock}>
+                Наша мета — створювати якісні дитячі книги, від яких важко
+                відірватися, та які збагачують.
+              </p>
             </div>
           </div>
-        </div>
-      )}
 
-      <div className={css.orderingProductWrap}>
-        <div className={css.orderingProductWrapSmall}>
-          <div className={css.wrapLab}>
-            {blocks.map((block) => (
-              <div
-                key={block.id}
-                className={`${css.block} ${
-                  block.id === selectedText ? css.selected : ""
-                }`}
-                onClick={() => handleBlockClick(block.id)}
-              >
-                {block.text}
-              </div>
-            ))}
-          </div>
-
-          {waitProdComponents.length > 0 ? (
-            <div className={css.waitOrderInPostWrap}>{waitProdComponents}</div>
-          ) : (
-            <p></p>
-          )}
-        </div>
-      </div>
-
-      {userBd.signed === "false" && (
-        <>
-          <div className={css.yourDiscountWrap}>
-            <div className={css.yourDiscountWrapSmall}>
-              <div className={css.dicsTextWr}>
-                <p className={css.yourDicrFive}>
-                  Ваша знижка*
-                  <br />
-                  <span className={css.yourDicrFiveSpan}>
-                    {userBd.discount}%
-                  </span>
-                </p>
-                <p className={css.yourDicrFiveSmall}>
-                  Для отримання знижки 5% підпишіться на наш телеграм канал{" "}
-                </p>
-              </div>
-              <img src={discIcon} className={css.discIconIc} />
-              <div className={css.buttonConfFRW}>
-                <p className={css.confirmP}>Детальніше</p>
-                <div className={css.likeButton} onClick={handleClickInfo}>
-                  Інформація
+          {realUser && (
+            <div className={css.userInformationWrap}>
+              <div className={css.userInformationWrapSmall}>
+                <div className={css.yourInformation}>
+                  <div className={css.userData}>
+                    <div className={css.imgAutorWrapSmall}>
+                      {realUser.photo && (
+                        <img
+                          src={realUser.photo}
+                          className={css.imgAutorSmall}
+                        />
+                      )}
+                      {realUser.photo === null && (
+                        <img src={que} className={css.imgAutorSmall} />
+                      )}
+                    </div>
+                    <div className={css.nameAndPropWr}>
+                      {realUser.displayName && (
+                        <h4 className={css.userNameHello}>
+                          {realUser.displayName}, вітаємо!
+                        </h4>
+                      )}
+                      {realUser.displayName === null && (
+                        <h4 className={css.userNameHello}>
+                          Користувач, вітаємо!
+                        </h4>
+                      )}
+                      <div className={css.propWrap}>
+                        <div className={css.newdso}>
+                          <img src={iconProp} />
+                          <p className={css.propP} onClick={openSet}>
+                            Налаштування
+                          </p>
+                        </div>
+                        <h2 className={css.outButton} onClick={handleLogout}>
+                          Вийти з кабінету
+                        </h2>
+                      </div>
+                      {cheSetinings && (
+                        <ChangeData
+                          scrollHeight={scrollHeight}
+                          realUser={realUser}
+                          setCheSetinings={setCheSetinings}
+                          setRealUser={setRealUser}
+                        />
+                      )}
+                    </div>
+                  </div>
+                  {windowDimensions && (
+                    <img src={Group16} className={css.iconPicBird} />
+                  )}
+                  {!windowDimensions && (
+                    <img src={Group17} className={css.iconPicBird} />
+                  )}
+                </div>
+                <div className={css.ourInformation}>
+                  <h4 className={css.yourRegistration}>
+                    Ви зареєстровані як {realUser.category}
+                  </h4>
+                  <p className={css.yourDescription}>
+                    Це дає вам знижки та доступ до коментів, а також ви
+                    потрапляєте під роздачу слонів (бонусів), можете брати
+                    участь в опікунських радах і тестуванні книг, впливати на
+                    вибір обкладинок, назв текстів та обговорювати злободенні
+                    питання. Якщо ви довіряєте нам як спеціалістам у виборі та
+                    створенні дитячої книги, запрошуємо вас встановити з нами
+                    прямий контакт через імейл, вайбер, телеграм, або вотсап.
+                    Приєднуйтесь до спільноти поціновувачів книжок, підписавшись
+                    на наші соцмережі. Настав Час майстрів.
+                  </p>
+                  <div className={css.socialWrap}>
+                    <a
+                      href="https://www.facebook.com/chasmaistriv"
+                      target="_blanck"
+                    >
+                      <div className={css.standartsocial}>
+                        <img src={facForUs} />
+                      </div>
+                    </a>
+                    <a href="mailto:sales@chasmaistriv.com.ua" target="_blanck">
+                      <div className={css.standartsocial}>
+                        <img src={mailForSoc} />
+                      </div>
+                    </a>
+                    <a href="https://t.me/chas_maistriv" target="_blanck">
+                      <div className={css.standartsocial}>
+                        <img src={tgUser} />
+                      </div>
+                    </a>
+                    <a
+                      href="https://invite.viber.com/?g2=AQBidB45Be8Vo057AydEGn81babrL0jatg7TIhXEIJeF4eMeFK1Qr4RQChEzk%2Fix"
+                      target="_blanck"
+                    >
+                      <div className={css.standartsocial}>
+                        <img src={whatUser} />
+                      </div>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
+          )}
+
+          <div className={css.orderingProductWrap}>
+            <div className={css.orderingProductWrapSmall}>
+              <div className={css.wrapLab}>
+                {blocks.map((block) => (
+                  <div
+                    key={block.id}
+                    className={`${css.block} ${
+                      block.id === selectedText ? css.selected : ""
+                    }`}
+                    onClick={() => handleBlockClick(block.id)}
+                  >
+                    {block.text}
+                  </div>
+                ))}
+              </div>
+
+              {waitProdComponents.length > 0 ? (
+                <div className={css.waitOrderInPostWrap}>
+                  {waitProdComponents}
+                </div>
+              ) : (
+                <p></p>
+              )}
+            </div>
           </div>
-          {infoTg && (
-            <div className={css.yourDiscountWrapInfo}>
+
+          {realUser && realUser.signed === "false" && (
+            <>
+              <div className={css.yourDiscountWrap}>
+                <div className={css.yourDiscountWrapSmall}>
+                  <div className={css.dicsTextWr}>
+                    <p className={css.yourDicrFive}>
+                      Ваша знижка*
+                      <br />
+                      <span className={css.yourDicrFiveSpan}>
+                        {realUser.discount}%
+                      </span>
+                    </p>
+                    <p className={css.yourDicrFiveSmall}>
+                      Для отримання знижки 5% підпишіться на наш телеграм канал{" "}
+                    </p>
+                  </div>
+                  <img src={discIcon} className={css.discIconIc} />
+                  <div className={css.buttonConfFRW}>
+                    <p className={css.confirmP}>Детальніше</p>
+                    <div className={css.likeButton} onClick={handleClickInfo}>
+                      Інформація
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {infoTg && (
+                <div className={css.yourDiscountWrapInfo}>
+                  <div className={css.yourDiscountWrapSmall}>
+                    <div className={css.dicsTextWrInfo}>
+                      <p className={css.yourDicrFive}>
+                        Для успішного отримання знижки вам потрібно зробити
+                        наступні кроки:
+                        <br />
+                      </p>
+                      <p className={css.yourDicrFiveSmall}>
+                        1) Натисніть на кнопку отримати ID яка відкриє телеграм
+                        бот для отримання вашого ID та натисніть START.
+                        <br />
+                        <br />
+                        2) Скопіюйте отриманий ID та вставте його в поле ваш
+                        телеграм ID.
+                        <br />
+                        <br />
+                        3) Натисніть кнопку підписатись на телеграм канал Час
+                        майстрів.
+                        <br />
+                        <br />
+                        4) Врахуйте, що при скасуванні підписки знижка
+                        автоматично анулюється!
+                        <br />
+                        <br />
+                      </p>
+                    </div>
+
+                    <div className={css.buttonConfFRW}>
+                      <a
+                        className={css.likeButton}
+                        href="https://t.me/getidsbot"
+                        target="_blanck"
+                      >
+                        {" "}
+                        <div className={css.likeButton}>Отримати ID</div>
+                      </a>
+                      <input
+                        className={css.inputTgId}
+                        value={tgId}
+                        placeholder="Ваш телеграм ID"
+                        onChange={changeInput}
+                      ></input>
+                      <a
+                        className={css.likeButton}
+                        href="https://t.me/chas_maistriv"
+                        target="_blanck"
+                      >
+                        {" "}
+                        <div
+                          className={css.likeButton}
+                          onClick={() => tgIdChange(user.uid)}
+                        >
+                          Підписатись
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </>
+          )}
+          {realUser && realUser.signed === "true" && (
+            <div className={css.yourDiscountWrap}>
               <div className={css.yourDiscountWrapSmall}>
-                <div className={css.dicsTextWrInfo}>
+                <div className={css.dicsTextWr}>
                   <p className={css.yourDicrFive}>
-                    Для успішного отримання знажки вам потрібно зробити наступні
-                    кроки:
+                    Ваша знижка*
                     <br />
+                    <span className={css.yourDicrFiveSpan}>
+                      {realUser.discount}%
+                    </span>
                   </p>
                   <p className={css.yourDicrFiveSmall}>
-                    1) Натисніть на кнопку отримати ID яка відкриє телеграм бот
-                    для отримання вашого ID та натисніть START.
-                    <br />
-                    <br />
-                    2) Скопіюйте отриманий ID та вставте його в поле ваш
-                    телеграм ID.
-                    <br />
-                    <br />
-                    3) Натисніть кнопку підписатись на телеграм канал Час
-                    майстрів.
-                    <br />
-                    <br />
-                    4) Врахуйте, що при скасуванні підписки знижка автоматично
-                    анулюється!
-                    <br />
-                    <br />
+                    До знижки не додаються акції, розпродаж, предпродаж{" "}
                   </p>
                 </div>
-
+                <img src={discIcon} className={css.discIconIc} />
                 <div className={css.buttonConfFRW}>
-                  <a
-                    className={css.likeButton}
-                    href="https://t.me/getidsbot"
-                    target="_blanck"
-                  >
-                    {" "}
-                    <div className={css.likeButton}>Отримати ID</div>
-                  </a>
-                  <input
-                    className={css.inputTgId}
-                    value={tgId}
-                    placeholder="Ваш телеграм ID"
-                    onChange={changeInput}
-                  ></input>
-                  <a
-                    className={css.likeButton}
-                    href="https://t.me/chas_maistriv"
-                    target="_blanck"
-                  >
-                    {" "}
-                    <div
-                      className={css.likeButton}
-                      onClick={() => tgIdChange(user.uid)}
-                    >
-                      Підписатись
-                    </div>
-                  </a>
+                  <p className={css.confirmP}>Запросити друга</p>
+                  <div className={css.likeButton}>Запросити</div>
                 </div>
               </div>
             </div>
           )}
-        </>
-      )}
-      {userBd.signed === "true" && (
-        <div className={css.yourDiscountWrap}>
-          <div className={css.yourDiscountWrapSmall}>
-            <div className={css.dicsTextWr}>
-              <p className={css.yourDicrFive}>
-                Ваша знижка*
-                <br />
-                <span className={css.yourDicrFiveSpan}>{userBd.discount}%</span>
-              </p>
-              <p className={css.yourDicrFiveSmall}>
-                До знижки не додаються акції, розпродаж, предпродаж{" "}
-              </p>
+          {realUser.category === 'Член "Клубу Майстрів"' && <BlockReader />}
+          {realUser.category === "Читач" && <BlockReader />}
+          {realUser.category === "Бізнес-партнер" && (
+            <BlockBusiness userBd={realUser} />
+          )}
+          {realUser.category === "Майстер" && (
+            <BlockMaister userBd={realUser} />
+          )}
+          {realUser.category === 'Член "Клубу Майстрів"' && (
+            <div className={css.elefantWrap} onClick={onClickToElefant}>
+              <div className={css.elefantWrapSmall}>
+                <div className={css.elef}>
+                  <img src={elefant} className={css.elefant} />
+                  <p className={css.howMathElefant}>
+                    Ваші слони <br />
+                    <span className={css.howMathElefantSpan}>
+                      {realUser.elefant}
+                    </span>
+                  </p>
+                </div>
+                <p className={css.elefantDescription}>
+                  Ви можете <br /> сплачувати слонами
+                  <br /> за наші книги
+                  <br /> курс{" "}
+                  <span className={css.elefantDescriptionSpan}>
+                    1 Слон = 1 Грн
+                  </span>
+                </p>
+              </div>
             </div>
-            <img src={discIcon} className={css.discIconIc} />
-            <div className={css.buttonConfFRW}>
-              <p className={css.confirmP}>Запросити друга</p>
-              <div className={css.likeButton}>Запросити</div>
+          )}
+          {realUser.category === "Читач" && (
+            <div className={css.elefantWrap} onClick={onClickToElefant}>
+              <div className={css.elefantWrapSmall}>
+                <div className={css.elef}>
+                  <img src={elefant} className={css.elefant} />
+                  <p className={css.howMathElefant}>
+                    Ваші слони <br />
+                    <span className={css.howMathElefantSpan}>
+                      {realUser.elefant}
+                    </span>
+                  </p>
+                </div>
+                <p className={css.elefantDescription}>
+                  Ви можете <br /> сплачувати слонами
+                  <br /> за наші книги{" "}
+                  <span className={css.elefantDescriptionSpan}>
+                    1 Слон = 1 Грн
+                  </span>
+                </p>
+              </div>
             </div>
-          </div>
+          )}
+          <ViewProductCatalog
+            products={products}
+            setCartCounterC={setCartCounterC}
+            setLikeCounterC={setLikeCounterC}
+          />
         </div>
       )}
-      {userBd.category === 'Член "Клубу Майстрів"' && <BlockReader />}
-      {userBd.category === "Читач" && <BlockReader />}
-      {userBd.category === "Бізнес-партнер" && (
-        <BlockBusiness userBd={userBd} />
-      )}
-      {userBd.category === "Майстер" && <BlockMaister userBd={userBd} />}
-      {userBd.category === 'Член "Клубу Майстрів"' && (
-        <div className={css.elefantWrap} onClick={onClickToElefant}>
-          <div className={css.elefantWrapSmall}>
-            <div className={css.elef}>
-              <img src={elefant} className={css.elefant} />
-              <p className={css.howMathElefant}>
-                Ваші слони (бонуси) <br />
-                <span className={css.howMathElefantSpan}>{userBd.elefant}</span>
-              </p>
-            </div>
-            <p className={css.elefantDescription}>
-              Ви можете <br /> сплачувати слонами
-              <br /> за наші книги
-              <br /> курс{" "}
-              <span className={css.elefantDescriptionSpan}>1 Слон = 1 Грн</span>
-            </p>
-          </div>
-        </div>
-      )}
-      {userBd.category === "Читач" && (
-        <div className={css.elefantWrap} onClick={onClickToElefant}>
-          <div className={css.elefantWrapSmall}>
-            <div className={css.elef}>
-              <img src={elefant} className={css.elefant} />
-              <p className={css.howMathElefant}>
-                Ваші слони (бонуси) <br />
-                <span className={css.howMathElefantSpan}>{userBd.elefant}</span>
-              </p>
-            </div>
-            <p className={css.elefantDescription}>
-              Ви можете <br /> сплачувати слонами
-              <br /> за наші книги
-              <br /> курс{" "}
-              <span className={css.elefantDescriptionSpan}>1 Слон = 1 Грн</span>
-            </p>
-          </div>
-        </div>
-      )}
-      <ViewProductCatalog
-        products={products}
-        setAddressChanged={setAddressChanged}
-      />
-    </div>
+    </>
   );
 };
 export default withUserData(UserCabinet);

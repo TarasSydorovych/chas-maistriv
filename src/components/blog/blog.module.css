@@ -1,395 +1,403 @@
-.videoTitleWrap{
-    width: 100%;
-    height: auto;
-    background: #D6CFFF;;
+.videoTitleWrap {
+  width: 100%;
+  height: auto;
+  background: #d6cfff;
 }
-.totalVideoWrap{
-    width: calc(100% - 10%);
-    padding-left: 10%;
-   
+.totalVideoWrap {
+  width: calc(100% - 10%);
+  padding-left: 10%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.svgForVideo {
+  width: 100%;
+  height: 100%;
+}
+.firstBlockWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 40%;
+}
+.secondBlockWrap {
+  width: 60%;
+}
+.buttonRead {
+  width: 298px;
+  height: 58px;
+  background: #3e3092;
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 117.5%;
+  color: #ffffff;
+  border: none;
+  margin-top: 24px;
+}
+.videoViewvH1 {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 111%;
+  /* or 38px */
+  margin-bottom: 0;
+  text-decoration: none;
+  color: #3e3092;
+}
+.videoViewvP {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 111%;
+  /* or 27px */
+
+  color: #000000;
+}
+.chousBooksSelect {
+  display: flex;
+  position: relative;
+  width: 362px;
+  height: 56px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  justify-content: flex-start;
+}
+.customSelect {
+  cursor: pointer;
+  border: 3px solid #3e51c1;
+  width: 100%;
+  height: 56px;
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-left: 15px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 30px;
+  /* or 125% */
+
+  color: #3e3092;
+}
+.customOpin:checked {
+  background: #3fac8c;
+  color: #c4c4c4;
+}
+.customArrowSelect {
+  position: absolute;
+  top: 25px;
+  width: 19px;
+  height: 9px;
+  right: 30px;
+  pointer-events: none;
+}
+.joinYouWrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.youWrap {
+  width: 73px;
+  height: 73px;
+  border-radius: 50%;
+  background: #3e3092;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.joinH2 {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 111%;
+  /* or 27px */
+
+  color: #3e3092;
+  width: 65%;
+}
+.bigVideoWrapSmall {
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.bigVideoWrap {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bigVideoWrapSmall {
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.bigWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 64px;
+}
+.someTextWrap {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: flex-start;
+  margin-left: 72px;
+}
+.bigVideoP {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 122%;
+  /* or 24px */
+  max-height: 300px;
+  overflow: hidden;
+  color: #3e3092;
+}
+.smallVideoWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  height: auto;
+  margin-top: 80px;
+}
+.smallWrapH1 {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 111%;
+  /* or 38px */
+
+  color: #3fac8c;
+}
+.smallvidelListWrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.smalVideoPro {
+  width: 376px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.videoName {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 122%;
+  /* or 24px */
+  text-decoration: none;
+  color: #3e3092;
+  margin-top: 18px;
+}
+.mareVideo {
+  border: none;
+  width: 256px;
+  height: 60px;
+  background: #3fac8c;
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 117.5%;
+  color: #ffffff;
+  cursor: pointer;
+  align-self: center;
+  margin-top: 64px;
+}
+.videoNameDesc {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 122%;
+  /* or 24px */
+  height: 142px;
+  color: #3e3092;
+  overflow: hidden;
+}
+.bigImgBlog {
+  width: 758px;
+  height: 454px;
+  object-fit: cover;
+}
+.imgWrapBorder {
+  width: 348px;
+  height: 196px;
+  border: 14px solid #3e51c1;
+}
+.smallImgBlog {
+  width: 100%;
+  height: 100%;
+}
+.blogWrapPage {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.blogWrapPageSmall {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.wpaPicAbout {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.wpaPicAboutYou {
+}
+.youtube {
+}
+.paragInWrap {
+  color: #000;
+  font-size: 24px;
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 168%;
+  width: 50%;
+}
+.paragInWrapYou {
+  color: #000;
+  font-size: 24px;
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 168%;
+  width: 50%;
+  margin-left: 15px;
+}
+.imgAboutWrap {
+  border: 20px solid #3fac8c;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(50% - 10px - 40px);
+  height: auto;
+}
+.imgAboutWrapYou {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(50% - 10px - 40px);
+  height: auto;
+}
+.imgAbout {
+  width: 100%;
+  height: 454px;
+}
+.paragInWrapBig {
+  color: #000;
+  font-size: 24px;
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 168%;
+}
+.blogWrapPageH1 {
+  color: #3e3092;
+  font-size: 34px;
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 111%;
+}
+@media only screen and (max-width: 600px) and (min-width: 300px) {
+  .bigImgBlog {
+    width: 300px;
+    height: auto;
+    object-fit: cover;
+  }
+  .totalVideoWrap {
+    width: calc(100%);
+    padding-left: 0%;
+    height: auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
-}
-.svgForVideo{
-    width: 100%;
-    height: 100%;
-}
-.firstBlockWrap{
+  }
+  .firstBlockWrap {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    width: 40%;
-}
-.secondBlockWrap{
-    width: 60%;
-}
-.buttonRead{
-    width: 298px;
-height: 58px;
-background: #3E3092;
-font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 500;
-font-size: 20px;
-line-height: 117.5%;
-color: #FFFFFF;
-border: none;
-margin-top: 24px;
-}
-.videoViewvH1{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 700;
-font-size: 34px;
-line-height: 111%;
-/* or 38px */
-margin-bottom: 0;
-
-color: #3E3092;
-}
-.videoViewvP{
-    font-family: 'Ubuntu';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 111%;
-    /* or 27px */
-    
-    
-    color: #000000;
-}
-.chousBooksSelect{
-    display: flex;
-    position: relative;
-    width: 362px;
-    height: 56px;
-margin-top: 25px;
-margin-bottom: 20px;
-   justify-content: flex-start;
-    }
-    .customSelect{
-        cursor: pointer;
-        border: 3px solid #3E51C1;
-        width: 100%;
-        height: 56px;
-        appearance: none;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        padding-left: 15px;
-        font-family: 'Raleway';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 24px;
-        line-height: 30px;
-        /* or 125% */
-        
-        
-        color: #3E3092;
-        
-    
-        }
-        .customOpin:checked{
-            background:#3FAC8C;
-            color: #C4C4C4;
-         }
-         .customArrowSelect{
-            position: absolute;
-            top: 25px;
-            width: 19px;
-            height: 9px;
-            right: 30px;
-            pointer-events: none;
-          }
-.joinYouWrap{
-    display: flex;
     align-items: center;
-    justify-content: flex-start;
-}
-.youWrap{
-    width: 73px;
-    height: 73px;
-    border-radius: 50%;
-    background: #3E3092;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.joinH2{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 500;
-font-size: 24px;
-line-height: 111%;
-/* or 27px */
-
-
-color: #3E3092;
-width: 65%;
-}
-.bigVideoWrapSmall{
     width: 90%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-.bigVideoWrap{
+  }
+  .secondBlockWrap {
     width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.bigVideoWrapSmall{
-    width: 90%;
-    height: auto;
+    margin-top: 20px;
+  }
+  .bigWrap {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-}
-.bigWrap{
-    display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 64px;
-}
-.someTextWrap{
+  }
+  .someTextWrap {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     align-self: flex-start;
-    margin-left: 72px;
-}
-.bigVideoP{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 500;
-font-size: 20px;
-line-height: 122%;
-/* or 24px */
-
-
-color: #3E3092;
-
-}
-.smallVideoWrap{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    margin-left: 0px;
+  }
+  .smalVideoPro {
     width: 100%;
-    height: auto;
-    margin-top: 80px;
-}
-.smallWrapH1{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 700;
-font-size: 34px;
-line-height: 111%;
-/* or 38px */
-
-
-color: #3FAC8C;
-
-}
-.smallvidelListWrap{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-.smalVideoPro{
-    width: 376px;
+    overflow: hidden;
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-}
-.videoName{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 700;
-font-size: 20px;
-line-height: 122%;
-/* or 24px */
-
-
-color: #3E3092;
-margin-top: 18px;
-}
-.mareVideo{
-    border: none;
-    width: 256px;
-height: 60px;
-background: #3FAC8C;
-font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 500;
-font-size: 20px;
-line-height: 117.5%;
-color: #FFFFFF;
-cursor: pointer;
-align-self: center;
-margin-top: 64px;
-}
-.videoNameDesc{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 500;
-font-size: 20px;
-line-height: 122%;
-/* or 24px */
-
-
-color: #3E3092;
-}
-.bigImgBlog{
-    width: 100%;
-    height: 100%;
-}
-.imgWrapBorder{
-    width: 348px;
-height: 196px;
-border: 14px solid #3E51C1;
-}
-.smallImgBlog{
-    width: 100%;
-height: 100%;
-}
-.blogWrapPage{
-    width: 100%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.blogWrapPageSmall{
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-.wpaPicAbout{
-    width: 100%;
-    height: auto;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-}
-.wpaPicAboutYou{
-
-}
-.youtube{
-    
-}
-.paragInWrap{
-    color: #000;
-font-size: 24px;
-font-family: Ubuntu;
-font-style: normal;
-font-weight: 500;
-line-height: 168%;
-width: 50%;
-}
-.paragInWrapYou{
-    color: #000;
-    font-size: 24px;
-    font-family: Ubuntu;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 168%;
-    width: 50%;
-    margin-left: 15px;
-}
-.imgAboutWrap{
-    border: 20px solid #3FAC8C;
-    margin-left: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: calc(50% - 10px - 40px);
-    height: auto;
-}
-.imgAboutWrapYou{
-    margin-left: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: calc(50% - 10px - 40px);
-    height: auto;
-}
-.imgAbout{
-    width: 100%;
-    height: 454px;
-}
-.paragInWrapBig{
-    color: #000;
-    font-size: 24px;
-    font-family: Ubuntu;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 168%;
-}
-.blogWrapPageH1{
-    color: #3E3092;
-    font-size: 34px;
-    font-family: Ubuntu;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 111%; 
-}
-@media only screen and (max-width: 600px) and (min-width: 300px) {
-    .totalVideoWrap{
-        width: calc(100%);
-        padding-left: 0%;
-       height: auto;
-        display: flex;
-flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .firstBlockWrap{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 90%;
-    }
-    .secondBlockWrap{
-        width: 100%;
-        margin-top: 20px;
-    }
-    .bigWrap{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 64px;
-    }
-    .someTextWrap{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        align-self: flex-start;
-        margin-left: 0px;
-    }
-    .smalVideoPro{
-        width: 100%;
-        overflow: hidden;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  }
 }
 @media only screen and (max-width: 700px) and (min-width: 479px) {
-
+  .bigImgBlog {
+    width: 400px;
+    height: auto;
+    object-fit: cover;
+  }
 }
-@media only screen and (max-width: 1288px) and (min-width: 1024px) { 
-
+@media only screen and (max-width: 1288px) and (min-width: 1024px) {
+  .bigImgBlog {
+    width: 500px;
+    height: auto;
+    object-fit: cover;
+  }
 }
 @media only screen and (max-width: 1024px) and (min-width: 701px) {
-
+  .bigImgBlog {
+    width: 400px;
+    height: auto;
+    object-fit: cover;
+  }
 }

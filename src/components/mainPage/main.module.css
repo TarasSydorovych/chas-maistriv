@@ -1,0 +1,167 @@
+.allActionsWrap {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapActionsM {
+  width: calc(33.3333333% - 20px);
+  height: calc(100vh - 100px);
+  border-left: 20px solid #ff3416;
+  border-top: 20px solid #ff3416;
+  border-bottom: 20px solid #ff3416;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  overflow: hidden;
+}
+.wrapRozprodagM {
+  width: calc(33.3333333% - 20px);
+  height: calc(100vh - 100px);
+  border-left: 20px solid #3fac8c;
+  border-top: 20px solid #3fac8c;
+  border-bottom: 20px solid #3fac8c;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  overflow: hidden;
+}
+.wrapTopM {
+  width: calc(33.3333333% - 40px);
+  height: calc(100vh - 100px);
+  border: 20px solid #3e51c1;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  overflow: hidden;
+}
+.oneProdWrapNew {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.nameOfAcr {
+  color: #ff3416;
+  margin: 0;
+  font-family: Ubuntu;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 111%;
+  align-self: flex-start;
+  margin-left: 95px;
+  margin-bottom: 65px;
+  cursor: pointer;
+}
+.nameOfAcrAllTop {
+  color: #3e51c1;
+  cursor: pointer;
+  margin: 0;
+  font-family: Ubuntu;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 111%;
+  align-self: flex-start;
+  margin-left: 95px;
+  margin-bottom: 65px;
+}
+.nameOfAcrRozprodag {
+  color: #3fac8c;
+  margin: 0;
+  font-family: Ubuntu;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 111%;
+  align-self: flex-start;
+  margin-left: 95px;
+  margin-bottom: 65px;
+  cursor: pointer;
+}
+@media only screen and (max-width: 1400px) and (min-width: 1200px) {
+  .nameOfAcrRozprodag {
+    margin-left: 20px;
+  }
+  .nameOfAcrAllTop {
+    margin-left: 20px;
+  }
+  .nameOfAcr {
+    margin-left: 20px;
+  }
+}
+@media only screen and (max-width: 1200px) and (min-width: 1000px) {
+  .nameOfAcrRozprodag {
+    margin-left: 20px;
+  }
+  .nameOfAcrAllTop {
+    margin-left: 20px;
+  }
+  .nameOfAcr {
+    margin-left: 20px;
+  }
+}
+@media only screen and (max-width: 1000px) and (min-width: 300px) {
+  .wrapActionsM {
+    width: calc(100% - 40px);
+    height: calc(100vh - 100px);
+    border-left: 20px solid #ff3416;
+    border-right: 20px solid #ff3416;
+    border-top: 20px solid #ff3416;
+    border-bottom: 20px solid #ff3416;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+  }
+  .wrapRozprodagM {
+    width: calc(100% - 40px);
+    height: calc(100vh - 100px);
+    border-left: 20px solid #3fac8c;
+    border-right: 20px solid #3fac8c;
+    border-top: 20px solid #3fac8c;
+    border-bottom: 20px solid #3fac8c;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+  }
+  .wrapTopM {
+    width: calc(100% - 40px);
+    height: calc(100vh - 100px);
+    border: 20px solid #3e51c1;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+  }
+  .allActionsWrap {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

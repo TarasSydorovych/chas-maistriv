@@ -36,7 +36,7 @@ const fetchDepartments = async (ref) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        apiKey: "f579aac88b980dff3f819958ce1cbca6",
+        apiKey: "7cf305b33d3bf644ccd2c63b3a7251c3",
         modelName: "Address",
         calledMethod: "getWarehouses",
         methodProperties: {

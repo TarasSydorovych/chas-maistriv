@@ -39,7 +39,11 @@ export default function FooterUp() {
               </div>
             </div>
           </a>
-          <a href="/">
+          <a
+            href="https://t.me/chas_maistriv"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <div className="socialBlockFooter">
               <div className="socialIcon">
                 <HandySvg src={iconSrctele} width="33.09" height="29.71" />
@@ -70,6 +74,11 @@ export default function FooterUp() {
           <li className="listUpSomeUlLi">
             <Link to="/about" className="listUpSomeUlLi">
               Вакансії
+            </Link>
+          </li>{" "}
+          <li className="listUpSomeUlLi">
+            <Link to="/foreign-rights" className="listUpSomeUlLi">
+              Foreign rights
             </Link>
           </li>
         </ul>

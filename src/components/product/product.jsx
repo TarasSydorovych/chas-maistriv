@@ -13,6 +13,7 @@ import VideoBlock from "./videoBlock";
 import WhyNeedRead from "./whyNeedRead";
 import { useParams, useLocation } from "react-router-dom";
 import { useState } from "react";
+import transliterate from "../../function/transliterate";
 import {
   getAuth,
   signInWithPhoneNumber,
@@ -32,13 +33,15 @@ import {
   where,
 } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-
+import keyWord from "../../keyWord";
 export default function Product({
   products,
   setAddressChanged,
   addressChanged,
   setLogin,
   windowDimensions,
+  setCartCounterC,
+  setLikeCounterC,
 }) {
   const [reloadP, setReloadP] = useState(true);
   const [isOrdered, setIsOrdered] = useState(false);
@@ -72,14 +75,15 @@ export default function Product({
 
   useEffect(() => {
     let isMounted = true;
+
     for (let i = 0; i < products.length; i++) {
-      if (products[i].uid === params.id) {
+      if (transliterate(products[i].bookName) === params.id) {
         setOneProd(products[i]);
 
         setHaveProd(true);
       }
     }
-  }, [products, addressChanged]);
+  }, [products, addressChanged, params.id]);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
@@ -124,7 +128,35 @@ export default function Product({
       isMounted = false;
     };
   }, [oneProd, haveProd, reloadP]);
+  useEffect(() => {
+    if (oneProd) {
+      const bookName = oneProd.bookName;
+      const author = oneProd.textAutor;
+      // Генеруємо динамічний title
+      const dynamicTitle = `Книга ${bookName} Видавництво Час Майстрів`;
 
+      // Генеруємо динамічний description
+      const dynamicDescription = `Книга ${bookName} від автора ${author}. Видавництво "Час Майстрів". Розвивайте уяву, творчість і любов до читання. Замовляйте онлайн!`;
+      // Використовуємо keyWord для генерації мета-тегів
+      keyWord(dynamicTitle, dynamicDescription);
+
+      // Встановлюємо мета title
+      document.title = dynamicTitle;
+
+      // Встановлюємо мета description
+      const metaDescription = document.querySelector(
+        'meta[name="description"]'
+      );
+      if (metaDescription) {
+        metaDescription.setAttribute("content", dynamicDescription);
+      } else {
+        const newMetaDescription = document.createElement("meta");
+        newMetaDescription.setAttribute("name", "description");
+        newMetaDescription.setAttribute("content", dynamicDescription);
+        document.head.appendChild(newMetaDescription);
+      }
+    }
+  }, [oneProd]);
   // функціонал для корегування відгуків
 
   useEffect(() => {
@@ -184,10 +216,14 @@ export default function Product({
     <>
       {haveProd && (
         <>
-          <ProductPageTitle oneProd={oneProd} />
-          <Description oneProd={oneProd} />
+          <ProductPageTitle
+            oneProd={oneProd}
+            setCartCounterC={setCartCounterC}
+            setLikeCounterC={setLikeCounterC}
+          />
+          {/* <Description oneProd={oneProd} /> */}
           <WhyNeedRead oneProd={oneProd} />
-          <VideoBlock windowDimensions={windowDimensions} />
+          <VideoBlock windowDimensions={windowDimensions} oneProd={oneProd} />
 
           <Hero oneProd={oneProd} />
           <HeroPage oneProd={oneProd} />
@@ -227,6 +263,8 @@ export default function Product({
           <ViewProductCatalog
             products={products}
             setAddressChanged={setAddressChanged}
+            setCartCounterC={setCartCounterC}
+            setLikeCounterC={setLikeCounterC}
           />
           <Footer />
         </>

@@ -23,7 +23,15 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../firebase";
 import AddBook from "./addBook";
 import UseFiles from "./useFiles";
-export default function FullAdm() {
+import HeroListEditor from "./HeroListEditor";
+import AutorListEditor from "./AutorListEditor";
+import VotingResults from "./votingResults";
+import PageListFor from "./pageListFor";
+import CopyFiltersToManuscript from "../addColectionFilter/copyFiltersToManuscript";
+import ManageResponses from "./manageResponses";
+import AdminManagement from "./adminManagement";
+import ExportProducts from "./downloadButton";
+export default function FullAdm({ admCha }) {
   const [addB, setAddB] = useState(false);
   const [addM, setAddM] = useState(false);
   const [addBlog, setAddBlog] = useState(false);
@@ -40,7 +48,12 @@ export default function FullAdm() {
   const [hero, setHero] = useState(false);
   const [addVideoW, setAddVideoW] = useState(false);
   const [photoChange, setPhotoChange] = useState(false);
-
+  const [heroListE, setHeroListE] = useState(false);
+  const [autorListRed, setAutorListRed] = useState(false);
+  const [voutingResult, setVoutingResult] = useState(false);
+  const [pageInSite, setPageInSite] = useState(false);
+  const [manuscriptResp, setManuscriptResp] = useState(false);
+  const [adminManager, setAdminManager] = useState(false);
   const addBooksTrue = () => {
     setAddB(!addB);
     setAddM(false);
@@ -57,6 +70,12 @@ export default function FullAdm() {
     setHero(false);
     setAddVideoW(false);
     setPhotoChange(false);
+    setHeroListE(false);
+    setAutorListRed(false);
+    setVoutingResult(false);
+    setPageInSite(false);
+    setManuscriptResp(false);
+    setAdminManager(false);
   };
   const addManTrue = () => {
     setAddB(false);
@@ -75,6 +94,12 @@ export default function FullAdm() {
     setHero(false);
     setAddVideoW(false);
     setPhotoChange(false);
+    setHeroListE(false);
+    setAutorListRed(false);
+    setVoutingResult(false);
+    setPageInSite(false);
+    setManuscriptResp(false);
+    setAdminManager(false);
   };
   const bookListCha = () => {
     setAddB(false);
@@ -93,6 +118,12 @@ export default function FullAdm() {
     setHero(false);
     setAddVideoW(false);
     setPhotoChange(false);
+    setHeroListE(false);
+    setAutorListRed(false);
+    setVoutingResult(false);
+    setPageInSite(false);
+    setManuscriptResp(false);
+    setAdminManager(false);
   };
   const manListCha = () => {
     setAddB(false);
@@ -108,6 +139,12 @@ export default function FullAdm() {
     setSeo(false);
     setPhotoChange(false);
     setAddVideoW(false);
+    setHeroListE(false);
+    setAutorListRed(false);
+    setVoutingResult(false);
+    setPageInSite(false);
+    setManuscriptResp(false);
+    setAdminManager(false);
   };
   const prodListFunc = () => {
     setAddB(false);
@@ -126,6 +163,12 @@ export default function FullAdm() {
     setHero(false);
     setAddVideoW(false);
     setPhotoChange(false);
+    setHeroListE(false);
+    setAutorListRed(false);
+    setVoutingResult(false);
+    setPageInSite(false);
+    setManuscriptResp(false);
+    setAdminManager(false);
   };
   const addBlogP = () => {
     setAddB(false);
@@ -143,6 +186,12 @@ export default function FullAdm() {
     setHero(false);
     setAddVideoW(false);
     setPhotoChange(false);
+    setHeroListE(false);
+    setAutorListRed(false);
+    setVoutingResult(false);
+    setPageInSite(false);
+    setManuscriptResp(false);
+    setAdminManager(false);
   };
   const changeToPromo = () => {
     setAddB(false);
@@ -159,6 +208,12 @@ export default function FullAdm() {
     setSeo(false);
     setAddVideoW(false);
     setPhotoChange(false);
+    setHeroListE(false);
+    setAutorListRed(false);
+    setVoutingResult(false);
+    setPageInSite(false);
+    setManuscriptResp(false);
+    setAdminManager(false);
   };
   const cartonFun = () => {
     setAddB(false);
@@ -176,6 +231,12 @@ export default function FullAdm() {
     setHero(false);
     setAddVideoW(false);
     setPhotoChange(false);
+    setHeroListE(false);
+    setAutorListRed(false);
+    setVoutingResult(false);
+    setPageInSite(false);
+    setManuscriptResp(false);
+    setAdminManager(false);
   };
   const cartonFunCha = () => {
     setAddB(false);
@@ -194,6 +255,12 @@ export default function FullAdm() {
     setHero(false);
     setAddVideoW(false);
     setPhotoChange(false);
+    setHeroListE(false);
+    setAutorListRed(false);
+    setVoutingResult(false);
+    setPageInSite(false);
+    setManuscriptResp(false);
+    setAdminManager(false);
   };
   const addQuestion = () => {
     setAddB(false);
@@ -211,6 +278,12 @@ export default function FullAdm() {
     setHero(false);
     setAddVideoW(false);
     setPhotoChange(false);
+    setHeroListE(false);
+    setAutorListRed(false);
+    setVoutingResult(false);
+    setPageInSite(false);
+    setManuscriptResp(false);
+    setAdminManager(false);
   };
   const userBlock = () => {
     setAddB(false);
@@ -229,6 +302,12 @@ export default function FullAdm() {
     setHero(false);
     setAddVideoW(false);
     setPhotoChange(false);
+    setHeroListE(false);
+    setAutorListRed(false);
+    setVoutingResult(false);
+    setPageInSite(false);
+    setManuscriptResp(false);
+    setAdminManager(false);
   };
   const seoBlock = () => {
     setAddB(false);
@@ -247,6 +326,12 @@ export default function FullAdm() {
     setHero(false);
     setAddVideoW(false);
     setPhotoChange(false);
+    setHeroListE(false);
+    setAutorListRed(false);
+    setVoutingResult(false);
+    setPageInSite(false);
+    setManuscriptResp(false);
+    setAdminManager(false);
   };
   const authBlock = () => {
     setAddB(false);
@@ -265,6 +350,12 @@ export default function FullAdm() {
     setHero(false);
     setAddVideoW(false);
     setPhotoChange(false);
+    setHeroListE(false);
+    setAutorListRed(false);
+    setVoutingResult(false);
+    setPageInSite(false);
+    setManuscriptResp(false);
+    setAdminManager(false);
   };
   const heroBlock = () => {
     setAddB(false);
@@ -283,6 +374,12 @@ export default function FullAdm() {
     setHero(!hero);
     setAddVideoW(false);
     setPhotoChange(false);
+    setHeroListE(false);
+    setAutorListRed(false);
+    setVoutingResult(false);
+    setPageInSite(false);
+    setManuscriptResp(false);
+    setAdminManager(false);
   };
   const addvideoO = () => {
     setAddB(false);
@@ -301,6 +398,12 @@ export default function FullAdm() {
     setHero(false);
     setAddVideoW(!addVideoW);
     setPhotoChange(false);
+    setHeroListE(false);
+    setAutorListRed(false);
+    setVoutingResult(false);
+    setPageInSite(false);
+    setManuscriptResp(false);
+    setAdminManager(false);
   };
   const changeData = () => {
     setAddB(false);
@@ -319,11 +422,181 @@ export default function FullAdm() {
     setHero(false);
     setAddVideoW(false);
     setPhotoChange(!photoChange);
+    setHeroListE(false);
+    setAutorListRed(false);
+    setVoutingResult(false);
+    setPageInSite(false);
+    setManuscriptResp(false);
+    setAdminManager(false);
+  };
+  const heroListI = () => {
+    setAddB(false);
+    setAddM(false);
+    setBookList(false);
+    setManList(false);
+    setProdList(false);
+    setAddBlog(false);
+    setPromo(false);
+    setCarton(false);
+    setCartonCha(false);
+    setQuestion(false);
+    setUser(false);
+    setSeo(false);
+    setAuth(false);
+    setHero(false);
+    setAddVideoW(false);
+    setPhotoChange(false);
+    setHeroListE(!heroListE);
+    setAutorListRed(false);
+    setVoutingResult(false);
+    setPageInSite(false);
+    setManuscriptResp(false);
+    setAdminManager(false);
+  };
+  const sitePages = () => {
+    setAddB(false);
+    setAddM(false);
+    setBookList(false);
+    setManList(false);
+    setProdList(false);
+    setAddBlog(false);
+    setPromo(false);
+    setCarton(false);
+    setCartonCha(false);
+    setQuestion(false);
+    setUser(false);
+    setSeo(false);
+    setAuth(false);
+    setHero(false);
+    setAddVideoW(false);
+    setPhotoChange(false);
+    setHeroListE(false);
+    setAutorListRed(false);
+    setVoutingResult(false);
+    setPageInSite(!pageInSite);
+    setManuscriptResp(false);
+    setAdminManager(false);
+  };
+  const autorListR = () => {
+    setAddB(false);
+    setAddM(false);
+    setBookList(false);
+    setManList(false);
+    setProdList(false);
+    setAddBlog(false);
+    setPromo(false);
+    setCarton(false);
+    setCartonCha(false);
+    setQuestion(false);
+    setUser(false);
+    setSeo(false);
+    setAuth(false);
+    setHero(false);
+    setAddVideoW(false);
+    setPhotoChange(false);
+    setHeroListE(false);
+    setAutorListRed(!autorListRed);
+    setVoutingResult(false);
+    setPageInSite(false);
+    setManuscriptResp(false);
+    setAdminManager(false);
+  };
+  const vouting = () => {
+    setAddB(false);
+    setAddM(false);
+    setBookList(false);
+    setManList(false);
+    setProdList(false);
+    setAddBlog(false);
+    setPromo(false);
+    setCarton(false);
+    setCartonCha(false);
+    setQuestion(false);
+    setUser(false);
+    setSeo(false);
+    setAuth(false);
+    setHero(false);
+    setAddVideoW(false);
+    setPhotoChange(false);
+    setHeroListE(false);
+    setAutorListRed(false);
+    setVoutingResult(!voutingResult);
+    setPageInSite(false);
+    setManuscriptResp(false);
+    setAdminManager(false);
+  };
+  const manResponse = () => {
+    setAddB(false);
+    setAddM(false);
+    setBookList(false);
+    setManList(false);
+    setProdList(false);
+    setAddBlog(false);
+    setPromo(false);
+    setCarton(false);
+    setCartonCha(false);
+    setQuestion(false);
+    setUser(false);
+    setSeo(false);
+    setAuth(false);
+    setHero(false);
+    setAddVideoW(false);
+    setPhotoChange(false);
+    setHeroListE(false);
+    setAutorListRed(false);
+    setVoutingResult(false);
+    setPageInSite(false);
+    setManuscriptResp(!manuscriptResp);
+    setAdminManager(false);
+  };
+  const adminComp = () => {
+    setAddB(false);
+    setAddM(false);
+    setBookList(false);
+    setManList(false);
+    setProdList(false);
+    setAddBlog(false);
+    setPromo(false);
+    setCarton(false);
+    setCartonCha(false);
+    setQuestion(false);
+    setUser(false);
+    setSeo(false);
+    setAuth(false);
+    setHero(false);
+    setAddVideoW(false);
+    setPhotoChange(false);
+    setHeroListE(false);
+    setAutorListRed(false);
+    setVoutingResult(false);
+    setPageInSite(false);
+    setManuscriptResp(false);
+    setAdminManager(!adminManager);
   };
   return (
     <div className={css.fullAdmWrapp}>
       <div className={css.admList}>
         <ul className={css.listUlForAdm}>
+          {admCha && (
+            <li className={css.listUlForAdmLi} onClick={adminComp}>
+              <Link
+                className={`${css.listUlForAdmLiA} ${
+                  adminManager ? css.listUlForAdmLiAA : ""
+                }`}
+              >
+                Адміни
+              </Link>
+            </li>
+          )}
+          <li className={css.listUlForAdmLi} onClick={sitePages}>
+            <Link
+              className={`${css.listUlForAdmLiA} ${
+                heroListE ? css.listUlForAdmLiAA : ""
+              }`}
+            >
+              Сторінки сайту
+            </Link>
+          </li>
           <li className={css.listUlForAdmLi} onClick={addBooksTrue}>
             <Link
               className={`${css.listUlForAdmLiA} ${
@@ -339,7 +612,7 @@ export default function FullAdm() {
                 addM ? css.listUlForAdmLiAA : ""
               }`}
             >
-              Додати літопис
+              Додати рукопис
             </Link>
           </li>
           <li className={css.listUlForAdmLi} onClick={bookListCha}>
@@ -358,6 +631,15 @@ export default function FullAdm() {
               }`}
             >
               Список рукописів
+            </Link>
+          </li>{" "}
+          <li className={css.listUlForAdmLi} onClick={manResponse}>
+            <Link
+              className={`${css.listUlForAdmLiA} ${
+                manuscriptResp ? css.listUlForAdmLiAA : ""
+              }`}
+            >
+              Відгуки в рукописах
             </Link>
           </li>
           <li className={css.listUlForAdmLi} onClick={prodListFunc}>
@@ -405,6 +687,15 @@ export default function FullAdm() {
               Змінити обкладинку
             </Link>
           </li>
+          <li className={css.listUlForAdmLi} onClick={vouting}>
+            <Link
+              className={`${css.listUlForAdmLiA} ${
+                voutingResult ? css.listUlForAdmLiAA : ""
+              }`}
+            >
+              Результати голосування
+            </Link>
+          </li>
           <li className={css.listUlForAdmLi} onClick={addQuestion}>
             <Link
               className={`${css.listUlForAdmLiA} ${
@@ -441,6 +732,15 @@ export default function FullAdm() {
               Додати автора
             </Link>
           </li>
+          <li className={css.listUlForAdmLi} onClick={autorListR}>
+            <Link
+              className={`${css.listUlForAdmLiA} ${
+                autorListRed ? css.listUlForAdmLiAA : ""
+              }`}
+            >
+              Список авторів
+            </Link>
+          </li>
           <li className={css.listUlForAdmLi} onClick={heroBlock}>
             <Link
               className={`${css.listUlForAdmLiA} ${
@@ -448,6 +748,15 @@ export default function FullAdm() {
               }`}
             >
               Додати героя
+            </Link>
+          </li>
+          <li className={css.listUlForAdmLi} onClick={heroListI}>
+            <Link
+              className={`${css.listUlForAdmLiA} ${
+                heroListE ? css.listUlForAdmLiAA : ""
+              }`}
+            >
+              Список Героїв
             </Link>
           </li>
           <li className={css.listUlForAdmLi} onClick={changeData}>
@@ -459,8 +768,10 @@ export default function FullAdm() {
               Змінити файли книги
             </Link>
           </li>
+          <ExportProducts />
         </ul>
       </div>
+      {adminManager && <AdminManagement />}
       {addB && <AddBooksTest />}
       {addM && <AddRuk />}
       {bookList && <ProductList />}
@@ -477,6 +788,12 @@ export default function FullAdm() {
       {hero && <HeroAdm />}
       {addVideoW && <AddVideoOglyd />}
       {photoChange && <UseFiles />}
+      {heroListE && <HeroListEditor />}
+      {autorListRed && <AutorListEditor />}
+      {voutingResult && <VotingResults />}
+      {pageInSite && <PageListFor />}
+      {manuscriptResp && <ManageResponses />}
+      {/* <CopyFiltersToManuscript /> */}
     </div>
   );
 }

@@ -1,251 +1,246 @@
-.blueBlockHead{
-    width: 100%;
-    height: 116px;
-    background: #3E51C1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.blueBlockHead {
+  width: 100%;
+  height: 116px;
+  background: #3e51c1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.blueBlockHeadSmall{
-    width: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+.blueBlockHeadSmall {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.countJoin{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 700;
-font-size: 36px;
-line-height: 111%;
-/* or 40px */
+.countJoin {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 111%;
+  /* or 40px */
 
+  color: #ffffff;
+}
+.countJoinNew {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 111%;
+  /* or 40px */
 
-color: #FFFFFF;
+  color: #ffffff;
 }
-.likeProductWrap{
+.likeProductWrap {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.likeProductWrapSmall {
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.productWrap {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 65px;
+}
+.likePicWrap {
+  width: 281px;
+  height: auto;
+  object-fit: cover;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+.dexcriptionProdactWrap {
+  display: flex;
+  width: auto;
+  height: auto;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.h1DescName {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 111%;
+  color: #3e51c1;
+  margin-top: 0;
+  cursor: pointer;
+}
+.autorDesc {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 152.5%;
+  /* identical to box height, or 31px */
+  margin: 0;
+
+  color: #000000;
+}
+.autorDescSpan {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 152.5%;
+  /* identical to box height, or 31px */
+
+  color: #3e51c1;
+}
+.powerBook {
+  font-family: "Ubuntu";
+  font-style: italic;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 130%;
+  /* or 26px */
+  margin-bottom: 0;
+
+  color: #ff3416;
+}
+.powerBookDesc {
+  font-family: "Ubuntu";
+  font-style: italic;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 130%;
+  /* or 26px */
+  margin-top: 0;
+
+  color: #000000;
+}
+.smallDescription {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 152.5%;
+  /* or 21px */
+  width: 60%;
+  margin-bottom: 0;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.iconWithPrice {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+
+  height: auto;
+}
+.rombWrap {
+  cursor: pointer;
+  width: 81.36px;
+  height: 81.36px;
+  color: white;
+  background: #f7cb25;
+  transform: rotate(45deg);
+  font-family: "Ubuntu";
+  display: flex;
+
+  margin-top: 5px;
+  align-items: center;
+  justify-content: center;
+}
+.rombWrapRotate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  margin-left: 10px;
+  transform: rotate(-45deg);
+}
+.wrapIconAu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.salePriceCartBigProd {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 111%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #3e51c1;
+  margin: 0;
+}
+.fullPriceCartBigProd {
+  font-family: "Ubuntu";
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 152.5%;
+  text-align: center;
+  color: #3e51c1;
+  margin: 0;
+}
+.likeProductBig {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 67px;
+  height: 67px;
+  background: #3e51c1;
+  margin-left: 37px;
+}
+@media only screen and (max-width: 600px) and (min-width: 300px) {
+  .likeProductWrapSmall {
     width: 100%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.likeProductWrapSmall{
-    width: 90%;
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
-}
-.productWrap{
+  }
+  .productWrap {
     width: 100%;
     height: auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
     margin-top: 65px;
-}
-.likePicWrap{
-    width: 281px;
-    height: 321px;
-    
-}
-.dexcriptionProdactWrap{
+  }
+  .likePicWrap {
+    width: 100%;
+    height: auto;
+  }
+  .dexcriptionProdactWrap {
     display: flex;
-    width: auto;
+    width: 90%;
     height: auto;
     flex-direction: column;
     align-items: flex-start;
-}
-.h1DescName{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 700;
-font-size: 36px;
-line-height: 111%;
-color: #3E51C1;
-margin-top: 0;
-}
-.autorDesc{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 300;
-font-size: 20px;
-line-height: 152.5%;
-/* identical to box height, or 31px */
-margin: 0;
-
-color: #000000;
-}
-.autorDescSpan{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 500;
-font-size: 20px;
-line-height: 152.5%;
-/* identical to box height, or 31px */
-
-
-color: #3E51C1;
-}
-.powerBook{
-    font-family: 'Ubuntu';
-font-style: italic;
-font-weight: 600;
-font-size: 20px;
-line-height: 130%;
-/* or 26px */
-margin-bottom: 0;
-
-color: #FF3416;
-}
-.powerBookDesc{
-    font-family: 'Ubuntu';
-font-style: italic;
-font-weight: 600;
-font-size: 20px;
-line-height: 130%;
-/* or 26px */
-margin-top: 0;
-
-color: #000000;
-}
-.smallDescription{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 152.5%;
-/* or 21px */
-width: 60%;
-margin-bottom: 0;
-color: rgba(0, 0, 0, 0.4);
-}
-
-
-
-.iconWithPrice{
-    align-self: flex-start;
+  }
+  .iconWithPrice {
+    align-self: center;
     display: flex;
     align-items: center;
     justify-content: space-between;
-   margin-top: 20px;
-   
+    margin-top: 20px;
+    margin-bottom: 30px;
     height: auto;
-   
-
-    
-}
-.rombWrap{
-    cursor: pointer;
-       width: 81.36px;
-    height: 81.36px;
-    color: white;
-    background:#F7CB25;
-    transform: rotate(45deg);
-    font-family: 'Ubuntu';
-    display: flex;
-    
-    margin-top: 5px;
-    align-items: center;
-    justify-content: center;
-}
-.rombWrapRotate{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
-    margin-left: 10px;
-    transform: rotate(-45deg);
-}
-.wrapIconAu{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  
-}
-.salePriceCartBigProd{
-    font-family: 'Ubuntu';
-    font-style: normal;
-    font-weight: 700;
-font-size: 36px;
-line-height: 111%;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #3E51C1;
-    margin: 0;
-}
-.fullPriceCartBigProd{
-    font-family: 'Ubuntu';
-    font-weight: 500;
-font-size: 18px;
-line-height: 152.5%;
-    text-align: center;
-    color: #3E51C1;
-    margin: 0;
-
-}
-.likeProductBig{
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 67px;
-    height: 67px;
-    background: #3E51C1;
-    margin-left: 37px;
-}
-@media only screen and (max-width: 600px) and (min-width: 300px) {
-    .likeProductWrapSmall{
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    
-    }
-    .productWrap{
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 65px;
-    }
-    .likePicWrap{
-        width: 100%;
-        height: auto;
-        
-    }
-    .dexcriptionProdactWrap{
-        display: flex;
-        width: 90%;
-        height: auto;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .iconWithPrice{
-        align-self: center;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-       margin-top: 20px;
-       margin-bottom: 30px;
-        height: auto;
-       
-    
-        
-    }
+  }
 }
 @media only screen and (max-width: 700px) and (min-width: 479px) {
-
 }
-@media only screen and (max-width: 1288px) and (min-width: 1024px) { 
-
+@media only screen and (max-width: 1288px) and (min-width: 1024px) {
 }
 @media only screen and (max-width: 1024px) and (min-width: 701px) {
-
 }

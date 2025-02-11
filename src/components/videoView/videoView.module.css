@@ -1,251 +1,237 @@
-
-
-.videoTitleWrap{
-    width: 100%;
-    height: auto;
-    background: #D6CFFF;;
+.videoTitleWrap {
+  width: 100%;
+  height: auto;
+  background: #d6cfff;
 }
-.totalVideoWrap{
-    width: calc(100% - 20%);
-    padding-left: 10%;
-    padding-right: 10%;
+.totalVideoWrap {
+  width: calc(100% - 20%);
+  padding-left: 10%;
+  padding-right: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.firstBlockWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.videoViewvH1 {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 111%;
+  /* or 38px */
+  margin-bottom: 0;
+  text-decoration: none;
+
+  color: #3e3092;
+}
+.videoViewvP {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 111%;
+  /* or 27px */
+
+  color: #000000;
+}
+.chousBooksSelect {
+  display: flex;
+  position: relative;
+  width: 80%;
+  height: 56px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  justify-content: flex-start;
+}
+.customSelect {
+  cursor: pointer;
+  border: 3px solid #3e51c1;
+  width: 100%;
+  height: 56px;
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-left: 15px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 30px;
+  /* or 125% */
+
+  color: #3e3092;
+}
+.customOpin:checked {
+  background: #3fac8c;
+  color: #c4c4c4;
+}
+.customArrowSelect {
+  position: absolute;
+  top: 25px;
+  width: 19px;
+  height: 9px;
+  right: 30px;
+  pointer-events: none;
+}
+.joinYouWrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.youWrap {
+  width: 73px;
+  height: 73px;
+  border-radius: 50%;
+  background: #3e3092;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.joinH2 {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 111%;
+  /* or 27px */
+
+  color: #3e3092;
+  width: 65%;
+}
+.bigVideoWrap {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bigVideoWrapSmall {
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.bigWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 64px;
+}
+.someTextWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: flex-start;
+  margin-left: 72px;
+}
+.bigVideoP {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 122%;
+  /* or 24px */
+
+  color: #3e3092;
+}
+.smallVideoWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  height: auto;
+  margin-top: 80px;
+}
+.smallWrapH1 {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 111%;
+  /* or 38px */
+
+  color: #3fac8c;
+}
+.smallvidelListWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.smalVideoPro {
+  width: 376px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.videoName {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 122%;
+  /* or 24px */
+
+  color: #3e3092;
+  margin-top: 18px;
+}
+.mareVideo {
+  border: none;
+  width: 256px;
+  height: 60px;
+  background: #3fac8c;
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 117.5%;
+  color: #ffffff;
+  cursor: pointer;
+  align-self: center;
+  margin-top: 64px;
+}
+
+@media only screen and (max-width: 600px) and (min-width: 300px) {
+  .totalVideoWrap {
+    width: calc(100% - 6%);
+    padding-left: 3%;
+    padding-right: 3%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
-}
-.firstBlockWrap{
+  }
+  .svgForVideo {
+    width: 295.686px;
+    height: 280;
+  }
+  .bigWrap {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-}
-.videoViewvH1{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 700;
-font-size: 34px;
-line-height: 111%;
-/* or 38px */
-margin-bottom: 0;
-
-color: #3E3092;
-}
-.videoViewvP{
-    font-family: 'Ubuntu';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 111%;
-    /* or 27px */
-    
-    
-    color: #000000;
-}
-.chousBooksSelect{
-    display: flex;
-    position: relative;
-    width: 80%;
-    height: 56px;
-margin-top: 25px;
-margin-bottom: 20px;
-   justify-content: flex-start;
-    }
-    .customSelect{
-        cursor: pointer;
-        border: 3px solid #3E51C1;
-        width: 100%;
-        height: 56px;
-        appearance: none;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        padding-left: 15px;
-        font-family: 'Raleway';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 24px;
-        line-height: 30px;
-        /* or 125% */
-        
-        
-        color: #3E3092;
-        
-    
-        }
-        .customOpin:checked{
-            background:#3FAC8C;
-            color: #C4C4C4;
-         }
-         .customArrowSelect{
-            position: absolute;
-            top: 25px;
-            width: 19px;
-            height: 9px;
-            right: 30px;
-            pointer-events: none;
-          }
-.joinYouWrap{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-.youWrap{
-    width: 73px;
-    height: 73px;
-    border-radius: 50%;
-    background: #3E3092;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.joinH2{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 500;
-font-size: 24px;
-line-height: 111%;
-/* or 27px */
-
-
-color: #3E3092;
-width: 65%;
-}
-.bigVideoWrap{
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.bigVideoWrapSmall{
-    width: 90%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-.bigWrap{
-    display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 64px;
-}
-.someTextWrap{
+  }
+  .someTextWrap {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     align-self: flex-start;
-    margin-left: 72px;
-}
-.bigVideoP{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 500;
-font-size: 20px;
-line-height: 122%;
-/* or 24px */
-
-
-color: #3E3092;
-
-}
-.smallVideoWrap{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    height: auto;
-    margin-top: 80px;
-}
-.smallWrapH1{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 700;
-font-size: 34px;
-line-height: 111%;
-/* or 38px */
-
-
-color: #3FAC8C;
-
-}
-.smallvidelListWrap{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-.smalVideoPro{
-    width: 376px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-.videoName{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 700;
-font-size: 20px;
-line-height: 122%;
-/* or 24px */
-
-
-color: #3E3092;
-margin-top: 18px;
-}
-.mareVideo{
-    border: none;
-    width: 256px;
-height: 60px;
-background: #3FAC8C;
-font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 500;
-font-size: 20px;
-line-height: 117.5%;
-color: #FFFFFF;
-cursor: pointer;
-align-self: center;
-margin-top: 64px;
-}
-
-@media only screen and (max-width: 600px) and (min-width: 300px) {
-    .totalVideoWrap{
-        width: calc(100% - 6%);
-        padding-left: 3%;
-        padding-right: 3%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .svgForVideo{
-        width: 295.686px;
-        height: 280;
-    }
-    .bigWrap{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 64px;
-    }
-    .someTextWrap{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        align-self: flex-start;
-        margin-left: 0px;
-        width: 90%;
-    }
+    margin-left: 0px;
+    width: 90%;
+  }
 }
 
 @media only screen and (max-width: 700px) and (min-width: 479px) {
-
 }
-@media only screen and (max-width: 1288px) and (min-width: 1024px) { 
-
+@media only screen and (max-width: 1288px) and (min-width: 1024px) {
 }
 @media only screen and (max-width: 1024px) and (min-width: 701px) {
-
 }

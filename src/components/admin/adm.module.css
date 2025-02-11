@@ -12,9 +12,39 @@
   width: 100%;
   height: auto;
 }
+.quillContainer {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 5px;
+  height: 500px;
+  width: 600px;
+}
+.editorContainer {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  width: 600px;
+}
+
+.quillEditor {
+  height: 600px; /* Задайте потрібну висоту редактора */
+  max-height: 600px; /* Обмежуємо максимальну висоту */
+  overflow-y: auto; /* Додаємо прокрутку для вертикалі */
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.ql-editor {
+  min-height: 350px; /* Внутрішній редактор також отримає мінімальну висоту */
+  padding: 10px; /* Відступи для зручного відображення тексту */
+  box-sizing: border-box;
+}
 .admList {
   width: 20%;
-  height: 100vh;
+  height: auto;
   position: static;
   top: 0;
   left: 0;
@@ -33,6 +63,8 @@
   border-bottom: 1px solid #fff;
   list-style-type: none;
   height: 60px;
+  text-align: center;
+  cursor: pointer;
 }
 .listUlForAdmLiA {
   text-decoration: none;
@@ -304,4 +336,97 @@
 .divForList {
   width: 80%;
   height: auto;
+}
+.imgInWr {
+  width: 400px;
+  height: auto;
+}
+.WrapAdm {
+  width: 80%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.liWrapPic {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.redButAdm {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.wrapNameInHero {
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.currentImg {
+  width: 300px;
+  height: auto;
+}
+.resultsWrap {
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.bookBlock {
+  margin-left: 30px;
+}
+.booKsRationf {
+  width: 300px;
+  height: auto;
+}
+.wrapAdmLisPage {
+  padding: 20px;
+  width: calc(80% - 40px);
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.mainPageButtonO {
+  font-size: 24px;
+  font-family: Ubuntu;
+  color: white;
+  cursor: pointer;
+  padding-left: 20px;
+  padding-right: 20px;
+  background: #3e51c1;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.buttonWrapInPage {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+.wrapTeatAreaOpicun {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.textarea {
+  width: 400px;
+  height: 100px;
+  margin-top: 20px;
+}
+.quilForAutorAnd {
+  height: 400px;
+  margin-bottom: 50px;
 }

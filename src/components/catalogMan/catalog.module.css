@@ -1,89 +1,87 @@
-.wrapManus{
-    width: 100%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #3E3092;
-    padding-top: 40px;
-    padding-bottom: 40px;
+.wrapManus {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #3e3092;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
-.manTextWrapUp{
-    width: 100%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.manTextWrapUp {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.manTextWrapUpSmall{
-    width: 90%;
-    height: auto;
+.manTextWrapUpSmall {
+  width: 90%;
+  height: auto;
 }
-.manTextWrapUpP{
-    color: #3E3092;
-font-size: 24px;
-font-family: Ubuntu;
-font-style: normal;
-font-weight: 700;
-line-height: 122%;
+.manTextWrapUpP {
+  color: #3e3092;
+  font-size: 24px;
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 122%;
 }
-.wrapFirstManus{
-    width: 80%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.wrapFirstManus {
+  width: 80%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.someTextWramMan{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+.someTextWramMan {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
-.manuscriptH3{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 700;
-font-size: 34px;
-line-height: 111%;
-/* or 38px */
+.manuscriptH3 {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 111%;
+  /* or 38px */
 
+  color: #f7cb25;
+}
+.manuscriptP {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 111%;
+  /* or 27px */
+  margin-top: 0;
 
-color: #F7CB25;
+  color: #ffffff;
 }
-.manuscriptP{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 500;
-font-size: 24px;
-line-height: 111%;
-/* or 27px */
-margin-top: 0;
-
-color: #FFFFFF;
+.firstImg {
+  width: 179px;
+  height: 238px;
 }
-.firstImg{
-    width: 179px;
-height: 238px;
+.secondImg {
+  width: 182px;
+  height: 163px;
 }
-.secondImg{
-    width: 182px;
-height: 163px;
+.threImg {
+  width: 186px;
+  height: 244px;
 }
-.threImg{
-    width: 186px;
-height: 244px;
-}
-.buttonToManuscript{
-
-    width: 256px;
-height: 60px;
-background: #3FAC8C;
-border: none;
-font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 500;
-font-size: 20px;
-line-height: 117.5%;
-color: #FFFFFF;
-align-self: flex-end;
+.buttonToManuscript {
+  width: 256px;
+  height: 60px;
+  background: #3fac8c;
+  border: none;
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 117.5%;
+  color: #ffffff;
+  align-self: flex-end;
 }

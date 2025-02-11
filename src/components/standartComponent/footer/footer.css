@@ -1,612 +1,608 @@
-.footerUpWrap{
-    width: calc(100% - 78px - 280px);
-    height: calc(377px - 80px - 38px);
-    background: #3E3092;
+.footerUpWrap {
+  width: calc(100% - 78px - 280px);
+  height: calc(377px - 80px - 38px);
+  background: #3e3092;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-top: 80px;
+  padding-bottom: 38px;
+  padding-left: 78px;
+  padding-right: 280px;
+}
+.footerUpTitleSocial {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+.footerUpH1 {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 120%;
+  color: #ffffff;
+  margin: 0px;
+}
+.footerUpH1Span {
+  font-weight: 600;
+}
+.footerUpP {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 120%;
+  color: #ffffff;
+  width: 400px;
+  padding-bottom: 20px;
+}
+.socialBlockFooter {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+}
+.instaIconFooter {
+  width: 30.14px;
+  height: 30.14px;
+  color: #3e3092;
+}
+.listUpSomeUl {
+  list-style-type: none;
+  height: 182px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.listUpSomeUlLi {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 120%;
+  color: #ffffff;
+  text-decoration: none;
+}
+.onlineStoreFooter {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 185%;
+  color: #f7cb25;
+}
+.footerUpPhone {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 182px;
+}
+.phoneFooter {
+  width: 172px;
+  height: 42px;
+  background: #f7cb25;
+  border-radius: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.numberPhone {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 117.5%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #3e3092;
+}
+.emailFooterUp {
+  width: 232px;
+  height: 42px;
+  background: #f7cb25;
+  border-radius: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.footerWrapperCenter {
+  width: 100%;
+  height: 243px;
+  display: flex;
+  border-bottom: 1px solid #f7cb25;
+}
+.wrapCenterFirst {
+  width: 41%;
+  height: 245px;
+  background: #f7cb25;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.wrapCenterSecond {
+  width: 59%;
+  height: 100%;
+  background: #3fac8c;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.centerFirstUlF {
+  list-style-type: none;
+  height: 210px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.centerFirstLi {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 120%;
+  color: #000000;
+  text-decoration: none;
+}
+.centerFirstUlS {
+  list-style-type: none;
+  height: 210px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.centerSecondUlS {
+  list-style-type: none;
+  height: 210px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.centerSecondUlSF {
+  list-style-type: none;
+  height: 160px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  align-self: start;
+}
+.centerSecondLi {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 120%;
+  color: #3e3092;
+  text-decoration: none;
+  cursor: pointer;
+}
+.footerBottomWrap {
+  width: 100%;
+  height: 303px;
+  background: #f7cb25;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.listAutorDev {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  margin-bottom: 50px;
+}
+.copyWraitP {
+  display: flex;
+  align-self: flex-end;
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  color: #3e3092;
+  margin-bottom: 50px;
+}
+.listAutorDevLi {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 120%;
+  color: #3e3092;
+  margin: 0px;
+}
+.listAutorDevLiSpan {
+  text-decoration: none;
+  font-weight: 600;
+  color: #3e3092;
+}
+.wrapSocialFo {
+  width: 222.45px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+@media only screen and (max-width: 600px) and (min-width: 300px) {
+  .footerUpWrap {
+    width: calc(100% - 23px - 0px);
+    height: auto;
+    background: #3e3092;
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
     padding-top: 80px;
     padding-bottom: 38px;
-    padding-left: 78px;
-    padding-right: 280px;
-
-}
-.footerUpTitleSocial{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-around;
-}
-.footerUpH1{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 300;
-font-size: 36px;
-line-height: 120%;
-color: #FFFFFF;
-margin: 0px;
-}
-.footerUpH1Span{
-    font-weight: 600; 
-}
-.footerUpP{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 500;
-font-size: 24px;
-line-height: 120%;
-color: #FFFFFF;
-width: 400px;
-padding-bottom: 20px;
-}
-.socialBlockFooter{
-    width: 50px;
-height: 50px;
-display: flex;
-align-items: center;
-justify-content: center;
-border-radius: 50%;
-background: white;
-cursor: pointer;
-}
-.instaIconFooter{
-    width: 30.14px;
-        height: 30.14px;
-        color: #3E3092;
-}
-.listUpSomeUl{
-    list-style-type: none;
-    height: 182px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-}
-.listUpSomeUlLi{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 500;
-font-size: 18px;
-line-height: 120%;
-color: #FFFFFF;
-text-decoration: none;
-}
-.onlineStoreFooter{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 500;
-font-size: 24px;
-line-height: 185%;
-color: #F7CB25;
-}
-.footerUpPhone{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    height: 182px;
-}
-.phoneFooter{
-    width: 172px;
-height: 42px;
-background: #F7CB25;
-border-radius: 21px;
-display: flex;
-align-items: center;
-justify-content: space-evenly;
-}
-.numberPhone{
-    font-family: 'Ubuntu';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 117.5%;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #3E3092;
-}
-.emailFooterUp{
-    width: 232px;
-    height: 42px;
-    background: #F7CB25;
-    border-radius: 21px;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-.footerWrapperCenter{
-    width: 100%;
-    height: 243px;
-    display: flex;
-    border-bottom:1px solid #F7CB25;
-}
-.wrapCenterFirst{
-    width: 41%;
-    height: 245px;
-    background: #F7CB25;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.wrapCenterSecond{
-    width: 59%;
-    height: 100%;
-    background: #3FAC8C;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-.centerFirstUlF{
-    list-style-type: none;
-    height: 210px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-}
-.centerFirstLi{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 600;
-font-size: 18px;
-line-height: 120%;
-color: #000000;
-text-decoration: none;
-}
-.centerFirstUlS{
-    list-style-type: none;
-    height: 210px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-}
-.centerSecondUlS{
-    list-style-type: none;
-    height: 210px;
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-}
-.centerSecondUlSF{
-    list-style-type: none;
-    height: 160px;
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    align-self: start;
-}
-.centerSecondLi{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 600;
-font-size: 18px;
-line-height: 120%;
-color: #3E3092;
-text-decoration: none;
-}
-.footerBottomWrap{
-    width: 100%;
-    height: 303px;
-    background: #F7CB25;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-.listAutorDev{
-    display: flex;
-    flex-direction: column;
-    align-self: flex-end;
-    margin-bottom: 50px;
-}
-.copyWraitP{
-    display: flex;
-    align-self: flex-end;
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 120%;
-color: #3E3092;
-margin-bottom: 50px;
-}
-.listAutorDevLi{
-    font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 300;
-font-size: 16px;
-line-height: 120%;
-color: #3E3092;
-margin: 0px;
-}
-.listAutorDevLiSpan{
-    text-decoration: none;
-    font-weight: 600;
-    color: #3E3092;
-}
-.wrapSocialFo{
-    width: 222.45px;
-height: auto;
+    padding-left: 23px;
+    padding-right: 0px;
+  }
+  .wrapSocialFo {
+    width: 80%;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-}
-@media only screen and (max-width: 600px) and (min-width: 300px) {
-    .footerUpWrap{
-        width: calc(100% - 23px - 0px);
-        height: auto;
-        background: #3E3092;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: space-between;
-        padding-top: 80px;
-        padding-bottom: 38px;
-        padding-left: 23px;
-        padding-right: 0px;
-    
-    }
-    .wrapSocialFo{
-        width: 80%;
-    height: auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-    .footerUpSomeList{
-        width: calc(100% - 23px);
-    }
-    .listUpSomeUl{
-        width: 100%;
-        list-style-type: none;
-        height: 90px;
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        padding: 0;
-        margin-top: 20px;
-    }
-    .listUpSomeUlLi{
-        font-family: 'Ubuntu';
+  }
+  .footerUpSomeList {
+    width: calc(100% - 23px);
+  }
+  .listUpSomeUl {
+    width: 100%;
+    list-style-type: none;
+    height: 90px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0;
+    margin-top: 20px;
+  }
+  .listUpSomeUlLi {
+    font-family: "Ubuntu";
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
     line-height: 120%;
-    color: #FFFFFF;
+    color: #ffffff;
     width: 50%;
-    }
-    .footerWrapperCenter{
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-direction: column-reverse;
-        border-bottom:1px solid #F7CB25;
-    }
-    .wrapCenterFirst{
-        width: 100%;
-        height: 245px;
-        background: #F7CB25;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-    }
-    .wrapCenterSecond{
-        width: 100%;
-        height: auto;
-        background: #3FAC8C;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: space-around;
-    }
-    .footerBottomWrap{
-        width: 100%;
-        height: 303px;
-        background: #F7CB25;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-    }
-    .copyWraitP{
-        display: flex;
-        align-self: flex-start;
-        font-family: 'Ubuntu';
+  }
+  .footerWrapperCenter {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    border-bottom: 1px solid #f7cb25;
+  }
+  .wrapCenterFirst {
+    width: 100%;
+    height: 245px;
+    background: #f7cb25;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .wrapCenterSecond {
+    width: 100%;
+    height: auto;
+    background: #3fac8c;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+  }
+  .footerBottomWrap {
+    width: 100%;
+    height: 303px;
+    background: #f7cb25;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .copyWraitP {
+    display: flex;
+    align-self: flex-start;
+    font-family: "Ubuntu";
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 120%;
-    color: #3E3092;
+    color: #3e3092;
     margin-bottom: 20px;
     margin-left: 17px;
-    }
-    .listAutorDev{
-        display: flex;
-        flex-direction: column;
-        align-self: flex-start;
-        margin-bottom: 50px;
-        margin-left: 17px;
-    }
-    .footerUpH1{
-        font-family: 'Ubuntu';
+  }
+  .listAutorDev {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    margin-bottom: 50px;
+    margin-left: 17px;
+  }
+  .footerUpH1 {
+    font-family: "Ubuntu";
     font-style: normal;
     font-weight: 300;
     font-size: 36px;
     line-height: 120%;
-    color: #FFFFFF;
+    color: #ffffff;
     margin: 0px;
-    }
-    .footerUpH1Span{
-        font-weight: 600; 
-    }
-    .footerUpP{
-        font-family: 'Ubuntu';
+  }
+  .footerUpH1Span {
+    font-weight: 600;
+  }
+  .footerUpP {
+    font-family: "Ubuntu";
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
     line-height: 120%;
-    color: #FFFFFF;
+    color: #ffffff;
     width: 400px;
     width: 100%;
     padding-bottom: 20px;
-    }
+  }
 }
 @media only screen and (max-width: 700px) and (min-width: 599px) {
-    .footerUpWrap{
-        width: calc(100% - 23px - 0px);
-        height: auto;
-        background: #3E3092;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: space-between;
-        padding-top: 80px;
-        padding-bottom: 38px;
-        padding-left: 23px;
-        padding-right: 0px;
-    
-    }
-    .wrapSocialFo{
-        width: 80%;
+  .footerUpWrap {
+    width: calc(100% - 23px - 0px);
     height: auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-    .footerUpSomeList{
-        width: calc(100% - 23px);
-    }
-    .listUpSomeUl{
-        width: 100%;
-        list-style-type: none;
-        height: 90px;
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        padding: 0;
-        margin-top: 20px;
-    }
-    .listUpSomeUlLi{
-        font-family: 'Ubuntu';
+    background: #3e3092;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-top: 80px;
+    padding-bottom: 38px;
+    padding-left: 23px;
+    padding-right: 0px;
+  }
+  .wrapSocialFo {
+    width: 80%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .footerUpSomeList {
+    width: calc(100% - 23px);
+  }
+  .listUpSomeUl {
+    width: 100%;
+    list-style-type: none;
+    height: 90px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0;
+    margin-top: 20px;
+  }
+  .listUpSomeUlLi {
+    font-family: "Ubuntu";
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
     line-height: 120%;
-    color: #FFFFFF;
+    color: #ffffff;
     width: 50%;
-    }
-    .footerWrapperCenter{
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-direction: column-reverse;
-        border-bottom:1px solid #F7CB25;
-    }
-    .wrapCenterFirst{
-        width: 100%;
-        height: 245px;
-        background: #F7CB25;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-    }
-    .wrapCenterSecond{
-        width: 100%;
-        height: auto;
-        background: #3FAC8C;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: space-around;
-    }
-    .footerBottomWrap{
-        width: 100%;
-        height: 303px;
-        background: #F7CB25;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-    }
-    .copyWraitP{
-        display: flex;
-        align-self: flex-start;
-        font-family: 'Ubuntu';
+  }
+  .footerWrapperCenter {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    border-bottom: 1px solid #f7cb25;
+  }
+  .wrapCenterFirst {
+    width: 100%;
+    height: 245px;
+    background: #f7cb25;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .wrapCenterSecond {
+    width: 100%;
+    height: auto;
+    background: #3fac8c;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+  }
+  .footerBottomWrap {
+    width: 100%;
+    height: 303px;
+    background: #f7cb25;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .copyWraitP {
+    display: flex;
+    align-self: flex-start;
+    font-family: "Ubuntu";
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 120%;
-    color: #3E3092;
+    color: #3e3092;
     margin-bottom: 20px;
     margin-left: 17px;
-    }
-    .listAutorDev{
-        display: flex;
-        flex-direction: column;
-        align-self: flex-start;
-        margin-bottom: 50px;
-        margin-left: 17px;
-    }
-    .footerUpH1{
-        font-family: 'Ubuntu';
+  }
+  .listAutorDev {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    margin-bottom: 50px;
+    margin-left: 17px;
+  }
+  .footerUpH1 {
+    font-family: "Ubuntu";
     font-style: normal;
     font-weight: 300;
     font-size: 36px;
     line-height: 120%;
-    color: #FFFFFF;
+    color: #ffffff;
     margin: 0px;
-    }
-    .footerUpH1Span{
-        font-weight: 600; 
-    }
-    .footerUpP{
-        font-family: 'Ubuntu';
+  }
+  .footerUpH1Span {
+    font-weight: 600;
+  }
+  .footerUpP {
+    font-family: "Ubuntu";
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
     line-height: 120%;
-    color: #FFFFFF;
+    color: #ffffff;
     width: 400px;
     width: 100%;
     padding-bottom: 20px;
-    }
+  }
 }
-@media only screen and (max-width: 1288px) and (min-width: 1024px) { 
-
+@media only screen and (max-width: 1288px) and (min-width: 1024px) {
 }
 @media only screen and (max-width: 1024px) and (min-width: 701px) {
-    .footerUpWrap{
-        width: calc(100% - 23px - 0px);
-        height: auto;
-        background: #3E3092;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: space-between;
-        padding-top: 80px;
-        padding-bottom: 38px;
-        padding-left: 23px;
-        padding-right: 0px;
-    
-    }
-    .wrapSocialFo{
-        width: 80%;
+  .footerUpWrap {
+    width: calc(100% - 23px - 0px);
     height: auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-    .footerUpSomeList{
-        width: calc(100% - 23px);
-    }
-    .listUpSomeUl{
-        width: 100%;
-        list-style-type: none;
-        height: 90px;
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        padding: 0;
-        margin-top: 20px;
-    }
-    .listUpSomeUlLi{
-        font-family: 'Ubuntu';
+    background: #3e3092;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-top: 80px;
+    padding-bottom: 38px;
+    padding-left: 23px;
+    padding-right: 0px;
+  }
+  .wrapSocialFo {
+    width: 80%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .footerUpSomeList {
+    width: calc(100% - 23px);
+  }
+  .listUpSomeUl {
+    width: 100%;
+    list-style-type: none;
+    height: 90px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0;
+    margin-top: 20px;
+  }
+  .listUpSomeUlLi {
+    font-family: "Ubuntu";
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
     line-height: 120%;
-    color: #FFFFFF;
+    color: #ffffff;
     width: 50%;
-    }
-    .footerWrapperCenter{
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-direction: column-reverse;
-        border-bottom:1px solid #F7CB25;
-    }
-    .wrapCenterFirst{
-        width: 100%;
-        height: 245px;
-        background: #F7CB25;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-    }
-    .wrapCenterSecond{
-        width: 100%;
-        height: auto;
-        background: #3FAC8C;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: space-around;
-    }
-    .footerBottomWrap{
-        width: 100%;
-        height: 303px;
-        background: #F7CB25;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-    }
-    .copyWraitP{
-        display: flex;
-        align-self: flex-start;
-        font-family: 'Ubuntu';
+  }
+  .footerWrapperCenter {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    border-bottom: 1px solid #f7cb25;
+  }
+  .wrapCenterFirst {
+    width: 100%;
+    height: 245px;
+    background: #f7cb25;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .wrapCenterSecond {
+    width: 100%;
+    height: auto;
+    background: #3fac8c;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+  }
+  .footerBottomWrap {
+    width: 100%;
+    height: 303px;
+    background: #f7cb25;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .copyWraitP {
+    display: flex;
+    align-self: flex-start;
+    font-family: "Ubuntu";
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 120%;
-    color: #3E3092;
+    color: #3e3092;
     margin-bottom: 20px;
     margin-left: 17px;
-    }
-    .listAutorDev{
-        display: flex;
-        flex-direction: column;
-        align-self: flex-start;
-        margin-bottom: 50px;
-        margin-left: 17px;
-    }
-    .footerUpH1{
-        font-family: 'Ubuntu';
+  }
+  .listAutorDev {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    margin-bottom: 50px;
+    margin-left: 17px;
+  }
+  .footerUpH1 {
+    font-family: "Ubuntu";
     font-style: normal;
     font-weight: 300;
     font-size: 36px;
     line-height: 120%;
-    color: #FFFFFF;
+    color: #ffffff;
     margin: 0px;
-    }
-    .footerUpH1Span{
-        font-weight: 600; 
-    }
-    .footerUpP{
-        font-family: 'Ubuntu';
+  }
+  .footerUpH1Span {
+    font-weight: 600;
+  }
+  .footerUpP {
+    font-family: "Ubuntu";
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
     line-height: 120%;
-    color: #FFFFFF;
+    color: #ffffff;
     width: 400px;
     width: 100%;
     padding-bottom: 20px;
-    }
+  }
 }

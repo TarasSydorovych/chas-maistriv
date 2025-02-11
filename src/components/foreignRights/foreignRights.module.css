@@ -1,0 +1,397 @@
+.wrapForeight {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+.wrapBanner {
+  padding-top: 53px;
+  height: calc(602px - 53px);
+  width: 100%;
+  display: flex;
+
+  background: #d6cfff;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 150px;
+}
+.wrapFirstTextIn {
+  max-width: 605px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.mainP {
+  color: #3e3092;
+  margin: 0;
+  font-family: Ubuntu;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 111%;
+}
+.descPBanner {
+  color: #3e3092;
+  margin: 0;
+  font-family: Ubuntu;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28px;
+  margin-top: 10px;
+}
+.spanDescBanner {
+  color: #3e3092;
+  font-family: Ubuntu;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 28px;
+}
+.buttonRight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 256px;
+  background: #3e3092;
+  height: 60px;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  font-family: Ubuntu;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 117.5%;
+  margin-top: 20px;
+  align-self: center;
+  cursor: pointer;
+}
+.bigPhotoForForeight {
+  margin-top: 39px;
+  width: 100%;
+}
+.wrpaBlockForTxt {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 48px;
+  justify-content: center;
+  gap: 40px;
+}
+.withButtonm {
+  max-width: 538px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.bigTetIn {
+  color: #3e3092;
+  margin: 0;
+  font-family: Ubuntu;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 111%;
+}
+.theButtonIn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 256px;
+  height: 60px;
+  background: #3fac8c;
+  color: #fff;
+  text-align: center;
+  font-family: Ubuntu;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 117.5%;
+  margin-top: 15px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.pIndescNotBan {
+  max-width: 703px;
+  margin: 0;
+  color: #000;
+
+  font-family: Ubuntu;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 28px;
+}
+.spanInNotBanner {
+  color: #000;
+  font-family: Ubuntu;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 28px;
+}
+.locations {
+  padding-top: 52px;
+  height: calc(321px - 52px);
+  width: 100%;
+  background: #3e51c1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 115px;
+}
+.locationsInformations {
+  width: 634px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.locationsPBig {
+  color: #fff;
+  font-family: Ubuntu;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140.5%;
+  margin: 0;
+}
+.wrapSocialIconDown {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+.facceForForeight {
+  cursor: pointer;
+}
+.photoForForeight {
+  width: auto;
+  height: auto;
+  object-fit: cover;
+}
+@media only screen and (max-width: 599px) and (min-width: 300px) {
+  .wrapBanner {
+    padding-top: 53px;
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #d6cfff;
+    align-items: center;
+    justify-content: center;
+
+    gap: 30px;
+  }
+  .wrpaBlockForTxt {
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-top: 48px;
+    justify-content: center;
+    gap: 40px;
+  }
+  .locations {
+    padding-top: 52px;
+    height: auto;
+    width: 100%;
+    background: #3e51c1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 115px;
+  }
+  .locationsPBig {
+    color: #fff;
+    font-family: Ubuntu;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140.5%;
+    margin: 0;
+  }
+  .locationsInformations {
+    width: 99%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .locationsPBig {
+    color: #fff;
+    font-family: Ubuntu;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140.5%;
+    margin: 0;
+  }
+}
+@media only screen and (max-width: 700px) and (min-width: 600px) {
+  .wrapBanner {
+    padding-top: 53px;
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #d6cfff;
+    align-items: center;
+    justify-content: center;
+
+    gap: 30px;
+  }
+  .wrpaBlockForTxt {
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-top: 48px;
+    justify-content: center;
+    gap: 40px;
+  }
+  .locations {
+    padding-top: 52px;
+    height: auto;
+    width: 100%;
+    background: #3e51c1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 115px;
+  }
+  .locationsPBig {
+    color: #fff;
+    font-family: Ubuntu;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140.5%;
+    margin: 0;
+  }
+  .locationsInformations {
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+@media only screen and (max-width: 1288px) and (min-width: 1024px) {
+  .wrapFirstTextIn {
+    max-width: 500px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .mainP {
+    color: #3e3092;
+    margin: 0;
+    font-family: Ubuntu;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 111%;
+  }
+  .descPBanner {
+    color: #3e3092;
+    margin: 0;
+    font-family: Ubuntu;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px;
+    margin-top: 10px;
+  }
+  .spanDescBanner {
+    color: #3e3092;
+    font-family: Ubuntu;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 28px;
+  }
+}
+@media only screen and (max-width: 1024px) and (min-width: 701px) {
+  .wrapBanner {
+    padding-top: 53px;
+    height: calc(602px - 53px);
+    width: 100%;
+    display: flex;
+
+    background: #d6cfff;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 30px;
+  }
+  .wrapFirstTextIn {
+    max-width: 600px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .mainP {
+    color: #3e3092;
+    margin: 0;
+    font-family: Ubuntu;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 111%;
+  }
+  .descPBanner {
+    color: #3e3092;
+    margin: 0;
+    font-family: Ubuntu;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px;
+    margin-top: 10px;
+  }
+  .spanDescBanner {
+    color: #3e3092;
+    font-family: Ubuntu;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 28px;
+  }
+  .photoForForeight {
+    width: 300px;
+    height: auto;
+    object-fit: cover;
+  }
+  .locations {
+    padding-top: 52px;
+    height: auto;
+    width: 100%;
+    background: #3e51c1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 115px;
+  }
+  .locationsPBig {
+    color: #fff;
+    font-family: Ubuntu;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140.5%;
+    margin: 0;
+  }
+}

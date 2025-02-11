@@ -1,130 +1,736 @@
-.aboutWrapAll{
-    width: 100%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+.aboutWrapAll {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.smallWrapAbout{
-    width: 90%;
+.wrapPictureTeam {
+  width: 348px;
+  height: 348px;
+  border: 10px solid #ff3416;
+}
+.smallWrapAbout {
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.wrapTwoButton {
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 63px;
+}
+.aboutCompanyH1 {
+  width: 157px;
+  height: 49px;
+  background: #3e51c1;
+  color: #fff;
+
+  text-align: center;
+  font-family: Ubuntu;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 117.5%;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.autorsNewLabel {
+  display: flex;
+  width: 310px;
+  height: 59px;
+  justify-content: center;
+  align-items: center;
+  background: #3fac8c;
+  color: #3e3092;
+
+  font-family: Ubuntu;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 111%;
+  margin-top: 50px;
+}
+.aboutCompanyH1One {
+  width: 177px;
+  height: 49px;
+  background: #3e51c1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+
+  text-align: center;
+  font-family: Ubuntu;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 117.5%;
+  text-decoration: none;
+  margin-right: 32px;
+}
+.probil {
+  width: 100%;
+  height: 40px;
+}
+.aboutCompanyH1Two {
+  width: 271px;
+  height: 49px;
+  background: #3e51c1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+
+  text-align: center;
+  font-family: Ubuntu;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 117.5%;
+  text-decoration: none;
+  margin-right: 32px;
+}
+.aboutCompanyH1Thre {
+  width: 311px;
+  height: 49px;
+  background: #3e51c1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+
+  text-align: center;
+  font-family: Ubuntu;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 117.5%;
+  text-decoration: none;
+  margin-right: 32px;
+}
+.wpaPicAbout {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.paragInWrap {
+  color: #000;
+  font-size: 24px;
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 168%;
+  width: 50%;
+}
+.paragInWrapBig {
+  color: #000;
+
+  font-family: Ubuntu;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 168%;
+  line-height: 168%;
+  margin-bottom: 0;
+  margin: 0;
+  margin-top: 15px;
+}
+.imgAboutWrap {
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(50% - 10px);
+  height: auto;
+}
+.imgAbout {
+  width: 100%;
+  height: auto;
+}
+.aboutSpan {
+  color: #3fac8c;
+}
+.autorWr {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.autorWrNew {
+  width: 395px;
+  height: auto;
+  object-fit: cover;
+}
+.coockWrap {
+  width: calc(100% - 40px);
+  height: 200px;
+  background: gainsboro;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+.coockieP {
+  width: 70%;
+  color: #3e3092;
+  font-family: Ubuntu;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 143.5%;
+}
+.buttonCoockieWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.firstButtonCoocki {
+  display: flex;
+  width: 276px;
+  height: 56px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  background: #3e51c1;
+  color: #fff;
+  text-align: center;
+  font-family: Ubuntu;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 117.5%;
+  border: none;
+  cursor: pointer;
+}
+.secondButtonCoocki {
+  display: flex;
+  width: 276px;
+  height: 56px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  color: #fff;
+  text-align: center;
+  font-family: Ubuntu;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 117.5%;
+  background: #f7cb25;
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.zagalP {
+  color: #3fac8c;
+
+  font-family: Ubuntu;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 168%;
+  margin-top: 40px;
+}
+.zagalNotNeed {
+  color: #000;
+
+  font-family: Ubuntu;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 168%;
+  margin-top: 11px;
+}
+.zagalNotNeedDesc {
+  color: #000;
+
+  font-family: Ubuntu;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 168%;
+  margin-top: 11px;
+}
+.wrapTwoOffer {
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 20px;
+}
+.dogovirPd {
+  color: #3e3092;
+
+  font-family: Ubuntu;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 111%;
+  margin-top: 69px;
+  margin-bottom: 24px;
+}
+.firstDogovir {
+  color: #000;
+  margin: 0;
+  font-family: Ubuntu;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 168%;
+  margin-right: 27px;
+}
+.secondDogovir {
+  color: #000;
+  margin: 0;
+  font-family: Ubuntu;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 168%;
+}
+.redPIn {
+  color: #ff3416;
+
+  font-family: Ubuntu;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 168%;
+  margin-top: 44px;
+}
+.opuswork {
+  color: #000;
+
+  font-family: Ubuntu;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 168%;
+  margin: 0;
+}
+.hudognukNewLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 264px;
+  height: 59px;
+  background: #3fac8c;
+  color: #3e3092;
+
+  font-family: Ubuntu;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 111%;
+  margin-top: 41px;
+}
+.postIn {
+  color: #3e51c1;
+  font-family: Ubuntu;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 168%;
+  margin: 0;
+}
+.wrapTwoButtonNew {
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-top: 63px;
+}
+.inContactButtin {
+  height: 49px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: #3e51c1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  font-family: Ubuntu;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 117.5%;
+  cursor: pointer;
+}
+@media only screen and (max-width: 599px) and (min-width: 300px) {
+  .wrapPictureTeam {
+    width: calc(100% - 20px);
+    height: 300px;
+    border: 10px solid #ff3416;
+  }
+  .autorWrNew {
+    width: 300px;
+    height: auto;
+    object-fit: cover;
+  }
+  .wrapOneAutor {
+    width: auto;
     height: auto;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-}
-.aboutCompanyH1{
-    color: #3E3092;
-font-size: 34px;
-font-family: Ubuntu;
-font-style: normal;
-font-weight: 700;
-line-height: 111%;
-}
-.wpaPicAbout{
-    width: 100%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.paragInWrap{
-    color: #000;
-font-size: 24px;
-font-family: Ubuntu;
-font-style: normal;
-font-weight: 500;
-line-height: 168%;
-width: 50%;
-}
-.paragInWrapBig{
-    color: #000;
-    font-size: 24px;
-    font-family: Ubuntu;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 168%;
-}
-.imgAboutWrap{
-    padding-left: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: calc(50% - 10px);
-    height: auto;
-}
-.imgAbout{
-    width: 100%;
-    height: auto;
-}
-.aboutSpan{
-    color: #3FAC8C;
-}
-.autorWr{
-    width: 400px;
-    height: auto;
-}
-.coockWrap{
+    justify-content: flex-start;
+
+    margin-top: 52px;
+  }
+  .coockWrap {
     width: calc(100% - 40px);
-    height: 200px;
+    height: auto;
     background: gainsboro;
     position: fixed;
     bottom: 0;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
     padding: 20px;
+  }
+  .coockieP {
+    width: 97%;
+    color: #3e3092;
+    font-family: Ubuntu;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 143.5%;
+  }
+  .wrapTwoButton {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 63px;
+  }
+  .aboutCompanyH1One {
+    width: 90%;
+    height: 49px;
+    background: #3e51c1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+
+    text-align: center;
+    font-family: Ubuntu;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 117.5%;
+    text-decoration: none;
+    margin-right: 0px;
+    margin-bottom: 20px;
+  }
+  .aboutCompanyH1 {
+    width: 90%;
+    height: 49px;
+    background: #3e51c1;
+    color: #fff;
+
+    text-align: center;
+    font-family: Ubuntu;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 117.5%;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wrapTwoOffer {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .autorsNewLabel {
+    display: flex;
+    width: 90%;
+    height: 59px;
+    justify-content: center;
+    align-items: center;
+    background: #3fac8c;
+    color: #3e3092;
+
+    font-family: Ubuntu;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 111%;
+    margin-top: 50px;
+  }
 }
-.coockieP{
-    width: 70%;
-    color: #3E3092;
-font-family: Ubuntu;
-font-size: 15px;
-font-style: normal;
-font-weight: 700;
-line-height: 143.5%;
-}
-.buttonCoockieWrap{
+@media only screen and (max-width: 700px) and (min-width: 600px) {
+  .wrapOneAutor {
+    width: auto;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-}
-.firstButtonCoocki{
+    justify-content: flex-start;
+
+    margin-top: 52px;
+  }
+  .coockWrap {
+    width: calc(100% - 40px);
+    height: auto;
+    background: gainsboro;
+    position: fixed;
+    bottom: 0;
     display: flex;
-width: 276px;
-height: 56px;
-justify-content: center;
-align-items: center;
-gap: 10px;
-flex-shrink: 0;
-background: #3E51C1;
-color: #FFF;
-text-align: center;
-font-family: Ubuntu;
-font-size: 20px;
-font-style: normal;
-font-weight: 500;
-line-height: 117.5%;
-border: none;
-cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  .coockieP {
+    width: 97%;
+    color: #3e3092;
+    font-family: Ubuntu;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 143.5%;
+  }
 }
-.secondButtonCoocki{
+@media only screen and (max-width: 1288px) and (min-width: 1024px) {
+  .coockieP {
+    width: 50%;
+    color: #3e3092;
+    font-family: Ubuntu;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 143.5%;
+  }
+}
+@media only screen and (max-width: 1024px) and (min-width: 701px) {
+  .wrapOneAutor {
+    width: auto;
+    height: auto;
     display: flex;
-width: 276px;
-height: 56px;
-justify-content: center;
-align-items: center;
-gap: 10px;
-flex-shrink: 0;
-color: #FFF;
-text-align: center;
-font-family: Ubuntu;
-font-size: 20px;
-font-style: normal;
-font-weight: 500;
-line-height: 117.5%;
-background: #F7CB25;
-border: none;
-margin-top: 10px;
-cursor: pointer;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    margin-top: 52px;
+  }
+  .coockWrap {
+    width: calc(100% - 40px);
+    height: auto;
+    background: gainsboro;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  .coockieP {
+    width: 97%;
+    color: #3e3092;
+    font-family: Ubuntu;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 143.5%;
+  }
+}
+.buttonGrenDostavka {
+  width: 310px;
+  height: 59px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #3fac8c;
+  color: #3e3092;
+
+  font-family: Ubuntu;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 111%;
+  margin-top: 46px;
+}
+.buttonGrenDostavkaManifest {
+  width: auto;
+  height: 59px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #3fac8c;
+  color: #3e3092;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-family: Ubuntu;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 111%;
+  margin-top: 46px;
+}
+.mainKuiv {
+  color: #3fac8c;
+
+  font-family: Ubuntu;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 111%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.buttonGrenWherek {
+  width: 443px;
+
+  height: 59px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #3fac8c;
+  color: #3e3092;
+
+  font-family: Ubuntu;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 111%;
+  margin-top: 46px;
+}
+.wrapOneAutor {
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 29px;
+  margin-top: 52px;
+}
+
+.blockWithInformation {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.onlineStoreName {
+  margin: 0;
+  color: #3e51c1;
+
+  font-family: Ubuntu;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 121%;
+}
+.onlineStoreNameNew {
+  margin: 0;
+  color: #3e51c1;
+  max-width: 542px;
+  font-family: Ubuntu;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 121%;
+}
+.nameAutort {
+  margin: 0;
+  color: #3fac8c;
+  font-family: Ubuntu;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 121%;
+}
+.dataPhone {
+  color: #000;
+
+  font-family: Ubuntu;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 168%;
+  margin-top: 41px;
+}
+.twoIconSocialWr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.oneIconSocial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.iconCocialP {
+  margin: 0;
+  color: #000;
+  font-family: Ubuntu;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 168%;
+  margin-right: 10px;
+}
+.wrapIvd {
+  width: 64.114px;
+  height: 64.114px;
+  border-radius: 50%;
+  background: #f7cb25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.vacansii {
+  max-width: 1050px;
+  color: #000;
+
+  font-family: Ubuntu;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 121%;
+  margin-top: 30px;
+  margin-bottom: 77px;
+}
+.bluePSearch {
+  color: #3e51c1;
+  font-family: Ubuntu;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 121%;
 }
